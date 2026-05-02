@@ -1,33 +1,17 @@
 ---
 ---
 
-<button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme" title="Toggle light/dark theme"></button>
+<button class="cm-theme-toggle" id="theme-toggle" aria-label="Toggle theme" title="Toggle light/dark theme"></button>
 
 <style>
-  .theme-toggle {
-    width: 20px;
-    height: 20px;
-    border: 1.5px solid var(--color-border-strong);
-    background: none;
-    cursor: pointer;
+  .cm-theme-toggle {
     padding: 0;
     position: relative;
     flex-shrink: 0;
-    clip-path: polygon(
-      4px 0, 100% 0,
-      100% calc(100% - 4px),
-      calc(100% - 4px) 100%,
-      0 100%, 0 4px
-    );
-    transition: border-color var(--transition-base);
-  }
-
-  .theme-toggle:hover {
-    border-color: var(--color-accent);
   }
 
   /* Left half — filled in light mode, empty in dark mode */
-  .theme-toggle::before {
+  .cm-theme-toggle::before {
     content: '';
     position: absolute;
     top: 0;
@@ -39,7 +23,7 @@
   }
 
   /* Right half — empty in light mode, filled in dark mode */
-  .theme-toggle::after {
+  .cm-theme-toggle::after {
     content: '';
     position: absolute;
     top: 0;
@@ -50,11 +34,11 @@
     transition: background var(--transition-base);
   }
 
-  [data-theme="dark"] .theme-toggle::before {
+  [data-theme="dark"] .cm-theme-toggle::before {
     background: transparent;
   }
 
-  [data-theme="dark"] .theme-toggle::after {
+  [data-theme="dark"] .cm-theme-toggle::after {
     background: var(--color-border-strong);
   }
 </style>

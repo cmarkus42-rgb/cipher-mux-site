@@ -1,60 +1,45 @@
 ---
+import { t, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: string;
+}
+
+const { lang } = Astro.props;
+const l = lang as Lang;
+
+const privacyHref = lang === 'de' ? `/${lang}/datenschutz` : `/${lang}/privacy`;
+const imprintHref = lang === 'de' ? `/${lang}/impressum` : `/${lang}/imprint`;
 ---
 
-<footer class="site-footer">
-  <span class="footer-left">
-    <span>MIT License · Single Maintainer</span>
-    <span class="footer-legal">
-      <a href="/cipher-mux-site/impressum" class="footer-link">Impressum</a>
-      <span class="footer-sep"> · </span>
-      <a href="/cipher-mux-site/datenschutz" class="footer-link">Datenschutz</a>
-    </span>
-  </span>
-  <a
-    href="https://github.com/cmarkus42/cipher-mux-electron"
-    class="footer-link"
-    target="_blank"
-    rel="noopener noreferrer"
-  >github.com/cmarkus42/cipher-mux-electron</a>
+<footer class="cm-footer">
+  <div class="cm-footer-left">
+    <span class="cm-dot" style="background: var(--color-accent)"></span>
+    <span class="cm-footer-mark">CIPHER-MUX</span>
+    <span>{t(l, 'footer.version')}</span>
+    <span style="color: var(--color-text-dim)">&middot;</span>
+    <a href="https://cipher-mux.dev" style="color: var(--color-accent)">cipher-mux.dev</a>
+  </div>
+  <div class="cm-footer-right">
+    <a href="https://github.com/cmarkus42/cipher-mux-electron" target="_blank" rel="noopener noreferrer">GitHub</a>
+    <a href="https://github.com/cmarkus42/cipher-mux-electron/issues" target="_blank" rel="noopener noreferrer">Issues</a>
+    <a href={privacyHref}>{t(l, 'footer.privacy')}</a>
+    <a href={imprintHref}>{t(l, 'footer.imprint')}</a>
+  </div>
 </footer>
 
 <style>
-  .site-footer {
+  .cm-footer-left {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    border-top: 1px solid var(--color-border);
-    padding: 20px 32px;
-    font-family: 'Fira Code', monospace;
-    font-size: 11px;
-    color: var(--color-text-dim);
+    gap: 10px;
     flex-wrap: wrap;
-    gap: var(--space-sm);
   }
 
-  .footer-left {
-    color: var(--color-text-dim);
+  .cm-footer-right {
     display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-
-  .footer-legal {
-    color: var(--color-text-dim);
-  }
-
-  .footer-sep {
-    color: var(--color-text-dim);
-  }
-
-  .footer-link {
-    color: var(--color-text-dim);
-    text-decoration: none;
-    transition: color var(--transition-base);
-  }
-
-  .footer-link:hover {
-    color: var(--color-accent);
-    text-decoration: none;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
   }
 </style>

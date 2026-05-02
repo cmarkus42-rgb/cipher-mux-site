@@ -1,0 +1,36 @@
+---
+interface Props {
+  lang: string;
+}
+
+const { lang } = Astro.props;
+const otherLang = lang === 'de' ? 'en' : 'de';
+const otherLabel = lang === 'de' ? 'EN' : 'DE';
+const currentPath = Astro.url.pathname;
+const newPath = currentPath.replace(/^\/(de|en)/, `/${otherLang}`);
+---
+
+<a
+  href={newPath}
+  class="cm-lang-switch"
+  title={otherLang === 'de' ? 'Deutsch' : 'English'}
+>
+  {otherLabel}
+</a>
+
+<style>
+  .cm-lang-switch {
+    font-family: 'Fira Code', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--color-text-dim);
+    text-decoration: none;
+    transition: color var(--transition-base);
+  }
+
+  .cm-lang-switch:hover {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+</style>
