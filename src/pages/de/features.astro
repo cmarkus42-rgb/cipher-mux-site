@@ -1,0 +1,310 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import content from '../../i18n/de/features';
+import { t } from '../../i18n/ui';
+
+const lang = 'de';
+
+const sectionIdMap: Record<string, string> = {
+  '01': 'cockpit',
+  '02': 'grid',
+  '03': 'sessions',
+  '04': 'personas',
+  '05': 'presets',
+  '06': 'prompts',
+  '07': 'voice',
+  '08': 'notes',
+  '09': 'mcp',
+  '10': 'themes',
+  '11': 'efficiency',
+};
+
+type SectionWithStats = typeof content.sections[0] & { stats?: readonly { value: string; label: string }[] };
+type SectionWithRoles = typeof content.sections[0] & { roles?: readonly { name: string; description: string }[] };
+---
+
+<Layout
+  title="Features — CIPHER-MUX"
+  description={content.hero.subtext}
+  lang={lang}
+  active="features"
+>
+  <div class="features-page">
+
+    <!-- Anchor Nav (right side, sticky) -->
+    <nav class="cm-anchor-nav">
+      <div class="cm-anchor-nav-label">{t(lang, 'scroll.label')}</div>
+      {content.scrollNavItems.map((item) => (
+        <a href={`#${item.id}`} class="cm-anchor-nav-item">
+          <span>{item.label}</span>
+        </a>
+      ))}
+    </nav>
+
+    <!-- Hero -->
+    <section class="features-hero">
+      <span class="features-hero-kicker">{content.hero.kicker}</span>
+      <h1>{content.hero.title}</h1>
+      <p class="features-hero-sub">{content.hero.subtext}</p>
+    </section>
+
+    <!-- 11 Feature Sections -->
+    {content.sections.map((section) => {
+      const sectionId = sectionIdMap[section.num] ?? section.num;
+      const s = section as SectionWithStats & SectionWithRoles;
+      return (
+        <section id={sectionId} class="feature-section">
+          <header class="cm-section-header">
+            <div class="cm-section-header-meta">
+              <span class="cm-section-header-num">{section.num}</span>
+              <span class="cm-section-header-line"></span>
+              <span class="cm-section-header-kicker">{section.kicker}</span>
+            </div>
+            <h2>{section.title}</h2>
+            <p class="cm-section-header-lead">{section.lead}</p>
+          </header>
+
+          {s.stats && (
+            <div class="stat-grid">
+              {s.stats.map((stat) => (
+                <div class="cm-box">
+                  <span class="stat-value">{stat.value}</span>
+                  <span class="stat-label">{stat.label}</span>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {s.roles && (
+            <div class="roles-list">
+              {s.roles.map((role) => (
+                <div class="role-item">
+                  <strong>{role.name}:</strong> {role.description}
+                </div>
+              ))}
+            </div>
+          )}
+        </section>
+      );
+    })}
+
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const sections = document.querySelectorAll('.feature-section');
+      const navItems = document.querySelectorAll('.cm-anchor-nav-item');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            navItems.forEach(item => item.classList.remove('active'));
+            const activeItem = document.querySelector(`.cm-anchor-nav-item[href="#${entry.target.id}"]`);
+            if (activeItem) activeItem.classList.add('active');
+          }
+        });
+      }, { rootMargin: '-20% 0px -70% 0px' });
+      sections.forEach(s => observer.observe(s));
+    });
+  </script>
+</Layout>
+
+<style>
+  .features-page {
+    position: relative;
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* Hero */
+  .features-hero {
+    padding: 120px 0 64px;
+  }
+
+  .features-hero-kicker {
+    font-family: 'Fira Code', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .features-hero h1 {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: clamp(40px, 5vw, 64px);
+    line-height: 1.0;
+    letter-spacing: -1px;
+    margin: 0 0 16px;
+  }
+
+  .features-hero-sub {
+    font-family: 'Fira Code', monospace;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+    max-width: 640px;
+    margin: 0;
+  }
+
+  /* Anchor Nav */
+  .cm-anchor-nav {
+    position: fixed;
+    top: 200px;
+    right: 32px;
+    width: 180px;
+    font-family: 'Fira Code', monospace;
+    font-size: 10px;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 10;
+  }
+
+  .cm-anchor-nav-label {
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text-dim);
+    font-size: 9px;
+  }
+
+  .cm-anchor-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 2px 4px;
+    color: var(--color-text-dim);
+    text-decoration: none;
+    border-left: 2px solid transparent;
+    transition: color 0.15s, border-color 0.15s;
+  }
+
+  .cm-anchor-nav-item:hover,
+  .cm-anchor-nav-item.active {
+    color: var(--color-text);
+    border-left-color: var(--color-accent);
+  }
+
+  @media (max-width: 1200px) {
+    .cm-anchor-nav { display: none; }
+  }
+
+  /* Feature Sections */
+  .feature-section {
+    padding: 72px 0;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .cm-section-header-meta {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    font-family: 'Fira Code', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--color-text-dim);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .cm-section-header-num {
+    color: var(--color-accent);
+  }
+
+  .cm-section-header-line {
+    flex: 0 0 14px;
+    height: 1px;
+    background: var(--color-border);
+    align-self: center;
+  }
+
+  .cm-section-header h2 {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: clamp(38px, 4vw, 48px);
+    line-height: 1.05;
+    letter-spacing: -0.5px;
+    margin: 0;
+  }
+
+  .cm-section-header-lead {
+    margin-top: 14px;
+    max-width: 720px;
+    font-family: 'Fira Code', monospace;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+  }
+
+  /* Stat Grid */
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px;
+    margin-top: 32px;
+  }
+
+  .cm-box {
+    border: 1px solid var(--color-border);
+    padding: 20px 24px;
+    background: var(--color-surface);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .stat-value {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 36px;
+    color: var(--color-accent);
+    display: block;
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-family: 'Fira Code', monospace;
+    font-size: 11px;
+    color: var(--color-text-dim);
+    letter-spacing: 1px;
+  }
+
+  /* Roles List */
+  .roles-list {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .role-item {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    font-family: 'Fira Code', monospace;
+    padding-left: 16px;
+    border-left: 2px solid var(--color-border);
+  }
+
+  .role-item strong {
+    color: var(--color-text);
+  }
+
+  @media (max-width: 768px) {
+    .features-page {
+      padding: 0 20px;
+    }
+
+    .features-hero {
+      padding: 80px 0 48px;
+    }
+
+    .feature-section {
+      padding: 48px 0;
+    }
+  }
+</style>
