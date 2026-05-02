@@ -46,10 +46,28 @@ import PillarCard from '../components/PillarCard.astro';
     </div>
   </section>
 
+  <!-- Hero image -->
+  <div class="hero-image-wrap">
+    <img
+      src="/cipher-mux-site/images/hero-landing.png"
+      alt="CIPHER-MUX Grid-Cockpit Visualisierung"
+      class="hero-image"
+      loading="eager"
+      decoding="async"
+    />
+  </div>
+
   <!-- Pillars -->
   <section class="pillars-section">
     <div class="pillars-grid">
       <div class="pillar-cell pillar-cell--border-right pillar-cell--border-bottom">
+        <img
+          src="/cipher-mux-site/images/pillar-beschreiben.png"
+          alt="Waveform zu Code — Beschreiben statt coden"
+          class="pillar-image"
+          loading="lazy"
+          decoding="async"
+        />
         <PillarCard
           title="Beschreiben statt coden"
           description="Du sagst was du willst. Nicht wie. Spezialisierte KI-Agenten setzen um — parallel, sichtbar, steuerbar."
@@ -58,6 +76,13 @@ import PillarCard from '../components/PillarCard.astro';
         />
       </div>
       <div class="pillar-cell pillar-cell--border-bottom">
+        <img
+          src="/cipher-mux-site/images/pillar-idee-zum-projekt.png"
+          alt="Trittsteinen-Bogen — Von der Idee zum Projekt"
+          class="pillar-image"
+          loading="lazy"
+          decoding="async"
+        />
         <PillarCard
           title="Von der Idee zum Projekt"
           description="Fuenf Phasen, fuenf Denkweisen — ein Cockpit das dich durch den gesamten Prozess fuehrt. Nicht Prompt rein, Code raus."
@@ -66,6 +91,13 @@ import PillarCard from '../components/PillarCard.astro';
         />
       </div>
       <div class="pillar-cell pillar-cell--border-right">
+        <img
+          src="/cipher-mux-site/images/pillar-lernen-durch-machen.png"
+          alt="Glaeserne Architektur — Lernen durch Machen"
+          class="pillar-image"
+          loading="lazy"
+          decoding="async"
+        />
         <PillarCard
           title="Lernen durch Machen"
           description="Alles liegt offen. Jeder Prompt sichtbar, jede Entscheidung nachvollziehbar, jedes Konzept erklaerbar."
@@ -74,6 +106,13 @@ import PillarCard from '../components/PillarCard.astro';
         />
       </div>
       <div class="pillar-cell">
+        <img
+          src="/cipher-mux-site/images/pillar-fuer-alle.png"
+          alt="Konvergierende Eingabemethoden — Fuer alle"
+          class="pillar-image"
+          loading="lazy"
+          decoding="async"
+        />
         <PillarCard
           title="Fuer alle"
           description="Voice Input, High-Contrast, eingebauter Lehr-Assistent. Die Huerde ist so niedrig wie wir sie kriegen koennen."
@@ -142,6 +181,35 @@ import PillarCard from '../components/PillarCard.astro';
     flex-wrap: wrap;
     gap: var(--space-md);
     justify-content: center;
+  }
+
+  /* Hero image */
+  .hero-image-wrap {
+    width: 100%;
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+    overflow: hidden;
+    line-height: 0;
+  }
+
+  .hero-image {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0.85;
+    display: block;
+  }
+
+  /* Pillar images */
+  .pillar-image {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    margin: var(--space-2xl) var(--space-2xl) 0 var(--space-2xl);
+    clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
   }
 
   /* Pillars */

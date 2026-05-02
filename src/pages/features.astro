@@ -57,6 +57,13 @@ import ThemeShowcase from '../components/ThemeShowcase.astro';
 
   <!-- Section 2: Ein Team, kein Tool -->
   <FeatureSection id="prozess" title="Ein Team, kein Tool" subtitle="Fuenf Phasen. Fuenf Denkweisen. Ein Cockpit.">
+    <img
+      src="/cipher-mux-site/images/section-lifecycle.png"
+      alt="Lifecycle-Phasen im cipher-mux Cockpit"
+      class="section-image"
+      loading="lazy"
+      decoding="async"
+    />
     <div class="prose">
       <p>
         Die meisten KI-Coding-Tools haben einen Workflow: Du sagst was du willst, die KI generiert Code. Aber danach? Testen ob es funktioniert? Pruefen ob es sicher ist? Dokumentieren? Das bleibt an dir.
@@ -157,6 +164,13 @@ import ThemeShowcase from '../components/ThemeShowcase.astro';
 
   <!-- Section 5: Orchestrierung -->
   <FeatureSection id="orchestrierung" title="Orchestrierung" subtitle="Mehrere Agenten. Ein Grid. Du am Steuer.">
+    <img
+      src="/cipher-mux-site/images/section-orchestrierung.png"
+      alt="Grid-Orchestrierung mit mehreren Agenten im cipher-mux Cockpit"
+      class="section-image"
+      loading="lazy"
+      decoding="async"
+    />
     <div class="prose">
       <p>
         Nicht ein Chat-Fenster. Ein Grid. Mehrere Agenten, jeder mit eigener Aufgabe. Du siehst alle gleichzeitig. Du steuerst, beobachtest, greifst ein wenn noetig. Das ist der Unterschied zwischen einem Telefonat und einer Kommandozentrale.
@@ -328,6 +342,17 @@ import ThemeShowcase from '../components/ThemeShowcase.astro';
     flex-wrap: wrap;
     gap: var(--space-md);
     justify-content: center;
+  }
+
+  /* Section images */
+  .section-image {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    object-position: center;
+    margin: 0 0 var(--space-2xl) 0;
+    opacity: 0.9;
+    display: block;
   }
 
   /* Responsive */

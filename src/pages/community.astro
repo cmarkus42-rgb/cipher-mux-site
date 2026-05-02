@@ -22,6 +22,13 @@ import Layout from '../layouts/Layout.astro';
       <span class="label-tag">Maintainer</span>
       <h1>Ein Mensch. Ein Seitenprojekt. Ehrliches Teilen.</h1>
     </div>
+    <img
+      src="/cipher-mux-site/images/section-community.png"
+      alt="Persoenlicher Workspace — cipher-mux in Aktion"
+      class="community-hero-image"
+      loading="lazy"
+      decoding="async"
+    />
   </div>
 
   <!-- Why it exists -->
@@ -147,6 +154,15 @@ import Layout from '../layouts/Layout.astro';
     display: flex;
     flex-direction: column;
     gap: var(--space-lg);
+  }
+
+  .community-hero-image {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0.9;
+    display: block;
   }
 
   /* ── Sections ── */
