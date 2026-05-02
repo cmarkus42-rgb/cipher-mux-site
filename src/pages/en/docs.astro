@@ -17,10 +17,10 @@ const lang = 'en';
     <!-- Anchor Nav -->
     <nav class="cm-anchor-nav">
       <div class="cm-anchor-nav-label">{t(lang, 'scroll.label')}</div>
-      {content.sections.map((section, i) => (
+      {content.sections.map((section) => (
         <a href={`#${section.id}`} class="cm-anchor-nav-item">
-          <span class="cm-anchor-nav-num">§{String(i + 1).padStart(2, '0')}</span>
-          <span>{section.title}</span>
+          <span class="cm-anchor-nav-num">{section.num}</span>
+          <span>{section.navLabel}</span>
         </a>
       ))}
     </nav>
@@ -28,29 +28,681 @@ const lang = 'en';
     <!-- Hero -->
     <section class="docs-hero">
       <div class="cm-tag">{content.hero.kicker}</div>
-      <h1>{content.hero.title}</h1>
+      <h1>{content.hero.title}<br /><span class="accent">{content.hero.titleAccent}</span> {content.hero.titleEnd}</h1>
       <p class="docs-body">{content.hero.body}</p>
     </section>
 
-    <!-- Documentation Sections -->
-    {content.sections.map((section, i) => (
-      <section id={section.id} class="docs-section">
-        <header class="cm-section-header">
-          <div class="cm-section-header-meta">
-            <span class="cm-section-header-num">§ {String(i + 1).padStart(2, '0')}</span>
-            <span class="cm-section-header-line"></span>
-            <span class="cm-section-header-kicker">{section.title}</span>
-          </div>
-          <h2>{section.title}</h2>
-          <p class="cm-section-header-lead">{section.lead}</p>
-        </header>
-      </section>
-    ))}
+    <!-- ═══ Companion Intro (before §01) ═══ -->
+    <section class="docs-companion-intro">
+      <div class="docs-inner">
+        <div class="cm-tag">{content.companionIntro.kicker}</div>
+        <h2>{content.companionIntro.title}</h2>
+        <p class="docs-p" set:html={content.companionIntro.body1} />
+        <p class="docs-p" set:html={content.companionIntro.body2} />
 
-    <!-- Bottom CTA -->
-    <div class="docs-cta">
-      <p class="docs-cta-text">Ask the Companion.</p>
-      <a href={`/${lang}/start`} class="cm-btn cm-btn--primary">Start Installation</a>
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.companionIntro.startTitle}</span></h3>
+        <ul class="docs-list">
+          {content.companionIntro.startItems.map((item) => (
+            <li><span class="docs-list-marker">&rsaquo;</span><span set:html={item} /></li>
+          ))}
+        </ul>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.companionIntro.modesTitle}</span></h3>
+        <div class="docs-table">
+          <div class="docs-table-header docs-table-2col">
+            <div>Mode</div><div>Description</div>
+          </div>
+          {content.companionIntro.modes.map((m, i) => (
+            <div class:list={["docs-table-row", "docs-table-2col", { "docs-table-row-first": i === 0 }]}>
+              <div class="docs-table-label">{m.label}</div>
+              <div class="docs-table-desc">{m.desc}</div>
+            </div>
+          ))}
+        </div>
+
+        <div class="docs-callout docs-callout-rule">
+          <div class="docs-callout-label">Rule of thumb · {content.companionIntro.ruleTitle}</div>
+          <div class="docs-callout-body" set:html={content.companionIntro.ruleBody} />
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ §01 · Understanding the Window ═══ -->
+    <section id="window" class="docs-section">
+      <div class="docs-inner">
+        <div class="cm-section-header-meta">
+          <span class="cm-section-header-num">§ 01</span>
+          <span class="cm-section-header-line"></span>
+          <span>chapter</span>
+        </div>
+        <h2>Understanding the Window</h2>
+        <p class="docs-lead">When cipher-mux starts, you see two areas: the grid in the centre, the status bar at the bottom. That's it for now.</p>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>The Grid (Main Area)</span></h3>
+        <p class="docs-p">The large central area. This is where your sessions live — each in its own cell. Think of a desk with multiple monitors: each monitor shows a separate Claude conversation.</p>
+        <p class="docs-p">An empty cell shows a <span class="docs-mono">+</span> in the centre. Clicking it opens the <strong>Launcher Popup</strong> — your entry point for everything.</p>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>Launcher Popup · Three Tabs</span></h3>
+        <div class="docs-table">
+          <div class="docs-table-header docs-table-2col"><div>Tab</div><div>Purpose</div></div>
+          <div class="docs-table-row docs-table-2col docs-table-row-first"><div class="docs-table-label">Presets</div><div class="docs-table-desc">Start specialised roles directly — all available presets as cards (Companion, Refinement, Cyber Factory, ...). Running single-instance presets are marked with a dot. Resume button for existing sessions.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">Path</div><div class="docs-table-desc">Start a session with a custom project path. Folder picker, recently used paths, plus options: Shell Only · Skip Permissions · Resume · Fork.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">Notes</div><div class="docs-table-desc">Open an existing note in this cell or create a new note.</div></div>
+        </div>
+
+        <div class="docs-callout docs-callout-tip">
+          <div class="docs-callout-label">Tip</div>
+          <div class="docs-callout-body">Keyboard: <span class="docs-mono">Cmd+N</span> opens the Launcher popup in the next empty cell.</div>
+        </div>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>The Status Bar (Bottom Edge)</span></h3>
+        <p class="docs-p">Your command centre. From left to right:</p>
+        <div class="docs-table">
+          <div class="docs-table-header docs-table-2col"><div>Element</div><div>What it does</div></div>
+          <div class="docs-table-row docs-table-2col docs-table-row-first"><div class="docs-table-label">Voice Pill</div><div class="docs-table-desc">Voice control on/off. LED shows status: off / green (ready) / red (recording) / yellow (processing).</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">columns +/-</div><div class="docs-table-desc">Add or remove grid columns. Maximum 7.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">rows +/-</div><div class="docs-table-desc">Add or remove grid rows. Maximum 3.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">workspaces</div><div class="docs-table-desc">Open workspace and persona editor.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">cyber factory</div><div class="docs-table-desc">Start/stop Cyber Factory. Dot indicator when active.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">bugreport</div><div class="docs-table-desc">Open bug report dialog.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">sidebar</div><div class="docs-table-desc">Show/hide sidebar. LED glows when content is waiting.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">Theme Name</div><div class="docs-table-desc">Click cycles to the next visual theme.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">info</div><div class="docs-table-desc">Settings, shortcuts, feature list.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">Version</div><div class="docs-table-desc">App version (right side, not clickable).</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ §02 · Sessions ═══ -->
+    <section id="sessions" class="docs-section">
+      <div class="docs-inner">
+        <div class="cm-section-header-meta">
+          <span class="cm-section-header-num">§ 02</span>
+          <span class="cm-section-header-line"></span>
+          <span>chapter</span>
+        </div>
+        <h2>Sessions — Your AI Workstations</h2>
+        <p class="docs-lead">A session is a separate phone call with Claude. Its own memory (context window), its own files, its own task. Sessions are independent of each other.</p>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>Opening a Session — Three Ways</span></h3>
+        <div class="docs-table">
+          <div class="docs-table-header docs-table-2col"><div>Way</div><div>How</div></div>
+          <div class="docs-table-row docs-table-2col docs-table-row-first"><div class="docs-table-label">Via Preset</div><div class="docs-table-desc">Click + → Tab "Presets" → Choose preset. Session starts with predefined behaviour, persona, and project context.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">Via Path</div><div class="docs-table-desc">Click + → Tab "Path" → Choose or type folder → Start. Bare Claude session in the chosen directory.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">Via Workspace</div><div class="docs-table-desc">Apply workspace — the grid is populated automatically. One click, everything is set up.</div></div>
+        </div>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>Cell Controls</span></h3>
+        <div class="docs-table">
+          <div class="docs-table-header docs-table-3col"><div>Button</div><div>Action</div><div>Description</div></div>
+          <div class="docs-table-row docs-table-3col docs-table-row-first"><div class="docs-table-key">&uarr;</div><div class="docs-table-label-mid">Expand</div><div class="docs-table-desc">Expand cell to full grid height (only with 2+ rows).</div></div>
+          <div class="docs-table-row docs-table-3col"><div class="docs-table-key">&darr;</div><div class="docs-table-label-mid">Collapse</div><div class="docs-table-desc">Back to normal height.</div></div>
+          <div class="docs-table-row docs-table-3col"><div class="docs-table-key">&hArr;</div><div class="docs-table-label-mid">Switch</div><div class="docs-table-desc">Switch project without closing the session.</div></div>
+          <div class="docs-table-row docs-table-3col"><div class="docs-table-key">$</div><div class="docs-table-label-mid">Shell</div><div class="docs-table-desc">Open shell in project directory. No Claude, plain terminal.</div></div>
+          <div class="docs-table-row docs-table-3col"><div class="docs-table-key">&times;</div><div class="docs-table-label-mid">Close</div><div class="docs-table-desc">End session and release cell.</div></div>
+        </div>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>Focus, Context, Crash Safety</span></h3>
+        <ul class="docs-list">
+          <li><span class="docs-list-marker">&rsaquo;</span><span><strong>Focus:</strong> Click the header bar to set focus. Keyboard input goes to the focused cell. Drag and drop swaps positions.</span></li>
+          <li><span class="docs-list-marker">&rsaquo;</span><span><strong>Context indicator:</strong> Green = plenty of room. Orange at 80% = getting tight. Red at 90% = nearly full, session will need to forget soon.</span></li>
+          <li><span class="docs-list-marker">&rsaquo;</span><span><strong>Crash safety:</strong> Sessions survive crashes thanks to tmux. On restart, a recovery dialog appears — resume or terminate.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ═══ §03 · Grid ═══ -->
+    <section id="grid" class="docs-section">
+      <div class="docs-inner">
+        <div class="cm-section-header-meta">
+          <span class="cm-section-header-num">§ 03</span>
+          <span class="cm-section-header-line"></span>
+          <span>chapter</span>
+        </div>
+        <h2>Customising the Grid</h2>
+        <p class="docs-lead">One to 21 cells. As many or as few as you need.</p>
+
+        <ul class="docs-list">
+          <li><span class="docs-list-marker">&rsaquo;</span><span><span class="docs-mono">columns +/-</span> and <span class="docs-mono">rows +/-</span> in the status bar</span></li>
+          <li><span class="docs-list-marker">&rsaquo;</span><span>Minimum 1&times;1 (one cell), maximum 7&times;3 (21 cells)</span></li>
+          <li><span class="docs-list-marker">&rsaquo;</span><span>The window adjusts its size automatically</span></li>
+          <li><span class="docs-list-marker">&rsaquo;</span><span>With 2+ rows: <span class="docs-mono">&uarr;</span> stretches a cell to full height — useful for reading long outputs</span></li>
+        </ul>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>Typical Layouts</span></h3>
+        <div class="docs-table">
+          <div class="docs-table-header docs-table-2col"><div>Layout</div><div>Use case</div></div>
+          <div class="docs-table-row docs-table-2col docs-table-row-first"><div class="docs-table-label">2&times;1</div><div class="docs-table-desc">Two sessions side by side — everyday standard.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">3&times;1</div><div class="docs-table-desc">Three columns — e.g. Frontend / Backend / Tests.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">2&times;2</div><div class="docs-table-desc">Four cells — Cyber Factory + three workers.</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ §04 · Voice ═══ -->
+    <section id="voice" class="docs-section">
+      <div class="docs-inner">
+        <div class="cm-section-header-meta">
+          <span class="cm-section-header-num">§ 04</span>
+          <span class="cm-section-header-line"></span>
+          <span>chapter</span>
+        </div>
+        <h2>Voice Control</h2>
+        <p class="docs-lead">Local speech recognition — no network, no cloud. Voice pill in the status bar or Ctrl+Shift+Space.</p>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>LED Status</span></h3>
+        <div class="docs-led-row">
+          <div class="docs-led-item"><span class="docs-led-dot docs-led-off"></span><span class="docs-led-label">off</span><span class="docs-led-desc">Voice is disabled</span></div>
+          <div class="docs-led-item"><span class="docs-led-dot docs-led-green"></span><span class="docs-led-label">green</span><span class="docs-led-desc">ready, not listening</span></div>
+          <div class="docs-led-item"><span class="docs-led-dot docs-led-red"></span><span class="docs-led-label">red</span><span class="docs-led-desc">currently recording</span></div>
+          <div class="docs-led-item"><span class="docs-led-dot docs-led-yellow"></span><span class="docs-led-label">yellow</span><span class="docs-led-desc">processing — please wait</span></div>
+        </div>
+
+        <div class="docs-callout docs-callout-rule">
+          <div class="docs-callout-label">Rule of thumb · Important</div>
+          <div class="docs-callout-body">Spoken text is inserted but <em>not sent automatically</em>. You can read, correct, then send via <span class="docs-mono">"submit"</span> or Enter.</div>
+        </div>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>Voice Commands · Text</span></h3>
+        <div class="docs-table docs-table-compact">
+          <div class="docs-table-header docs-table-2col"><div>Say</div><div>Effect</div></div>
+          <div class="docs-table-row docs-table-2col docs-table-row-first"><div class="docs-table-label">"abschicken" / "absenden" / "senden"</div><div class="docs-table-desc">Press Enter (send text).</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">"neue zeile"</div><div class="docs-table-desc">Insert line break.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">anything else</div><div class="docs-table-desc">Transcribed and inserted as text.</div></div>
+        </div>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>Voice Commands · Scrolling</span></h3>
+        <div class="docs-table docs-table-compact">
+          <div class="docs-table-header docs-table-2col"><div>Say</div><div>Effect</div></div>
+          <div class="docs-table-row docs-table-2col docs-table-row-first"><div class="docs-table-label">"hoch" / "rauf"</div><div class="docs-table-desc">Scroll one page up.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">"runter" / "weiter"</div><div class="docs-table-desc">Scroll one page down.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">"ganz hoch" / "anfang"</div><div class="docs-table-desc">Scroll to top.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">"ganz runter" / "ende"</div><div class="docs-table-desc">Scroll to bottom.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">"zum marker" / "lesestart"</div><div class="docs-table-desc">Jump to the start of the last response.</div></div>
+        </div>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>Voice Commands · Grid Navigation</span></h3>
+        <div class="docs-table docs-table-compact">
+          <div class="docs-table-header docs-table-2col"><div>Say</div><div>Effect</div></div>
+          <div class="docs-table-row docs-table-2col docs-table-row-first"><div class="docs-table-label">"grid hoch"</div><div class="docs-table-desc">Focus cell above.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">"grid runter"</div><div class="docs-table-desc">Focus cell below.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">"grid links"</div><div class="docs-table-desc">Focus cell to the left.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">"grid rechts"</div><div class="docs-table-desc">Focus cell to the right.</div></div>
+        </div>
+        <p class="docs-p">Variants like <span class="docs-mono">grit</span>, <span class="docs-mono">zelle</span>, <span class="docs-mono">focus</span> are also recognised.</p>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>Voice Pin · Bluetooth Remote</span></h3>
+        <ul class="docs-list">
+          <li><span class="docs-list-marker">&rsaquo;</span><span><strong>Voice Pin:</strong> Pin voice input to a specific session — your voice always goes there, regardless of which cell is focused.</span></li>
+          <li><span class="docs-list-marker">&rsaquo;</span><span><strong>Bluetooth Clicker</strong> (e.g. AB Shutter). Auto mode: press = send immediately. Manual mode: press = start/stop recording, send explicitly.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ═══ §05 · Sidebar ═══ -->
+    <section id="sidebar" class="docs-section">
+      <div class="docs-inner">
+        <div class="cm-section-header-meta">
+          <span class="cm-section-header-num">§ 05</span>
+          <span class="cm-section-header-line"></span>
+          <span>chapter</span>
+        </div>
+        <h2>The Sidebar</h2>
+        <p class="docs-lead">Click 'sidebar' in the status bar. Multiple tabs, different functions.</p>
+
+        <div class="docs-table">
+          <div class="docs-table-header docs-table-2col"><div>Tab</div><div>Content</div></div>
+          <div class="docs-table-row docs-table-2col docs-table-row-first"><div class="docs-table-label">Messages</div><div class="docs-table-desc">Messages between sessions — visible during multi-session work (Cyber Factory etc.).</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">Background</div><div class="docs-table-desc">Sessions running but not visible in the grid. Cards with live preview (5s refresh). Click brings the session into the grid.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">Notes</div><div class="docs-table-desc">Note browser. Search field, tag chips for filtering, double-click opens a note in the grid as an editor cell.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">Companion Memory</div><div class="docs-table-desc">Stored memories from the Companion session. Searchable and viewable.</div></div>
+        </div>
+
+        <div class="docs-callout docs-callout-tip">
+          <div class="docs-callout-label">Tip</div>
+          <div class="docs-callout-body">The <span class="docs-mono">&#x29C9;</span> button at the top detaches the sidebar as its own window — ideal for multi-monitor setups.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ §06 · Notes ═══ -->
+    <section id="notes" class="docs-section">
+      <div class="docs-inner">
+        <div class="cm-section-header-meta">
+          <span class="cm-section-header-num">§ 06</span>
+          <span class="cm-section-header-line"></span>
+          <span>chapter</span>
+        </div>
+        <h2>Notes</h2>
+        <p class="docs-lead">Markdown editor (CodeMirror) in grid cells. Headings, bold, italic, links, code blocks, block quotes.</p>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>Create, Save, Auto-Tags</span></h3>
+        <ul class="docs-list">
+          <li><span class="docs-list-marker">&rsaquo;</span><span><strong>New note:</strong> Via Launcher popup → Tab "Notes" → "New Note", or <span class="docs-mono">+</span> in the tab bar of an open editor</span></li>
+          <li><span class="docs-list-marker">&rsaquo;</span><span><strong>Save + Auto-Tagging:</strong> <span class="docs-mono">Cmd+S</span> — saves and automatically suggests tags (local AI model, max 5 tags per note)</span></li>
+          <li><span class="docs-list-marker">&rsaquo;</span><span><strong>Auto-Save:</strong> After 2 seconds of inactivity (without tagging)</span></li>
+          <li><span class="docs-list-marker">&rsaquo;</span><span><strong>Delete:</strong> Trash icon in the tab bar, with confirmation</span></li>
+          <li><span class="docs-list-marker">&rsaquo;</span><span><strong>Handoff Notes:</strong> Special notes for knowledge transfer between sessions — when a session finishes its work, it hands over context to the next</span></li>
+        </ul>
+
+        <div class="docs-callout docs-callout-rule">
+          <div class="docs-callout-label">Rule of thumb · Memory vs. Notes</div>
+          <div class="docs-callout-body">What the user should see, share, or read in Obsidian is a <strong>Note</strong> (Markdown file). What belongs to internal run management (worker status, risk reviews, etc.) is <strong>Memory</strong> (not visible).</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ §07 · Projects ═══ -->
+    <section id="projects" class="docs-section">
+      <div class="docs-inner">
+        <div class="cm-section-header-meta">
+          <span class="cm-section-header-num">§ 07</span>
+          <span class="cm-section-header-line"></span>
+          <span>chapter</span>
+        </div>
+        <h2>Projects and Project Structure</h2>
+        <p class="docs-lead">Central directory as single source of truth for all projects. Standardised folder structure, three adoption modes for existing projects.</p>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>CIPHER-MUX Hub · Default Structure</span></h3>
+        <pre class="docs-terminal">project-name/
+  .claude/              <span class="dim">Claude Code config</span>
+  .cyber-factory/       <span class="dim">Run configuration</span>
+  docs/specs/           <span class="dim">Detail specs with REQ IDs</span>
+  docs/decisions/       <span class="dim">ADRs (architecture decisions)</span>
+  docs/research/        <span class="dim">Research from Ideation Partner</span>
+  docs/audit/           <span class="dim">Audit reports</span>
+  src/                  <span class="dim">Source code</span>
+  tests/                <span class="dim">Tests</span>
+  .project-meta.json    <span class="dim">Phase, workspace, tags, purpose</span></pre>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>Adopting Existing Projects · Three Modes</span></h3>
+        <div class="docs-table">
+          <div class="docs-table-header docs-table-2col"><div>Mode</div><div>What happens</div></div>
+          <div class="docs-table-row docs-table-2col docs-table-row-first"><div class="docs-table-label">Full Adoption</div><div class="docs-table-desc">Complete pack conventions are applied — all folders, ADRs, specs, .project-meta.json.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">Pack-Light</div><div class="docs-table-desc">Adopt only individual components — e.g. just docs/specs or just .claude/.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">Inventory</div><div class="docs-table-desc">Audit only — pack doesn't touch anything, just documents what's there.</div></div>
+        </div>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>Starting a New Project</span></h3>
+        <div class="docs-pipeline">
+          <div class="docs-pipeline-step">Ideation Partner</div>
+          <div class="docs-pipeline-arrow">&rarr;</div>
+          <div class="docs-pipeline-step">Refinement</div>
+          <div class="docs-pipeline-arrow">&rarr;</div>
+          <div class="docs-pipeline-step">Cyber Factory</div>
+        </div>
+        <p class="docs-p">Lifecycle entry point: Ideation Partner collects the idea, Refinement sharpens the requirements, the Cyber Factory takes over scaffolding as part of the architect phase.</p>
+      </div>
+    </section>
+
+    <!-- ═══ §08 · Lifecycle ═══ -->
+    <section id="lifecycle" class="docs-section">
+      <div class="docs-inner">
+        <div class="cm-section-header-meta">
+          <span class="cm-section-header-num">§ 08</span>
+          <span class="cm-section-header-line"></span>
+          <span>chapter</span>
+        </div>
+        <h2>The Software Lifecycle — Presets</h2>
+        <p class="docs-lead">Six specialised presets along the lifecycle. Each preset covers a phase and hands off cleanly to the next.</p>
+
+        <div class="docs-pipeline">
+          <div class="docs-pipeline-step">Ideation Partner</div>
+          <div class="docs-pipeline-arrow">&rarr;</div>
+          <div class="docs-pipeline-step">Refinement</div>
+          <div class="docs-pipeline-arrow">&rarr;</div>
+          <div class="docs-pipeline-step">Cyber Factory</div>
+          <div class="docs-pipeline-arrow">&rarr;</div>
+          <div class="docs-pipeline-step">Testing</div>
+          <div class="docs-pipeline-arrow">&rarr;</div>
+          <div class="docs-pipeline-step">Debugger</div>
+          <div class="docs-pipeline-arrow">&rarr;</div>
+          <div class="docs-pipeline-step">Audit</div>
+        </div>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>Ideation Partner</span></h3>
+        <p class="docs-p">Takes raw ideas, researches (autonomously, with sub-agents), synthesises, and produces a structured requirements package.</p>
+        <p class="docs-p"><strong>Phases:</strong> Seed → Research → Focus → Robustness Gate (Pre-Mortem) → Requirements Package.</p>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>Refinement</span></h3>
+        <p class="docs-p">Systematically checks requirements for gaps, writes detail specs with REQ IDs and acceptance criteria.</p>
+        <p class="docs-p"><strong>Phases:</strong> Required-field check → Gap audit → Validation → Sharpen requirements → Detail spec with REQ IDs → Handoff to Cyber Factory.</p>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>Cyber Factory</span></h3>
+        <p class="docs-p">Architect and multi-session orchestrator in one. Receives the detail spec and coordinates the build with independent worker sessions.</p>
+        <p class="docs-p"><strong>Phases:</strong> Read spec → Architect phase (subsystem decomposition, ADRs, scaffolding) → Wave plan → Start worker sessions (max 5 parallel, own git worktrees) → Monitoring (5-7 min cycles) → Escalation (5 levels) → Risk review → Wave cutover.</p>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>Testing Assistant</span></h3>
+        <p class="docs-p">Systematically and adversarially tests implementation-ready waves. Fixes nothing — documents findings.</p>
+        <p class="docs-p"><strong>Phases:</strong> Test run → Test quality audit → Adversarial probing → Security audit (OWASP Top 10) → Findings report. Handoff: with findings to Debugger, with "all green" to Audit.</p>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>Debugger</span></h3>
+        <p class="docs-p">Bugfixing specialist. Receives findings from the Testing Assistant or direct bug reports.</p>
+        <p class="docs-p"><strong>Phases:</strong> Read findings → Clarify → Fix plan → Worker session for fix → Risk review → Verification (test must have been red, green after fix).</p>
+        <div class="docs-callout docs-callout-warn">
+          <div class="docs-callout-label">Warning</div>
+          <div class="docs-callout-body">Maximum <strong>2 retries</strong> per fix. Then user escalation.</div>
+        </div>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>Audit</span></h3>
+        <p class="docs-p">Assesses whether a wave has reached release level. Fixes nothing, implements nothing.</p>
+        <p class="docs-p"><strong>Phases:</strong> Read wave diff → Code review → Security audit → ADR consistency → Cognitive debt assessment → Release recommendation: <span class="docs-mono">Release</span> · <span class="docs-mono">Release after Fix</span> · <span class="docs-mono">Blocked</span>.</p>
+      </div>
+    </section>
+
+    <!-- ═══ §09 · Companion ═══ -->
+    <section id="companion" class="docs-section">
+      <div class="docs-inner">
+        <div class="cm-section-header-meta">
+          <span class="cm-section-header-num">§ 09</span>
+          <span class="cm-section-header-line"></span>
+          <span>chapter</span>
+        </div>
+        <h2>Companion — Wayne in Detail</h2>
+        <p class="docs-lead">Wayne is the default persona for the Companion. Everything in detail here — what he can do, how he answers, what he remembers.</p>
+
+        <div class="docs-table">
+          <div class="docs-table-header docs-table-3col"><div>Mode</div><div>Detects by</div><div>Delivers</div></div>
+          <div class="docs-table-row docs-table-3col docs-table-row-first"><div class="docs-table-key">Tutor</div><div class="docs-table-label-mid">"Explain..."</div><div class="docs-table-desc">Concept explanation with worked example or analogy. One concept per answer.</div></div>
+          <div class="docs-table-row docs-table-3col"><div class="docs-table-key">Advisor</div><div class="docs-table-label-mid">"What would be better..."</div><div class="docs-table-desc">Options with trade-offs and recommendation. You decide.</div></div>
+          <div class="docs-table-row docs-table-3col"><div class="docs-table-key">Helper</div><div class="docs-table-label-mid">"Do this for me..."</div><div class="docs-table-desc">Action executed directly. Least friction.</div></div>
+        </div>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>What the Companion Can Do</span></h3>
+        <ul class="docs-list">
+          <li><span class="docs-list-marker">&rsaquo;</span><span><strong>Setup Guide:</strong> Walks through user profile, first workspace, personas</span></li>
+          <li><span class="docs-list-marker">&rsaquo;</span><span><strong>Concept Explainer:</strong> "What is the Cyber Factory?" → Explanation with analogy</span></li>
+          <li><span class="docs-list-marker">&rsaquo;</span><span><strong>Live Control:</strong> "Start a Cyber Factory session for project X" → uses MCP tools</span></li>
+          <li><span class="docs-list-marker">&rsaquo;</span><span><strong>Bug Reports + Feature Requests:</strong> Detects implicit triggers ("there's a bug"), guides through mini-interview</span></li>
+          <li><span class="docs-list-marker">&rsaquo;</span><span><strong>Memory:</strong> Remembers preferences, project context, learning obstacles across sessions</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ═══ §10 · Personas ═══ -->
+    <section id="personas" class="docs-section">
+      <div class="docs-inner">
+        <div class="cm-section-header-meta">
+          <span class="cm-section-header-num">§ 10</span>
+          <span class="cm-section-header-line"></span>
+          <span>chapter</span>
+        </div>
+        <h2>Personas — Communication Style</h2>
+        <p class="docs-lead">Personas define how cipher-mux communicates — tone and style, not function. Six are built in. Create your own in the Workspace Editor.</p>
+
+        <div class="docs-table">
+          <div class="docs-table-header docs-table-2col"><div>Persona</div><div>Character</div></div>
+          <div class="docs-table-row docs-table-2col docs-table-row-first"><div class="docs-table-label">Cipher</div><div class="docs-table-desc">Positive cyberpunk, pragmatically loyal, bone-dry, guardian mentality.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">Relay</div><div class="docs-table-desc">Factual, precise, science-journalistic — the default.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">Wayne Szalinski</div><div class="docs-table-desc">Pragmatic enthusiast, "we'll figure it out", nerd humour.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">The Cynic</div><div class="docs-table-desc">Maximally compressed, telegraphic, no filler.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">Socratic Tutor</div><div class="docs-table-desc">Counter-questions instead of answers, discursive, guides reflection.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">The Glitch</div><div class="docs-table-desc">Unconventional metaphors, breaks thought patterns, creative friction.</div></div>
+        </div>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>Persona Hierarchy</span></h3>
+        <div class="docs-ladder">
+          <div class="docs-ladder-rung docs-ladder-rung-top">
+            <div class="docs-ladder-num">1.</div>
+            <div class="docs-ladder-meta">
+              <div class="docs-ladder-label">Global Persona</div>
+              <div class="docs-ladder-prio">highest priority</div>
+            </div>
+            <div class="docs-ladder-desc">When set — overrides everything. Marked as "Global" in the Workspace Editor → Personas tab.</div>
+          </div>
+          <div class="docs-ladder-rung">
+            <div class="docs-ladder-num">2.</div>
+            <div class="docs-ladder-meta">
+              <div class="docs-ladder-label">Preset-specific</div>
+              <div class="docs-ladder-prio">medium</div>
+            </div>
+            <div class="docs-ladder-desc">Selectable per preset in the Workspace Editor. Each preset has a recommended default persona.</div>
+          </div>
+          <div class="docs-ladder-rung">
+            <div class="docs-ladder-num">3.</div>
+            <div class="docs-ladder-meta">
+              <div class="docs-ladder-label">Fallback: Relay</div>
+              <div class="docs-ladder-prio">lowest</div>
+            </div>
+            <div class="docs-ladder-desc">When nothing else is set — factual default style.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ §11 · Workspace Editor ═══ -->
+    <section id="workspaces" class="docs-section">
+      <div class="docs-inner">
+        <div class="cm-section-header-meta">
+          <span class="cm-section-header-num">§ 11</span>
+          <span class="cm-section-header-line"></span>
+          <span>chapter</span>
+        </div>
+        <h2>The Workspace Editor</h2>
+        <p class="docs-lead">Separate window, accessible via 'workspaces' in the status bar. Two main tabs: Workspaces and Personas.</p>
+
+        <div class="docs-tab-strip">
+          <div class="docs-tab docs-tab-active">Workspaces</div>
+          <div class="docs-tab">Personas (Companion Tab)</div>
+        </div>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>Tab: Workspaces</span></h3>
+        <p class="docs-p">The visual grid editor. You see a miniature of the grid and can configure per cell:</p>
+        <div class="docs-table">
+          <div class="docs-table-header docs-table-2col"><div>Config per Cell</div><div>What you set</div></div>
+          <div class="docs-table-row docs-table-2col docs-table-row-first"><div class="docs-table-label">Preset Assignment</div><div class="docs-table-desc">Which preset in this cell (dropdown).</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">Project Path</div><div class="docs-table-desc">Which project from the hub.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">Persona Selection</div><div class="docs-table-desc">Dropdown with all available personas (created in the Companion tab).</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">Custom Prompt</div><div class="docs-table-desc">Optional prompt that supplements or overrides the preset default.</div></div>
+        </div>
+        <ul class="docs-list">
+          <li><span class="docs-list-marker">&rsaquo;</span><span><strong>Merge Handles:</strong> Vertical cell merging via drag — stretch a cell across multiple rows.</span></li>
+          <li><span class="docs-list-marker">&rsaquo;</span><span><strong>Grid Dimensions:</strong> Adjust columns and rows directly in the editor.</span></li>
+          <li><span class="docs-list-marker">&rsaquo;</span><span><strong>Apply Workspace:</strong> One click rebuilds the grid, starts sessions, assigns presets and personas.</span></li>
+          <li><span class="docs-list-marker">&rsaquo;</span><span><strong>Multiple Workspaces:</strong> Save different layouts and switch quickly (e.g. "Solo Work 2&times;1", "Factory Run 3&times;2", "Review 2&times;1").</span></li>
+        </ul>
+
+        <div class="docs-callout docs-callout-rule">
+          <div class="docs-callout-label">Rule of thumb · Prompt Hierarchy</div>
+          <div class="docs-callout-body">When a prompt is resolved: Cell Prompt &gt; Workspace Preset Override &gt; Preset Default Prompt.</div>
+        </div>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>Tab: Personas (Companion Tab)</span></h3>
+        <p class="docs-p">This is where personas are created and managed. The only place for creating and editing — no inline editing in other dialogs.</p>
+        <div class="docs-table">
+          <div class="docs-table-header docs-table-2col"><div>Action</div><div>What happens</div></div>
+          <div class="docs-table-row docs-table-2col docs-table-row-first"><div class="docs-table-label">Create Persona</div><div class="docs-table-desc">Name, colour, prompt text.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">Edit Persona</div><div class="docs-table-desc">Change name, colour, and prompt text.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">Delete Persona</div><div class="docs-table-desc">With warning if used in presets.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">Activate Global</div><div class="docs-table-desc">Toggle per persona — when on, this persona applies to all presets.</div></div>
+        </div>
+        <p class="docs-p">The six built-in personas (Cipher, Relay, Wayne, Cynic, Socrates, Glitch) are pre-installed and editable.</p>
+      </div>
+    </section>
+
+    <!-- ═══ §12 · Settings ═══ -->
+    <section id="settings" class="docs-section">
+      <div class="docs-inner">
+        <div class="cm-section-header-meta">
+          <span class="cm-section-header-num">§ 12</span>
+          <span class="cm-section-header-line"></span>
+          <span>chapter</span>
+        </div>
+        <h2>Settings (Info Dialog)</h2>
+        <p class="docs-lead">Accessible via 'info' in the status bar. Five tabs: General · Themes · Models · Shortcuts · About.</p>
+
+        <div class="docs-tab-strip">
+          <div class="docs-tab docs-tab-active">General</div>
+          <div class="docs-tab">Themes</div>
+          <div class="docs-tab">Models</div>
+          <div class="docs-tab">Shortcuts</div>
+          <div class="docs-tab">About</div>
+        </div>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>Tab: General</span></h3>
+        <div class="docs-table">
+          <div class="docs-table-header docs-table-2col"><div>Area</div><div>Options</div></div>
+          <div class="docs-table-row docs-table-2col docs-table-row-first"><div class="docs-table-label">Language</div><div class="docs-table-desc">Deutsch / English — changes the entire app interface.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">Agent</div><div class="docs-table-desc">Skip Permissions — Claude may execute actions without confirmation. Warning: disables the safety prompt.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">Bugreport</div><div class="docs-table-desc">Button to directly open the bug report dialog.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">Voice Control</div><div class="docs-table-desc">TTS on/off · TTS voice (Piper local or macOS system) · Voice Commands · Voice Submit Mode (Auto / Manual for BT clicker) · BT Shutter Remote.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">Keep Working</div><div class="docs-table-desc">Save all sessions on quit. Resume on next launch.</div></div>
+        </div>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>Tab: Themes</span></h3>
+        <p class="docs-p"><strong>Theme selection:</strong> All 10 built-in themes listed with colour preview strips. Click to select. Custom themes also appear in the list, deletable via X button.</p>
+        <div class="docs-table">
+          <div class="docs-table-header docs-table-2col"><div>Theme</div><div>Character</div></div>
+          <div class="docs-table-row docs-table-2col docs-table-row-first"><div class="docs-table-label">Cipher Ivory</div><div class="docs-table-desc">Clean, light — standard light mode.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">Cipher Dark</div><div class="docs-table-desc">Warm, dark — standard dark mode.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">Blueprint</div><div class="docs-table-desc">Engineer's draft, cyan + indigo.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">Warm Paper</div><div class="docs-table-desc">Minimal, sepia tones.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">Gruvbox Dark</div><div class="docs-table-desc">Retro coder classic.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">Nord</div><div class="docs-table-desc">Cool Scandinavian design.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">Synthwave</div><div class="docs-table-desc">80s magenta + violet.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">Matrix</div><div class="docs-table-desc">Phosphor green on black.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">Brutalist</div><div class="docs-table-desc">Black/white + signal red.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">High Contrast</div><div class="docs-table-desc">Accessible WCAG AAA design.</div></div>
+        </div>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>Theme Editor (collapsible)</span></h3>
+        <div class="docs-table docs-table-compact">
+          <div class="docs-table-header docs-table-2col"><div>Action</div><div>What happens</div></div>
+          <div class="docs-table-row docs-table-2col docs-table-row-first"><div class="docs-table-label">Edit</div><div class="docs-table-desc">Colour values per token group: backgrounds, text, borders, accents, context colours, highlights.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">Preview</div><div class="docs-table-desc">Live preview without saving.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">Revert</div><div class="docs-table-desc">Undo preview.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">Save</div><div class="docs-table-desc">Save to active custom theme.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">Save As</div><div class="docs-table-desc">Save as new custom theme with its own name.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">Reset</div><div class="docs-table-desc">Reset all customisations to theme defaults.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">Export</div><div class="docs-table-desc">Copy custom tokens as JSON to clipboard.</div></div>
+        </div>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>Tab: Models (LLM Providers)</span></h3>
+        <p class="docs-p">Configuration of the local AI model (for auto-tagging, bug report enrichment, etc.).</p>
+        <div class="docs-table">
+          <div class="docs-table-header docs-table-2col"><div>Field</div><div>Default · Purpose</div></div>
+          <div class="docs-table-row docs-table-2col docs-table-row-first"><div class="docs-table-label">Ollama Host</div><div class="docs-table-desc">127.0.0.1 — IP address of the Ollama server.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">Ollama Port</div><div class="docs-table-desc">11434 — default port.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">Ollama Model</div><div class="docs-table-desc">gemma4:26b — model name. After successful connection, shown as dropdown with all available models.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">Test Connection</div><div class="docs-table-desc">Test the connection. On success, available models are loaded.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">Save</div><div class="docs-table-desc">Save configuration.</div></div>
+        </div>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>Tab: Shortcuts</span></h3>
+        <p class="docs-p">All keyboard shortcuts grouped by category (Navigation, Layout, Actions, Terminal). Full table in the next chapter.</p>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>Tab: About</span></h3>
+        <p class="docs-p">Feature overview with explanations of: What is cipher-mux, grid system, orchestration, message bus, MCP server, context monitoring, bug reports, themes.</p>
+      </div>
+    </section>
+
+    <!-- ═══ §13 · Shortcuts ═══ -->
+    <section id="shortcuts" class="docs-section">
+      <div class="docs-inner">
+        <div class="cm-section-header-meta">
+          <span class="cm-section-header-num">§ 13</span>
+          <span class="cm-section-header-line"></span>
+          <span>chapter</span>
+        </div>
+        <h2>Keyboard Shortcuts</h2>
+        <p class="docs-lead">Complete reference of all shortcuts. Grouped by category.</p>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>Navigation</span></h3>
+        <div class="docs-table docs-table-compact">
+          <div class="docs-table-header docs-table-2col"><div>Shortcut</div><div>Action</div></div>
+          <div class="docs-table-row docs-table-2col docs-table-row-first"><div class="docs-table-label">Cmd+1 ... Cmd+5</div><div class="docs-table-desc">Focus session in cell 1-5.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">Escape</div><div class="docs-table-desc">Close active dialog.</div></div>
+        </div>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>Layout</span></h3>
+        <div class="docs-table docs-table-compact">
+          <div class="docs-table-header docs-table-2col"><div>Shortcut</div><div>Action</div></div>
+          <div class="docs-table-row docs-table-2col docs-table-row-first"><div class="docs-table-label">Cmd+&rarr; / Cmd+&larr;</div><div class="docs-table-desc">Add / remove grid columns.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">Cmd+&darr; / Cmd+&uarr;</div><div class="docs-table-desc">Add / remove grid rows.</div></div>
+        </div>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>Actions</span></h3>
+        <div class="docs-table docs-table-compact">
+          <div class="docs-table-header docs-table-2col"><div>Shortcut</div><div>Action</div></div>
+          <div class="docs-table-row docs-table-2col docs-table-row-first"><div class="docs-table-label">Cmd+N</div><div class="docs-table-desc">New session — opens Launcher popup in the next empty cell.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">Cmd+B</div><div class="docs-table-desc">Open bug report dialog.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">Cmd+S</div><div class="docs-table-desc">Save note + auto-tagging.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">Cmd+Enter</div><div class="docs-table-desc">Send in dialogs (e.g. input requests in the sidebar).</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">Ctrl+Shift+Space</div><div class="docs-table-desc">Voice control on/off.</div></div>
+        </div>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>Terminal</span></h3>
+        <div class="docs-table docs-table-compact">
+          <div class="docs-table-header docs-table-2col"><div>Shortcut</div><div>Action</div></div>
+          <div class="docs-table-row docs-table-2col docs-table-row-first"><div class="docs-table-label">Cmd+C</div><div class="docs-table-desc">Copy / cancel running process.</div></div>
+          <div class="docs-table-row docs-table-2col"><div class="docs-table-label">Cmd+V</div><div class="docs-table-desc">Paste.</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ §14 · Bug Reports ═══ -->
+    <section id="bugreports" class="docs-section">
+      <div class="docs-inner">
+        <div class="cm-section-header-meta">
+          <span class="cm-section-header-num">§ 14</span>
+          <span class="cm-section-header-line"></span>
+          <span>chapter</span>
+        </div>
+        <h2>Bug Reports and Feature Requests</h2>
+        <p class="docs-lead">The /bugreport skill is available everywhere — from any session.</p>
+
+        <p class="docs-p">Captures:</p>
+        <ul class="docs-list">
+          <li><span class="docs-list-marker">&rsaquo;</span><span><strong>Bug Reports</strong> — What's broken, where, how reproducible?</span></li>
+          <li><span class="docs-list-marker">&rsaquo;</span><span><strong>Feature Requests</strong> — What would be useful?</span></li>
+          <li><span class="docs-list-marker">&rsaquo;</span><span><strong>Lessons Learned</strong> — What did we learn?</span></li>
+          <li><span class="docs-list-marker">&rsaquo;</span><span><strong>Handover Notes</strong> — Knowledge transfer between sessions.</span></li>
+        </ul>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>Three Modes in the Bug Report Dialog</span></h3>
+        <div class="docs-table">
+          <div class="docs-table-header docs-table-3col"><div>#</div><div>Mode</div><div>How it works</div></div>
+          <div class="docs-table-row docs-table-3col docs-table-row-first"><div class="docs-table-key">1</div><div class="docs-table-label-mid">Manual</div><div class="docs-table-desc">Describe as text.</div></div>
+          <div class="docs-table-row docs-table-3col"><div class="docs-table-key">2</div><div class="docs-table-label-mid">Voice Interview</div><div class="docs-table-desc">Describe verbally, AI enriches.</div></div>
+          <div class="docs-table-row docs-table-3col"><div class="docs-table-key">3</div><div class="docs-table-label-mid">Screenshot</div><div class="docs-table-desc">Capture screenshot and annotate.</div></div>
+        </div>
+        <p class="docs-p">Output is saved as a Markdown note with matching tags. Open via the status bar or <span class="docs-mono">Cmd+B</span>.</p>
+      </div>
+    </section>
+
+    <!-- ═══ §15 · Dialogs ═══ -->
+    <section id="dialogs" class="docs-section">
+      <div class="docs-inner">
+        <div class="cm-section-header-meta">
+          <span class="cm-section-header-num">§ 15</span>
+          <span class="cm-section-header-line"></span>
+          <span>chapter</span>
+        </div>
+        <h2>Dialogs at a Glance</h2>
+        <p class="docs-lead">All dialogs at a glance — where they open, what they do.</p>
+
+        <div class="docs-table">
+          <div class="docs-table-header docs-table-3col"><div>Dialog</div><div>Open via</div><div>Purpose</div></div>
+          <div class="docs-table-row docs-table-3col docs-table-row-first"><div class="docs-table-key">Launcher Popup</div><div class="docs-table-label-mid">+ in empty cell / Cmd+N</div><div class="docs-table-desc">Start preset, open path, open note.</div></div>
+          <div class="docs-table-row docs-table-3col"><div class="docs-table-key">Bug Report Dialog</div><div class="docs-table-label-mid">Status bar / Cmd+B</div><div class="docs-table-desc">Report bug — manually, via voice, or screenshot.</div></div>
+          <div class="docs-table-row docs-table-3col"><div class="docs-table-key">Recovery Dialog</div><div class="docs-table-label-mid">Automatically on launch</div><div class="docs-table-desc">Resume or terminate orphaned sessions.</div></div>
+          <div class="docs-table-row docs-table-3col"><div class="docs-table-key">Workspace Popup</div><div class="docs-table-label-mid">Quick-select via workspace button</div><div class="docs-table-desc">Quickly apply a workspace.</div></div>
+          <div class="docs-table-row docs-table-3col"><div class="docs-table-key">Workspace Editor</div><div class="docs-table-label-mid">"workspaces" in status bar</div><div class="docs-table-desc">Manage grid layouts and personas (2 tabs).</div></div>
+          <div class="docs-table-row docs-table-3col"><div class="docs-table-key">Info Dialog</div><div class="docs-table-label-mid">"info" in status bar</div><div class="docs-table-desc">Settings, shortcuts, features (5 tabs).</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ Bottom CTA ═══ -->
+    <div class="docs-bottom">
+      <div class="docs-inner">
+        <h2>{content.bottom.title} <span class="accent">{content.bottom.titleAccent}</span></h2>
+        <p class="docs-bottom-body">{content.bottom.body}</p>
+        <div class="docs-bottom-actions">
+          <a href={`/${lang}/start`} class="cm-btn cm-btn--primary">&darr; {content.bottom.downloadLabel}</a>
+          <a href="https://github.com/cmarkus42/cipher-mux-electron" class="docs-bottom-link">{content.bottom.githubLabel} &nearr;</a>
+        </div>
+      </div>
     </div>
 
   </div>
@@ -75,6 +727,7 @@ const lang = 'en';
 </Layout>
 
 <style>
+  /* ─── Page Layout ─── */
   .docs-page {
     position: relative;
     max-width: var(--max-width);
@@ -82,15 +735,21 @@ const lang = 'en';
     padding: 0 64px;
   }
 
-  /* Hero */
+  .docs-inner {
+    max-width: 920px;
+  }
+
+  /* ─── Hero ─── */
   .docs-hero {
     padding: 120px 0 48px;
+    border-bottom: 1px solid var(--color-border);
   }
 
   .cm-tag {
-    font-family: 'Fira Code', monospace;
-    font-size: 11px;
-    letter-spacing: 2px;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--color-accent);
     display: block;
@@ -100,32 +759,51 @@ const lang = 'en';
   .docs-hero h1 {
     font-family: 'Rajdhani', sans-serif;
     font-weight: 700;
-    font-size: clamp(38px, 4vw, 48px);
-    line-height: 1.05;
-    margin: 14px 0;
+    font-size: clamp(38px, 5vw, 64px);
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+    margin: 0 0 24px;
   }
+
+  .accent { color: var(--color-accent); }
 
   .docs-body {
     font-family: 'Rajdhani', sans-serif;
-    font-size: 18px;
+    font-size: 19px;
     line-height: 1.5;
     color: var(--color-text-secondary);
     max-width: 720px;
   }
 
-  /* Anchor Nav */
+  /* ─── Companion Intro ─── */
+  .docs-companion-intro {
+    padding: 48px 0;
+    background: var(--color-bg-elevated);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .docs-companion-intro h2 {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 38px;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin: 0 0 16px;
+  }
+
+  /* ─── Anchor Nav ─── */
   .cm-anchor-nav {
     position: fixed;
-    top: 200px;
+    top: 140px;
     right: 32px;
-    width: 200px;
+    width: 180px;
     font-family: 'Fira Code', monospace;
     font-size: 10px;
     letter-spacing: 1.4px;
     text-transform: uppercase;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 6px;
     z-index: 10;
   }
 
@@ -163,9 +841,9 @@ const lang = 'en';
     .cm-anchor-nav { display: none; }
   }
 
-  /* Documentation Sections */
+  /* ─── Section Shell ─── */
   .docs-section {
-    padding: 88px 0;
+    padding: 64px 0;
     border-top: 1px solid var(--color-border);
   }
 
@@ -175,15 +853,13 @@ const lang = 'en';
     gap: 14px;
     font-family: 'Fira Code', monospace;
     font-size: 11px;
-    letter-spacing: 2px;
+    letter-spacing: 0.18em;
     color: var(--color-text-dim);
     text-transform: uppercase;
     margin-bottom: 14px;
   }
 
-  .cm-section-header-num {
-    color: var(--color-accent);
-  }
+  .cm-section-header-num { color: var(--color-accent); }
 
   .cm-section-header-line {
     flex: 0 0 14px;
@@ -192,73 +868,448 @@ const lang = 'en';
     align-self: center;
   }
 
-  .cm-section-header h2 {
+  .docs-section h2 {
     font-family: 'Rajdhani', sans-serif;
     font-weight: 700;
     font-size: clamp(28px, 3vw, 38px);
     line-height: 1.05;
-    letter-spacing: -0.5px;
-    margin: 0;
+    letter-spacing: -0.01em;
+    margin: 0 0 16px;
   }
 
-  .cm-section-header-lead {
-    margin-top: 14px;
-    max-width: 720px;
+  .docs-lead {
     font-family: 'Rajdhani', sans-serif;
     font-size: 18px;
     line-height: 1.5;
     color: var(--color-text-secondary);
+    max-width: 720px;
+    margin: 0 0 28px;
   }
 
-  /* CTA */
-  .docs-cta {
-    padding: 64px 0;
-    border-top: 1px solid var(--color-border);
-    text-align: center;
-  }
-
-  .docs-cta-text {
+  /* ─── Subhead ─── */
+  .docs-subhead {
     font-family: 'Rajdhani', sans-serif;
     font-weight: 700;
-    font-size: 28px;
-    margin-bottom: 24px;
+    font-size: 22px;
+    line-height: 1.15;
+    letter-spacing: -0.005em;
+    margin: 28px 0 12px;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+
+  .docs-subhead-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background: var(--color-accent);
+    flex-shrink: 0;
+    transform: translateY(1px);
+    clip-path: polygon(3px 0, 100% 0, 100% calc(100% - 3px), calc(100% - 3px) 100%, 0 100%, 0 3px);
+  }
+
+  /* ─── Body Paragraph ─── */
+  .docs-p {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--color-text-secondary);
+    max-width: 760px;
+    margin: 0 0 12px;
+  }
+
+  .docs-p :global(strong) { color: var(--color-text); font-weight: 600; }
+
+  /* ─── Inline Mono ─── */
+  .docs-mono {
+    font-family: 'Fira Code', monospace;
+    font-size: 12.5px;
+    background: var(--color-bg-elevated);
+    color: var(--color-text);
+    padding: 1px 6px;
+    border: 1px solid var(--color-border);
+    clip-path: polygon(3px 0, 100% 0, 100% calc(100% - 3px), calc(100% - 3px) 100%, 0 100%, 0 3px);
+  }
+
+  .dim { color: var(--color-text-dim); }
+
+  /* ─── Table ─── */
+  .docs-table {
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-sunken);
+    margin: 8px 0 18px;
+    clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+    overflow: hidden;
+  }
+
+  .docs-table-header {
+    background: var(--color-bg-elevated);
+    border-bottom: 1px solid var(--color-border);
+    padding: 10px 16px;
+    font-family: 'Fira Code', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-text-dim);
+  }
+
+  .docs-table-compact .docs-table-header { padding: 7px 14px; }
+  .docs-table-compact .docs-table-row { padding: 8px 14px; }
+
+  .docs-table-2col {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+  }
+
+  .docs-table-3col {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr 2fr;
+  }
+
+  .docs-table-row {
+    padding: 12px 16px;
+    gap: 16px;
+    align-items: baseline;
+  }
+
+  .docs-table-row:not(.docs-table-row-first) {
+    border-top: 1px dotted var(--color-border);
+  }
+
+  .docs-table-label {
+    font-family: 'Fira Code', monospace;
+    font-size: 12px;
+    color: var(--color-accent);
+    letter-spacing: 0.04em;
+  }
+
+  .docs-table-key {
+    font-family: 'Fira Code', monospace;
+    font-size: 12px;
+    color: var(--color-accent);
+    letter-spacing: 0.04em;
+  }
+
+  .docs-table-label-mid {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
     color: var(--color-text);
   }
 
-  .cm-btn {
-    display: inline-block;
-    padding: 12px 28px;
+  .docs-table-desc {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 14.5px;
+    color: var(--color-text-secondary);
+    line-height: 1.45;
+  }
+
+  /* ─── List ─── */
+  .docs-list {
+    margin: 8px 0 16px;
+    padding: 0;
+    list-style: none;
+  }
+
+  .docs-list li {
+    display: flex;
+    gap: 12px;
+    padding: 5px 0;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 16px;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+  }
+
+  .docs-list li :global(strong) { color: var(--color-text); font-weight: 600; }
+
+  .docs-list-marker {
+    color: var(--color-accent);
     font-family: 'Fira Code', monospace;
     font-size: 12px;
-    letter-spacing: 1px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* ─── Callout ─── */
+  .docs-callout {
+    margin: 14px 0 18px;
+    padding: 14px 18px 14px 16px;
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    max-width: 760px;
+  }
+
+  .docs-callout-tip { border-left: 3px solid var(--color-accent); }
+  .docs-callout-warn { border-left: 3px solid var(--color-warn); }
+  .docs-callout-rule { border-left: 3px solid var(--color-text); }
+
+  .docs-callout-label {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .docs-callout-tip .docs-callout-label { color: var(--color-accent); }
+  .docs-callout-warn .docs-callout-label { color: var(--color-warn); }
+  .docs-callout-rule .docs-callout-label { color: var(--color-text); }
+
+  .docs-callout-body {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 15px;
+    color: var(--color-text);
+    line-height: 1.5;
+  }
+
+  .docs-callout-body :global(strong) { font-weight: 600; }
+
+  /* ─── LED Row ─── */
+  .docs-led-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin: 8px 0 16px;
+  }
+
+  .docs-led-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 14px;
+    background: var(--color-bg-sunken);
+    border: 1px solid var(--color-border);
+    clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px);
+  }
+
+  .docs-led-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+  }
+
+  .docs-led-off { background: var(--color-text-dim); }
+  .docs-led-green { background: #A3BE8C; box-shadow: 0 0 8px #A3BE8C; }
+  .docs-led-red { background: #BF616A; box-shadow: 0 0 8px #BF616A; }
+  .docs-led-yellow { background: #EBCB8B; box-shadow: 0 0 8px #EBCB8B; }
+
+  .docs-led-label {
+    font-family: 'Fira Code', monospace;
+    font-size: 11px;
+    color: var(--color-text);
+    letter-spacing: 0.06em;
+  }
+
+  .docs-led-desc {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 13px;
+    color: var(--color-text-dim);
+  }
+
+  /* ─── Pipeline ─── */
+  .docs-pipeline {
+    display: flex;
+    gap: 0;
+    align-items: stretch;
+    margin: 12px 0 24px;
+    flex-wrap: wrap;
+  }
+
+  .docs-pipeline-step {
+    padding: 10px 16px;
+    background: var(--color-bg-sunken);
+    border: 1px solid var(--color-border);
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--color-text);
+    clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+    text-align: center;
+  }
+
+  .docs-pipeline-arrow {
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    color: var(--color-accent);
+    font-family: 'Fira Code', monospace;
+    font-size: 14px;
+  }
+
+  /* ─── Ladder ─── */
+  .docs-ladder {
+    margin: 12px 0 20px;
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-sunken);
+    clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+    overflow: hidden;
+  }
+
+  .docs-ladder-rung {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    padding: 12px 18px;
+  }
+
+  .docs-ladder-rung:not(:first-child) {
+    border-top: 1px dotted var(--color-border);
+  }
+
+  .docs-ladder-rung-top {
+    background: var(--color-bg-elevated);
+  }
+
+  .docs-ladder-num {
+    flex: 0 0 32px;
+    font-family: 'Fira Code', monospace;
+    font-size: 11px;
+    color: var(--color-accent);
+    letter-spacing: 0.1em;
+  }
+
+  .docs-ladder-meta { flex: 0 0 200px; }
+
+  .docs-ladder-label {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--color-text);
+  }
+
+  .docs-ladder-prio {
+    font-family: 'Fira Code', monospace;
+    font-size: 10px;
+    color: var(--color-text-dim);
+    letter-spacing: 0.1em;
+    margin-top: 2px;
+  }
+
+  .docs-ladder-desc {
+    flex: 1;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 14.5px;
+    color: var(--color-text-secondary);
+    line-height: 1.45;
+  }
+
+  /* ─── Terminal Block ─── */
+  .docs-terminal {
+    background: var(--color-terminal-bg);
+    color: var(--color-terminal-text);
+    font-family: 'Fira Code', monospace;
+    font-size: 13px;
+    line-height: 1.7;
+    padding: 18px 22px;
+    margin: 8px 0 18px;
+    border: 1px solid var(--color-border);
+    clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+    white-space: pre;
+    overflow-x: auto;
+  }
+
+  /* ─── Tab Strip Mock ─── */
+  .docs-tab-strip {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid var(--color-border);
+    margin: 8px 0 18px;
+    flex-wrap: wrap;
+  }
+
+  .docs-tab {
+    padding: 10px 18px;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--color-text-dim);
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    letter-spacing: 0.04em;
+  }
+
+  .docs-tab-active {
+    color: var(--color-text);
+    border-bottom-color: var(--color-accent);
+  }
+
+  /* ─── Bottom CTA ─── */
+  .docs-bottom {
+    padding: 48px 0;
+    background: var(--color-bg-elevated);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .docs-bottom h2 {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin: 0 0 14px;
+  }
+
+  .docs-bottom-body {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 17px;
+    color: var(--color-text-secondary);
+    max-width: 640px;
+    line-height: 1.5;
+    margin: 0 0 22px;
+  }
+
+  .docs-bottom-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .docs-bottom-link {
+    font-family: 'Fira Code', monospace;
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--color-text-dim);
+    padding-bottom: 2px;
+  }
+
+  .docs-bottom-link:hover { color: var(--color-text); }
+
+  /* ─── Buttons ─── */
+  .cm-btn {
+    display: inline-block;
+    padding: 12px 20px;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     text-decoration: none;
-    border: 1px solid var(--color-border);
-    transition: background 0.15s, color 0.15s, border-color 0.15s;
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
   }
 
   .cm-btn--primary {
     background: var(--color-accent);
-    color: #000;
-    border-color: var(--color-accent);
+    color: var(--color-bg);
   }
 
-  .cm-btn--primary:hover {
-    background: var(--color-accent-hover, var(--color-accent));
-    opacity: 0.88;
-  }
+  .cm-btn--primary:hover { opacity: 0.88; }
 
+  /* ─── Responsive ─── */
   @media (max-width: 768px) {
-    .docs-page {
-      padding: 0 20px;
-    }
-
-    .docs-hero {
-      padding: 80px 0 40px;
-    }
-
-    .docs-section {
-      padding: 48px 0;
-    }
+    .docs-page { padding: 0 20px; }
+    .docs-hero { padding: 80px 0 40px; }
+    .docs-section { padding: 48px 0; }
+    .docs-companion-intro { padding: 36px 0; }
+    .docs-table-2col { grid-template-columns: 1fr; gap: 4px; }
+    .docs-table-3col { grid-template-columns: 1fr; gap: 4px; }
+    .docs-led-row { flex-direction: column; }
+    .docs-pipeline { flex-wrap: wrap; }
+    .docs-ladder-rung { flex-direction: column; gap: 6px; }
+    .docs-ladder-meta { flex: none; }
   }
 </style>
