@@ -13,4 +13,20 @@
   --color-neon-green: #2d8a4e;
   --color-bg-overlay: rgba(244, 243, 237, 0.85);
   --shadow-sm: 0 1px 2px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.06);
+
+  /* Terminal */
+  --color-terminal-bg: #1A1A1D;
+  --color-terminal-chrome: #0F0F11;
+  --color-terminal-text: #E8E5DC;
+  --color-warn: #D08770;
+
+  /* Preset colors (matches app UI) */
+  --color-preset-ideation: #C792EA;
+  --color-preset-refinement: #BF616A;
+  --color-preset-cyberfactory: #5E81AC;
+  --color-preset-testing: #A3BE8C;
+  --color-preset-debugger: #D08770;
+  --color-preset-audit: #B48EAD;
+  --color-preset-companion: #EBCB8B;
+  --color-preset-voice: #88C0D0;
 }

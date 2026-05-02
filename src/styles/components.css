@@ -1,6 +1,9 @@
 /* src/styles/components.css */
+/* All colors via CSS custom properties. No border-radius anywhere — cut corners only. */
 
-/* === Cut Corner Clip Paths === */
+/* ============================================================
+   UTILITY: CUT CORNER CLIP PATHS
+   ============================================================ */
 .cut-corner {
   clip-path: polygon(
     var(--cut-corner) 0, 100% 0,
@@ -18,62 +21,21 @@
   );
 }
 
-/* === Buttons === */
-.btn {
-  font-family: 'Fira Code', monospace;
-  font-size: 11px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  padding: 10px 24px;
-  border: 1px solid var(--color-border-strong);
-  background: none;
-  color: var(--color-text);
-  cursor: pointer;
-  text-decoration: none;
-  display: inline-block;
-  clip-path: polygon(
-    var(--cut-corner) 0, 100% 0,
-    100% calc(100% - var(--cut-corner)),
-    calc(100% - var(--cut-corner)) 100%,
-    0 100%, 0 var(--cut-corner)
-  );
-  transition: border-color var(--transition-base), color var(--transition-base),
-              background var(--transition-base);
-}
-.btn:hover {
-  border-color: var(--color-accent);
-  color: var(--color-accent);
-  text-decoration: none;
-}
-.btn--primary {
-  border-color: var(--color-accent);
-  color: var(--color-accent);
-}
-.btn--primary:hover {
-  background: var(--color-accent);
-  color: var(--color-bg-elevated);
-}
-
-/* === Label Tag === */
-.label-tag {
-  display: inline-block;
-  font-size: 10px;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  color: var(--color-text-dim);
-  border: 1px solid var(--color-border);
-  padding: 3px 10px;
-  clip-path: polygon(4px 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%, 0 4px);
-}
-
-/* === Section Container === */
+/* ============================================================
+   UTILITY: SECTION CONTAINER
+   ============================================================ */
 .section {
   max-width: var(--max-width);
   margin: 0 auto;
   padding: var(--space-3xl) var(--space-2xl);
 }
+@media (max-width: 768px) {
+  .section { padding: var(--space-2xl) var(--space-lg); }
+}
 
-/* === Grid Background === */
+/* ============================================================
+   UTILITY: GRID BACKGROUND
+   ============================================================ */
 .grid-bg {
   position: relative;
 }
@@ -88,7 +50,551 @@
   pointer-events: none;
 }
 
-/* === Responsive === */
+/* ============================================================
+   HEADER
+   ============================================================ */
+.cm-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  height: 52px;
+  background: var(--color-bg-elevated);
+  border-bottom: 1px solid var(--color-border);
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+[data-theme="dark"] .cm-header {
+  background: var(--color-bg-sunken);
+}
+
+/* ============================================================
+   WORDMARK
+   ============================================================ */
+.cm-wordmark {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: var(--color-text);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.cm-wordmark::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: var(--color-accent);
+  display: inline-block;
+  flex-shrink: 0;
+}
+.cm-wordmark:hover { text-decoration: none; color: var(--color-text); }
+
+/* ============================================================
+   NAV
+   ============================================================ */
+.cm-nav {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+}
+.cm-nav a {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  font-size: 11px;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  font-family: 'Fira Code', monospace;
+  transition: color var(--transition-base);
+}
+[data-theme="dark"] .cm-nav a {
+  color: var(--color-text-dim);
+}
+.cm-nav a:hover {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+.cm-nav a.active {
+  color: var(--color-accent);
+}
+
+/* ============================================================
+   THEME TOGGLE
+   ============================================================ */
+.cm-theme-toggle {
+  width: 22px;
+  height: 22px;
+  border: 1.5px solid var(--color-border-strong);
+  background: none;
+  cursor: pointer;
+  clip-path: polygon(5px 0, 100% 0, 100% calc(100% - 5px), calc(100% - 5px) 100%, 0 100%, 0 5px);
+  color: var(--color-text-dim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color var(--transition-base), color var(--transition-base);
+}
+[data-theme="dark"] .cm-theme-toggle {
+  border-color: var(--color-text-dim);
+}
+.cm-theme-toggle:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.cm-btn {
+  font-family: 'Fira Code', monospace;
+  font-size: 11px;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  padding: 11px 26px;
+  border: 1px solid var(--color-border-strong);
+  background: none;
+  color: var(--color-text);
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+  transition: color var(--transition-base), background var(--transition-base), border-color var(--transition-base);
+}
+[data-theme="dark"] .cm-btn {
+  border-color: var(--color-border-strong);
+  color: var(--color-text-secondary);
+}
+.cm-btn:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  text-decoration: none;
+}
+.cm-btn--primary {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+.cm-btn--primary:hover {
+  background: var(--color-accent);
+  color: var(--color-bg-elevated);
+  text-decoration: none;
+}
+[data-theme="dark"] .cm-btn--primary:hover {
+  color: var(--color-bg);
+}
+
+/* Legacy alias for existing pages */
+.btn { font-family: 'Fira Code', monospace; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; padding: 10px 24px; border: 1px solid var(--color-border-strong); background: none; color: var(--color-text); cursor: pointer; text-decoration: none; display: inline-block; clip-path: polygon(var(--cut-corner) 0, 100% 0, 100% calc(100% - var(--cut-corner)), calc(100% - var(--cut-corner)) 100%, 0 100%, 0 var(--cut-corner)); transition: border-color var(--transition-base), color var(--transition-base), background var(--transition-base); }
+.btn:hover { border-color: var(--color-accent); color: var(--color-accent); text-decoration: none; }
+.btn--primary { border-color: var(--color-accent); color: var(--color-accent); }
+.btn--primary:hover { background: var(--color-accent); color: var(--color-bg-elevated); }
+
+/* ============================================================
+   LABEL TAG
+   ============================================================ */
+.cm-label-tag,
+.label-tag {
+  display: inline-block;
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  padding: 4px 11px;
+  color: var(--color-text-dim);
+  border: 1px solid var(--color-border);
+  clip-path: polygon(5px 0, 100% 0, 100% calc(100% - 5px), calc(100% - 5px) 100%, 0 100%, 0 5px);
+  font-family: 'Fira Code', monospace;
+}
+
+/* ============================================================
+   TAGLINE / HERO
+   ============================================================ */
+.cm-tagline {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 56px;
+  letter-spacing: 1.5px;
+  line-height: 1.05;
+  margin: 0;
+  color: var(--color-text);
+}
+.cm-hero-sub {
+  font-size: 14px;
+  max-width: 580px;
+  line-height: 1.85;
+  color: var(--color-text-secondary);
+}
+.cm-hero-sub strong {
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+/* ============================================================
+   HERO GRID OVERLAY
+   ============================================================ */
+.cm-grid-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(0deg, transparent, transparent 39px, var(--color-border) 39px, var(--color-border) 40px),
+    repeating-linear-gradient(90deg, transparent, transparent 39px, var(--color-border) 39px, var(--color-border) 40px);
+  opacity: 0.22;
+  pointer-events: none;
+}
+[data-theme="dark"] .cm-grid-bg {
+  opacity: 0.10;
+}
+
+/* ============================================================
+   3x3 PIXEL GRID
+   ============================================================ */
+.cm-pixel-grid {
+  display: inline-grid;
+  grid-template-columns: repeat(3, 14px);
+  grid-template-rows: repeat(3, 14px);
+  gap: 3px;
+}
+.cm-pixel-grid span { background: var(--color-border-strong); opacity: 0.18; }
+.cm-pixel-grid span:nth-child(1) { opacity: 0.5; }
+.cm-pixel-grid span:nth-child(5) { background: var(--color-accent); opacity: 1; }
+.cm-pixel-grid span:nth-child(7) { opacity: 0.4; }
+.cm-pixel-grid span:nth-child(9) { background: var(--color-neon-green); opacity: 0.7; }
+
+/* ============================================================
+   PILLARS (2x2 feature grid)
+   ============================================================ */
+.cm-pillars {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+.cm-pillar {
+  padding: 38px 32px;
+  border-color: var(--color-border);
+  transition: background var(--transition-base);
+}
+.cm-pillar:hover {
+  background: var(--color-bg-elevated);
+}
+[data-theme="dark"] .cm-pillar:hover {
+  background: var(--color-bg-sunken);
+}
+.cm-pillar:nth-child(odd) { border-right: 1px solid var(--color-border); }
+.cm-pillar:nth-child(1),
+.cm-pillar:nth-child(2) { border-bottom: 1px solid var(--color-border); }
+
+.cm-pillar h3 {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: 1.2px;
+  margin: 0 0 8px 0;
+  color: var(--color-text);
+}
+.cm-pillar p {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+.cm-pillar-link {
+  display: inline-block;
+  margin-top: 14px;
+  font-size: 11px;
+  text-decoration: none;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  font-family: 'Fira Code', monospace;
+  color: var(--color-accent);
+  transition: color var(--transition-base);
+}
+.cm-pillar-link::after { content: ' \2192'; }
+.cm-pillar-link:hover { text-decoration: none; color: var(--color-accent-hover); }
+
+/* ============================================================
+   NOT-SECTION
+   ============================================================ */
+.cm-not {
+  padding: 72px 32px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.cm-not h3 {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--color-text-dim);
+  margin: 0 0 22px 0;
+}
+.cm-not h3::before {
+  content: '// ';
+  opacity: 0.5;
+  font-family: 'Fira Code', monospace;
+  letter-spacing: 0;
+}
+.cm-not ul { list-style: none; padding: 0; margin: 0; }
+.cm-not li {
+  padding: 8px 0 8px 18px;
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  border-left: 2px solid var(--color-border);
+  margin-bottom: 10px;
+  transition: border-color var(--transition-base), color var(--transition-base);
+}
+.cm-not li:hover {
+  border-left-color: var(--color-accent);
+  color: var(--color-text);
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.cm-footer {
+  padding: 28px 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  font-size: 11px;
+  letter-spacing: 0.4px;
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text-dim);
+  font-family: 'Fira Code', monospace;
+}
+.cm-footer a { color: inherit; text-decoration: none; transition: color var(--transition-fast); }
+.cm-footer a:hover { color: var(--color-accent); }
+.cm-footer-mark {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  letter-spacing: 4px;
+  font-size: 12px;
+  color: var(--color-text);
+  text-transform: uppercase;
+}
+.cm-footer-meta {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+/* ============================================================
+   STATUSBAR FOOTER (app-style)
+   ============================================================ */
+.cm-statusbar {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  height: 28px;
+  padding: 0;
+  border-top: 1px solid var(--color-border);
+  font-family: 'Fira Code', monospace;
+  font-size: 11px;
+  background: var(--color-bg-sunken);
+  color: var(--color-text-dim);
+}
+.cm-statusbar > * {
+  padding: 0 14px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  border-right: 1px solid var(--color-border);
+}
+.cm-statusbar > *:last-child { border-right: 0; margin-left: auto; }
+.cm-statusbar .on { color: var(--color-accent); }
+.cm-statusbar .pill {
+  padding: 2px 8px;
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+}
+
+/* ============================================================
+   SECTION HEADER (num + kicker)
+   ============================================================ */
+.cm-section-header {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+.cm-section-header__num {
+  font-family: 'Fira Code', monospace;
+  font-size: 11px;
+  color: var(--color-text-dim);
+  letter-spacing: 1.5px;
+  flex-shrink: 0;
+}
+.cm-section-header__kicker {
+  font-family: 'Fira Code', monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+.cm-section-header h2 {
+  margin: 0;
+}
+
+/* ============================================================
+   BOX (cut-corner content box)
+   ============================================================ */
+.cm-box {
+  border: 1px solid var(--color-border);
+  padding: 24px 28px;
+  clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+  background: var(--color-bg-elevated);
+}
+[data-theme="dark"] .cm-box {
+  background: var(--color-bg-sunken);
+}
+
+/* ============================================================
+   TAG (inline mono badge)
+   ============================================================ */
+.cm-tag {
+  display: inline-block;
+  font-family: 'Fira Code', monospace;
+  font-size: 10px;
+  letter-spacing: 1.2px;
+  padding: 2px 8px;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-dim);
+  clip-path: polygon(3px 0, 100% 0, 100% calc(100% - 3px), calc(100% - 3px) 100%, 0 100%, 0 3px);
+}
+
+/* ============================================================
+   RULE (mini accent bar)
+   ============================================================ */
+.cm-rule {
+  display: block;
+  width: 32px;
+  height: 2px;
+  background: var(--color-accent);
+  margin: 12px 0;
+}
+
+/* ============================================================
+   DOT (small square dot)
+   ============================================================ */
+.cm-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: var(--color-accent);
+  flex-shrink: 0;
+}
+.cm-dot--dim { background: var(--color-border-strong); }
+
+/* ============================================================
+   TERMINAL MOCKUP
+   ============================================================ */
+.cm-terminal {
+  background: var(--color-terminal-bg);
+  color: var(--color-terminal-text);
+  font-family: 'Fira Code', monospace;
+  font-size: 13px;
+  line-height: 1.65;
+  overflow: hidden;
+  clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+}
+.cm-terminal-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: var(--color-terminal-chrome);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.cm-terminal-bar::before {
+  content: '';
+  width: 10px; height: 10px;
+  background: #FF5F57;
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+}
+.cm-terminal-bar::after {
+  content: '';
+  width: 10px; height: 10px;
+  background: #28C840;
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+}
+.cm-terminal-bar span {
+  width: 10px; height: 10px;
+  background: #FEBC2E;
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+}
+.cm-terminal-body {
+  padding: 18px 20px;
+}
+.cm-terminal-body p { text-wrap: unset; }
+
+/* ============================================================
+   CALLOUT (tip / warn / rule)
+   ============================================================ */
+.cm-callout {
+  padding: 14px 18px;
+  border-left: 3px solid var(--color-accent);
+  background: var(--color-bg-elevated);
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+}
+[data-theme="dark"] .cm-callout {
+  background: var(--color-bg-sunken);
+}
+.cm-callout--warn {
+  border-left-color: var(--color-warn);
+}
+.cm-callout--rule {
+  border-left-color: var(--color-border-strong);
+}
+.cm-callout strong {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+/* ============================================================
+   ANCHOR NAV (sticky right-side page nav)
+   ============================================================ */
+.cm-anchor-nav {
+  position: sticky;
+  top: 72px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-family: 'Fira Code', monospace;
+  font-size: 10px;
+  letter-spacing: 1.2px;
+}
+.cm-anchor-nav a {
+  color: var(--color-text-dim);
+  text-decoration: none;
+  padding: 4px 0 4px 12px;
+  border-left: 2px solid var(--color-border);
+  transition: color var(--transition-base), border-color var(--transition-base);
+  text-transform: uppercase;
+}
+.cm-anchor-nav a:hover,
+.cm-anchor-nav a.active {
+  color: var(--color-accent);
+  border-left-color: var(--color-accent);
+  text-decoration: none;
+}
+
+/* ============================================================
+   RESPONSIVE: PILLARS + NAV
+   ============================================================ */
 @media (max-width: 768px) {
-  .section { padding: var(--space-2xl) var(--space-lg); }
+  .cm-pillars { grid-template-columns: 1fr; }
+  .cm-pillar:nth-child(odd) { border-right: none; }
+  .cm-header { padding: 0 16px; }
+  .cm-nav { gap: 16px; }
+  .cm-tagline { font-size: 36px; }
+  .cm-anchor-nav { display: none; }
+  .cm-footer { flex-direction: column; text-align: center; padding: 20px 16px; }
 }

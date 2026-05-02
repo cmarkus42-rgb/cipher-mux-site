@@ -1,12 +1,15 @@
 /* src/styles/global.css */
 
+/* === Google Fonts: Rajdhani (all weights needed) === */
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap');
+
 /* === Reset === */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
-  font-family: 'Fira Code', monospace;
-  font-size: 15px;
-  line-height: 1.7;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
   background: var(--color-bg);
   color: var(--color-text);
   transition: background 0.3s ease, color 0.3s ease;
@@ -14,23 +17,18 @@ body {
 a { color: var(--color-accent); text-decoration: none; }
 a:hover { text-decoration: underline; }
 img { max-width: 100%; display: block; }
+p { text-wrap: pretty; }
 
-/* === Font Face === */
-@font-face {
-  font-family: 'Rajdhani';
-  src: url('/cipher-mux-site/fonts/Rajdhani-Bold.woff2') format('woff2');
-  font-weight: 700;
-  font-display: swap;
-}
+/* === Font Face: Fira Code (local, mono/code/UI only) === */
 @font-face {
   font-family: 'Fira Code';
-  src: url('/cipher-mux-site/fonts/FiraCode-Regular.woff2') format('woff2');
+  src: url('/fonts/FiraCode-Regular.woff2') format('woff2');
   font-weight: 400;
   font-display: swap;
 }
 @font-face {
   font-family: 'Fira Code';
-  src: url('/cipher-mux-site/fonts/FiraCode-Medium.woff2') format('woff2');
+  src: url('/fonts/FiraCode-Medium.woff2') format('woff2');
   font-weight: 500;
   font-display: swap;
 }
@@ -55,10 +53,10 @@ img { max-width: 100%; display: block; }
 
 /* === Typography === */
 h1, h2, h3 {
-  font-family: 'Rajdhani', Impact, 'Arial Narrow', sans-serif;
+  font-family: 'Rajdhani', sans-serif;
   font-weight: 700;
   line-height: 1.2;
 }
-h1 { font-size: clamp(36px, 5vw, 52px); letter-spacing: 2px; }
-h2 { font-size: 28px; letter-spacing: 1.5px; }
-h3 { font-size: 20px; letter-spacing: 1px; }
+h1 { font-size: clamp(48px, 6vw, 96px); letter-spacing: 2px; }
+h2 { font-size: clamp(38px, 4vw, 48px); letter-spacing: 1.5px; }
+h3 { font-size: 22px; letter-spacing: 1px; }
