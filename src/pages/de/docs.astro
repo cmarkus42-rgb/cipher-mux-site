@@ -1,0 +1,264 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import content from '../../i18n/de/docs';
+import { t } from '../../i18n/ui';
+
+const lang = 'de';
+---
+
+<Layout
+  title="Dokumentation — CIPHER-MUX"
+  description={content.hero.body}
+  lang={lang}
+  active="docs"
+>
+  <div class="docs-page">
+
+    <!-- Anchor Nav -->
+    <nav class="cm-anchor-nav">
+      <div class="cm-anchor-nav-label">{t(lang, 'scroll.label')}</div>
+      {content.sections.map((section, i) => (
+        <a href={`#${section.id}`} class="cm-anchor-nav-item">
+          <span class="cm-anchor-nav-num">§{String(i + 1).padStart(2, '0')}</span>
+          <span>{section.title}</span>
+        </a>
+      ))}
+    </nav>
+
+    <!-- Hero -->
+    <section class="docs-hero">
+      <div class="cm-tag">{content.hero.kicker}</div>
+      <h1>{content.hero.title}</h1>
+      <p class="docs-body">{content.hero.body}</p>
+    </section>
+
+    <!-- Documentation Sections -->
+    {content.sections.map((section, i) => (
+      <section id={section.id} class="docs-section">
+        <header class="cm-section-header">
+          <div class="cm-section-header-meta">
+            <span class="cm-section-header-num">§ {String(i + 1).padStart(2, '0')}</span>
+            <span class="cm-section-header-line"></span>
+            <span class="cm-section-header-kicker">{section.title}</span>
+          </div>
+          <h2>{section.title}</h2>
+          <p class="cm-section-header-lead">{section.lead}</p>
+        </header>
+      </section>
+    ))}
+
+    <!-- Bottom CTA -->
+    <div class="docs-cta">
+      <p class="docs-cta-text">Frag den Companion.</p>
+      <a href={`/${lang}/start`} class="cm-btn cm-btn--primary">Installation starten</a>
+    </div>
+
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const sections = document.querySelectorAll('.docs-section');
+      const navItems = document.querySelectorAll('.cm-anchor-nav-item');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            navItems.forEach(item => item.classList.remove('active'));
+            const id = entry.target.id;
+            const activeItem = document.querySelector(`.cm-anchor-nav-item[href="#${id}"]`);
+            if (activeItem) activeItem.classList.add('active');
+          }
+        });
+      }, { rootMargin: '-20% 0px -70% 0px' });
+      sections.forEach(s => observer.observe(s));
+    });
+  </script>
+</Layout>
+
+<style>
+  .docs-page {
+    position: relative;
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* Hero */
+  .docs-hero {
+    padding: 120px 0 48px;
+  }
+
+  .cm-tag {
+    font-family: 'Fira Code', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .docs-hero h1 {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: clamp(38px, 4vw, 48px);
+    line-height: 1.05;
+    margin: 14px 0;
+  }
+
+  .docs-body {
+    font-family: 'Fira Code', monospace;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+    max-width: 680px;
+  }
+
+  /* Anchor Nav */
+  .cm-anchor-nav {
+    position: fixed;
+    top: 200px;
+    right: 32px;
+    width: 200px;
+    font-family: 'Fira Code', monospace;
+    font-size: 10px;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 10;
+  }
+
+  .cm-anchor-nav-label {
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text-dim);
+    font-size: 9px;
+  }
+
+  .cm-anchor-nav-item {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    padding: 2px 4px;
+    color: var(--color-text-dim);
+    text-decoration: none;
+    border-left: 2px solid transparent;
+    transition: color 0.15s, border-color 0.15s;
+    line-height: 1.4;
+  }
+
+  .cm-anchor-nav-item:hover,
+  .cm-anchor-nav-item.active {
+    color: var(--color-text);
+    border-left-color: var(--color-accent);
+  }
+
+  .cm-anchor-nav-num {
+    color: var(--color-accent);
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 1200px) {
+    .cm-anchor-nav { display: none; }
+  }
+
+  /* Documentation Sections */
+  .docs-section {
+    padding: 64px 0;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .cm-section-header-meta {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    font-family: 'Fira Code', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--color-text-dim);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .cm-section-header-num {
+    color: var(--color-accent);
+  }
+
+  .cm-section-header-line {
+    flex: 0 0 14px;
+    height: 1px;
+    background: var(--color-border);
+    align-self: center;
+  }
+
+  .cm-section-header h2 {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: clamp(28px, 3vw, 38px);
+    line-height: 1.05;
+    letter-spacing: -0.5px;
+    margin: 0;
+  }
+
+  .cm-section-header-lead {
+    margin-top: 14px;
+    max-width: 720px;
+    font-family: 'Fira Code', monospace;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+  }
+
+  /* CTA */
+  .docs-cta {
+    padding: 64px 0;
+    border-top: 1px solid var(--color-border);
+    text-align: center;
+  }
+
+  .docs-cta-text {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 28px;
+    margin-bottom: 24px;
+    color: var(--color-text);
+  }
+
+  .cm-btn {
+    display: inline-block;
+    padding: 12px 28px;
+    font-family: 'Fira Code', monospace;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid var(--color-border);
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+  }
+
+  .cm-btn--primary {
+    background: var(--color-accent);
+    color: #000;
+    border-color: var(--color-accent);
+  }
+
+  .cm-btn--primary:hover {
+    background: var(--color-accent-hover, var(--color-accent));
+    opacity: 0.88;
+  }
+
+  @media (max-width: 768px) {
+    .docs-page {
+      padding: 0 20px;
+    }
+
+    .docs-hero {
+      padding: 80px 0 40px;
+    }
+
+    .docs-section {
+      padding: 48px 0;
+    }
+  }
+</style>
