@@ -1,23 +1,32 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from '../../layouts/Layout.astro';
+const lang = 'de';
 ---
 
-<Layout
-  title="Impressum — CIPHER-MUX"
-  description="Impressum gemaess TMG §5"
->
+<Layout title="Datenschutz — CIPHER-MUX" description="Datenschutzerklaerung gemaess DSGVO" lang={lang}>
   <div class="legal-page">
     <div class="legal-inner">
-      <h1>Impressum</h1>
-      <p class="legal-intro">Angaben gemaess § 5 TMG</p>
+      <h1>Datenschutzerklaerung</h1>
 
-      <!-- PLATZHALTER: Hier den generierten Impressum-Text einfuegen -->
-      <!-- Generator: https://www.e-recht24.de/impressum-generator.html -->
+      <h2>Vorab-Hinweis</h2>
+      <p>Diese Website verwendet bewusst keine Tracking- oder Analyse-Werkzeuge. Im Einzelnen gilt:</p>
+      <ul>
+        <li>Kein Tracking</li>
+        <li>Keine Cookies</li>
+        <li>Keine Analytics</li>
+        <li>Keine externen Schriften (alle lokal gebundelt)</li>
+        <li>Kein CDN</li>
+        <li>localStorage ausschliesslich fuer die Theme-Praeferenz (hell/dunkel)</li>
+      </ul>
+      <p>Die einzige externe Verbindung ist das Hosting ueber GitHub Pages (Microsoft/GitHub). Beim Aufruf der Seite wird deine IP-Adresse durch GitHub-Server verarbeitet — wie bei jedem Webhosting. Auf diese Daten hat der Betreiber keinen Zugriff.</p>
+
+      <!-- PLATZHALTER: Hier den generierten Datenschutz-Text einfuegen -->
+      <!-- Generator: https://datenschutz-generator.de/ -->
 
       <div class="legal-placeholder">
-        <p>Impressum-Text wird noch eingefuegt.</p>
-        <p>Bitte generiere deinen Impressum-Text unter:<br>
-        <a href="https://www.e-recht24.de/impressum-generator.html">e-recht24.de/impressum-generator</a></p>
+        <p>Vollstaendige Datenschutzerklaerung wird noch eingefuegt.</p>
+        <p>Bitte generiere deinen Datenschutz-Text unter:<br>
+        <a href="https://datenschutz-generator.de/">datenschutz-generator.de</a></p>
       </div>
     </div>
   </div>
@@ -41,8 +50,8 @@ import Layout from '../layouts/Layout.astro';
     font-size: clamp(32px, 5vw, 52px);
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: var(--color-text-primary);
-    margin-bottom: var(--space-md);
+    color: var(--color-text);
+    margin-bottom: var(--space-3xl);
   }
 
   h2 {
@@ -51,17 +60,9 @@ import Layout from '../layouts/Layout.astro';
     font-size: 22px;
     letter-spacing: 1.5px;
     text-transform: uppercase;
-    color: var(--color-text-primary);
+    color: var(--color-text);
     margin-top: var(--space-3xl);
     margin-bottom: var(--space-lg);
-  }
-
-  .legal-intro {
-    font-family: 'Fira Code', monospace;
-    font-size: 12px;
-    color: var(--color-text-dim);
-    letter-spacing: 1px;
-    margin-bottom: var(--space-3xl);
   }
 
   p {

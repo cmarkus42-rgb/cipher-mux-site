@@ -15,7 +15,7 @@ interface Props {
 
 const { title, description, lang = 'de', active } = Astro.props;
 
-const ogUrl = `https://cmarkus42.github.io/cipher-mux-site${Astro.url.pathname}`;
+const ogUrl = `https://cipher-mux.dev${Astro.url.pathname}`;
 ---
 
 <!DOCTYPE html>
@@ -30,10 +30,10 @@ const ogUrl = `https://cmarkus42.github.io/cipher-mux-site${Astro.url.pathname}`
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={ogUrl} />
-    <meta property="og:image" content="https://cmarkus42.github.io/cipher-mux-site/images/social-preview.png" />
+    <meta property="og:image" content="https://cipher-mux.dev/images/social-preview.png" />
     <meta name="theme-color" content="#F4F3ED" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#2E3440" media="(prefers-color-scheme: dark)" />
-    <link rel="icon" href="/cipher-mux-site/favicon.png" />
+    <link rel="icon" href="/favicon.png" />
     <script is:inline>
       (function () {
         var stored = localStorage.getItem('theme');

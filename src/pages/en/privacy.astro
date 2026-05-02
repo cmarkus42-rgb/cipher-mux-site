@@ -1,0 +1,134 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const lang = 'en';
+---
+
+<Layout title="Privacy Policy — CIPHER-MUX" description="Privacy policy for CIPHER-MUX website" lang={lang}>
+  <div class="legal-page">
+    <div class="legal-inner">
+      <h1>Privacy Policy</h1>
+
+      <h2>Preliminary Note</h2>
+      <p>This website deliberately uses no tracking or analytics tools. Specifically:</p>
+      <ul>
+        <li>No tracking</li>
+        <li>No cookies</li>
+        <li>No analytics</li>
+        <li>No external fonts (all bundled locally)</li>
+        <li>No CDN</li>
+        <li>localStorage used exclusively for theme preference (light/dark)</li>
+      </ul>
+      <p>The only external connection is hosting via GitHub Pages (Microsoft/GitHub). When you visit this site, your IP address is processed by GitHub's servers — as with any web hosting. The site operator has no access to this data.</p>
+
+      <!-- PLACEHOLDER: Insert generated privacy policy text here -->
+      <!-- Generator: https://datenschutz-generator.de/ -->
+
+      <div class="legal-placeholder">
+        <p>Full privacy policy text to be added.</p>
+        <p>Generate your privacy policy at:<br>
+        <a href="https://datenschutz-generator.de/">datenschutz-generator.de</a></p>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .legal-page {
+    padding-top: 48px;
+    min-height: 60vh;
+  }
+
+  .legal-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: var(--space-4xl) var(--space-2xl) var(--space-3xl);
+  }
+
+  h1 {
+    font-family: 'Rajdhani', Impact, 'Arial Narrow', sans-serif;
+    font-weight: 700;
+    font-size: clamp(32px, 5vw, 52px);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--color-text);
+    margin-bottom: var(--space-3xl);
+  }
+
+  h2 {
+    font-family: 'Rajdhani', Impact, 'Arial Narrow', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--color-text);
+    margin-top: var(--space-3xl);
+    margin-bottom: var(--space-lg);
+  }
+
+  p {
+    font-family: 'Fira Code', monospace;
+    font-size: 13px;
+    line-height: 1.85;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-lg);
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-xl);
+  }
+
+  ul li {
+    font-family: 'Fira Code', monospace;
+    font-size: 13px;
+    line-height: 1.8;
+    color: var(--color-text-secondary);
+    padding-left: var(--space-xl);
+    position: relative;
+  }
+
+  ul li::before {
+    content: '>';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+    font-family: 'Fira Code', monospace;
+    font-size: 12px;
+  }
+
+  .legal-placeholder {
+    border: 2px dashed var(--color-border);
+    padding: 24px;
+    color: var(--color-text-dim);
+    background: var(--color-bg-sunken);
+    margin-top: var(--space-2xl);
+  }
+
+  .legal-placeholder p {
+    color: var(--color-text-dim);
+    margin-bottom: var(--space-sm);
+  }
+
+  .legal-placeholder p:last-child {
+    margin-bottom: 0;
+  }
+
+  .legal-placeholder a {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  .legal-placeholder a:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .legal-inner {
+      padding: var(--space-3xl) var(--space-lg) var(--space-2xl);
+    }
+  }
+</style>
