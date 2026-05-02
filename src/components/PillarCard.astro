@@ -1,0 +1,119 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  link: string;
+  iconPattern: 'diagonal' | 'flow' | 'eye' | 'inclusive';
+}
+
+const { title, description, link, iconPattern } = Astro.props;
+
+// Build 25-cell pixel icon. Each cell: { color, opacity }
+// Cells are 1-indexed in the spec; we work 0-indexed internally.
+const dim = { color: 'var(--color-border-strong)', opacity: 0.15 };
+const accentFull = { color: 'var(--color-accent)', opacity: 1 };
+const accentDim  = { color: 'var(--color-accent)', opacity: 0.25 };
+const neonFull   = { color: 'var(--color-neon-green)', opacity: 1 };
+const neonHalf   = { color: 'var(--color-neon-green)', opacity: 0.5 };
+
+function buildCells(pattern: Props['iconPattern']) {
+  const cells = Array.from({ length: 25 }, () => ({ ...dim }));
+
+  if (pattern === 'diagonal') {
+    // cells 1,7,13,19,25 → indices 0,6,12,18,24 accent full
+    // cells 2,8,14        → indices 1,7,13 dim (already dim)
+    [0, 6, 12, 18, 24].forEach(i => { cells[i] = accentFull; });
+    [1, 7, 13].forEach(i => { cells[i] = accentDim; });
+  } else if (pattern === 'flow') {
+    // top row (0–4) neon half, middle row (10–14) neon full, bottom row (20–24) accent
+    [0,1,2,3,4].forEach(i => { cells[i] = neonHalf; });
+    [10,11,12,13,14].forEach(i => { cells[i] = neonFull; });
+    [20,21,22,23,24].forEach(i => { cells[i] = accentFull; });
+  } else if (pattern === 'eye') {
+    // cells 3,12,13,14,23 → indices 2,11,12,13,22 accent
+    // cells 7,9,17,19     → indices 6,8,16,18 dim accent
+    [2, 11, 12, 13, 22].forEach(i => { cells[i] = accentFull; });
+    [6, 8, 16, 18].forEach(i => { cells[i] = accentDim; });
+  } else if (pattern === 'inclusive') {
+    // all cells have dim borders (already dim), cells 1,5,13,21,25 filled
+    // indices 0,4,12,20,24
+    [0, 4, 12, 20, 24].forEach(i => { cells[i] = accentFull; });
+  }
+
+  return cells;
+}
+
+const cells = buildCells(iconPattern);
+---
+
+<article class="pillar-card">
+  <div
+    class="pillar-icon"
+    aria-hidden="true"
+  >
+    {cells.map((cell) => (
+      <span
+        class="icon-cell"
+        style={`background:${cell.color};opacity:${cell.opacity};`}
+      />
+    ))}
+  </div>
+  <h3>{title}</h3>
+  <p>{description}</p>
+  <a href={link} class="pillar-link">Mehr erfahren &rarr;</a>
+</article>
+
+<style>
+  .pillar-card {
+    padding: var(--space-2xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .pillar-icon {
+    display: inline-grid;
+    grid-template-columns: repeat(5, 5px);
+    gap: 2px;
+    margin-bottom: var(--space-sm);
+  }
+
+  .icon-cell {
+    display: block;
+    width: 5px;
+    height: 5px;
+  }
+
+  h3 {
+    font-family: 'Rajdhani', Impact, 'Arial Narrow', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: 1px;
+    line-height: 1.2;
+    color: var(--color-text);
+    margin: 0;
+  }
+
+  p {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    margin: 0;
+    flex: 1;
+  }
+
+  .pillar-link {
+    font-family: 'Fira Code', monospace;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    text-decoration: none;
+    display: inline-block;
+    margin-top: auto;
+  }
+
+  .pillar-link:hover {
+    text-decoration: underline;
+  }
+</style>
