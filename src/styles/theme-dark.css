@@ -29,4 +29,12 @@
   --color-preset-audit: #B48EAD;
   --color-preset-companion: #EBCB8B;
   --color-preset-voice: #88C0D0;
+
+  /* Persona colors */
+  --color-persona-cipher: #5BC8AF;
+  --color-persona-relay: #7B8394;
+  --color-persona-wayne: #E5A442;
+  --color-persona-kyniker: #9C9C9C;
+  --color-persona-sokrates: #7C9BD9;
+  --color-persona-glitch: #D070C8;
 }

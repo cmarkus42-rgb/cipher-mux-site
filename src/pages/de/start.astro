@@ -15,62 +15,303 @@ const lang = 'de';
 
     <!-- Hero -->
     <section class="install-hero">
-      <div class="cm-tag">{content.hero.kicker}</div>
-      <h1>{content.hero.title}</h1>
-      <p class="install-body">{content.hero.body}</p>
+      <div class="install-kicker">Get started</div>
+      <h1>Vom Mac zum Cockpit.<br/><span class="accent">~20 Minuten.</span> Einmalig.</h1>
+      <p class="install-hero-body">{content.hero.body}</p>
+
+      <!-- Phase strip -->
+      <div class="phase-strip">
+        {[
+          { n: '01', label: 'Installation', time: '~10 min' },
+          { n: '02', label: 'Erster Start', time: '~5 min' },
+          { n: '03', label: 'Erstes Ergebnis', time: '~5\u201310 min' },
+          { n: '04', label: 'Weiter', time: 'wann du willst' },
+        ].map((p) => (
+          <div class="phase-strip-box">
+            <div class="phase-strip-num">PHASE {p.n}</div>
+            <div class="phase-strip-label">{p.label}</div>
+            <div class="phase-strip-time">{p.time}</div>
+          </div>
+        ))}
+      </div>
+
+      <!-- DMG Download CTA -->
+      <div class="dmg-cta">
+        <a href="#" class="dmg-btn">&darr; cipher-mux-0.9.0.dmg</a>
+        <span class="dmg-meta">macOS &middot; Apple Silicon &middot; 142 MB &middot; SHA-256 verifiziert</span>
+      </div>
+
+      <!-- Honest disclosure -->
+      <div class="disclosure-box">
+        <div class="disclosure-label">Ehrlich gesagt</div>
+        <p>Phase 1 verlangt Terminal-Befehle. Nicht weil wir&apos;s hipster finden, sondern weil Claude Code CLI Voraussetzung ist und sich nicht per Klick installiert. Wir f&uuml;hren dich Schritt f&uuml;r Schritt durch &mdash; copy/paste reicht.</p>
+      </div>
     </section>
 
     <!-- Phase 01 -->
-    <section class="install-phase">
-      <div class="phase-marker">
-        <span class="phase-num">{content.phases[0].num}</span>
+    <section id="phase1" class="install-phase">
+      <div class="phase-header">
+        <span class="phase-header-num">01 &middot; Installation</span>
+        <span class="phase-time">~10 min &middot; einmalig</span>
       </div>
-      <div class="cm-tag">{content.phases[0].kicker}</div>
       <h2>{content.phases[0].title}</h2>
       <p class="install-lead">{content.phases[0].lead}</p>
 
-      <!-- Terminal Mockup -->
-      <div class="cm-terminal">
-        <div class="cm-terminal-bar">
-          <span class="cm-terminal-dot" style="background: #FF5F57"></span>
-          <span class="cm-terminal-dot" style="background: #FEBC2E"></span>
-          <span class="cm-terminal-dot" style="background: #28C840"></span>
-          <span class="cm-terminal-title">Terminal</span>
+      <!-- Step A -->
+      <div class="step-block">
+        <div class="step-badge-row">
+          <div class="step-badge">A</div>
+          <div>
+            <h3>Claude Code CLI installieren</h3>
+            <p class="step-desc">Voraussetzung &mdash; ohne Claude Code l&auml;uft nichts. Wenn npm bereits da ist, ist&apos;s ein Einzeiler.</p>
+          </div>
         </div>
-        <div class="cm-terminal-body">
-          <code>$ npm install -g @anthropic-ai/claude-code</code>
-          <code>$ claude auth</code>
-          <code>$ git clone https://github.com/cmarkus42/cipher-mux-electron.git</code>
-          <code>$ cd cipher-mux-electron</code>
-          <code>$ npm install && npm run build && npm start</code>
+
+        <div class="cm-terminal">
+          <div class="cm-terminal-bar">
+            <span class="cm-terminal-dot" style="background:#FF5F57"></span>
+            <span class="cm-terminal-dot" style="background:#FEBC2E"></span>
+            <span class="cm-terminal-dot" style="background:#28C840"></span>
+            <span class="cm-terminal-title">Terminal &middot; Spotlight &rarr; Terminal</span>
+          </div>
+          <div class="cm-terminal-body">
+            <div class="t-comment"># Falls du bereits npm hast &mdash; direkt los:</div>
+            <div class="t-cmd"><span class="t-prompt">$</span> npm install -g @anthropic-ai/claude-code</div>
+            <div class="t-spacer"></div>
+            <div class="t-comment"># Sonst zuerst Homebrew installieren:</div>
+            <div class="t-cmd"><span class="t-prompt">$</span> /bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot;</div>
+            <div class="t-out">=&gt; Installation successful!</div>
+            <div class="t-spacer"></div>
+            <div class="t-comment"># Dann Node &mdash; bringt npm mit:</div>
+            <div class="t-cmd"><span class="t-prompt">$</span> brew install node</div>
+            <div class="t-spacer"></div>
+            <div class="t-comment"># Und jetzt Claude Code:</div>
+            <div class="t-cmd"><span class="t-prompt">$</span> npm install -g @anthropic-ai/claude-code</div>
+            <div class="t-out">+ @anthropic-ai/claude-code@1.x.x</div>
+            <div class="t-spacer"></div>
+            <div class="t-comment"># Pr&uuml;fen + erstmalig starten (Login im Browser):</div>
+            <div class="t-cmd"><span class="t-prompt">$</span> claude --version</div>
+            <div class="t-out">claude-code 1.x.x</div>
+            <div class="t-cmd"><span class="t-prompt">$</span> claude</div>
+            <div class="t-out">&rarr; Browser &ouml;ffnet sich, einloggen, Tab schlie&szlig;t sich.</div>
+            <div class="t-out">&rarr; CLI ist autorisiert. Strg+C zum Beenden.</div>
+          </div>
+        </div>
+
+        <div class="pitfall-card">
+          <div class="pitfall-label">&#9888; Stolperstellen</div>
+          <ul>
+            <li>Du brauchst einen Anthropic-Account (Free/Pro/Max). Anlegen unter claude.ai bevor du startest.</li>
+            <li>Beim ersten brew-Aufruf installiert macOS die Xcode Command Line Tools &mdash; das dauert ca. 5 Minuten. Geduld.</li>
+            <li>Wenn npm install -g eine Permission-Warnung wirft, mit sudo nachschie&szlig;en: <code>sudo npm install -g @anthropic-ai/claude-code</code></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Step B -->
+      <div class="step-block">
+        <div class="step-badge-row">
+          <div class="step-badge">B</div>
+          <div>
+            <h3>CIPHER-MUX installieren</h3>
+            <p class="step-desc">Standard-DMG-Flow. tmux ist mitgeliefert &mdash; du musst nichts mehr im Terminal anfassen.</p>
+          </div>
+        </div>
+
+        <div class="dmg-flow-grid">
+          <div class="dmg-steps-box">
+            <ol class="dmg-steps">
+              <li>
+                <span class="dmg-step-num">1</span>
+                <div><strong>DMG &ouml;ffnen</strong><br/>Doppelklick auf cipher-mux-0.9.0.dmg</div>
+              </li>
+              <li>
+                <span class="dmg-step-num">2</span>
+                <div><strong>In Applications ziehen</strong><br/>Standard-macOS-Drag-and-Drop</div>
+              </li>
+              <li>
+                <span class="dmg-step-num">3</span>
+                <div><strong>Erster Start: Rechtsklick &rarr; &Ouml;ffnen</strong><br/>Wegen Gatekeeper bei unsignierter App. Einmalig.</div>
+              </li>
+              <li>
+                <span class="dmg-step-num">4</span>
+                <div><strong>Berechtigungen erteilen</strong><br/>Accessibility (f&uuml;r globale Shortcuts) &middot; evtl. Mikrofon (f&uuml;r Voice)</div>
+              </li>
+            </ol>
+          </div>
+          <div class="dmg-mock">
+            <div class="dmg-mock-chrome">
+              <span class="cm-terminal-dot" style="background:#FF5F57"></span>
+              <span class="cm-terminal-dot" style="background:#FEBC2E"></span>
+              <span class="cm-terminal-dot" style="background:#28C840"></span>
+              <span class="dmg-mock-title">cipher-mux-0.9.0</span>
+            </div>
+            <div class="dmg-mock-body">
+              <div class="dmg-mock-icon">CM</div>
+              <div class="dmg-mock-arrow">&rarr;</div>
+              <div class="dmg-mock-target">A</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pitfall-card">
+          <div class="pitfall-label">&#9888; Stolperstellen</div>
+          <ul>
+            <li>Beim ersten Start blockiert Gatekeeper &mdash; Rechtsklick &rarr; &Ouml;ffnen &rarr; Best&auml;tigen. Danach normaler Doppelklick.</li>
+            <li>Accessibility-Berechtigung muss in Systemeinstellungen &rarr; Datenschutz aktiv geschaltet werden.</li>
+            <li>tmux wird intern mitgeliefert &mdash; du musst nichts manuell installieren.</li>
+          </ul>
         </div>
       </div>
     </section>
 
     <!-- Phase 02 -->
-    <section class="install-phase">
-      <div class="phase-marker">
-        <span class="phase-num">{content.phases[1].num}</span>
+    <section id="phase2" class="install-phase">
+      <div class="phase-header">
+        <span class="phase-header-num">02 &middot; Erster Start</span>
+        <span class="phase-time">~5 min</span>
       </div>
-      <div class="cm-tag">{content.phases[1].kicker}</div>
       <h2>{content.phases[1].title}</h2>
       <p class="install-lead">{content.phases[1].lead}</p>
+
+      <div class="companion-grid">
+        <!-- Left: Companion mock -->
+        <div class="companion-mock">
+          <div class="companion-mock-header">
+            <span><span class="accent">●</span> companion &middot; cell 1/1</span>
+            <span>wayne</span>
+          </div>
+          <div class="companion-mock-body">
+            <div class="companion-name">wayne &#9656;</div>
+            <div class="companion-msg">Hey! Ich bin dein Guide. Kurz drei Fragen, dann legen wir los.</div>
+
+            <div class="companion-q"># Frage 1</div>
+            <div class="companion-qlabel">Coding-Hintergrund?</div>
+            <div class="companion-opts">
+              <span>Keiner</span>
+              <span class="companion-opt--active">Etwas &#10003;</span>
+              <span>Viel</span>
+            </div>
+
+            <div class="companion-q"># Frage 2</div>
+            <div class="companion-qlabel">KI-Erfahrung?</div>
+            <div class="companion-opts">
+              <span>Nie</span>
+              <span>ChatGPT etc.</span>
+              <span class="companion-opt--active">Claude Code &#10003;</span>
+            </div>
+
+            <div class="companion-q"># Frage 3</div>
+            <div class="companion-qlabel">Was willst du bauen?</div>
+            <div class="companion-input">Erstmal gucken &mdash; vielleicht ein paar Notizen-Tools_</div>
+
+            <div class="companion-confirm">&#10003; user-profile.json erstellt</div>
+          </div>
+        </div>
+
+        <!-- Right: Narrative -->
+        <div class="companion-narrative">
+          <div class="companion-narrative-title">So l&auml;uft&apos;s ab</div>
+          <ol class="companion-steps">
+            <li><span class="companion-step-n">1</span><div><strong>App &ouml;ffnet &rarr; leeres Grid</strong><br/>Ein 1&times;1 Layout zur Begr&uuml;&szlig;ung. Keine Reiz&uuml;berflutung.</div></li>
+            <li><span class="companion-step-n">2</span><div><strong>Companion-Cell vorbelegt</strong><br/>Wayne &mdash; die Begleiter-Persona &mdash; &uuml;bernimmt die erste Cell.</div></li>
+            <li><span class="companion-step-n">3</span><div><strong>Drei kurze Fragen</strong><br/>Coding-Erfahrung, KI-Vorwissen, Vorhaben. Speichert ein Profil.</div></li>
+            <li><span class="companion-step-n">4</span><div><strong>Sprache passt sich an</strong><br/>Companion redet jetzt auf deinem Level. Kein Tech-Jargon ohne Grund.</div></li>
+            <li><span class="companion-step-n">5</span><div><strong>Erstes Projekt &ouml;ffnen</strong><br/>Pfad eingeben oder Demo-Projekt nehmen. Claude Code startet in der Cell.</div></li>
+          </ol>
+        </div>
+      </div>
     </section>
 
     <!-- Phase 03 -->
-    <section class="install-phase">
-      <div class="phase-marker">
-        <span class="phase-num">{content.phases[2].num}</span>
+    <section id="phase3" class="install-phase">
+      <div class="phase-header">
+        <span class="phase-header-num">03 &middot; Erstes Ergebnis</span>
+        <span class="phase-time">~5&ndash;10 min</span>
       </div>
-      <div class="cm-tag">{content.phases[2].kicker}</div>
       <h2>{content.phases[2].title}</h2>
       <p class="install-lead">{content.phases[2].lead}</p>
+
+      <div class="actions-grid">
+        <div class="action-card">
+          <div class="action-num">AKTION 01</div>
+          <h3>Etwas tippen</h3>
+          <p>Gib Claude einen einfachen Auftrag in der ersten Cell. Du siehst: er arbeitet, Output erscheint im Terminal.</p>
+          <div class="action-mini-grid"><div class="action-mini-cell action-mini-cell--active">CC &#9656;</div></div>
+          <div class="action-terminal"><span class="accent">&#8250;</span> Erkl&auml;r mir was in diesem Projekt passiert</div>
+        </div>
+        <div class="action-card">
+          <div class="action-num">AKTION 02</div>
+          <h3>Zweite Session</h3>
+          <p>Spalte hinzuf&uuml;gen, neue Session &ouml;ffnen. Zwei parallele Claude-Cells. Das Kernfeature.</p>
+          <div class="action-mini-grid" style="grid-template-columns:1fr 1fr"><div class="action-mini-cell action-mini-cell--active">CC &#9656;</div><div class="action-mini-cell action-mini-cell--active">CC &#9656;</div></div>
+          <div class="action-terminal"><span class="dim"># Shortcut</span><br/><span class="accent">&#8984; + &rarr;</span> f&uuml;gt Spalte rechts hinzu</div>
+        </div>
+        <div class="action-card">
+          <div class="action-num">AKTION 03</div>
+          <h3>Sidebar entdecken</h3>
+          <p>Sidebar &ouml;ffnen, Notes-Tab &ouml;ffnen, erste Notiz schreiben. Memory ist hier zuhause.</p>
+          <div class="action-sidebar-mock">
+            <div class="action-sidebar-left">NOTES</div>
+            <div class="action-sidebar-right">CC &#9656;</div>
+          </div>
+          <div class="action-terminal"><span class="dim"># Shortcut</span><br/><span class="accent">&#8984; + B</span> schaltet Sidebar um</div>
+        </div>
+      </div>
+
+      <div class="outcome-strip">
+        <div class="outcome-label">Nach diesen drei Aktionen hast du</div>
+        <div class="outcome-items">
+          <span>&#10003; Claude Code l&auml;uft</span>
+          <span>&#10003; Zwei parallele Sessions</span>
+          <span>&#10003; Grid &middot; Cells &middot; Focus verstanden</span>
+          <span>&#10003; Sidebar + Notes gefunden</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Phase 04 -->
+    <section id="phase4" class="install-phase">
+      <div class="phase-header">
+        <span class="phase-header-num">04 &middot; Weiter</span>
+        <span class="phase-time">wann du willst</span>
+      </div>
+      <h2>Wayne schl&auml;gt vor &mdash; du w&auml;hlst</h2>
+      <p class="install-lead">Je nach Skill-Level hat die Companion verschiedene n&auml;chste Schritte. Kein Druck &mdash; du kannst auch einfach machen.</p>
+
+      <div class="nextstep-grid">
+        <div class="nextstep-card">
+          <span class="nextstep-guide">Guide 02</span>
+          <div class="nextstep-tag">Einsteiger</div>
+          <h4>Voice + Notes</h4>
+          <p>Morgen zeig ich dir Voice Input und wie du Notes als zweites Ged&auml;chtnis nutzt.</p>
+        </div>
+        <div class="nextstep-card">
+          <span class="nextstep-guide">Guide 03</span>
+          <div class="nextstep-tag">Fortgeschritten</div>
+          <h4>Orchestrator</h4>
+          <p>Wenn du magst, zeig ich dir den Orchestrator &mdash; wie mehrere Sessions zusammenarbeiten.</p>
+        </div>
+        <div class="nextstep-card">
+          <span class="nextstep-guide">Guide 03 + 05</span>
+          <div class="nextstep-tag">Power-User</div>
+          <h4>MPO + Prompting</h4>
+          <p>Du wei&szlig;t was du tust. Orchestrierung und Prompt-Design wenn du tiefer rein willst.</p>
+        </div>
+      </div>
     </section>
 
     <!-- Bottom CTA -->
-    <div class="install-cta">
-      <a href="https://github.com/cmarkus42/cipher-mux-electron" class="cm-btn cm-btn--primary" target="_blank">GitHub Repository</a>
-    </div>
+    <section class="install-bottom">
+      <h2>Bereit? <span class="accent">Lad&apos;s runter.</span></h2>
+      <p>Apple Silicon empfohlen. Intel-Macs funktionieren &mdash; ohne Ollama-Integration. Linux &amp; Windows: kommt.</p>
+      <div class="install-bottom-actions">
+        <a href="#" class="dmg-btn">&darr; DMG &middot; Apple Silicon</a>
+        <a href="#" class="dmg-btn dmg-btn--outline">&darr; DMG &middot; Intel (no Ollama)</a>
+        <a href="https://github.com/cmarkus42/cipher-mux-electron" class="install-link">github / cipher-mux &#8599;</a>
+        <a href={`/${lang}/docs`} class="install-link">docs &#8599;</a>
+      </div>
+    </section>
 
   </div>
 </Layout>
@@ -81,117 +322,740 @@ const lang = 'de';
     margin: 0 auto;
     padding: 0 64px;
   }
+  .accent { color: var(--color-accent); }
+  .dim { color: var(--color-text-dim); }
 
+  /* Hero */
   .install-hero {
     padding: 120px 0 48px;
+    border-bottom: 1px solid var(--color-border);
   }
-
+  .install-kicker {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 18px;
+  }
   .install-hero h1 {
     font-family: 'Rajdhani', sans-serif;
     font-weight: 700;
-    font-size: clamp(38px, 4vw, 48px);
-    line-height: 1.05;
-    margin: 14px 0;
+    font-size: clamp(48px, 6vw, 76px);
+    line-height: 0.98;
+    letter-spacing: -1px;
+    margin: 0 0 28px;
+  }
+  .install-hero-body {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 20px;
+    line-height: 1.4;
+    color: var(--color-text-secondary);
+    max-width: 760px;
+    margin: 0 0 36px;
   }
 
-  .install-body,
-  .install-lead {
+  /* Phase strip */
+  .phase-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    max-width: 920px;
+    margin-top: 8px;
+  }
+  .phase-strip-box {
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    padding: 14px 14px 12px;
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+  }
+  .phase-strip-num {
+    font-family: 'Fira Code', monospace;
+    font-size: 10px;
+    color: var(--color-text-dim);
+    letter-spacing: 1.5px;
+    margin-bottom: 6px;
+  }
+  .phase-strip-label {
     font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
     font-size: 18px;
-    line-height: 1.5;
-    color: var(--color-text-secondary);
+    color: var(--color-text);
+    margin-bottom: 4px;
+  }
+  .phase-strip-time {
+    font-family: 'Fira Code', monospace;
+    font-size: 11px;
+    color: var(--color-accent);
+    letter-spacing: 0.8px;
+  }
+
+  /* DMG CTA */
+  .dmg-cta {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-top: 36px;
+    flex-wrap: wrap;
+  }
+  .dmg-btn {
+    background: var(--color-accent);
+    color: var(--color-bg);
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 14px 22px;
+    display: inline-block;
+    text-decoration: none;
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+  }
+  .dmg-btn:hover { text-decoration: none; opacity: 0.9; }
+  .dmg-btn--outline {
+    background: transparent;
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+  }
+  .dmg-meta {
+    font-family: 'Fira Code', monospace;
+    font-size: 12px;
+    color: var(--color-text-dim);
+    letter-spacing: 0.8px;
+  }
+
+  /* Disclosure */
+  .disclosure-box {
+    margin-top: 28px;
+    padding: 14px 18px;
+    background: var(--color-bg-sunken);
+    border: 1px solid var(--color-border);
+    border-left: 3px solid var(--color-accent);
     max-width: 720px;
   }
-
-  .install-phase {
-    padding: 88px 0;
-    border-top: 1px solid var(--color-border);
+  .disclosure-label {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--color-accent);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .disclosure-box p {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 16px;
+    color: var(--color-text-secondary);
+    line-height: 1.45;
+    margin: 0;
   }
 
+  /* Phases */
+  .install-phase {
+    padding: 88px 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .phase-header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 10px;
+  }
+  .phase-header-num {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+  .phase-time {
+    font-family: 'Fira Code', monospace;
+    font-size: 11px;
+    color: var(--color-text-dim);
+    letter-spacing: 1px;
+    border: 1px solid var(--color-border);
+    padding: 2px 8px;
+    clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px);
+  }
   .install-phase h2 {
     font-family: 'Rajdhani', sans-serif;
     font-weight: 700;
-    font-size: 32px;
-    margin: 14px 0;
+    font-size: clamp(32px, 4vw, 48px);
+    margin: 0 0 16px;
+    line-height: 1.05;
+  }
+  .install-lead {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 18px;
+    color: var(--color-text-secondary);
+    max-width: 780px;
+    line-height: 1.45;
+    margin: 0 0 32px;
   }
 
-  .phase-marker {
-    margin-bottom: 16px;
+  /* Step blocks */
+  .step-block { margin-bottom: 36px; }
+  .step-badge-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 14px;
   }
-
-  .phase-num {
+  .step-badge {
+    flex: 0 0 44px;
+    height: 44px;
+    background: var(--color-accent);
+    color: var(--color-bg);
     font-family: 'Rajdhani', sans-serif;
     font-weight: 700;
-    font-size: 48px;
-    color: var(--color-accent);
-    opacity: 0.3;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+  }
+  .step-block h3 {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 26px;
+    margin: 0 0 6px;
+    line-height: 1.1;
+  }
+  .step-desc {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 16px;
+    color: var(--color-text-secondary);
+    margin: 0;
+    line-height: 1.45;
+    max-width: 720px;
   }
 
   /* Terminal */
   .cm-terminal {
-    margin: 32px 0;
+    margin: 14px 0;
     border: 1px solid var(--color-border);
-    clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
     overflow: hidden;
   }
-
   .cm-terminal-bar {
     display: flex;
     align-items: center;
     gap: 6px;
     padding: 8px 14px;
-    background: var(--color-terminal-chrome, #0F0F11);
+    background: var(--color-terminal-chrome);
+    border-bottom: 1px solid var(--color-border);
   }
-
   .cm-terminal-dot {
     width: 10px;
     height: 10px;
     border-radius: 50%;
     display: inline-block;
   }
-
   .cm-terminal-title {
     font-family: 'Fira Code', monospace;
     font-size: 11px;
     color: var(--color-text-dim);
     margin-left: 8px;
   }
-
   .cm-terminal-body {
-    background: var(--color-terminal-bg, #1A1A1D);
-    padding: 20px;
+    background: var(--color-terminal-bg);
+    padding: 14px 18px;
     font-family: 'Fira Code', monospace;
     font-size: 13px;
-    line-height: 2;
-    color: var(--color-terminal-text, #E8E5DC);
+    line-height: 1.7;
+    color: var(--color-terminal-text);
     overflow-x: auto;
   }
+  .t-comment { color: var(--color-text-dim); font-style: italic; }
+  .t-cmd { color: var(--color-terminal-text); }
+  .t-prompt { color: var(--color-accent); }
+  .t-out { color: var(--color-text-dim); }
+  .t-spacer { height: 6px; }
 
-  .cm-terminal-body code {
-    display: block;
+  /* Pitfall card */
+  .pitfall-card {
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-sunken);
+    padding: 16px 18px;
+    margin: 14px 0 0;
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+  }
+  .pitfall-label {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    color: var(--color-warn);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .pitfall-card ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .pitfall-card li {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 15px;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+    padding: 6px 0;
+    border-top: 1px dotted var(--color-border);
+  }
+  .pitfall-card li:first-child { border-top: none; }
+  .pitfall-card li::before {
+    content: '\203A ';
+    color: var(--color-accent);
+    font-family: 'Fira Code', monospace;
+    font-size: 12px;
+  }
+  .pitfall-card code {
+    font-family: 'Fira Code', monospace;
+    font-size: 12px;
+    color: var(--color-text);
   }
 
-  /* CTA */
-  .install-cta {
-    padding: 48px 0;
-    text-align: center;
+  /* DMG flow */
+  .dmg-flow-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 18px;
+    align-items: start;
   }
+  .dmg-steps-box {
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    padding: 18px 20px;
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+  }
+  .dmg-steps {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .dmg-steps li {
+    display: flex;
+    gap: 14px;
+    padding: 10px 0;
+    border-top: 1px dotted var(--color-border);
+  }
+  .dmg-steps li:first-child { border-top: none; }
+  .dmg-step-num {
+    flex: 0 0 28px;
+    height: 28px;
+    border: 1.5px solid var(--color-accent);
+    color: var(--color-accent);
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px);
+  }
+  .dmg-steps strong {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--color-text);
+  }
+  .dmg-steps div {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    line-height: 1.4;
+  }
+
+  /* DMG mock */
+  .dmg-mock {
+    background: var(--color-terminal-bg);
+    border: 1px solid var(--color-border);
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+    overflow: hidden;
+  }
+  .dmg-mock-chrome {
+    padding: 8px 12px;
+    background: var(--color-terminal-chrome);
+    border-bottom: 1px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .dmg-mock-title {
+    font-family: 'Fira Code', monospace;
+    font-size: 11px;
+    color: var(--color-text-dim);
+    margin-left: 10px;
+  }
+  .dmg-mock-body {
+    padding: 36px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .dmg-mock-icon {
+    width: 72px;
+    height: 72px;
+    background: var(--color-accent);
+    clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 26px;
+    color: var(--color-bg);
+  }
+  .dmg-mock-arrow {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 28px;
+    color: var(--color-accent);
+    opacity: 0.6;
+  }
+  .dmg-mock-target {
+    width: 72px;
+    height: 72px;
+    border: 2px dashed var(--color-border);
+    clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 22px;
+    color: var(--color-text-dim);
+  }
+
+  /* Companion mock (Phase 2) */
+  .companion-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 8px;
+  }
+  .companion-mock {
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+    overflow: hidden;
+  }
+  .companion-mock-header {
+    padding: 10px 14px;
+    background: var(--color-bg-sunken);
+    border-bottom: 1px solid var(--color-border);
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Fira Code', monospace;
+    font-size: 11px;
+    color: var(--color-text-dim);
+  }
+  .companion-mock-body {
+    padding: 20px 22px;
+    font-family: 'Fira Code', monospace;
+    font-size: 13px;
+    line-height: 1.65;
+  }
+  .companion-name { color: var(--color-accent); margin-bottom: 4px; }
+  .companion-msg { color: var(--color-text); margin-bottom: 18px; }
+  .companion-q { color: var(--color-text-dim); margin-bottom: 4px; }
+  .companion-qlabel { color: var(--color-text); margin-bottom: 6px; }
+  .companion-opts {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+  .companion-opts span {
+    font-size: 11px;
+    padding: 5px 11px;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
+    clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px);
+  }
+  .companion-opt--active {
+    background: var(--color-accent) !important;
+    color: var(--color-bg) !important;
+    border-color: var(--color-accent) !important;
+  }
+  .companion-input {
+    border: 1px solid var(--color-border);
+    padding: 8px 12px;
+    background: var(--color-bg);
+    color: var(--color-text-secondary);
+    font-size: 12px;
+    clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px);
+  }
+  .companion-confirm {
+    margin-top: 18px;
+    padding: 10px 0;
+    border-top: 1px dotted var(--color-border);
+    color: var(--color-accent);
+    font-size: 11px;
+    letter-spacing: 0.8px;
+  }
+  .companion-narrative-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--color-accent);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .companion-steps {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .companion-steps li {
+    display: flex;
+    gap: 14px;
+    padding: 12px 0;
+    border-bottom: 1px dotted var(--color-border);
+  }
+  .companion-step-n {
+    flex: 0 0 26px;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 26px;
+    color: var(--color-accent);
+    line-height: 1;
+    opacity: 0.7;
+  }
+  .companion-steps strong {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 17px;
+    color: var(--color-text);
+  }
+  .companion-steps div {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    line-height: 1.45;
+  }
+
+  /* Phase 3: Action cards */
+  .actions-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-top: 8px;
+  }
+  .action-card {
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    padding: 20px 22px;
+    clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
+  }
+  .action-num {
+    font-family: 'Fira Code', monospace;
+    font-size: 10px;
+    color: var(--color-accent);
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+  .action-card h3 {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    margin: 0 0 10px;
+    line-height: 1.1;
+  }
+  .action-card p {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    margin: 0 0 14px;
+    line-height: 1.5;
+  }
+  .action-mini-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4px;
+    background: var(--color-bg-sunken);
+    border: 1px solid var(--color-border);
+    padding: 4px;
+    aspect-ratio: 3 / 1;
+  }
+  .action-mini-cell {
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fira Code', monospace;
+    font-size: 9px;
+    color: var(--color-text-dim);
+  }
+  .action-mini-cell--active {
+    background: var(--color-accent);
+    color: var(--color-bg);
+  }
+  .action-terminal {
+    margin-top: 12px;
+    padding: 8px 10px;
+    background: var(--color-terminal-bg);
+    font-family: 'Fira Code', monospace;
+    font-size: 11px;
+    color: var(--color-terminal-text);
+    line-height: 1.5;
+    border: 1px solid var(--color-border);
+  }
+  .action-sidebar-mock {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 4px;
+    aspect-ratio: 2 / 1;
+    background: var(--color-bg-sunken);
+    border: 1px solid var(--color-border);
+    padding: 4px;
+  }
+  .action-sidebar-left {
+    background: var(--color-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fira Code', monospace;
+    font-size: 9px;
+    color: var(--color-bg);
+  }
+  .action-sidebar-right {
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fira Code', monospace;
+    font-size: 9px;
+    color: var(--color-text-dim);
+  }
+
+  /* Outcome strip */
+  .outcome-strip {
+    margin-top: 28px;
+    padding: 18px 22px;
+    background: var(--color-bg-sunken);
+    border: 1px solid var(--color-border);
+    border-left: 3px solid var(--color-accent);
+  }
+  .outcome-label {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--color-accent);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .outcome-items {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+  }
+  .outcome-items span {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    color: var(--color-text);
+    line-height: 1.4;
+  }
+
+  /* Phase 4: Next step cards */
+  .nextstep-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 8px;
+  }
+  .nextstep-card {
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    padding: 22px 24px;
+    clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
+    position: relative;
+  }
+  .nextstep-guide {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    font-family: 'Fira Code', monospace;
+    font-size: 10px;
+    color: var(--color-text-dim);
+    letter-spacing: 1px;
+  }
+  .nextstep-tag {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    color: var(--color-accent);
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .nextstep-card h4 {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 28px;
+    margin: 0 0 10px;
+    letter-spacing: -0.2px;
+  }
+  .nextstep-card p {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 15px;
+    color: var(--color-text-secondary);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* Bottom CTA */
+  .install-bottom {
+    padding: 80px 0;
+    background: var(--color-bg-sunken);
+    border-top: 1px solid var(--color-border);
+  }
+  .install-bottom h2 {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 48px;
+    margin: 0 0 14px;
+    line-height: 1.05;
+  }
+  .install-bottom p {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 18px;
+    color: var(--color-text-secondary);
+    max-width: 640px;
+    line-height: 1.5;
+    margin: 0 0 28px;
+  }
+  .install-bottom-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .install-link {
+    font-family: 'Fira Code', monospace;
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--color-text-dim);
+    padding-bottom: 2px;
+    margin-left: 10px;
+  }
+  .install-link:hover { color: var(--color-accent); text-decoration: none; }
 
   @media (max-width: 768px) {
-    .install-page {
-      padding: 0 20px;
-    }
-
-    .install-hero {
-      padding: 80px 0 40px;
-    }
-
-    .install-phase {
-      padding: 40px 0;
-    }
-
-    .cm-terminal-body {
-      font-size: 12px;
-    }
+    .install-page { padding: 0 20px; }
+    .install-hero { padding: 80px 0 40px; }
+    .phase-strip { grid-template-columns: repeat(2, 1fr); }
+    .install-phase { padding: 40px 0; }
+    .dmg-flow-grid { grid-template-columns: 1fr; }
+    .companion-grid { grid-template-columns: 1fr; }
+    .actions-grid { grid-template-columns: 1fr; }
+    .nextstep-grid { grid-template-columns: 1fr; }
+    .outcome-items { grid-template-columns: repeat(2, 1fr); }
   }
 </style>

@@ -13,185 +13,342 @@ const lang = 'en';
 >
   <div class="install-page">
 
-    <!-- Hero -->
     <section class="install-hero">
-      <div class="cm-tag">{content.hero.kicker}</div>
-      <h1>{content.hero.title}</h1>
-      <p class="install-body">{content.hero.body}</p>
+      <div class="install-kicker">Get started</div>
+      <h1>From Mac to Cockpit.<br/><span class="accent">~20 minutes.</span> One-time.</h1>
+      <p class="install-hero-body">{content.hero.body}</p>
+
+      <div class="phase-strip">
+        {[
+          { n: '01', label: 'Installation', time: '~10 min' },
+          { n: '02', label: 'First Launch', time: '~5 min' },
+          { n: '03', label: 'First Result', time: '~5\u201310 min' },
+          { n: '04', label: 'Next Steps', time: 'whenever' },
+        ].map((p) => (
+          <div class="phase-strip-box">
+            <div class="phase-strip-num">PHASE {p.n}</div>
+            <div class="phase-strip-label">{p.label}</div>
+            <div class="phase-strip-time">{p.time}</div>
+          </div>
+        ))}
+      </div>
+
+      <div class="dmg-cta">
+        <a href="#" class="dmg-btn">&darr; cipher-mux-0.9.0.dmg</a>
+        <span class="dmg-meta">macOS &middot; Apple Silicon &middot; 142 MB &middot; SHA-256 verified</span>
+      </div>
+
+      <div class="disclosure-box">
+        <div class="disclosure-label">Honestly</div>
+        <p>Phase 1 requires terminal commands. Not because we think it's cool, but because Claude Code CLI is a prerequisite and doesn't install with a click. We'll walk you through step by step &mdash; copy/paste is enough.</p>
+      </div>
     </section>
 
-    <!-- Phase 01 -->
-    <section class="install-phase">
-      <div class="phase-marker">
-        <span class="phase-num">{content.phases[0].num}</span>
+    <section id="phase1" class="install-phase">
+      <div class="phase-header">
+        <span class="phase-header-num">01 &middot; Installation</span>
+        <span class="phase-time">~10 min &middot; one-time</span>
       </div>
-      <div class="cm-tag">{content.phases[0].kicker}</div>
       <h2>{content.phases[0].title}</h2>
       <p class="install-lead">{content.phases[0].lead}</p>
 
-      <!-- Terminal Mockup -->
-      <div class="cm-terminal">
-        <div class="cm-terminal-bar">
-          <span class="cm-terminal-dot" style="background: #FF5F57"></span>
-          <span class="cm-terminal-dot" style="background: #FEBC2E"></span>
-          <span class="cm-terminal-dot" style="background: #28C840"></span>
-          <span class="cm-terminal-title">Terminal</span>
+      <div class="step-block">
+        <div class="step-badge-row">
+          <div class="step-badge">A</div>
+          <div>
+            <h3>Install Claude Code CLI</h3>
+            <p class="step-desc">Prerequisite &mdash; nothing works without Claude Code. If you already have npm, it's a one-liner.</p>
+          </div>
         </div>
-        <div class="cm-terminal-body">
-          <code>$ npm install -g @anthropic-ai/claude-code</code>
-          <code>$ claude auth</code>
-          <code>$ git clone https://github.com/cmarkus42/cipher-mux-electron.git</code>
-          <code>$ cd cipher-mux-electron</code>
-          <code>$ npm install && npm run build && npm start</code>
+        <div class="cm-terminal">
+          <div class="cm-terminal-bar"><span class="cm-terminal-dot" style="background:#FF5F57"></span><span class="cm-terminal-dot" style="background:#FEBC2E"></span><span class="cm-terminal-dot" style="background:#28C840"></span><span class="cm-terminal-title">Terminal &middot; Spotlight &rarr; Terminal</span></div>
+          <div class="cm-terminal-body">
+            <div class="t-comment"># If you already have npm &mdash; go directly:</div>
+            <div class="t-cmd"><span class="t-prompt">$</span> npm install -g @anthropic-ai/claude-code</div>
+            <div class="t-spacer"></div>
+            <div class="t-comment"># Otherwise install Homebrew first:</div>
+            <div class="t-cmd"><span class="t-prompt">$</span> /bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot;</div>
+            <div class="t-out">=&gt; Installation successful!</div>
+            <div class="t-spacer"></div>
+            <div class="t-comment"># Then Node &mdash; includes npm:</div>
+            <div class="t-cmd"><span class="t-prompt">$</span> brew install node</div>
+            <div class="t-spacer"></div>
+            <div class="t-comment"># And now Claude Code:</div>
+            <div class="t-cmd"><span class="t-prompt">$</span> npm install -g @anthropic-ai/claude-code</div>
+            <div class="t-out">+ @anthropic-ai/claude-code@1.x.x</div>
+            <div class="t-spacer"></div>
+            <div class="t-comment"># Verify + first launch (browser login):</div>
+            <div class="t-cmd"><span class="t-prompt">$</span> claude --version</div>
+            <div class="t-out">claude-code 1.x.x</div>
+            <div class="t-cmd"><span class="t-prompt">$</span> claude</div>
+            <div class="t-out">&rarr; Browser opens, log in, tab closes.</div>
+            <div class="t-out">&rarr; CLI is authorized. Ctrl+C to quit.</div>
+          </div>
+        </div>
+        <div class="pitfall-card">
+          <div class="pitfall-label">&#9888; Pitfalls</div>
+          <ul>
+            <li>You need an Anthropic account (Free/Pro/Max). Create one at claude.ai before you start.</li>
+            <li>On first brew call, macOS installs Xcode Command Line Tools &mdash; that takes about 5 minutes. Patience.</li>
+            <li>If npm install -g throws a permission warning, retry with sudo: <code>sudo npm install -g @anthropic-ai/claude-code</code></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="step-block">
+        <div class="step-badge-row">
+          <div class="step-badge">B</div>
+          <div>
+            <h3>Install CIPHER-MUX</h3>
+            <p class="step-desc">Standard DMG flow. tmux is bundled &mdash; no more terminal needed.</p>
+          </div>
+        </div>
+        <div class="dmg-flow-grid">
+          <div class="dmg-steps-box">
+            <ol class="dmg-steps">
+              <li><span class="dmg-step-num">1</span><div><strong>Open DMG</strong><br/>Double-click cipher-mux-0.9.0.dmg</div></li>
+              <li><span class="dmg-step-num">2</span><div><strong>Drag to Applications</strong><br/>Standard macOS drag-and-drop</div></li>
+              <li><span class="dmg-step-num">3</span><div><strong>First launch: Right-click &rarr; Open</strong><br/>Gatekeeper for unsigned app. One-time only.</div></li>
+              <li><span class="dmg-step-num">4</span><div><strong>Grant permissions</strong><br/>Accessibility (for global shortcuts) &middot; optionally Microphone (for Voice)</div></li>
+            </ol>
+          </div>
+          <div class="dmg-mock">
+            <div class="dmg-mock-chrome"><span class="cm-terminal-dot" style="background:#FF5F57"></span><span class="cm-terminal-dot" style="background:#FEBC2E"></span><span class="cm-terminal-dot" style="background:#28C840"></span><span class="dmg-mock-title">cipher-mux-0.9.0</span></div>
+            <div class="dmg-mock-body"><div class="dmg-mock-icon">CM</div><div class="dmg-mock-arrow">&rarr;</div><div class="dmg-mock-target">A</div></div>
+          </div>
+        </div>
+        <div class="pitfall-card">
+          <div class="pitfall-label">&#9888; Pitfalls</div>
+          <ul>
+            <li>Gatekeeper blocks first launch &mdash; Right-click &rarr; Open &rarr; Confirm. Normal double-click after that.</li>
+            <li>Accessibility permission must be enabled in System Settings &rarr; Privacy.</li>
+            <li>tmux is bundled internally &mdash; no manual installation needed.</li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <!-- Phase 02 -->
-    <section class="install-phase">
-      <div class="phase-marker">
-        <span class="phase-num">{content.phases[1].num}</span>
+    <section id="phase2" class="install-phase">
+      <div class="phase-header">
+        <span class="phase-header-num">02 &middot; First Launch</span>
+        <span class="phase-time">~5 min</span>
       </div>
-      <div class="cm-tag">{content.phases[1].kicker}</div>
       <h2>{content.phases[1].title}</h2>
       <p class="install-lead">{content.phases[1].lead}</p>
+
+      <div class="companion-grid">
+        <div class="companion-mock">
+          <div class="companion-mock-header"><span><span class="accent">●</span> companion &middot; cell 1/1</span><span>wayne</span></div>
+          <div class="companion-mock-body">
+            <div class="companion-name">wayne &#9656;</div>
+            <div class="companion-msg">Hey! I'm your guide. Three quick questions, then we get going.</div>
+            <div class="companion-q"># Question 1</div>
+            <div class="companion-qlabel">Coding background?</div>
+            <div class="companion-opts"><span>None</span><span class="companion-opt--active">Some &#10003;</span><span>Lots</span></div>
+            <div class="companion-q"># Question 2</div>
+            <div class="companion-qlabel">AI experience?</div>
+            <div class="companion-opts"><span>Never</span><span>ChatGPT etc.</span><span class="companion-opt--active">Claude Code &#10003;</span></div>
+            <div class="companion-q"># Question 3</div>
+            <div class="companion-qlabel">What do you want to build?</div>
+            <div class="companion-input">Just exploring &mdash; maybe some notes tools_</div>
+            <div class="companion-confirm">&#10003; user-profile.json created</div>
+          </div>
+        </div>
+        <div class="companion-narrative">
+          <div class="companion-narrative-title">How it works</div>
+          <ol class="companion-steps">
+            <li><span class="companion-step-n">1</span><div><strong>App opens &rarr; empty grid</strong><br/>A 1&times;1 layout to start. No overwhelm.</div></li>
+            <li><span class="companion-step-n">2</span><div><strong>Companion cell pre-filled</strong><br/>Wayne &mdash; the companion persona &mdash; takes the first cell.</div></li>
+            <li><span class="companion-step-n">3</span><div><strong>Three quick questions</strong><br/>Coding experience, AI background, goals. Saves a profile.</div></li>
+            <li><span class="companion-step-n">4</span><div><strong>Language adapts</strong><br/>Companion now speaks at your level. No tech jargon without reason.</div></li>
+            <li><span class="companion-step-n">5</span><div><strong>Open first project</strong><br/>Enter path or use demo project. Claude Code starts in the cell.</div></li>
+          </ol>
+        </div>
+      </div>
     </section>
 
-    <!-- Phase 03 -->
-    <section class="install-phase">
-      <div class="phase-marker">
-        <span class="phase-num">{content.phases[2].num}</span>
+    <section id="phase3" class="install-phase">
+      <div class="phase-header">
+        <span class="phase-header-num">03 &middot; First Result</span>
+        <span class="phase-time">~5&ndash;10 min</span>
       </div>
-      <div class="cm-tag">{content.phases[2].kicker}</div>
       <h2>{content.phases[2].title}</h2>
       <p class="install-lead">{content.phases[2].lead}</p>
+
+      <div class="actions-grid">
+        <div class="action-card">
+          <div class="action-num">ACTION 01</div>
+          <h3>Type something</h3>
+          <p>Give Claude a simple task in the first cell. You'll see it work, output appears in the terminal.</p>
+          <div class="action-mini-grid"><div class="action-mini-cell action-mini-cell--active">CC &#9656;</div></div>
+          <div class="action-terminal"><span class="accent">&#8250;</span> Explain what's happening in this project</div>
+        </div>
+        <div class="action-card">
+          <div class="action-num">ACTION 02</div>
+          <h3>Second session</h3>
+          <p>Add column, open new session. Two parallel Claude cells. The core feature.</p>
+          <div class="action-mini-grid" style="grid-template-columns:1fr 1fr"><div class="action-mini-cell action-mini-cell--active">CC &#9656;</div><div class="action-mini-cell action-mini-cell--active">CC &#9656;</div></div>
+          <div class="action-terminal"><span class="dim"># Shortcut</span><br/><span class="accent">&#8984; + &rarr;</span> adds column to the right</div>
+        </div>
+        <div class="action-card">
+          <div class="action-num">ACTION 03</div>
+          <h3>Discover sidebar</h3>
+          <p>Open sidebar, notes tab, write first note. Memory lives here.</p>
+          <div class="action-sidebar-mock"><div class="action-sidebar-left">NOTES</div><div class="action-sidebar-right">CC &#9656;</div></div>
+          <div class="action-terminal"><span class="dim"># Shortcut</span><br/><span class="accent">&#8984; + B</span> toggles sidebar</div>
+        </div>
+      </div>
+
+      <div class="outcome-strip">
+        <div class="outcome-label">After these three actions you have</div>
+        <div class="outcome-items">
+          <span>&#10003; Claude Code running</span>
+          <span>&#10003; Two parallel sessions</span>
+          <span>&#10003; Grid &middot; Cells &middot; Focus understood</span>
+          <span>&#10003; Sidebar + Notes found</span>
+        </div>
+      </div>
     </section>
 
-    <!-- Bottom CTA -->
-    <div class="install-cta">
-      <a href="https://github.com/cmarkus42/cipher-mux-electron" class="cm-btn cm-btn--primary" target="_blank">GitHub Repository</a>
-    </div>
+    <section id="phase4" class="install-phase">
+      <div class="phase-header">
+        <span class="phase-header-num">04 &middot; Next Steps</span>
+        <span class="phase-time">whenever</span>
+      </div>
+      <h2>Wayne suggests &mdash; you choose</h2>
+      <p class="install-lead">Depending on your skill level, the companion has different next steps. No pressure &mdash; you can also just go for it.</p>
+
+      <div class="nextstep-grid">
+        <div class="nextstep-card"><span class="nextstep-guide">Guide 02</span><div class="nextstep-tag">Beginner</div><h4>Voice + Notes</h4><p>Tomorrow I'll show you Voice Input and how to use Notes as a second brain.</p></div>
+        <div class="nextstep-card"><span class="nextstep-guide">Guide 03</span><div class="nextstep-tag">Intermediate</div><h4>Orchestrator</h4><p>If you want, I'll show you the Orchestrator &mdash; how multiple sessions work together.</p></div>
+        <div class="nextstep-card"><span class="nextstep-guide">Guide 03 + 05</span><div class="nextstep-tag">Power User</div><h4>MPO + Prompting</h4><p>You know what you're doing. Orchestration and prompt design if you want to go deeper.</p></div>
+      </div>
+    </section>
+
+    <section class="install-bottom">
+      <h2>Ready? <span class="accent">Download it.</span></h2>
+      <p>Apple Silicon recommended. Intel Macs work &mdash; without Ollama integration. Linux &amp; Windows: coming.</p>
+      <div class="install-bottom-actions">
+        <a href="#" class="dmg-btn">&darr; DMG &middot; Apple Silicon</a>
+        <a href="#" class="dmg-btn dmg-btn--outline">&darr; DMG &middot; Intel (no Ollama)</a>
+        <a href="https://github.com/cmarkus42/cipher-mux-electron" class="install-link">github / cipher-mux &#8599;</a>
+        <a href={`/${lang}/docs`} class="install-link">docs &#8599;</a>
+      </div>
+    </section>
 
   </div>
 </Layout>
 
 <style>
-  .install-page {
-    max-width: var(--max-width);
-    margin: 0 auto;
-    padding: 0 64px;
-  }
-
-  .install-hero {
-    padding: 120px 0 48px;
-  }
-
-  .install-hero h1 {
-    font-family: 'Rajdhani', sans-serif;
-    font-weight: 700;
-    font-size: clamp(38px, 4vw, 48px);
-    line-height: 1.05;
-    margin: 14px 0;
-  }
-
-  .install-body,
-  .install-lead {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 18px;
-    line-height: 1.5;
-    color: var(--color-text-secondary);
-    max-width: 720px;
-  }
-
-  .install-phase {
-    padding: 88px 0;
-    border-top: 1px solid var(--color-border);
-  }
-
-  .install-phase h2 {
-    font-family: 'Rajdhani', sans-serif;
-    font-weight: 700;
-    font-size: 32px;
-    margin: 14px 0;
-  }
-
-  .phase-marker {
-    margin-bottom: 16px;
-  }
-
-  .phase-num {
-    font-family: 'Rajdhani', sans-serif;
-    font-weight: 700;
-    font-size: 48px;
-    color: var(--color-accent);
-    opacity: 0.3;
-  }
-
-  /* Terminal */
-  .cm-terminal {
-    margin: 32px 0;
-    border: 1px solid var(--color-border);
-    clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
-    overflow: hidden;
-  }
-
-  .cm-terminal-bar {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    padding: 8px 14px;
-    background: var(--color-terminal-chrome, #0F0F11);
-  }
-
-  .cm-terminal-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    display: inline-block;
-  }
-
-  .cm-terminal-title {
-    font-family: 'Fira Code', monospace;
-    font-size: 11px;
-    color: var(--color-text-dim);
-    margin-left: 8px;
-  }
-
-  .cm-terminal-body {
-    background: var(--color-terminal-bg, #1A1A1D);
-    padding: 20px;
-    font-family: 'Fira Code', monospace;
-    font-size: 13px;
-    line-height: 2;
-    color: var(--color-terminal-text, #E8E5DC);
-    overflow-x: auto;
-  }
-
-  .cm-terminal-body code {
-    display: block;
-  }
-
-  /* CTA */
-  .install-cta {
-    padding: 48px 0;
-    text-align: center;
-  }
-
-  @media (max-width: 768px) {
-    .install-page {
-      padding: 0 20px;
-    }
-
-    .install-hero {
-      padding: 80px 0 40px;
-    }
-
-    .install-phase {
-      padding: 40px 0;
-    }
-
-    .cm-terminal-body {
-      font-size: 12px;
-    }
-  }
+  .install-page { max-width: var(--max-width); margin: 0 auto; padding: 0 64px; }
+  .accent { color: var(--color-accent); }
+  .dim { color: var(--color-text-dim); }
+  .install-hero { padding: 120px 0 48px; border-bottom: 1px solid var(--color-border); }
+  .install-kicker { font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 3px; text-transform: uppercase; color: var(--color-accent); margin-bottom: 18px; }
+  .install-hero h1 { font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: clamp(48px, 6vw, 76px); line-height: 0.98; letter-spacing: -1px; margin: 0 0 28px; }
+  .install-hero-body { font-family: 'Rajdhani', sans-serif; font-size: 20px; line-height: 1.4; color: var(--color-text-secondary); max-width: 760px; margin: 0 0 36px; }
+  .phase-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; max-width: 920px; margin-top: 8px; }
+  .phase-strip-box { background: var(--color-bg-elevated); border: 1px solid var(--color-border); padding: 14px 14px 12px; clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px); }
+  .phase-strip-num { font-family: 'Fira Code', monospace; font-size: 10px; color: var(--color-text-dim); letter-spacing: 1.5px; margin-bottom: 6px; }
+  .phase-strip-label { font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 18px; color: var(--color-text); margin-bottom: 4px; }
+  .phase-strip-time { font-family: 'Fira Code', monospace; font-size: 11px; color: var(--color-accent); letter-spacing: 0.8px; }
+  .dmg-cta { display: flex; align-items: center; gap: 18px; margin-top: 36px; flex-wrap: wrap; }
+  .dmg-btn { background: var(--color-accent); color: var(--color-bg); font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 15px; letter-spacing: 2px; text-transform: uppercase; padding: 14px 22px; display: inline-block; text-decoration: none; clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px); }
+  .dmg-btn:hover { text-decoration: none; opacity: 0.9; }
+  .dmg-btn--outline { background: transparent; color: var(--color-text); border: 1px solid var(--color-border); }
+  .dmg-meta { font-family: 'Fira Code', monospace; font-size: 12px; color: var(--color-text-dim); letter-spacing: 0.8px; }
+  .disclosure-box { margin-top: 28px; padding: 14px 18px; background: var(--color-bg-sunken); border: 1px solid var(--color-border); border-left: 3px solid var(--color-accent); max-width: 720px; }
+  .disclosure-label { font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 13px; color: var(--color-accent); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; }
+  .disclosure-box p { font-family: 'Rajdhani', sans-serif; font-size: 16px; color: var(--color-text-secondary); line-height: 1.45; margin: 0; }
+  .install-phase { padding: 88px 0; border-bottom: 1px solid var(--color-border); }
+  .phase-header { display: flex; align-items: baseline; gap: 16px; margin-bottom: 10px; }
+  .phase-header-num { font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 14px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--color-accent); }
+  .phase-time { font-family: 'Fira Code', monospace; font-size: 11px; color: var(--color-text-dim); letter-spacing: 1px; border: 1px solid var(--color-border); padding: 2px 8px; clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px); }
+  .install-phase h2 { font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: clamp(32px, 4vw, 48px); margin: 0 0 16px; line-height: 1.05; }
+  .install-lead { font-family: 'Rajdhani', sans-serif; font-size: 18px; color: var(--color-text-secondary); max-width: 780px; line-height: 1.45; margin: 0 0 32px; }
+  .step-block { margin-bottom: 36px; }
+  .step-badge-row { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 14px; }
+  .step-badge { flex: 0 0 44px; height: 44px; background: var(--color-accent); color: var(--color-bg); font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 22px; display: flex; align-items: center; justify-content: center; clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px); }
+  .step-block h3 { font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 26px; margin: 0 0 6px; line-height: 1.1; }
+  .step-desc { font-family: 'Rajdhani', sans-serif; font-size: 16px; color: var(--color-text-secondary); margin: 0; line-height: 1.45; max-width: 720px; }
+  .cm-terminal { margin: 14px 0; border: 1px solid var(--color-border); clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px); overflow: hidden; }
+  .cm-terminal-bar { display: flex; align-items: center; gap: 6px; padding: 8px 14px; background: var(--color-terminal-chrome); border-bottom: 1px solid var(--color-border); }
+  .cm-terminal-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+  .cm-terminal-title { font-family: 'Fira Code', monospace; font-size: 11px; color: var(--color-text-dim); margin-left: 8px; }
+  .cm-terminal-body { background: var(--color-terminal-bg); padding: 14px 18px; font-family: 'Fira Code', monospace; font-size: 13px; line-height: 1.7; color: var(--color-terminal-text); overflow-x: auto; }
+  .t-comment { color: var(--color-text-dim); font-style: italic; }
+  .t-cmd { color: var(--color-terminal-text); }
+  .t-prompt { color: var(--color-accent); }
+  .t-out { color: var(--color-text-dim); }
+  .t-spacer { height: 6px; }
+  .pitfall-card { border: 1px solid var(--color-border); background: var(--color-bg-sunken); padding: 16px 18px; margin: 14px 0 0; clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px); }
+  .pitfall-label { font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 12px; color: var(--color-warn); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
+  .pitfall-card ul { margin: 0; padding: 0; list-style: none; }
+  .pitfall-card li { font-family: 'Rajdhani', sans-serif; font-size: 15px; color: var(--color-text-secondary); line-height: 1.5; padding: 6px 0; border-top: 1px dotted var(--color-border); }
+  .pitfall-card li:first-child { border-top: none; }
+  .pitfall-card li::before { content: '\203A '; color: var(--color-accent); font-family: 'Fira Code', monospace; font-size: 12px; }
+  .pitfall-card code { font-family: 'Fira Code', monospace; font-size: 12px; color: var(--color-text); }
+  .dmg-flow-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 18px; align-items: start; }
+  .dmg-steps-box { background: var(--color-bg-elevated); border: 1px solid var(--color-border); padding: 18px 20px; clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px); }
+  .dmg-steps { margin: 0; padding: 0; list-style: none; }
+  .dmg-steps li { display: flex; gap: 14px; padding: 10px 0; border-top: 1px dotted var(--color-border); }
+  .dmg-steps li:first-child { border-top: none; }
+  .dmg-step-num { flex: 0 0 28px; height: 28px; border: 1.5px solid var(--color-accent); color: var(--color-accent); font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 14px; display: flex; align-items: center; justify-content: center; clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px); }
+  .dmg-steps strong { font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 16px; color: var(--color-text); }
+  .dmg-steps div { font-family: 'Rajdhani', sans-serif; font-size: 14px; color: var(--color-text-secondary); line-height: 1.4; }
+  .dmg-mock { background: var(--color-terminal-bg); border: 1px solid var(--color-border); clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px); overflow: hidden; }
+  .dmg-mock-chrome { padding: 8px 12px; background: var(--color-terminal-chrome); border-bottom: 1px solid var(--color-border); display: flex; align-items: center; gap: 5px; }
+  .dmg-mock-title { font-family: 'Fira Code', monospace; font-size: 11px; color: var(--color-text-dim); margin-left: 10px; }
+  .dmg-mock-body { padding: 36px 24px; display: flex; align-items: center; justify-content: space-around; }
+  .dmg-mock-icon { width: 72px; height: 72px; background: var(--color-accent); clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px); display: flex; align-items: center; justify-content: center; font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 26px; color: var(--color-bg); }
+  .dmg-mock-arrow { font-family: 'Rajdhani', sans-serif; font-size: 28px; color: var(--color-accent); opacity: 0.6; }
+  .dmg-mock-target { width: 72px; height: 72px; border: 2px dashed var(--color-border); clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px); display: flex; align-items: center; justify-content: center; font-family: 'Rajdhani', sans-serif; font-size: 22px; color: var(--color-text-dim); }
+  .companion-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 8px; }
+  .companion-mock { background: var(--color-bg-elevated); border: 1px solid var(--color-border); clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px); overflow: hidden; }
+  .companion-mock-header { padding: 10px 14px; background: var(--color-bg-sunken); border-bottom: 1px solid var(--color-border); display: flex; justify-content: space-between; font-family: 'Fira Code', monospace; font-size: 11px; color: var(--color-text-dim); }
+  .companion-mock-body { padding: 20px 22px; font-family: 'Fira Code', monospace; font-size: 13px; line-height: 1.65; }
+  .companion-name { color: var(--color-accent); margin-bottom: 4px; }
+  .companion-msg { color: var(--color-text); margin-bottom: 18px; }
+  .companion-q { color: var(--color-text-dim); margin-bottom: 4px; }
+  .companion-qlabel { color: var(--color-text); margin-bottom: 6px; }
+  .companion-opts { display: flex; gap: 6px; margin-bottom: 16px; flex-wrap: wrap; }
+  .companion-opts span { font-size: 11px; padding: 5px 11px; border: 1px solid var(--color-border); color: var(--color-text-secondary); clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px); }
+  .companion-opt--active { background: var(--color-accent) !important; color: var(--color-bg) !important; border-color: var(--color-accent) !important; }
+  .companion-input { border: 1px solid var(--color-border); padding: 8px 12px; background: var(--color-bg); color: var(--color-text-secondary); font-size: 12px; clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px); }
+  .companion-confirm { margin-top: 18px; padding: 10px 0; border-top: 1px dotted var(--color-border); color: var(--color-accent); font-size: 11px; letter-spacing: 0.8px; }
+  .companion-narrative-title { font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 14px; color: var(--color-accent); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; }
+  .companion-steps { margin: 0; padding: 0; list-style: none; }
+  .companion-steps li { display: flex; gap: 14px; padding: 12px 0; border-bottom: 1px dotted var(--color-border); }
+  .companion-step-n { flex: 0 0 26px; font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 26px; color: var(--color-accent); line-height: 1; opacity: 0.7; }
+  .companion-steps strong { font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 17px; color: var(--color-text); }
+  .companion-steps div { font-family: 'Rajdhani', sans-serif; font-size: 14px; color: var(--color-text-secondary); line-height: 1.45; }
+  .actions-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 8px; }
+  .action-card { background: var(--color-bg-elevated); border: 1px solid var(--color-border); padding: 20px 22px; clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px); }
+  .action-num { font-family: 'Fira Code', monospace; font-size: 10px; color: var(--color-accent); letter-spacing: 2px; margin-bottom: 8px; }
+  .action-card h3 { font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 22px; margin: 0 0 10px; line-height: 1.1; }
+  .action-card p { font-family: 'Rajdhani', sans-serif; font-size: 14px; color: var(--color-text-secondary); margin: 0 0 14px; line-height: 1.5; }
+  .action-mini-grid { display: grid; grid-template-columns: 1fr; gap: 4px; background: var(--color-bg-sunken); border: 1px solid var(--color-border); padding: 4px; aspect-ratio: 3 / 1; }
+  .action-mini-cell { background: var(--color-bg-elevated); border: 1px solid var(--color-border); display: flex; align-items: center; justify-content: center; font-family: 'Fira Code', monospace; font-size: 9px; color: var(--color-text-dim); }
+  .action-mini-cell--active { background: var(--color-accent); color: var(--color-bg); }
+  .action-terminal { margin-top: 12px; padding: 8px 10px; background: var(--color-terminal-bg); font-family: 'Fira Code', monospace; font-size: 11px; color: var(--color-terminal-text); line-height: 1.5; border: 1px solid var(--color-border); }
+  .action-sidebar-mock { display: grid; grid-template-columns: 1fr 2fr; gap: 4px; aspect-ratio: 2 / 1; background: var(--color-bg-sunken); border: 1px solid var(--color-border); padding: 4px; }
+  .action-sidebar-left { background: var(--color-accent); display: flex; align-items: center; justify-content: center; font-family: 'Fira Code', monospace; font-size: 9px; color: var(--color-bg); }
+  .action-sidebar-right { background: var(--color-bg-elevated); border: 1px solid var(--color-border); display: flex; align-items: center; justify-content: center; font-family: 'Fira Code', monospace; font-size: 9px; color: var(--color-text-dim); }
+  .outcome-strip { margin-top: 28px; padding: 18px 22px; background: var(--color-bg-sunken); border: 1px solid var(--color-border); border-left: 3px solid var(--color-accent); }
+  .outcome-label { font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 13px; color: var(--color-accent); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
+  .outcome-items { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .outcome-items span { font-family: 'Rajdhani', sans-serif; font-weight: 500; font-size: 15px; color: var(--color-text); line-height: 1.4; }
+  .nextstep-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 8px; }
+  .nextstep-card { background: var(--color-bg-elevated); border: 1px solid var(--color-border); padding: 22px 24px; clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px); position: relative; }
+  .nextstep-guide { position: absolute; top: 14px; right: 16px; font-family: 'Fira Code', monospace; font-size: 10px; color: var(--color-text-dim); letter-spacing: 1px; }
+  .nextstep-tag { font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 11px; color: var(--color-accent); letter-spacing: 2.5px; text-transform: uppercase; margin-bottom: 10px; }
+  .nextstep-card h4 { font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 28px; margin: 0 0 10px; letter-spacing: -0.2px; }
+  .nextstep-card p { font-family: 'Rajdhani', sans-serif; font-size: 15px; color: var(--color-text-secondary); margin: 0; line-height: 1.5; }
+  .install-bottom { padding: 80px 0; background: var(--color-bg-sunken); border-top: 1px solid var(--color-border); }
+  .install-bottom h2 { font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 48px; margin: 0 0 14px; line-height: 1.05; }
+  .install-bottom p { font-family: 'Rajdhani', sans-serif; font-size: 18px; color: var(--color-text-secondary); max-width: 640px; line-height: 1.5; margin: 0 0 28px; }
+  .install-bottom-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .install-link { font-family: 'Fira Code', monospace; font-size: 13px; color: var(--color-text-secondary); text-decoration: none; border-bottom: 1px dotted var(--color-text-dim); padding-bottom: 2px; margin-left: 10px; }
+  .install-link:hover { color: var(--color-accent); text-decoration: none; }
+  @media (max-width: 768px) { .install-page { padding: 0 20px; } .install-hero { padding: 80px 0 40px; } .phase-strip { grid-template-columns: repeat(2, 1fr); } .install-phase { padding: 40px 0; } .dmg-flow-grid { grid-template-columns: 1fr; } .companion-grid { grid-template-columns: 1fr; } .actions-grid { grid-template-columns: 1fr; } .nextstep-grid { grid-template-columns: 1fr; } .outcome-items { grid-template-columns: repeat(2, 1fr); } }
 </style>
