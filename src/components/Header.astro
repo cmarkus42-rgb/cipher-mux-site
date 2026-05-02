@@ -1,0 +1,89 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+---
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/cipher-mux-site/" class="wordmark" aria-label="CIPHER-MUX home">CIPHER-MUX</a>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="/cipher-mux-site/features" class="nav-link">Features</a>
+      <a href="/cipher-mux-site/start" class="nav-link">Download</a>
+      <a href="/cipher-mux-site/community" class="nav-link">Community</a>
+      <ThemeToggle />
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 48px;
+    background: var(--color-bg-elevated);
+    border-bottom: 1px solid var(--color-border);
+    z-index: 100;
+  }
+
+  .header-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 var(--space-2xl);
+  }
+
+  .wordmark {
+    font-family: 'Rajdhani', Impact, 'Arial Narrow', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  .wordmark:hover {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xl);
+  }
+
+  .nav-link {
+    font-family: 'Fira Code', monospace;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    transition: color var(--transition-base);
+  }
+
+  .nav-link:hover {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  @media (max-width: 480px) {
+    .header-inner {
+      padding: 0 var(--space-lg);
+    }
+
+    .nav {
+      gap: var(--space-md);
+    }
+
+    .nav-link {
+      font-size: 11px;
+      letter-spacing: 1px;
+    }
+  }
+</style>
