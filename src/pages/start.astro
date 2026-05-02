@@ -1,0 +1,360 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Download & Install — CIPHER-MUX"
+  description="CIPHER-MUX installieren: Voraussetzungen, Anleitung, erste Schritte."
+>
+  <!-- Hero -->
+  <div class="start-hero">
+    <div class="section">
+      <span class="label-tag">Loslegen</span>
+      <h1>Loslegen.</h1>
+    </div>
+  </div>
+
+  <!-- 1. Voraussetzungen -->
+  <section class="section">
+    <h2>Voraussetzungen</h2>
+    <p class="section-sub">Bevor du CIPHER-MUX startest: sicherstellen dass diese Tools vorhanden sind.</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Was</th>
+            <th>Pruefen</th>
+            <th>Installieren</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>macOS 12+</td>
+            <td><code>sw_vers</code></td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td>Homebrew</td>
+            <td><code>brew --version</code></td>
+            <td><a href="https://brew.sh" target="_blank" rel="noopener">brew.sh</a></td>
+          </tr>
+          <tr>
+            <td>tmux</td>
+            <td><code>tmux -V</code></td>
+            <td><code>brew install tmux</code></td>
+          </tr>
+          <tr>
+            <td>Node.js 20+</td>
+            <td><code>node --version</code></td>
+            <td><code>brew install node</code></td>
+          </tr>
+          <tr>
+            <td>Claude Code CLI</td>
+            <td><code>claude --version</code></td>
+            <td><code>npm install -g @anthropic-ai/claude-code</code></td>
+          </tr>
+          <tr>
+            <td>Anthropic Account</td>
+            <td>—</td>
+            <td><a href="https://anthropic.com" target="_blank" rel="noopener">anthropic.com</a> — Max-Abo (20$/Monat) empfohlen</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 2. Installation -->
+  <section class="section section--border-top">
+    <h2>Installation</h2>
+    <pre class="code-block"><code>git clone https://github.com/cmarkus42/cipher-mux-electron.git
+cd cipher-mux-electron
+npm install
+npm run build
+npm start</code></pre>
+    <p class="note">Voice Features erfordern einen Whisper-Model-Download beim ersten Start. Voice ist optional — CIPHER-MUX funktioniert vollstaendig ohne.</p>
+  </section>
+
+  <!-- 3. Erster Start -->
+  <section class="section section--border-top">
+    <h2>Erster Start</h2>
+    <ol class="step-list">
+      <li>tmux initialisiert sich. Du siehst das Grid mit leeren Zellen.</li>
+      <li>Klick auf "Projekt" → Popup scannt deine Verzeichnisse. Projekt auswaehlen.</li>
+      <li>Zweite Zelle: Noch ein Projekt, oder "Session" fuer eine freie Claude-Session.</li>
+      <li>Sidebar entdecken. <code>Cmd+B</code>. Fuenf Tabs: Messages, Background, Input Requests, Notes, Companion Memory.</li>
+      <li>Optional: Orchestrator-Button fuer koordinierte Multi-Agent-Arbeit.</li>
+    </ol>
+  </section>
+
+  <!-- 4. Tipp -->
+  <section class="section section--border-top">
+    <h2>Tipp</h2>
+    <p class="tipp-text">Wenn du zum ersten Mal mit CIPHER-MUX arbeitest: Oeffne den Companion. Er kennt alle Features und passt Erklaerungen an deinen Level an.</p>
+  </section>
+
+  <!-- 5. Erster Workflow -->
+  <section class="section section--border-top">
+    <h2>Erster Workflow</h2>
+    <ol class="step-list">
+      <li>Oeffne ein Projekt</li>
+      <li>Prompt: <code>"Lies die Projektstruktur und erklaer mir was hier passiert"</code></li>
+      <li>Claude analysiert und gibt dir einen Ueberblick</li>
+      <li>Folge-Prompt: <code>"Aender die Hintergrundfarbe der Startseite auf Dunkelblau"</code></li>
+      <li>Du siehst den Diff — annehmen oder ablehnen</li>
+    </ol>
+  </section>
+
+  <!-- 6. Troubleshooting -->
+  <section class="section section--border-top">
+    <h2>Troubleshooting</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Problem</th>
+            <th>Loesung</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>"Claude Code not found"</td>
+            <td>CLI nicht im PATH. <code>claude auth</code> im Terminal.</td>
+          </tr>
+          <tr>
+            <td>"tmux not found"</td>
+            <td><code>brew install tmux</code>, neu starten.</td>
+          </tr>
+          <tr>
+            <td>Voice funktioniert nicht</td>
+            <td>Optional — CIPHER-MUX laeuft ohne.</td>
+          </tr>
+          <tr>
+            <td>Session reagiert nicht</td>
+            <td>Zelle schliessen, neue Session.</td>
+          </tr>
+          <tr>
+            <td>Kontext voll (rot)</td>
+            <td><code>/clear</code> oder neue Session.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 7. Settings -->
+  <section class="section section--border-top">
+    <h2>Settings</h2>
+    <ul class="settings-list">
+      <li><strong>Scan Paths</strong> — Wo CIPHER-MUX nach Projekten sucht</li>
+      <li><strong>Agent Settings</strong> — Skip Permissions (fuer erfahrene User)</li>
+      <li><strong>Theme</strong> — 10 zur Auswahl. Empfehlung: cipher-dark oder high-contrast.</li>
+    </ul>
+  </section>
+
+  <!-- Bottom CTA -->
+  <section class="section section--border-top">
+    <div class="bottom-cta">
+      <a href="/cipher-mux-site/community" class="btn btn--primary">Community</a>
+      <a href="/cipher-mux-site/" class="btn">Zurueck zur Startseite</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* Hero */
+  .start-hero {
+    padding-top: 48px;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .start-hero .section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    padding-bottom: var(--space-3xl);
+  }
+
+  /* Section subtitle */
+  .section-sub {
+    font-size: 13px;
+    color: var(--color-text-dim);
+    margin-top: var(--space-sm);
+    margin-bottom: var(--space-xl);
+  }
+
+  /* Section separator */
+  .section--border-top {
+    border-top: 1px solid var(--color-border);
+  }
+
+  .section h2 {
+    margin-bottom: var(--space-xl);
+  }
+
+  /* Table */
+  .table-wrap {
+    overflow-x: auto;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  th,
+  td {
+    text-align: left;
+    padding: 8px 16px;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+
+  th {
+    font-family: 'Rajdhani', Impact, 'Arial Narrow', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--color-text-dim);
+    background: var(--color-bg-sunken);
+  }
+
+  td code {
+    font-family: 'Fira Code', monospace;
+    font-size: 12px;
+    background: var(--color-bg-sunken);
+    padding: 2px 6px;
+    color: var(--color-accent);
+  }
+
+  /* Code block */
+  .code-block {
+    background: var(--color-bg-sunken);
+    padding: 24px;
+    border-left: 3px solid var(--color-accent);
+    overflow-x: auto;
+    margin-bottom: var(--space-xl);
+  }
+
+  .code-block code {
+    font-family: 'Fira Code', monospace;
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+    white-space: pre;
+  }
+
+  /* Note below code block */
+  .note {
+    font-size: 12px;
+    color: var(--color-text-dim);
+    border-left: 2px solid var(--color-border);
+    padding-left: var(--space-lg);
+  }
+
+  /* Tipp */
+  .tipp-text {
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+    border-left: 3px solid var(--color-accent);
+    padding-left: var(--space-xl);
+    max-width: 640px;
+  }
+
+  /* Numbered step list with accent counters */
+  .step-list {
+    list-style: none;
+    counter-reset: steps;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    max-width: 720px;
+  }
+
+  .step-list li {
+    counter-increment: steps;
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-lg);
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+  }
+
+  .step-list li::before {
+    content: counter(steps);
+    font-family: 'Fira Code', monospace;
+    font-size: 11px;
+    color: var(--color-accent);
+    min-width: 20px;
+    text-align: right;
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+
+  .step-list li code {
+    font-family: 'Fira Code', monospace;
+    font-size: 12px;
+    background: var(--color-bg-sunken);
+    padding: 2px 6px;
+    color: var(--color-accent);
+  }
+
+  /* Settings list */
+  .settings-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    max-width: 640px;
+  }
+
+  .settings-list li {
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    display: flex;
+    gap: var(--space-sm);
+    align-items: baseline;
+  }
+
+  .settings-list li::before {
+    content: '>';
+    font-family: 'Fira Code', monospace;
+    font-size: 12px;
+    color: var(--color-accent);
+    flex-shrink: 0;
+  }
+
+  .settings-list strong {
+    color: var(--color-text);
+    font-weight: 500;
+  }
+
+  /* Bottom CTA */
+  .bottom-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    th,
+    td {
+      padding: 6px 10px;
+      font-size: 12px;
+    }
+
+    .code-block {
+      padding: 16px;
+    }
+
+    .step-list li {
+      gap: var(--space-md);
+    }
+  }
+</style>
