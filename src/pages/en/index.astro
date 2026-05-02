@@ -1,0 +1,148 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PixelGrid from '../../components/PixelGrid.astro';
+import content from '../../i18n/en/landing';
+
+const lang = 'en';
+
+const pillarAnchors = ['presets', 'resolution', 'sessions', 'voice'];
+
+const schema = JSON.stringify([
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "CIPHER-MUX",
+    "url": "https://cmarkus42.github.io/cipher-mux-site"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "CIPHER-MUX",
+    "operatingSystem": "macOS",
+    "applicationCategory": "DeveloperApplication",
+    "license": "https://opensource.org/licenses/MIT",
+    "url": "https://github.com/cmarkus42/cipher-mux-electron"
+  }
+]);
+---
+
+<Layout
+  title="CIPHER-MUX"
+  description={content.hero.subtext}
+  lang={lang}
+  active="landing"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={schema} />
+  </Fragment>
+
+  <!-- Hero -->
+  <section class="cm-hero">
+    <div class="cm-grid-bg"></div>
+    <PixelGrid />
+    <span class="cm-label-tag">{content.hero.label}</span>
+    <h1 class="cm-tagline">
+      {content.hero.tagline}<br />{content.hero.taglineSub}
+    </h1>
+    <p class="cm-hero-sub" set:html={content.hero.subtext.replace('CIPHER-MUX', '<strong>CIPHER-MUX</strong>')} />
+    <div class="cm-hero-buttons">
+      {content.hero.buttons.map((btn) => (
+        <a
+          href={btn.href}
+          class={btn.primary ? 'cm-btn cm-btn--primary' : 'cm-btn'}
+          {...(btn.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+        >
+          {btn.label}
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- Pillars -->
+  <section class="cm-pillars">
+    {content.pillars.map((pillar, i) => (
+      <div class="cm-pillar">
+        <h3>{pillar.title}</h3>
+        <p>{pillar.description}</p>
+        <a class="cm-pillar-link" href={`/${lang}/features#${pillarAnchors[i]}`}>
+          Details
+        </a>
+      </div>
+    ))}
+  </section>
+
+  <!-- Not-Section -->
+  <section class="cm-not">
+    <h3>{content.notSection.title}</h3>
+    <ul>
+      {content.notSection.items.map((item) => (
+        <li>{item}</li>
+      ))}
+    </ul>
+  </section>
+
+  <!-- Bottom CTA -->
+  <div class="cm-cta-row">
+    <a href="/en/start" class="cm-btn cm-btn--primary">Download</a>
+    <a href="/en/features" class="cm-btn">Features</a>
+    <a href="https://github.com/cmarkus42/cipher-mux-electron" class="cm-btn" target="_blank" rel="noopener noreferrer">GitHub</a>
+  </div>
+</Layout>
+
+<style>
+  .cm-hero {
+    position: relative;
+    min-height: 460px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 72px 32px 48px;
+    gap: 18px;
+  }
+
+  .cm-hero > :not(.cm-grid-bg) {
+    position: relative;
+  }
+
+  .cm-hero-sub {
+    font-size: 14px;
+    max-width: 580px;
+    line-height: 1.85;
+    color: var(--color-text-secondary);
+  }
+
+  .cm-hero-buttons {
+    position: relative;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 8px;
+  }
+
+  .cm-cta-row {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 48px 32px 72px;
+  }
+
+  @media (max-width: 768px) {
+    .cm-hero {
+      padding: 48px 20px 36px;
+      min-height: 360px;
+    }
+    .cm-hero-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+    .cm-cta-row {
+      flex-direction: column;
+      align-items: center;
+      padding: 36px 20px 56px;
+    }
+  }
+</style>
