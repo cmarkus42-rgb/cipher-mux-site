@@ -1,0 +1,95 @@
+---
+const sections = [
+  { id: 'bauen', label: 'Bauen' },
+  { id: 'prozess', label: 'Prozess' },
+  { id: 'transparent', label: 'Transparent' },
+  { id: 'zugaenglich', label: 'Zugaenglich' },
+  { id: 'orchestrierung', label: 'Orchestrierung' },
+  { id: 'lokal', label: 'Lokal' },
+];
+---
+
+<nav class="scroll-nav" aria-label="Feature sections">
+  <ul>
+    {sections.map((s) => (
+      <li>
+        <a href={`#${s.id}`} class="scroll-nav-link" data-target={s.id}>{s.label}</a>
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const links = document.querySelectorAll<HTMLAnchorElement>('.scroll-nav-link');
+    const sectionIds = Array.from(links).map(l => l.dataset.target!);
+    const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean) as HTMLElement[];
+
+    if (sections.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const link = document.querySelector<HTMLAnchorElement>(
+            `.scroll-nav-link[data-target="${entry.target.id}"]`
+          );
+          if (!link) return;
+          if (entry.isIntersecting) {
+            links.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+          }
+        });
+      },
+      {
+        rootMargin: '-30% 0px -60% 0px',
+        threshold: 0,
+      }
+    );
+
+    sections.forEach(s => observer.observe(s));
+  });
+</script>
+
+<style>
+  .scroll-nav {
+    position: fixed;
+    right: var(--space-lg);
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 50;
+  }
+
+  ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    align-items: flex-end;
+  }
+
+  .scroll-nav-link {
+    font-family: 'Fira Code', monospace;
+    font-size: 9px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--color-text-dim);
+    text-decoration: none;
+    transition: color var(--transition-base);
+    padding: 2px 0;
+  }
+
+  .scroll-nav-link:hover {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+  }
+
+  .scroll-nav-link.active {
+    color: var(--color-accent);
+  }
+
+  @media (max-width: 1024px) {
+    .scroll-nav {
+      display: none;
+    }
+  }
+</style>
