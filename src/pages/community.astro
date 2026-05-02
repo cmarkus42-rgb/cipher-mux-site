@@ -6,13 +6,15 @@ import Layout from '../layouts/Layout.astro';
   title="Community — CIPHER-MUX"
   description="CIPHER-MUX: Wer dahinter steckt, wie du mitmachen kannst, wohin die Reise geht."
 >
-  <script type="application/ld+json" slot="head">{
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Community — CIPHER-MUX",
-    "description": "CIPHER-MUX: Wer dahinter steckt, wie du mitmachen kannst, wohin die Reise geht.",
-    "url": "https://cmarkus42.github.io/cipher-mux-site/community"
-  }</script>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Community — CIPHER-MUX",
+      "description": "CIPHER-MUX: Wer dahinter steckt, wie du mitmachen kannst, wohin die Reise geht.",
+      "url": "https://cmarkus42.github.io/cipher-mux-site/community"
+    })} />
+  </Fragment>
 
   <!-- Hero -->
   <div class="community-hero">

@@ -20,10 +20,17 @@ const { title, description } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
     <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://cmarkus42.github.io/cipher-mux-site" />
+    <meta name="theme-color" content="#F4F3ED" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#2E3440" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" type="image/png" href="/cipher-mux-site/favicon.png" />
     <link rel="icon" type="image/svg+xml" href="/cipher-mux-site/favicon.svg" />
     <link rel="icon" href="/cipher-mux-site/favicon.ico" />
-    <title>{title}</title>
     <script is:inline>
       (function () {
         var stored = localStorage.getItem('theme');
