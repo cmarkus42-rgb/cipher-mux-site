@@ -1,0 +1,136 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Datenschutz — CIPHER-MUX"
+  description="Datenschutzerklaerung"
+>
+  <div class="legal-page">
+    <div class="legal-inner">
+      <h1>Datenschutzerklaerung</h1>
+
+      <!-- PLATZHALTER: Hier den generierten Datenschutz-Text einfuegen -->
+      <!-- Generator: https://datenschutz-generator.de/ -->
+
+      <div class="legal-placeholder">
+        <p>Datenschutzerklaerung wird noch eingefuegt.</p>
+        <p>Bitte generiere deinen Datenschutz-Text unter:<br>
+        <a href="https://datenschutz-generator.de/">datenschutz-generator.de</a></p>
+      </div>
+
+      <h2>Vorab-Hinweis</h2>
+      <p>Diese Website verwendet:</p>
+      <ul>
+        <li>Kein Tracking</li>
+        <li>Keine Cookies</li>
+        <li>Keine Analytics</li>
+        <li>Keine externen Schriften (alle lokal gebundelt)</li>
+        <li>Kein CDN</li>
+        <li>localStorage ausschliesslich fuer die Theme-Praeferenz (hell/dunkel)</li>
+      </ul>
+      <p>Die einzige externe Verbindung ist das Hosting ueber GitHub Pages (Microsoft/GitHub).</p>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .legal-page {
+    padding-top: 48px;
+    min-height: 60vh;
+  }
+
+  .legal-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: var(--space-4xl) var(--space-2xl) var(--space-3xl);
+  }
+
+  h1 {
+    font-family: 'Rajdhani', Impact, 'Arial Narrow', sans-serif;
+    font-weight: 700;
+    font-size: clamp(32px, 5vw, 52px);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-3xl);
+  }
+
+  h2 {
+    font-family: 'Rajdhani', Impact, 'Arial Narrow', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--color-text-primary);
+    margin-top: var(--space-3xl);
+    margin-bottom: var(--space-lg);
+  }
+
+  p {
+    font-family: 'Fira Code', monospace;
+    font-size: 13px;
+    line-height: 1.85;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-lg);
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-xl);
+  }
+
+  ul li {
+    font-family: 'Fira Code', monospace;
+    font-size: 13px;
+    line-height: 1.8;
+    color: var(--color-text-secondary);
+    padding-left: var(--space-xl);
+    position: relative;
+  }
+
+  ul li::before {
+    content: '>';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+    font-family: 'Fira Code', monospace;
+    font-size: 12px;
+  }
+
+  .legal-placeholder {
+    border: 2px dashed var(--color-border);
+    padding: 24px;
+    color: var(--color-text-dim);
+    background: var(--color-bg-sunken);
+    margin-bottom: var(--space-3xl);
+  }
+
+  .legal-placeholder p {
+    color: var(--color-text-dim);
+    margin-bottom: var(--space-sm);
+  }
+
+  .legal-placeholder p:last-child {
+    margin-bottom: 0;
+  }
+
+  .legal-placeholder a {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  .legal-placeholder a:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .legal-inner {
+      padding: var(--space-3xl) var(--space-lg) var(--space-2xl);
+    }
+  }
+</style>

@@ -2,7 +2,14 @@
 ---
 
 <footer class="site-footer">
-  <span class="footer-left">MIT License · Single Maintainer</span>
+  <span class="footer-left">
+    <span>MIT License · Single Maintainer</span>
+    <span class="footer-legal">
+      <a href="/cipher-mux-site/impressum" class="footer-link">Impressum</a>
+      <span class="footer-sep"> · </span>
+      <a href="/cipher-mux-site/datenschutz" class="footer-link">Datenschutz</a>
+    </span>
+  </span>
   <a
     href="https://github.com/cmarkus42/cipher-mux-electron"
     class="footer-link"
@@ -26,6 +33,17 @@
   }
 
   .footer-left {
+    color: var(--color-text-dim);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .footer-legal {
+    color: var(--color-text-dim);
+  }
+
+  .footer-sep {
     color: var(--color-text-dim);
   }
 
