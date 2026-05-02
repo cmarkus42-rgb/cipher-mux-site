@@ -9,11 +9,11 @@ const docs = {
   companionIntro: {
     kicker: 'Bevor du blätterst',
     title: 'Du musst das hier nicht lesen.',
-    body1: 'Beim ersten Start hat sich <strong>Wayne</strong> bei dir gemeldet — drei Fragen, ein Profil, dann ging\'s los. Wayne ist nicht weg. Wayne ist der <strong>Companion</strong>, und er ist immer einen Klick entfernt.',
+    body1: 'Der <strong>Companion</strong> ist immer einen Klick entfernt. Beim ersten Start hat er sich gemeldet — drei Fragen, ein Profil, dann ging\'s los. Er ist noch da.',
     body2: 'Statt hier zu suchen, frag ihn. <em>„Wie richte ich einen Workspace ein?"</em> <em>„Was bedeutet die orange Anzeige?"</em> <em>„Zeig mir wie Voice funktioniert."</em> Er kennt jedes Kapitel dieses Handbuchs — und antwortet auf deinem Level, weil er dein Profil kennt.',
     startTitle: 'Companion starten',
     startItems: [
-      '<strong>Über das + in einer leeren Zelle</strong> → Tab "Presets" → Companion auswählen. Resume holt deine bestehende Wayne-Session zurück mit allem was er über dich weiß.',
+      '<strong>Über das + in einer leeren Zelle</strong> → Tab "Presets" → Companion auswählen. Resume holt deine bestehende Companion-Session zurück mit allem was er über dich weiß.',
       '<strong>Sprechen statt tippen:</strong> Voice-Pill in der Statusleiste, dann frag ihn laut. Antworten kommen vorgelesen — Code-Blöcke werden zusammengefasst, sensible Daten nie laut gesprochen.',
     ],
     modesTitle: 'Drei Modi — er erkennt sie am Verb',
@@ -85,9 +85,9 @@ const docs = {
     {
       id: 'companion',
       num: '09',
-      title: 'Companion — Wayne im Detail',
+      title: 'Der Companion im Detail',
       navLabel: 'Companion',
-      lead: 'Wayne ist die Default-Persona für den Companion. Hier nochmal alles im Detail — was er kann, wie er antwortet, was er sich merkt.',
+      lead: 'Relay ist die Default-Persona des Companions — sachlich, präzise, wissenschaftsjournalistisch. Hier nochmal alles im Detail: was er kann, wie er antwortet, was er sich merkt.',
     },
     {
       id: 'personas',
@@ -134,8 +134,8 @@ const docs = {
   ],
   bottom: {
     title: 'Fragen offen?',
-    titleAccent: 'Frag Wayne.',
-    body: 'Das Handbuch ist lang. Wayne ist im Cockpit. Er kennt jeden Abschnitt davon — und antwortet schneller als du scrollst.',
+    titleAccent: 'Frag den Companion.',
+    body: 'Das Handbuch ist lang. Der Companion ist im Cockpit. Er kennt jeden Abschnitt davon — und antwortet schneller als du scrollst.',
     downloadLabel: 'App herunterladen',
     githubLabel: 'github / cipher-mux',
   },

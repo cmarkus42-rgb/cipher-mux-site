@@ -9,11 +9,11 @@ const docs = {
   companionIntro: {
     kicker: 'Before you scroll',
     title: 'You don\'t have to read this.',
-    body1: 'On first launch, <strong>Wayne</strong> introduced himself — three questions, a profile, then off you went. Wayne hasn\'t left. Wayne is the <strong>Companion</strong>, and he\'s always one click away.',
+    body1: 'The <strong>Companion</strong> is always one click away. On first launch, he introduced himself — three questions, a profile, then off you went. He\'s still here.',
     body2: 'Instead of searching here, ask him. <em>"How do I set up a workspace?"</em> <em>"What does the orange indicator mean?"</em> <em>"Show me how voice works."</em> He knows every chapter of this manual — and answers at your level, because he knows your profile.',
     startTitle: 'Start the Companion',
     startItems: [
-      '<strong>Via the + in an empty cell</strong> → Tab "Presets" → Select Companion. Resume brings back your existing Wayne session with everything he knows about you.',
+      '<strong>Via the + in an empty cell</strong> → Tab "Presets" → Select Companion. Resume brings back your existing Companion session with everything he knows about you.',
       '<strong>Speak instead of type:</strong> Voice pill in the status bar, then ask him aloud. Answers are read back — code blocks are summarised, sensitive data is never spoken aloud.',
     ],
     modesTitle: 'Three modes — he detects them by verb',
@@ -85,9 +85,9 @@ const docs = {
     {
       id: 'companion',
       num: '09',
-      title: 'Companion — Wayne in Detail',
+      title: 'The Companion in Detail',
       navLabel: 'Companion',
-      lead: 'Wayne is the default persona for the Companion. Everything in detail here — what he can do, how he answers, what he remembers.',
+      lead: 'Relay is the Companion\'s default persona — factual, precise, science-journalistic. Everything in detail here: what he can do, how he answers, what he remembers.',
     },
     {
       id: 'personas',
@@ -134,8 +134,8 @@ const docs = {
   ],
   bottom: {
     title: 'Questions left?',
-    titleAccent: 'Ask Wayne.',
-    body: 'The manual is long. Wayne is in the cockpit. He knows every section of it — and answers faster than you scroll.',
+    titleAccent: 'Ask the Companion.',
+    body: 'The manual is long. The Companion is in the cockpit. He knows every section of it — and answers faster than you scroll.',
     downloadLabel: 'Download App',
     githubLabel: 'github / cipher-mux',
   },

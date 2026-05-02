@@ -398,8 +398,8 @@ const lang = 'en';
           <span class="cm-section-header-line"></span>
           <span>chapter</span>
         </div>
-        <h2>Companion — Wayne in Detail</h2>
-        <p class="docs-lead">Wayne is the default persona for the Companion. Everything in detail here — what he can do, how he answers, what he remembers.</p>
+        <h2>The Companion in Detail</h2>
+        <p class="docs-lead">Relay is the Companion's default persona — factual, precise, science-journalistic. Everything in detail here: what he can do, how he answers, what he remembers.</p>
 
         <div class="docs-table">
           <div class="docs-table-header docs-table-3col"><div>Mode</div><div>Detects by</div><div>Delivers</div></div>
@@ -516,7 +516,7 @@ const lang = 'en';
           <div class="docs-table-row docs-table-2col"><div class="docs-table-label">Delete Persona</div><div class="docs-table-desc">With warning if used in presets.</div></div>
           <div class="docs-table-row docs-table-2col"><div class="docs-table-label">Activate Global</div><div class="docs-table-desc">Toggle per persona — when on, this persona applies to all presets.</div></div>
         </div>
-        <p class="docs-p">The six built-in personas (Cipher, Relay, Wayne, Cynic, Socrates, Glitch) are pre-installed and editable.</p>
+        <p class="docs-p">The six built-in personas (Cipher, Relay, Wayne Szalinski, Cynic, Socrates, Glitch) are pre-installed and editable. The Companion uses Relay by default.</p>
       </div>
     </section>
 
@@ -777,7 +777,7 @@ const lang = 'en';
 
   /* ─── Companion Intro ─── */
   .docs-companion-intro {
-    padding: 48px 0;
+    padding: 64px 0;
     background: var(--color-bg-elevated);
     border-bottom: 1px solid var(--color-border);
   }
@@ -937,14 +937,14 @@ const lang = 'en';
   /* ─── Table ─── */
   .docs-table {
     border: 1px solid var(--color-border);
-    background: var(--color-bg-sunken);
+    background: var(--color-bg-elevated);
     margin: 8px 0 18px;
     clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
     overflow: hidden;
   }
 
   .docs-table-header {
-    background: var(--color-bg-elevated);
+    background: var(--color-bg-sunken);
     border-bottom: 1px solid var(--color-border);
     padding: 10px 16px;
     font-family: 'Fira Code', monospace;
@@ -1238,7 +1238,7 @@ const lang = 'en';
 
   /* ─── Bottom CTA ─── */
   .docs-bottom {
-    padding: 48px 0;
+    padding: 64px 0;
     background: var(--color-bg-elevated);
     border-top: 1px solid var(--color-border);
   }
@@ -1304,7 +1304,7 @@ const lang = 'en';
     .docs-page { padding: 0 20px; }
     .docs-hero { padding: 80px 0 40px; }
     .docs-section { padding: 48px 0; }
-    .docs-companion-intro { padding: 36px 0; }
+    .docs-companion-intro { padding: 48px 0; }
     .docs-table-2col { grid-template-columns: 1fr; gap: 4px; }
     .docs-table-3col { grid-template-columns: 1fr; gap: 4px; }
     .docs-led-row { flex-direction: column; }
