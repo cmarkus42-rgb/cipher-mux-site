@@ -1,7 +1,48 @@
 /* src/styles/global.css */
 
-/* === Google Fonts: Rajdhani (all weights needed) === */
-@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap');
+/* === Self-hosted Fonts: Rajdhani (all weights) === */
+@font-face {
+  font-family: 'Rajdhani';
+  src: url('/fonts/Rajdhani-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Rajdhani';
+  src: url('/fonts/Rajdhani-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Rajdhani';
+  src: url('/fonts/Rajdhani-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Rajdhani';
+  src: url('/fonts/Rajdhani-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* === Self-hosted Fonts: Fira Code (mono/code/UI only) === */
+@font-face {
+  font-family: 'Fira Code';
+  src: url('/fonts/FiraCode-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Fira Code';
+  src: url('/fonts/FiraCode-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
+}
 
 /* === Reset === */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -19,20 +60,6 @@ a:hover { text-decoration: underline; }
 img { max-width: 100%; display: block; }
 p { text-wrap: pretty; }
 
-/* === Font Face: Fira Code (local, mono/code/UI only) === */
-@font-face {
-  font-family: 'Fira Code';
-  src: url('/fonts/FiraCode-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Fira Code';
-  src: url('/fonts/FiraCode-Medium.woff2') format('woff2');
-  font-weight: 500;
-  font-display: swap;
-}
-
 /* === Geometry Tokens === */
 :root {
   --cut-corner: 8px;
@@ -45,7 +72,9 @@ p { text-wrap: pretty; }
   --space-2xl: 32px;
   --space-3xl: 48px;
   --space-4xl: 80px;
-  --max-width: 960px;
+  --max-width: 1200px;
+  --section-pad-y: 88px;
+  --section-pad-x: 64px;
   --transition-fast: 0.1s ease;
   --transition-base: 0.15s ease;
   --transition-slow: 0.3s ease;
@@ -55,8 +84,8 @@ p { text-wrap: pretty; }
 h1, h2, h3 {
   font-family: 'Rajdhani', sans-serif;
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1.05;
 }
 h1 { font-size: clamp(48px, 6vw, 96px); letter-spacing: 2px; }
-h2 { font-size: clamp(38px, 4vw, 48px); letter-spacing: 1.5px; }
+h2 { font-size: clamp(38px, 4vw, 48px); letter-spacing: -0.5px; }
 h3 { font-size: 22px; letter-spacing: 1px; }

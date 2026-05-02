@@ -1,0 +1,120 @@
+---
+interface Props {
+  label: string;
+  tagline: string;
+  taglineSub: string;
+  subtext: string;
+  buttons: Array<{ label: string; href: string; primary?: boolean }>;
+  lang: string;
+}
+
+const { label, tagline, taglineSub, subtext, buttons, lang } = Astro.props;
+---
+
+<section class="cm-cockpit-hero">
+  <div class="cm-grid-bg"></div>
+
+  <!-- LEFT — copy block -->
+  <div class="cm-cockpit-hero__copy">
+    <span class="cm-label-tag" style="align-self: flex-start;">{label}</span>
+    <h1 class="cm-tagline cm-cockpit-hero__tagline">
+      {tagline}<br /><span style="color: var(--color-accent);">{taglineSub}</span>
+    </h1>
+    <p class="cm-hero-sub cm-cockpit-hero__sub" set:html={subtext.replace('CIPHER-MUX', '<strong>CIPHER-MUX</strong>')} />
+    <div style="display: flex; gap: 12px; margin-top: 8px;">
+      {buttons.map((btn) => (
+        <a
+          href={btn.href}
+          class={btn.primary ? 'cm-btn cm-btn--primary' : 'cm-btn'}
+          {...(btn.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+        >
+          {btn.label}
+        </a>
+      ))}
+    </div>
+  </div>
+
+  <!-- RIGHT — cockpit mock -->
+  <div class="cm-cockpit-mock">
+    <!-- macOS chrome -->
+    <div class="cm-cockpit-chrome">
+      <span class="cm-cockpit-chrome__dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+      <span class="cm-cockpit-chrome__title">&#9679; cipher-mux</span>
+    </div>
+
+    <!-- two session panes -->
+    <div class="cm-cockpit-panes">
+      <!-- Left pane: coding-companion -->
+      <div class="cm-session-pane cm-session-pane--focused">
+        <div class="cm-session-pane__tab">
+          <span class="cm-session-pane__tab-name">
+            <span style={`background: var(--color-preset-companion);`}></span>
+            coding-companion
+          </span>
+          <span class="cm-session-pane__tab-controls">i &lsaquo; &rsaquo; s &times;</span>
+        </div>
+        <div class="cm-session-pane__body">
+          <div style="color: var(--color-text);">Du hilfst mir, neue Features zu strukturieren.</div>
+          <div>Wir starten mit einem leichten Audit:</div>
+          <div>- bestehende Patterns erkennen</div>
+          <div>- L&uuml;cken benennen</div>
+          <div>- n&auml;chste Schritte vorschlagen</div>
+          <div>&nbsp;</div>
+          <div style="color: var(--color-accent);">&#9679; Reading project structure&hellip; (12s &middot; 2.1k tokens)</div>
+          <div style="color: var(--color-neon-green);">&nbsp; &#10003; docs/ &middot; konzept v0.1, umsetzung v0.1</div>
+          <div style="color: var(--color-neon-green);">&nbsp; &#10003; src/ &middot; pages, components, styles</div>
+          <div style="color: var(--color-text);">&nbsp; &#9654; writing analysis to brain/companion/</div>
+          <div style="color: var(--color-text-dim);">&nbsp; &#9634; propose 3 next-step options</div>
+          <div>&nbsp;</div>
+          <div style="color: var(--color-text-dim);">Memory: 14 entries &middot; last seen 2m ago</div>
+        </div>
+        <div class="cm-session-pane__footer">
+          &#9654;&#9654; bypass permissions on <span style="opacity: 0.5;">(shift+tab to cycle)</span>
+        </div>
+      </div>
+
+      <!-- Right pane: cyber-factory -->
+      <div class="cm-session-pane">
+        <div class="cm-session-pane__tab">
+          <span class="cm-session-pane__tab-name">
+            <span style={`background: var(--color-preset-audit);`}></span>
+            cyber-factory
+          </span>
+          <span class="cm-session-pane__tab-controls">i &lsaquo; &rsaquo; s &times;</span>
+        </div>
+        <div class="cm-session-pane__body">
+          <div style="color: var(--color-accent);">&#9679; Multi-Project Orchestration</div>
+          <div>&nbsp; 10-phase lifecycle &middot; 3 active</div>
+          <div>&nbsp;</div>
+          <div style="color: var(--color-neon-green);">&nbsp; &#10003; ideate &nbsp; &nbsp; &mdash; concept v0.1</div>
+          <div style="color: var(--color-neon-green);">&nbsp; &#10003; scope &nbsp; &nbsp; &nbsp;&mdash; req-IDs locked</div>
+          <div style="color: var(--color-text);">&nbsp; &#9654; scaffold &nbsp; &mdash; project skeleton</div>
+          <div style="color: var(--color-text-dim);">&nbsp; &#9634; implement &middot; review &middot; ship</div>
+          <div>&nbsp;</div>
+          <div>Active workers:</div>
+          <div>&nbsp; worker-1 &middot; launcher &nbsp; &nbsp;&middot; scaffolding</div>
+          <div>&nbsp; worker-2 &middot; refinement &middot; reviewing PRs</div>
+          <div>&nbsp; worker-3 &middot; audit &nbsp; &nbsp; &nbsp;&middot; idle</div>
+          <div>&nbsp;</div>
+          <div style="color: var(--color-text);">next: phase-3 &rarr; handoff</div>
+        </div>
+        <div class="cm-session-pane__footer">
+          &#9654;&#9654; bypass permissions on <span style="opacity: 0.5;">(shift+tab to cycle)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- statusbar -->
+    <div class="cm-cockpit-statusbar">
+      <span><span style="color: var(--color-accent);">&#9679; OFF</span>&nbsp; STT&nbsp; COM</span>
+      <span style="color: var(--color-text);">coding-companion</span>
+      <span>spalten 2 + &middot; zeilen 2 +</span>
+      <span>nord</span>
+      <span>v0.9.9-dev</span>
+    </div>
+  </div>
+</section>

@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import PixelGrid from '../../components/PixelGrid.astro';
+import HeroCockpit from '../../components/HeroCockpit.astro';
 import content from '../../i18n/de/landing';
 
 const lang = 'de';
@@ -36,32 +36,25 @@ const schema = JSON.stringify([
     <script type="application/ld+json" set:html={schema} />
   </Fragment>
 
-  <!-- Hero -->
-  <section class="cm-hero">
-    <div class="cm-grid-bg"></div>
-    <PixelGrid />
-    <span class="cm-label-tag">{content.hero.label}</span>
-    <h1 class="cm-tagline">
-      {content.hero.tagline}<br />{content.hero.taglineSub}
-    </h1>
-    <p class="cm-hero-sub" set:html={content.hero.subtext.replace('CIPHER-MUX', '<strong>CIPHER-MUX</strong>')} />
-    <div class="cm-hero-buttons">
-      {content.hero.buttons.map((btn) => (
-        <a
-          href={btn.href}
-          class={btn.primary ? 'cm-btn cm-btn--primary' : 'cm-btn'}
-          {...(btn.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-        >
-          {btn.label}
-        </a>
-      ))}
-    </div>
-  </section>
+  <!-- Hero: Schematic Cockpit Mock -->
+  <HeroCockpit
+    label={content.hero.label}
+    tagline={content.hero.tagline}
+    taglineSub={content.hero.taglineSub}
+    subtext={content.hero.subtext}
+    buttons={content.hero.buttons}
+    lang={lang}
+  />
 
-  <!-- Pillars -->
+  <!-- Pillars with preset markers -->
   <section class="cm-pillars">
     {content.pillars.map((pillar, i) => (
       <div class="cm-pillar">
+        <div class="cm-pillar-marker">
+          <span class="cm-pillar-marker__dot" style={`background: ${pillar.color};`}></span>
+          <span class="cm-pillar-marker__tag">&gt; {pillar.tag}</span>
+          <span class="cm-pillar-marker__num">0{i + 1}</span>
+        </div>
         <h3>{pillar.title}</h3>
         <p>{pillar.description}</p>
         <a class="cm-pillar-link" href={`/${lang}/features#${pillarAnchors[i]}`}>
@@ -74,6 +67,7 @@ const schema = JSON.stringify([
   <!-- Not-Section -->
   <section class="cm-not">
     <h3>{content.notSection.title}</h3>
+    {content.notSection.lead && <p class="cm-lead" style="margin-bottom: 22px;">{content.notSection.lead}</p>}
     <ul>
       {content.notSection.items.map((item) => (
         <li>{item}</li>
@@ -90,38 +84,6 @@ const schema = JSON.stringify([
 </Layout>
 
 <style>
-  .cm-hero {
-    position: relative;
-    min-height: 460px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 72px 32px 48px;
-    gap: 18px;
-  }
-
-  .cm-hero > :not(.cm-grid-bg) {
-    position: relative;
-  }
-
-  .cm-hero-sub {
-    font-size: 14px;
-    max-width: 580px;
-    line-height: 1.85;
-    color: var(--color-text-secondary);
-  }
-
-  .cm-hero-buttons {
-    position: relative;
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 8px;
-  }
-
   .cm-cta-row {
     display: flex;
     gap: 12px;
@@ -131,14 +93,6 @@ const schema = JSON.stringify([
   }
 
   @media (max-width: 768px) {
-    .cm-hero {
-      padding: 48px 20px 36px;
-      min-height: 360px;
-    }
-    .cm-hero-buttons {
-      flex-direction: column;
-      align-items: center;
-    }
     .cm-cta-row {
       flex-direction: column;
       align-items: center;

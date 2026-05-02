@@ -27,7 +27,7 @@
 .section {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: var(--space-3xl) var(--space-2xl);
+  padding: var(--section-pad-y) var(--section-pad-x);
 }
 @media (max-width: 768px) {
   .section { padding: var(--space-2xl) var(--space-lg); }
@@ -46,8 +46,11 @@
   background:
     repeating-linear-gradient(0deg, transparent, transparent 39px, var(--color-border) 39px, var(--color-border) 40px),
     repeating-linear-gradient(90deg, transparent, transparent 39px, var(--color-border) 39px, var(--color-border) 40px);
-  opacity: 0.15;
+  opacity: 0.22;
   pointer-events: none;
+}
+[data-theme="dark"] .grid-bg::before {
+  opacity: 0.10;
 }
 
 /* ============================================================
@@ -222,14 +225,15 @@
   color: var(--color-text);
 }
 .cm-hero-sub {
-  font-size: 14px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 18px;
   max-width: 580px;
-  line-height: 1.85;
+  line-height: 1.5;
   color: var(--color-text-secondary);
 }
 .cm-hero-sub strong {
   color: var(--color-text);
-  font-weight: 500;
+  font-weight: 600;
 }
 
 /* ============================================================
@@ -246,6 +250,20 @@
 }
 [data-theme="dark"] .cm-grid-bg {
   opacity: 0.10;
+}
+
+/* ============================================================
+   LEAD TEXT (Section leads — Rajdhani body, not Fira Code)
+   ============================================================ */
+.cm-section-header-lead,
+.install-lead,
+.docs-body,
+.cm-lead {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+  max-width: 720px;
 }
 
 /* ============================================================
@@ -273,7 +291,7 @@
   border-bottom: 1px solid var(--color-border);
 }
 .cm-pillar {
-  padding: 38px 32px;
+  padding: 44px 36px;
   border-color: var(--color-border);
   transition: background var(--transition-base);
 }
@@ -316,10 +334,221 @@
 .cm-pillar-link:hover { text-decoration: none; color: var(--color-accent-hover); }
 
 /* ============================================================
+   PILLAR PRESET TAG MARKER
+   ============================================================ */
+.cm-pillar-marker {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+.cm-pillar-marker__dot {
+  width: 22px;
+  height: 22px;
+  display: inline-block;
+  flex-shrink: 0;
+  clip-path: polygon(5px 0, 100% 0, 100% calc(100% - 5px), calc(100% - 5px) 100%, 0 100%, 0 5px);
+}
+.cm-pillar-marker__tag {
+  font-family: 'Fira Code', monospace;
+  font-size: 10.5px;
+  color: var(--color-text-dim);
+  letter-spacing: 1.6px;
+  text-transform: lowercase;
+}
+.cm-pillar-marker__num {
+  margin-left: auto;
+  font-family: 'Fira Code', monospace;
+  font-size: 10px;
+  color: var(--color-text-dim);
+  opacity: 0.6;
+  letter-spacing: 1.2px;
+}
+
+/* ============================================================
+   HERO COCKPIT MOCK
+   ============================================================ */
+.cm-cockpit-hero {
+  display: grid;
+  grid-template-columns: 1fr 580px;
+  gap: 56px;
+  align-items: center;
+  padding: 76px 48px 88px;
+  position: relative;
+}
+.cm-cockpit-hero__copy {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  text-align: left;
+}
+.cm-cockpit-hero__tagline {
+  font-size: 68px;
+  line-height: 0.98;
+}
+.cm-cockpit-hero__sub {
+  max-width: 480px;
+  font-size: 18px;
+}
+.cm-cockpit-mock {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-bg-sunken);
+  border: 1px solid var(--color-border);
+}
+.cm-cockpit-chrome {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--color-border);
+  flex-shrink: 0;
+}
+.cm-cockpit-chrome__dots {
+  display: flex;
+  gap: 5px;
+}
+.cm-cockpit-chrome__dots span {
+  width: 9px;
+  height: 9px;
+  display: inline-block;
+}
+.cm-cockpit-chrome__dots span:nth-child(1) { background: #FF5F57; }
+.cm-cockpit-chrome__dots span:nth-child(2) { background: #FEBC2E; }
+.cm-cockpit-chrome__dots span:nth-child(3) { background: #28C840; }
+.cm-cockpit-chrome__title {
+  margin-left: 14px;
+  font-family: 'Fira Code', monospace;
+  font-size: 9px;
+  color: var(--color-text);
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+}
+.cm-cockpit-panes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  padding: 6px;
+  height: 280px;
+}
+.cm-session-pane {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+}
+.cm-session-pane--focused {
+  box-shadow: inset 0 0 0 1px var(--color-accent);
+}
+.cm-session-pane__tab {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--color-border);
+  font-family: 'Fira Code', monospace;
+  font-size: 9px;
+  color: var(--color-text-dim);
+  background: var(--color-bg-sunken);
+  flex-shrink: 0;
+}
+.cm-session-pane__tab-name {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  background: var(--color-bg);
+  border-right: 1px solid var(--color-border);
+  color: var(--color-text);
+  letter-spacing: 0.6px;
+}
+.cm-session-pane__tab-name span {
+  width: 6px;
+  height: 6px;
+  display: inline-block;
+}
+.cm-session-pane__tab-controls {
+  margin-left: auto;
+  padding: 5px 10px;
+  letter-spacing: 1.5px;
+  opacity: 0.6;
+}
+.cm-session-pane__body {
+  flex: 1;
+  padding: 8px 10px;
+  font-family: 'Fira Code', monospace;
+  font-size: 9.5px;
+  line-height: 1.55;
+  color: var(--color-text-secondary);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow: hidden;
+}
+.cm-session-pane__footer {
+  border-top: 1px solid var(--color-border);
+  padding: 5px 10px;
+  font-family: 'Fira Code', monospace;
+  font-size: 9px;
+  color: var(--color-accent);
+  letter-spacing: 0.6px;
+  flex-shrink: 0;
+}
+.cm-cockpit-statusbar {
+  display: flex;
+  align-items: center;
+  height: 28px;
+  font-size: 9px;
+  font-family: 'Fira Code', monospace;
+  color: var(--color-text-dim);
+  border-top: 1px solid var(--color-border);
+  flex-shrink: 0;
+  letter-spacing: 0.8px;
+  white-space: nowrap;
+}
+.cm-cockpit-statusbar > span {
+  padding: 0 12px;
+  border-right: 1px solid var(--color-border);
+}
+.cm-cockpit-statusbar > span:last-child {
+  border-right: none;
+  margin-left: auto;
+  padding: 3px 9px;
+  margin-right: 8px;
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+}
+
+@media (max-width: 960px) {
+  .cm-cockpit-hero {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 48px 24px 56px;
+  }
+  .cm-cockpit-hero__tagline {
+    font-size: 42px;
+  }
+  .cm-cockpit-mock {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+}
+
+/* ============================================================
    NOT-SECTION
    ============================================================ */
+/* ============================================================
+   FEATURE / INSTALL / DOCS — Section padding (luftig density)
+   ============================================================ */
+.feature-section,
+.install-phase,
+.docs-section {
+  padding: var(--section-pad-y) 0;
+}
+
 .cm-not {
-  padding: 72px 32px;
+  padding: 88px 32px;
   max-width: 720px;
   margin: 0 auto;
 }

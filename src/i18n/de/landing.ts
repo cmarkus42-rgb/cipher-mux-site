@@ -1,12 +1,12 @@
 const landing = {
   hero: {
-    label: 'Open Source · macOS · MIT',
-    tagline: 'Agentic Engineering for Makers.',
-    taglineSub: 'And everyone else.',
+    label: 'v0.9.9 · macOS · MIT',
+    tagline: 'Dein',
+    taglineSub: 'Coding-Cockpit.',
     subtext:
-      'CIPHER-MUX macht KI-gestütztes Bauen zugänglich, transparent und lehrbar. Für alle die Ideen haben.',
+      'CIPHER-MUX orchestriert mehrere Claude-Code-Sessions parallel — sichtbar, steuerbar, lehrbar.',
     buttons: [
-      { label: 'Dokumentation', href: '/de/docs', primary: true },
+      { label: 'Loslegen', href: '/de/start', primary: true },
       { label: 'Features', href: '/de/features' },
       { label: 'GitHub', href: 'https://github.com/cmarkus42/cipher-mux-electron' },
     ],
@@ -15,31 +15,50 @@ const landing = {
     {
       title: 'Anforderungsbasierte Entwicklung',
       description:
-        'Spezifikationen werden durch parallel arbeitende Agenten umgesetzt. Der Prozess ist in einer Grid-Oberfläche sicht- und steuerbar.',
+        'Du formulierst die Spezifikationen, während parallel arbeitende Agenten an der Umsetzung arbeiten. Das visuelle Grid-System hilft dir dabei, diesen Prozess entspannt zu steuern und zu beobachten.',
+      tag: 'orchestrator',
+      color: 'var(--color-preset-cyberfactory)',
     },
     {
       title: 'Strukturierter Software-Lebenszyklus',
       description:
-        'Fünf Phasen der Softwareentwicklung (Ideation bis Audit) werden durch spezialisierte System-Prompts abgebildet.',
+        'Das Cockpit begleitet dich durch fünf Phasen (von der ersten Idee bis zum finalen Audit). Spezialisierte System-Prompts nehmen dir dabei die Strukturierung ab.',
+      tag: 'project-launcher',
+      color: 'var(--color-preset-debugger)',
     },
     {
       title: 'Transparente Architektur',
       description:
-        'Prompts, Kontext-Fenster und Agenten-Entscheidungen liegen offen, um die Arbeitsweise der Modelle analytisch nachvollziehen zu können.',
+        'Wir glauben, dass man KI am besten lernt, wenn man ihr zuschauen kann. Prompts, Kontext-Fenster und Agenten-Entscheidungen liegen offen, damit du die Arbeitsweise analytisch nachvollziehen kannst.',
+      tag: 'companion',
+      color: 'var(--color-preset-companion)',
     },
     {
       title: 'Alternative Zugangswege',
       description:
-        'Das Interface integriert lokale Spracherkennung (Whisper), Text-to-Speech und auf Barrierefreiheit optimierte Themes (WCAG AAA).',
+        'Technik sollte sich anpassen, nicht umgekehrt. Das Interface bietet lokale Spracherkennung (Whisper), Text-to-Speech und auf Barrierefreiheit optimierte Themes (WCAG AAA) als alternative Zugangswege.',
+      tag: 'voice-relay',
+      color: 'var(--color-preset-voice)',
     },
   ],
   notSection: {
     title: 'Systemabgrenzung',
+    lead: 'Zur transparenten Einordnung – was CIPHER-MUX nicht ist:',
     items: [
-      'Kein kommerzielles Produkt, sondern ein generiertes Open-Source-Projekt.',
-      'Ersetzt nicht die Claude Code CLI, sondern fungiert als grafische Orchestrierungsschicht.',
-      'Erfordert die Fähigkeit, technische Spezifikationen präzise zu formulieren.',
-      'Aktuell auf macOS beschränkt, da es auf spezifischen Terminal-Architekturen (tmux) aufbaut.',
+      'Kein kommerzielles Produkt, sondern ein generiertes Open-Source-Projekt, das aus dem eigenen Bedarf heraus entstanden ist.',
+      'Kein Ersatz für die Claude Code CLI, sondern eine grafische Orchestrierungsschicht, die darauf aufsetzt.',
+      'Kein Werkzeug, das vage Ideen magisch umsetzt. Die Fähigkeit, technische Spezifikationen präzise zu formulieren, bleibt wichtig.',
+      'Aktuell auf macOS beschränkt, da die Architektur stark mit dem Terminal-Multiplexer tmux verzahnt ist.',
+    ],
+  },
+  footer: {
+    mark: 'CIPHER-MUX',
+    version: 'v0.9.9 · macOS · MIT',
+    links: [
+      { label: 'GitHub', href: 'https://github.com/cmarkus42/cipher-mux-electron' },
+      { label: 'Issues', href: 'https://github.com/cmarkus42/cipher-mux-electron/issues' },
+      { label: 'Datenschutz', href: '/de/datenschutz' },
+      { label: 'Impressum', href: '/de/impressum' },
     ],
   },
 } as const;
