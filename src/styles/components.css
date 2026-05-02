@@ -1,0 +1,94 @@
+/* src/styles/components.css */
+
+/* === Cut Corner Clip Paths === */
+.cut-corner {
+  clip-path: polygon(
+    var(--cut-corner) 0, 100% 0,
+    100% calc(100% - var(--cut-corner)),
+    calc(100% - var(--cut-corner)) 100%,
+    0 100%, 0 var(--cut-corner)
+  );
+}
+.cut-corner-lg {
+  clip-path: polygon(
+    var(--cut-corner-lg) 0, 100% 0,
+    100% calc(100% - var(--cut-corner-lg)),
+    calc(100% - var(--cut-corner-lg)) 100%,
+    0 100%, 0 var(--cut-corner-lg)
+  );
+}
+
+/* === Buttons === */
+.btn {
+  font-family: 'Fira Code', monospace;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 10px 24px;
+  border: 1px solid var(--color-border-strong);
+  background: none;
+  color: var(--color-text);
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  clip-path: polygon(
+    var(--cut-corner) 0, 100% 0,
+    100% calc(100% - var(--cut-corner)),
+    calc(100% - var(--cut-corner)) 100%,
+    0 100%, 0 var(--cut-corner)
+  );
+  transition: border-color var(--transition-base), color var(--transition-base),
+              background var(--transition-base);
+}
+.btn:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  text-decoration: none;
+}
+.btn--primary {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+.btn--primary:hover {
+  background: var(--color-accent);
+  color: var(--color-bg-elevated);
+}
+
+/* === Label Tag === */
+.label-tag {
+  display: inline-block;
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--color-text-dim);
+  border: 1px solid var(--color-border);
+  padding: 3px 10px;
+  clip-path: polygon(4px 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%, 0 4px);
+}
+
+/* === Section Container === */
+.section {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--space-3xl) var(--space-2xl);
+}
+
+/* === Grid Background === */
+.grid-bg {
+  position: relative;
+}
+.grid-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(0deg, transparent, transparent 39px, var(--color-border) 39px, var(--color-border) 40px),
+    repeating-linear-gradient(90deg, transparent, transparent 39px, var(--color-border) 39px, var(--color-border) 40px);
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .section { padding: var(--space-2xl) var(--space-lg); }
+}

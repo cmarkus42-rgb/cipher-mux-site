@@ -1,0 +1,64 @@
+/* src/styles/global.css */
+
+/* === Reset === */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Fira Code', monospace;
+  font-size: 15px;
+  line-height: 1.7;
+  background: var(--color-bg);
+  color: var(--color-text);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+a { color: var(--color-accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+img { max-width: 100%; display: block; }
+
+/* === Font Face === */
+@font-face {
+  font-family: 'Rajdhani';
+  src: url('/cipher-mux-site/fonts/Rajdhani-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Fira Code';
+  src: url('/cipher-mux-site/fonts/FiraCode-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Fira Code';
+  src: url('/cipher-mux-site/fonts/FiraCode-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
+}
+
+/* === Geometry Tokens === */
+:root {
+  --cut-corner: 8px;
+  --cut-corner-lg: 14px;
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 16px;
+  --space-xl: 24px;
+  --space-2xl: 32px;
+  --space-3xl: 48px;
+  --space-4xl: 80px;
+  --max-width: 960px;
+  --transition-fast: 0.1s ease;
+  --transition-base: 0.15s ease;
+  --transition-slow: 0.3s ease;
+}
+
+/* === Typography === */
+h1, h2, h3 {
+  font-family: 'Rajdhani', Impact, 'Arial Narrow', sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+}
+h1 { font-size: clamp(36px, 5vw, 52px); letter-spacing: 2px; }
+h2 { font-size: 28px; letter-spacing: 1.5px; }
+h3 { font-size: 20px; letter-spacing: 1px; }
