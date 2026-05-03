@@ -42,7 +42,7 @@ const features = {
         { name: 'Cyber Factory', id: 'cyber-factory', color: '#ab47bc', description: 'Übernimmt die Subsystem-Zerlegung und koordiniert mehrere Worker-Sessions parallel.' },
         { name: 'Testing Assistant', id: 'testing-assistant', color: '#2ecc71', description: 'Testet den generierten Code kritisch. Schreibt und führt Tests aus.' },
         { name: 'Debugger', id: 'debugger', color: '#ff7043', description: 'Hilft bei der Fehleranalyse. Systematische Ursachensuche statt Trial-and-Error.' },
-        { name: 'Orchestrator', id: 'orchestrator', color: '#4fc3f7', description: 'Überwacht den Gesamtprozess. Verteilt Aufgaben, prüft Kontextverbrauch, rotiert Worker.' },
+        { name: 'Workshop', id: 'orchestrator', color: '#4fc3f7', description: 'Überwacht den Gesamtprozess. Verteilt Aufgaben, prüft Kontextverbrauch, rotiert Worker.' },
         { name: 'Audit', id: 'audit', color: '#c0392b', description: 'Führt abschließende Code-Reviews durch. Prüft auf Qualität, Sicherheit und Konsistenz.' },
       ],
     },
@@ -94,7 +94,7 @@ const features = {
       num: '11',
       kicker: 'Ressourcenmanagement',
       title: 'Effizienter Umgang mit Tokens',
-      lead: 'Lange Sessions stoßen irgendwann an Kontext-Grenzen. Eine Echtzeit-Anzeige hilft dir, die Auslastung im Blick zu behalten. Der Orchestrator empfiehlt oder initiiert bei 90% Auslastung selbstständig Zusammenfassungs-Routinen, damit keine Informationen verloren gehen. Zudem wählt das System je nach Aufgabenschwere automatisch das passendste LLM (Opus, Sonnet oder Haiku).',
+      lead: 'Lange Sessions stoßen irgendwann an Kontext-Grenzen. Eine Echtzeit-Anzeige hilft dir, die Auslastung im Blick zu behalten. Der Workshop empfiehlt oder initiiert bei 90% Auslastung selbstständig Zusammenfassungs-Routinen, damit keine Informationen verloren gehen. Zudem wählt das System je nach Aufgabenschwere automatisch das passendste LLM (Opus, Sonnet oder Haiku).',
     },
   ],
   scrollNavItems: [

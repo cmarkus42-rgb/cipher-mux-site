@@ -97,7 +97,7 @@ type SectionWithPersonas = typeof content.sections[0] & { personas?: readonly { 
                   </div>
                   <div class="grid-cell">
                     <div class="grid-cell-header"><span class="grid-cell-dot" style="background:#9b59b6"></span><span>[0,1]</span><span class="grid-cell-prompt">$_</span></div>
-                    <div class="grid-cell-role">voice-companion</div>
+                    <div class="grid-cell-role">voice</div>
                   </div>
                   <div class="grid-cell grid-cell--notes">
                     <div class="grid-cell-header"><span>[1,1]</span><span class="grid-cell-prompt">/notes</span></div>
@@ -234,7 +234,7 @@ type SectionWithPersonas = typeof content.sections[0] & { personas?: readonly { 
                   <div class="recovery-label">// nach app-restart</div>
                   <div class="recovery-line">● 3 sessions found in tmux</div>
                   <div class="recovery-sessions">
-                    <div>&#10003; orchestrator <span class="dim">&middot; running 2h 14m</span></div>
+                    <div>&#10003; workshop <span class="dim">&middot; running 2h 14m</span></div>
                     <div>&#10003; companion <span class="dim">&middot; running 2h 14m</span></div>
                     <div>&#10003; cyber-factory <span class="dim">&middot; running 0h 47m</span></div>
                   </div>
@@ -360,7 +360,7 @@ type SectionWithPersonas = typeof content.sections[0] & { personas?: readonly { 
               <div class="notes-memory-box">
                 <span class="cm-tag-inline">// companion memory</span>
                 <div class="notes-editor-title">SQLite &middot; FTS5 &middot; persistent</div>
-                <p class="notes-memory-desc">Companion, Refinement, Voice-Relay merken sich Fakten, Pr&auml;ferenzen, Interaktionen, Ereignisse &mdash; &uuml;ber Sessions hinweg.</p>
+                <p class="notes-memory-desc">Companion, Refinement, Voice merken sich Fakten, Pr&auml;ferenzen, Interaktionen, Ereignisse &mdash; &uuml;ber Sessions hinweg.</p>
                 <div class="memory-categories">
                   <span>● Fakten</span><span>● Pr&auml;ferenzen</span><span>● Interaktionen</span><span>● Ereignisse</span>
                 </div>
@@ -432,7 +432,7 @@ type SectionWithPersonas = typeof content.sections[0] & { personas?: readonly { 
                 { k: 'StatusLine Monitor', d: 'Echtzeit-Kontextverbrauch pro Zelle. Gr\u00fcn \u2192 orange (80%) \u2192 rot (90%).' },
                 { k: 'Orchestrator-Watch', d: 'Pr\u00fcft Workers alle 2 Minuten. Bei 90%: finish, summarize, frischer Worker.' },
                 { k: 'Message Bus', d: 'Async Messaging zwischen Sessions. Wenige Dutzend Tokens statt Tausende f\u00fcr shared Conversation.' },
-                { k: 'Multi-Model-Routing', d: 'Orchestrator (Opus), Workers (Sonnet), einfache Tasks (Haiku). Richtiges Modell f\u00fcr richtige Aufgabe.' },
+                { k: 'Multi-Model-Routing', d: 'Workshop (Opus), Workers (Sonnet), einfache Tasks (Haiku). Richtiges Modell f\u00fcr richtige Aufgabe.' },
                 { k: 'Handover-Pattern', d: 'Zusammenfassung \u2192 neue Session \u2192 weitermachen. Kein Qualit\u00e4tsverlust durch volle Kontexte.' },
                 { k: 'Doom-Loop-Prevention', d: 'Nach 2 gescheiterten Fixes: neue Session. Confirmation-Trap-Vermeidung in CLAUDE.md.' },
               ].map((item, i) => (

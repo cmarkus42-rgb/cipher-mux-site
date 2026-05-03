@@ -75,7 +75,7 @@ type SectionWithPersonas = typeof content.sections[0] & { personas?: readonly { 
                   <div class="grid-cell"><div class="grid-cell-header"><span class="grid-cell-dot" style="background:#ef5350"></span><span>[1,0]</span><span class="grid-cell-prompt">$_</span></div><div class="grid-cell-role">refinement</div></div>
                   <div class="grid-cell grid-cell--rowspan"><div class="grid-cell-header"><span class="grid-cell-dot" style="background:#ab47bc"></span><span>[2,0x2]</span><span class="grid-cell-prompt">$_</span></div><div class="grid-cell-role">cyber-factory</div><div class="grid-cell-detail">&#9656; Plan mode active<br/>&#9656; Wave 2 / 5<br/>&#9656; 3 workers spawned</div></div>
                   <div class="grid-cell"><div class="grid-cell-header"><span class="grid-cell-dot" style="background:#c0392b"></span><span>[3,0]</span><span class="grid-cell-prompt">$_</span></div><div class="grid-cell-role">audit</div></div>
-                  <div class="grid-cell"><div class="grid-cell-header"><span class="grid-cell-dot" style="background:#9b59b6"></span><span>[0,1]</span><span class="grid-cell-prompt">$_</span></div><div class="grid-cell-role">voice-companion</div></div>
+                  <div class="grid-cell"><div class="grid-cell-header"><span class="grid-cell-dot" style="background:#9b59b6"></span><span>[0,1]</span><span class="grid-cell-prompt">$_</span></div><div class="grid-cell-role">voice</div></div>
                   <div class="grid-cell grid-cell--notes"><div class="grid-cell-header"><span>[1,1]</span><span class="grid-cell-prompt">/notes</span></div><div class="grid-cell-role">notes &middot; handoff</div><div class="grid-cell-detail" style="font-style:italic"># session-handoff<br/>## Open questions...</div></div>
                   <div class="grid-cell"><div class="grid-cell-header"><span class="grid-cell-dot" style="background:#ff7043"></span><span>[3,1]</span><span class="grid-cell-prompt">$_</span></div><div class="grid-cell-role">debugger</div></div>
                 </div>
@@ -139,7 +139,7 @@ type SectionWithPersonas = typeof content.sections[0] & { personas?: readonly { 
                 <div class="recovery-mock">
                   <div class="recovery-label">// after app restart</div>
                   <div class="recovery-line">● 3 sessions found in tmux</div>
-                  <div class="recovery-sessions"><div>&#10003; orchestrator <span class="dim">&middot; running 2h 14m</span></div><div>&#10003; companion <span class="dim">&middot; running 2h 14m</span></div><div>&#10003; cyber-factory <span class="dim">&middot; running 0h 47m</span></div></div>
+                  <div class="recovery-sessions"><div>&#10003; workshop <span class="dim">&middot; running 2h 14m</span></div><div>&#10003; companion <span class="dim">&middot; running 2h 14m</span></div><div>&#10003; cyber-factory <span class="dim">&middot; running 0h 47m</span></div></div>
                   <div class="recovery-actions"><span class="recovery-btn recovery-btn--accent">RESUME</span><span class="recovery-btn">CLOSE ALL</span></div>
                 </div>
               </div>
@@ -221,7 +221,7 @@ type SectionWithPersonas = typeof content.sections[0] & { personas?: readonly { 
           {section.num === '08' && (
             <div class="notes-grid">
               <div class="notes-editor-box"><span class="cm-tag-inline">// notes editor</span><div class="notes-editor-title">CodeMirror 6 &middot; Live Markdown</div><ul class="accent-list"><li>YAML frontmatter (title, tags)</li><li>Auto-save after 2s &middot; Cmd+S triggers auto-tagging</li><li>Ollama gemma3:4b (local) for tag suggestions</li><li>Global or workspace-scoped</li><li>Tag tree in sidebar (NotesTreeView)</li><li>TestcaseView with checkboxes + screenshots</li><li>Full MCP access: read, write, search, handoff</li></ul></div>
-              <div class="notes-memory-box"><span class="cm-tag-inline">// companion memory</span><div class="notes-editor-title">SQLite &middot; FTS5 &middot; persistent</div><p class="notes-memory-desc">Companion, Refinement, Voice-Relay remember facts, preferences, interactions, events &mdash; across sessions.</p><div class="memory-categories"><span>● Facts</span><span>● Preferences</span><span>● Interactions</span><span>● Events</span></div><div class="memory-footer">Salience score 0&ndash;1 &middot; transparent &middot; user-deletable<br/>MCP tools: <code>write &middot; recall &middot; search &middot; forget</code></div></div>
+              <div class="notes-memory-box"><span class="cm-tag-inline">// companion memory</span><div class="notes-editor-title">SQLite &middot; FTS5 &middot; persistent</div><p class="notes-memory-desc">Companion, Refinement, Voice remember facts, preferences, interactions, events &mdash; across sessions.</p><div class="memory-categories"><span>● Facts</span><span>● Preferences</span><span>● Interactions</span><span>● Events</span></div><div class="memory-footer">Salience score 0&ndash;1 &middot; transparent &middot; user-deletable<br/>MCP tools: <code>write &middot; recall &middot; search &middot; forget</code></div></div>
             </div>
           )}
 
@@ -244,7 +244,7 @@ type SectionWithPersonas = typeof content.sections[0] & { personas?: readonly { 
 
           {section.num === '11' && (
             <div class="efficiency-grid">
-              {[{k:'StatusLine Monitor',d:'Real-time context usage per cell. Green \u2192 orange (80%) \u2192 red (90%).'},{k:'Orchestrator Watch',d:'Checks workers every 2 minutes. At 90%: finish, summarize, fresh worker.'},{k:'Message Bus',d:'Async messaging between sessions. Dozens of tokens instead of thousands for shared conversation.'},{k:'Multi-Model Routing',d:'Orchestrator (Opus), workers (Sonnet), simple tasks (Haiku). Right model for the right job.'},{k:'Handover Pattern',d:'Summary \u2192 new session \u2192 continue. No quality loss from full contexts.'},{k:'Doom Loop Prevention',d:'After 2 failed fixes: new session. Confirmation-trap avoidance in CLAUDE.md.'}].map((item,i) => (
+              {[{k:'StatusLine Monitor',d:'Real-time context usage per cell. Green \u2192 orange (80%) \u2192 red (90%).'},{k:'Orchestrator Watch',d:'Checks workers every 2 minutes. At 90%: finish, summarize, fresh worker.'},{k:'Message Bus',d:'Async messaging between sessions. Dozens of tokens instead of thousands for shared conversation.'},{k:'Multi-Model Routing',d:'Workshop (Opus), workers (Sonnet), simple tasks (Haiku). Right model for the right job.'},{k:'Handover Pattern',d:'Summary \u2192 new session \u2192 continue. No quality loss from full contexts.'},{k:'Doom Loop Prevention',d:'After 2 failed fixes: new session. Confirmation-trap avoidance in CLAUDE.md.'}].map((item,i) => (
                 <div class="efficiency-item"><span class="efficiency-num">{String(i+1).padStart(2,'0')}</span><div><div class="efficiency-title">{item.k}</div><div class="efficiency-desc">{item.d}</div></div></div>
               ))}
             </div>

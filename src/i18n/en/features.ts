@@ -42,7 +42,7 @@ const features = {
         { name: 'Cyber Factory', id: 'cyber-factory', color: '#ab47bc', description: 'Handles subsystem decomposition and coordinates multiple worker sessions in parallel.' },
         { name: 'Testing Assistant', id: 'testing-assistant', color: '#2ecc71', description: 'Critically evaluates generated code. Writes and executes tests.' },
         { name: 'Debugger', id: 'debugger', color: '#ff7043', description: 'Assists with error analysis. Systematic root-cause search instead of trial-and-error.' },
-        { name: 'Orchestrator', id: 'orchestrator', color: '#4fc3f7', description: 'Oversees the overall process. Distributes tasks, monitors context usage, rotates workers.' },
+        { name: 'Workshop', id: 'orchestrator', color: '#4fc3f7', description: 'Oversees the overall process. Distributes tasks, monitors context usage, rotates workers.' },
         { name: 'Audit', id: 'audit', color: '#c0392b', description: 'Conducts final code reviews. Checks for quality, security, and consistency.' },
       ],
     },
@@ -94,7 +94,7 @@ const features = {
       num: '11',
       kicker: 'Resource Management',
       title: 'Efficient Token Usage',
-      lead: 'Long sessions eventually hit context limits. A real-time indicator helps you monitor usage. At 90% capacity, the Orchestrator recommends or independently initiates summarization routines so no information is lost. Additionally, the system automatically selects the most appropriate LLM (Opus, Sonnet, or Haiku) based on the task\'s complexity.',
+      lead: 'Long sessions eventually hit context limits. A real-time indicator helps you monitor usage. At 90% capacity, the Workshop recommends or independently initiates summarization routines so no information is lost. Additionally, the system automatically selects the most appropriate LLM (Opus, Sonnet, or Haiku) based on the task\'s complexity.',
     },
   ],
   scrollNavItems: [
