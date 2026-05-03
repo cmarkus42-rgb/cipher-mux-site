@@ -321,7 +321,7 @@
 .cm-pillar:nth-child(1),
 .cm-pillar:nth-child(2) { border-bottom: 1px solid var(--color-border); }
 
-.cm-pillar h3 {
+.cm-pillar h2 {
   font-family: 'Rajdhani', sans-serif;
   font-weight: 700;
   font-size: 26px;
@@ -545,7 +545,7 @@
   max-width: 720px;
   margin: 0 auto;
 }
-.cm-not h3 {
+.cm-not h2 {
   font-family: 'Rajdhani', sans-serif;
   font-weight: 500;
   font-size: 13px;
