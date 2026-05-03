@@ -66,71 +66,20 @@ type SectionWithA11y = typeof content.sections[0] & { a11yProfiles?: readonly { 
             <p class="cm-section-header-lead">{section.lead}</p>
           </header>
 
-          {/* 01 Cockpit — Grid schematic + Stat boxes */}
+          {/* 01 Cockpit — Real app screenshot with theme switching */}
           {section.num === '01' && (
             <div class="grid-schematic">
-              <div class="grid-schematic-chrome">
-                <span class="grid-schematic-dots">
-                  <span style="background:#FF5F57"></span>
-                  <span style="background:#FEBC2E"></span>
-                  <span style="background:#28C840"></span>
-                </span>
-                <span class="grid-schematic-title">● cipher-mux</span>
-              </div>
-              <div class="grid-schematic-body">
-                <div class="grid-schematic-cells">
-                  <div class="grid-cell">
-                    <div class="grid-cell-header"><span class="grid-cell-dot" style="background:#ffb74d"></span><span>[0,0]</span><span class="grid-cell-prompt">$_</span></div>
-                    <div class="grid-cell-role">companion</div>
-                  </div>
-                  <div class="grid-cell">
-                    <div class="grid-cell-header"><span class="grid-cell-dot" style="background:#ef5350"></span><span>[1,0]</span><span class="grid-cell-prompt">$_</span></div>
-                    <div class="grid-cell-role">refinement</div>
-                  </div>
-                  <div class="grid-cell grid-cell--rowspan">
-                    <div class="grid-cell-header"><span class="grid-cell-dot" style="background:#ab47bc"></span><span>[2,0x2]</span><span class="grid-cell-prompt">$_</span></div>
-                    <div class="grid-cell-role">cyber-factory</div>
-                    <div class="grid-cell-detail">&#9656; Plan-Modus aktiv<br/>&#9656; Wave 2 / 5<br/>&#9656; 3 worker spawned</div>
-                  </div>
-                  <div class="grid-cell">
-                    <div class="grid-cell-header"><span class="grid-cell-dot" style="background:#c0392b"></span><span>[3,0]</span><span class="grid-cell-prompt">$_</span></div>
-                    <div class="grid-cell-role">audit</div>
-                  </div>
-                  <div class="grid-cell">
-                    <div class="grid-cell-header"><span class="grid-cell-dot" style="background:#9b59b6"></span><span>[0,1]</span><span class="grid-cell-prompt">$_</span></div>
-                    <div class="grid-cell-role">voice</div>
-                  </div>
-                  <div class="grid-cell grid-cell--notes">
-                    <div class="grid-cell-header"><span>[1,1]</span><span class="grid-cell-prompt">/notes</span></div>
-                    <div class="grid-cell-role">notes &middot; handoff</div>
-                    <div class="grid-cell-detail" style="font-style:italic"># session-handoff<br/>## Was zu kl&auml;ren ist...</div>
-                  </div>
-                  <div class="grid-cell">
-                    <div class="grid-cell-header"><span class="grid-cell-dot" style="background:#ff7043"></span><span>[3,1]</span><span class="grid-cell-prompt">$_</span></div>
-                    <div class="grid-cell-role">debugger</div>
-                  </div>
-                </div>
-                <div class="grid-annotations">
-                  <div>
-                    <span class="cm-tag-inline">// row-span (vertikal!)</span>
-                    <p>Sessions wachsen in der H&ouml;he f&uuml;r mehr Output. Niemals in der Breite &mdash; eine Session ist immer eine Spalte.</p>
-                  </div>
-                  <div>
-                    <span class="cm-tag-inline">// notes-zelle</span>
-                    <p>Statt Terminal: integrierter Markdown-Editor. Handoff-Notes, Specs, Memos &mdash; direkt im Grid.</p>
-                  </div>
-                  <div>
-                    <span class="cm-tag-inline">// preset-marker</span>
-                    <p>Farbcode = Preset (Funktion). Persona ist orthogonal und kann jederzeit gewechselt werden.</p>
-                  </div>
-                </div>
+              <div class="app-screenshot-wrap">
+                <img
+                  class="app-screenshot"
+                  src="/images/screenshots/cipher-ivory-2x2.webp"
+                  alt="CIPHER-MUX — 2×2 Grid mit Companion, Cyber Factory, Debugger und Refinement im cipher-ivory Theme"
+                  loading="eager"
+                />
               </div>
               <div class="grid-statusbar">
-                <span><span class="on">● OFF</span> STT COM</span>
-                <span>features</span>
-                <span>section 03 / 12</span>
-                <span class="grid-statusbar-theme">cipher-dark</span>
-                <span class="grid-statusbar-version">v0.9.9-dev</span>
+                <span class="grid-statusbar-theme">cipher-ivory</span>
+                <span class="grid-statusbar-version">v0.9.9</span>
               </div>
               <div class="grid-theme-bar">
                 {[
@@ -466,22 +415,16 @@ type SectionWithA11y = typeof content.sections[0] & { a11yProfiles?: readonly { 
       }, { rootMargin: '-20% 0px -70% 0px' });
       sections.forEach(s => observer.observe(s));
 
-      // Theme Easter Egg — click dots to re-skin the grid mockup
-      const schematic = document.querySelector('.grid-schematic') as HTMLElement | null;
+      // Theme Easter Egg — click dots to swap app screenshot
+      const screenshot = document.querySelector('.app-screenshot') as HTMLImageElement | null;
       const themeLabel = document.querySelector('.grid-statusbar-theme') as HTMLElement | null;
       document.querySelectorAll('.grid-theme-dot').forEach(btn => {
         btn.addEventListener('click', () => {
-          if (!schematic) return;
-          const d = (btn as HTMLElement).dataset;
-          schematic.style.setProperty('--gs-bg', d.tBg!);
-          schematic.style.setProperty('--gs-elevated', d.tElevated!);
-          schematic.style.setProperty('--gs-sunken', d.tSunken!);
-          schematic.style.setProperty('--gs-border', d.tBorder!);
-          schematic.style.setProperty('--gs-text', d.tText!);
-          schematic.style.setProperty('--gs-dim', d.tDim!);
-          schematic.style.setProperty('--gs-accent', d.tAccent!);
-          schematic.classList.add('grid-schematic--themed');
-          if (themeLabel) themeLabel.textContent = d.themeId!;
+          if (!screenshot) return;
+          const themeId = (btn as HTMLElement).dataset.themeId!;
+          screenshot.src = `/images/screenshots/${themeId}-2x2.webp`;
+          screenshot.alt = `CIPHER-MUX im ${themeId} Theme`;
+          if (themeLabel) themeLabel.textContent = themeId;
           document.querySelectorAll('.grid-theme-dot').forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
         });
@@ -670,12 +613,21 @@ type SectionWithA11y = typeof content.sections[0] & { a11yProfiles?: readonly { 
     display: block;
   }
 
-  /* ====== 02 Grid schematic ====== */
+  /* ====== 01 App Screenshot ====== */
   .grid-schematic {
     margin-top: 24px;
     border: 1px solid var(--color-border);
     clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
     overflow: hidden;
+  }
+  .app-screenshot-wrap {
+    background: var(--color-bg-sunken);
+  }
+  .app-screenshot {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: opacity 0.15s ease;
   }
   .grid-schematic-chrome {
     display: flex;
