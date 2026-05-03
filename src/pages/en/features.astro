@@ -315,8 +315,8 @@ type SectionWithA11y = typeof content.sections[0] & { a11yProfiles?: readonly { 
   .stat-box { background: var(--color-bg-elevated); border: 1px solid var(--color-border); clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px); padding: 20px; }
   .stat-value { font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 44px; line-height: 1; color: var(--color-accent); display: block; }
   .stat-label { font-family: 'Fira Code', monospace; font-size: 13px; color: var(--color-text); font-weight: 500; margin-top: 8px; display: block; }
-  .grid-schematic { margin-top: 24px; border: 1px solid var(--color-border); clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px); overflow: hidden; }
-  .app-screenshot-wrap { background: var(--color-bg-sunken); }
+  .grid-schematic { margin-top: 24px; overflow: hidden; }
+  .app-screenshot-wrap { }
   .app-screenshot { width: 100%; height: auto; display: block; transition: opacity 0.15s ease; }
   .grid-schematic-chrome { display: flex; align-items: center; gap: 8px; padding: 8px 12px; border-bottom: 1px solid var(--color-border); background: var(--color-bg-sunken); }
   .grid-schematic-dots { display: flex; gap: 5px; }
@@ -360,7 +360,7 @@ type SectionWithA11y = typeof content.sections[0] & { a11yProfiles?: readonly { 
   .grid-schematic--themed { border-color: var(--gs-border); }
   .layout-gallery { margin-top: 32px; }
   .layout-screenshot-row { display: flex; gap: 12px; margin-top: 14px; align-items: flex-end; }
-  .layout-screenshot-item img { width: 100%; height: auto; display: block; border: 1px solid var(--color-border); clip-path: polygon(4px 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%, 0 4px); }
+  .layout-screenshot-item img { width: 100%; height: auto; display: block; }
   .layout-screenshot-label { font-family: 'Fira Code', monospace; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--color-text-dim); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
   .layout-screenshot-label span:last-child { margin-left: auto; opacity: 0.6; }
   .sessions-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 28px; margin-top: 24px; }
@@ -439,7 +439,7 @@ type SectionWithA11y = typeof content.sections[0] & { a11yProfiles?: readonly { 
   .mcp-footer-strip { margin-top: 18px; padding: 14px 18px; background: var(--color-bg-sunken); border: 1px solid var(--color-border); font-family: 'Fira Code', monospace; font-size: 11.5px; color: var(--color-text-secondary); display: flex; justify-content: space-between; align-items: center; gap: 16px; }
   .a11y-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 24px; }
   .a11y-card { background: var(--color-bg-elevated); border: 1px solid var(--color-border); clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px); overflow: hidden; display: flex; flex-direction: column; }
-  .a11y-card-screenshot { width: 100%; height: auto; display: block; border-bottom: 1px solid var(--color-border); }
+  .a11y-card-screenshot { width: 100%; height: auto; display: block; }
   .a11y-card-body { padding: 18px 22px; display: flex; flex-direction: column; gap: 8px; }
   .a11y-card-colors { display: flex; gap: 6px; margin-bottom: 4px; }
   .a11y-color-dot { width: 18px; height: 18px; border: 1px solid var(--color-border); clip-path: polygon(3px 0, 100% 0, 100% calc(100% - 3px), calc(100% - 3px) 100%, 0 100%, 0 3px); }
