@@ -22,7 +22,7 @@ const sectionIdMap: Record<string, string> = {
 type SectionWithStats = typeof content.sections[0] & { stats?: readonly { value: string; label: string }[] };
 type SectionWithPresets = typeof content.sections[0] & { presets?: readonly { name: string; id: string; color: string; description: string }[] };
 type SectionWithPersonas = typeof content.sections[0] & { personas?: readonly { name: string; tagline: string; color: string; vibe: string; keys: readonly string[] }[] };
-type SectionWithA11y = typeof content.sections[0] & { a11yProfiles?: readonly { name: string; type: string; affected: string; strategy: string; colors: readonly string[] }[] };
+type SectionWithA11y = typeof content.sections[0] & { a11yProfiles?: readonly { name: string; type: string; affected: string; strategy: string; colors: readonly string[]; screenshot: string }[] };
 ---
 
 <Layout
@@ -66,71 +66,20 @@ type SectionWithA11y = typeof content.sections[0] & { a11yProfiles?: readonly { 
             <p class="cm-section-header-lead">{section.lead}</p>
           </header>
 
-          {/* 01 Cockpit — Grid schematic + Stat boxes */}
+          {/* 01 Cockpit — Real app screenshot with theme switching */}
           {section.num === '01' && (
             <div class="grid-schematic">
-              <div class="grid-schematic-chrome">
-                <span class="grid-schematic-dots">
-                  <span style="background:#FF5F57"></span>
-                  <span style="background:#FEBC2E"></span>
-                  <span style="background:#28C840"></span>
-                </span>
-                <span class="grid-schematic-title">● cipher-mux</span>
-              </div>
-              <div class="grid-schematic-body">
-                <div class="grid-schematic-cells">
-                  <div class="grid-cell">
-                    <div class="grid-cell-header"><span class="grid-cell-dot" style="background:#ffb74d"></span><span>[0,0]</span><span class="grid-cell-prompt">$_</span></div>
-                    <div class="grid-cell-role">companion</div>
-                  </div>
-                  <div class="grid-cell">
-                    <div class="grid-cell-header"><span class="grid-cell-dot" style="background:#ef5350"></span><span>[1,0]</span><span class="grid-cell-prompt">$_</span></div>
-                    <div class="grid-cell-role">refinement</div>
-                  </div>
-                  <div class="grid-cell grid-cell--rowspan">
-                    <div class="grid-cell-header"><span class="grid-cell-dot" style="background:#ab47bc"></span><span>[2,0x2]</span><span class="grid-cell-prompt">$_</span></div>
-                    <div class="grid-cell-role">cyber-factory</div>
-                    <div class="grid-cell-detail">&#9656; Plan-Modus aktiv<br/>&#9656; Wave 2 / 5<br/>&#9656; 3 worker spawned</div>
-                  </div>
-                  <div class="grid-cell">
-                    <div class="grid-cell-header"><span class="grid-cell-dot" style="background:#c0392b"></span><span>[3,0]</span><span class="grid-cell-prompt">$_</span></div>
-                    <div class="grid-cell-role">audit</div>
-                  </div>
-                  <div class="grid-cell">
-                    <div class="grid-cell-header"><span class="grid-cell-dot" style="background:#9b59b6"></span><span>[0,1]</span><span class="grid-cell-prompt">$_</span></div>
-                    <div class="grid-cell-role">voice</div>
-                  </div>
-                  <div class="grid-cell grid-cell--notes">
-                    <div class="grid-cell-header"><span>[1,1]</span><span class="grid-cell-prompt">/notes</span></div>
-                    <div class="grid-cell-role">notes &middot; handoff</div>
-                    <div class="grid-cell-detail" style="font-style:italic"># session-handoff<br/>## Was zu kl&auml;ren ist...</div>
-                  </div>
-                  <div class="grid-cell">
-                    <div class="grid-cell-header"><span class="grid-cell-dot" style="background:#ff7043"></span><span>[3,1]</span><span class="grid-cell-prompt">$_</span></div>
-                    <div class="grid-cell-role">debugger</div>
-                  </div>
-                </div>
-                <div class="grid-annotations">
-                  <div>
-                    <span class="cm-tag-inline">// row-span (vertikal!)</span>
-                    <p>Sessions wachsen in der H&ouml;he f&uuml;r mehr Output. Niemals in der Breite &mdash; eine Session ist immer eine Spalte.</p>
-                  </div>
-                  <div>
-                    <span class="cm-tag-inline">// notes-zelle</span>
-                    <p>Statt Terminal: integrierter Markdown-Editor. Handoff-Notes, Specs, Memos &mdash; direkt im Grid.</p>
-                  </div>
-                  <div>
-                    <span class="cm-tag-inline">// preset-marker</span>
-                    <p>Farbcode = Preset (Funktion). Persona ist orthogonal und kann jederzeit gewechselt werden.</p>
-                  </div>
-                </div>
+              <div class="app-screenshot-wrap">
+                <img
+                  class="app-screenshot"
+                  src="/images/screenshots/cipher-ivory-2x2.webp"
+                  alt="CIPHER-MUX — 2×2 Grid mit Companion, Cyber Factory, Debugger und Refinement im cipher-ivory Theme"
+                  loading="eager"
+                />
               </div>
               <div class="grid-statusbar">
-                <span><span class="on">● OFF</span> STT COM</span>
-                <span>features</span>
-                <span>section 03 / 12</span>
-                <span class="grid-statusbar-theme">cipher-dark</span>
-                <span class="grid-statusbar-version">v0.9.9-dev</span>
+                <span class="grid-statusbar-theme">cipher-ivory</span>
+                <span class="grid-statusbar-version">v0.9.9</span>
               </div>
               <div class="grid-theme-bar">
                 {[
@@ -173,47 +122,26 @@ type SectionWithA11y = typeof content.sections[0] & { a11yProfiles?: readonly { 
             </div>
           )}
 
-          {/* 02 Grid — Layout gallery */}
+          {/* 02 Grid — Layout screenshots, proportional to grid columns */}
           {section.num === '02' && (
             <div class="layout-gallery">
-              <span class="cm-tag-inline">// typische workspaces (mockups)</span>
-              <div class="layout-gallery-row">
-                <div class="layout-mini">
-                  <div class="layout-mini-label"><span>Triage</span><span>3x2</span></div>
-                  <div class="layout-mini-grid" style="grid-template-columns:repeat(3,1fr)">
-                    <div class="layout-mini-cell"><span class="grid-cell-dot" style="background:var(--color-preset-companion)"></span>comp</div>
-                    <div class="layout-mini-cell"><span class="grid-cell-dot" style="background:var(--color-preset-refinement)"></span>ref</div>
-                    <div class="layout-mini-cell"><span class="grid-cell-dot" style="background:var(--color-preset-audit)"></span>audit</div>
-                    <div class="layout-mini-cell"><span class="grid-cell-dot" style="background:var(--color-preset-cyberfactory)"></span>cf</div>
-                    <div class="layout-mini-cell layout-mini-cell--empty"></div>
-                    <div class="layout-mini-cell layout-mini-cell--empty"></div>
-                  </div>
+              <span class="cm-tag-inline">// typische Grid-Konfigurationen</span>
+              <div class="layout-screenshot-row">
+                <div class="layout-screenshot-item" style="flex: 1">
+                  <div class="layout-screenshot-label"><span>Solo</span><span>1×1</span></div>
+                  <img src="/images/screenshots/layout-1x1_companion.webp" alt="1×1 Grid — Solo Companion Session" loading="lazy" />
                 </div>
-                <div class="layout-mini layout-mini--active">
-                  <div class="layout-mini-label"><span>Dual + Plan</span><span>2x2</span></div>
-                  <div class="layout-mini-grid" style="grid-template-columns:repeat(2,1fr)">
-                    <div class="layout-mini-cell" style="grid-row:span 2"><span class="grid-cell-dot" style="background:var(--color-preset-cyberfactory)"></span>cf</div>
-                    <div class="layout-mini-cell"><span class="grid-cell-dot" style="background:var(--color-preset-refinement)"></span>ref</div>
-                    <div class="layout-mini-cell"><span class="grid-cell-dot" style="background:var(--color-preset-testing)"></span>test</div>
-                  </div>
+                <div class="layout-screenshot-item" style="flex: 2">
+                  <div class="layout-screenshot-label"><span>Dual</span><span>2×1</span></div>
+                  <img src="/images/screenshots/layout-2x1_companion_cyberfactory.webp" alt="2×1 Grid — Companion und Cyber Factory" loading="lazy" />
                 </div>
-                <div class="layout-mini">
-                  <div class="layout-mini-label"><span>Solo Focus</span><span>1x2</span></div>
-                  <div class="layout-mini-grid" style="grid-template-columns:1fr">
-                    <div class="layout-mini-cell" style="grid-row:span 2"><span class="grid-cell-dot" style="background:var(--color-preset-cyberfactory)"></span>cf</div>
-                  </div>
+                <div class="layout-screenshot-item" style="flex: 3">
+                  <div class="layout-screenshot-label"><span>Triage</span><span>3×2</span></div>
+                  <img src="/images/screenshots/layout-3x2_six_sessions.webp" alt="3×2 Grid — 6 Sessions" loading="lazy" />
                 </div>
-                <div class="layout-mini">
-                  <div class="layout-mini-label"><span>Maker</span><span>4x2</span></div>
-                  <div class="layout-mini-grid" style="grid-template-columns:repeat(4,1fr)">
-                    <div class="layout-mini-cell"><span class="grid-cell-dot" style="background:var(--color-preset-ideation)"></span>id</div>
-                    <div class="layout-mini-cell"><span class="grid-cell-dot" style="background:var(--color-preset-refinement)"></span>ref</div>
-                    <div class="layout-mini-cell" style="grid-row:span 2"><span class="grid-cell-dot" style="background:var(--color-preset-cyberfactory)"></span>cf</div>
-                    <div class="layout-mini-cell"><span class="grid-cell-dot" style="background:var(--color-preset-companion)"></span>comp</div>
-                    <div class="layout-mini-cell"><span class="grid-cell-dot" style="background:var(--color-preset-voice)"></span>voice</div>
-                    <div class="layout-mini-cell"><span class="grid-cell-dot" style="background:var(--color-preset-testing)"></span>test</div>
-                    <div class="layout-mini-cell"><span class="grid-cell-dot" style="background:var(--color-preset-debugger)"></span>dbg</div>
-                  </div>
+                <div class="layout-screenshot-item" style="flex: 4">
+                  <div class="layout-screenshot-label"><span>Maker</span><span>4×2</span></div>
+                  <img src="/images/screenshots/layout-4x2_all8_sessions.webp" alt="4×2 Grid — 8 Sessions" loading="lazy" />
                 </div>
               </div>
             </div>
@@ -411,14 +339,17 @@ type SectionWithA11y = typeof content.sections[0] & { a11yProfiles?: readonly { 
             <div class="a11y-grid">
               {s.a11yProfiles.map((profile) => (
                 <div class="a11y-card">
-                  <div class="a11y-card-colors">
-                    {profile.colors.map((c) => (
-                      <span class="a11y-color-dot" style={`background:${c}`}></span>
-                    ))}
+                  <img class="a11y-card-screenshot" src={profile.screenshot} alt={`CIPHER-MUX im ${profile.name} Profil`} loading="lazy" />
+                  <div class="a11y-card-body">
+                    <div class="a11y-card-colors">
+                      {profile.colors.map((c) => (
+                        <span class="a11y-color-dot" style={`background:${c}`}></span>
+                      ))}
+                    </div>
+                    <div class="a11y-card-name">{profile.name}</div>
+                    <div class="a11y-card-type">{profile.type} &middot; {profile.affected}</div>
+                    <div class="a11y-card-strategy">{profile.strategy}</div>
                   </div>
-                  <div class="a11y-card-name">{profile.name}</div>
-                  <div class="a11y-card-type">{profile.type} &middot; {profile.affected}</div>
-                  <div class="a11y-card-strategy">{profile.strategy}</div>
                 </div>
               ))}
             </div>
@@ -466,22 +397,16 @@ type SectionWithA11y = typeof content.sections[0] & { a11yProfiles?: readonly { 
       }, { rootMargin: '-20% 0px -70% 0px' });
       sections.forEach(s => observer.observe(s));
 
-      // Theme Easter Egg — click dots to re-skin the grid mockup
-      const schematic = document.querySelector('.grid-schematic') as HTMLElement | null;
+      // Theme Easter Egg — click dots to swap app screenshot
+      const screenshot = document.querySelector('.app-screenshot') as HTMLImageElement | null;
       const themeLabel = document.querySelector('.grid-statusbar-theme') as HTMLElement | null;
       document.querySelectorAll('.grid-theme-dot').forEach(btn => {
         btn.addEventListener('click', () => {
-          if (!schematic) return;
-          const d = (btn as HTMLElement).dataset;
-          schematic.style.setProperty('--gs-bg', d.tBg!);
-          schematic.style.setProperty('--gs-elevated', d.tElevated!);
-          schematic.style.setProperty('--gs-sunken', d.tSunken!);
-          schematic.style.setProperty('--gs-border', d.tBorder!);
-          schematic.style.setProperty('--gs-text', d.tText!);
-          schematic.style.setProperty('--gs-dim', d.tDim!);
-          schematic.style.setProperty('--gs-accent', d.tAccent!);
-          schematic.classList.add('grid-schematic--themed');
-          if (themeLabel) themeLabel.textContent = d.themeId!;
+          if (!screenshot) return;
+          const themeId = (btn as HTMLElement).dataset.themeId!;
+          screenshot.src = `/images/screenshots/${themeId}-2x2.webp`;
+          screenshot.alt = `CIPHER-MUX im ${themeId} Theme`;
+          if (themeLabel) themeLabel.textContent = themeId;
           document.querySelectorAll('.grid-theme-dot').forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
         });
@@ -670,12 +595,18 @@ type SectionWithA11y = typeof content.sections[0] & { a11yProfiles?: readonly { 
     display: block;
   }
 
-  /* ====== 02 Grid schematic ====== */
+  /* ====== 01 App Screenshot ====== */
   .grid-schematic {
     margin-top: 24px;
-    border: 1px solid var(--color-border);
-    clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
     overflow: hidden;
+  }
+  .app-screenshot-wrap {
+  }
+  .app-screenshot {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: opacity 0.15s ease;
   }
   .grid-schematic-chrome {
     display: flex;
@@ -844,23 +775,22 @@ type SectionWithA11y = typeof content.sections[0] & { a11yProfiles?: readonly { 
   .grid-schematic--themed .grid-theme-bar { background: var(--gs-sunken); border-color: var(--gs-border); }
   .grid-schematic--themed { border-color: var(--gs-border); }
 
-  /* Layout gallery */
+  /* Layout gallery (screenshots) */
   .layout-gallery {
     margin-top: 32px;
   }
-  .layout-gallery-row {
+  .layout-screenshot-row {
     display: flex;
-    gap: 24px;
+    gap: 12px;
     margin-top: 14px;
+    align-items: flex-end;
   }
-  .layout-mini {
-    flex: 1;
-    min-width: 0;
+  .layout-screenshot-item img {
+    width: 100%;
+    height: auto;
+    display: block;
   }
-  .layout-mini--active .layout-mini-label span:first-child {
-    color: var(--color-accent);
-  }
-  .layout-mini-label {
+  .layout-screenshot-label {
     font-family: 'Fira Code', monospace;
     font-size: 10px;
     letter-spacing: 1.5px;
@@ -871,35 +801,9 @@ type SectionWithA11y = typeof content.sections[0] & { a11yProfiles?: readonly { 
     align-items: center;
     gap: 8px;
   }
-  .layout-mini-label span:last-child {
+  .layout-screenshot-label span:last-child {
     margin-left: auto;
     opacity: 0.6;
-  }
-  .layout-mini-grid {
-    display: grid;
-    grid-auto-rows: 32px;
-    gap: 4px;
-    padding: 8px;
-    background: var(--color-bg-sunken);
-    border: 1px solid var(--color-border);
-  }
-  .layout-mini-cell {
-    background: var(--color-bg);
-    border: 1px solid var(--color-border);
-    clip-path: polygon(4px 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%, 0 4px);
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    padding: 0 6px;
-    font-family: 'Fira Code', monospace;
-    font-size: 8px;
-    color: var(--color-text-dim);
-    letter-spacing: 0.5px;
-  }
-  .layout-mini-cell--empty {
-    background: transparent;
-    border: 1px dashed var(--color-border);
-    clip-path: none;
   }
 
   /* ====== 03 Sessions ====== */
@@ -1347,7 +1251,17 @@ type SectionWithA11y = typeof content.sections[0] & { a11yProfiles?: readonly { 
     background: var(--color-bg-elevated);
     border: 1px solid var(--color-border);
     clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
-    padding: 22px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .a11y-card-screenshot {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .a11y-card-body {
+    padding: 18px 22px;
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -1438,8 +1352,7 @@ type SectionWithA11y = typeof content.sections[0] & { a11yProfiles?: readonly { 
     .a11y-grid { grid-template-columns: 1fr; }
     .efficiency-grid { grid-template-columns: 1fr; }
     .prompt-resolution { grid-template-columns: 1fr; }
-    .layout-gallery-row { flex-wrap: wrap; }
-    .layout-mini { min-width: 45%; }
+    .layout-screenshot-row { flex-wrap: wrap; }
     .tts-strip { flex-direction: column; align-items: flex-start; }
   }
 </style>
