@@ -14,6 +14,7 @@ const newPath = currentPath.replace(/^\/(de|en)/, `/${otherLang}`);
   href={newPath}
   class="cm-lang-switch"
   title={otherLang === 'de' ? 'Deutsch' : 'English'}
+  aria-label={otherLang === 'de' ? 'Sprache wechseln: Deutsch' : 'Switch language: English'}
 >
   {otherLabel}
 </a>

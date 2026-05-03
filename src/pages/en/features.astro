@@ -99,7 +99,7 @@ type SectionWithPersonas = typeof content.sections[0] & { personas?: readonly { 
                   { id: 'brutalist',       bg: '#FFFFFF', elevated: '#FFFFFF', sunken: '#F0F0F0', border: '#000000', text: '#000000', dim: '#707070', accent: '#FF3300' },
                   { id: 'high-contrast',   bg: '#000000', elevated: '#0A0A0A', sunken: '#000000', border: '#FFFFFF', text: '#FFFFFF', dim: '#B0B0B0', accent: '#FFFF00' },
                 ].map((t) => (
-                  <button class="grid-theme-dot" data-theme-id={t.id} data-t-bg={t.bg} data-t-elevated={t.elevated} data-t-sunken={t.sunken} data-t-border={t.border} data-t-text={t.text} data-t-dim={t.dim} data-t-accent={t.accent} style={`background:${t.bg};border-color:${t.border}`} title={t.id}><span style={`background:${t.accent}`}></span></button>
+                  <button class="grid-theme-dot" data-theme-id={t.id} data-t-bg={t.bg} data-t-elevated={t.elevated} data-t-sunken={t.sunken} data-t-border={t.border} data-t-text={t.text} data-t-dim={t.dim} data-t-accent={t.accent} style={`background:${t.bg};border-color:${t.border}`} title={t.id} aria-label={`Apply ${t.id} theme`}><span style={`background:${t.accent}`}></span></button>
                 ))}
               </div>
             </div>

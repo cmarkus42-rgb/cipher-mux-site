@@ -151,6 +151,7 @@ type SectionWithPersonas = typeof content.sections[0] & { personas?: readonly { 
                     data-t-border={t.border} data-t-text={t.text} data-t-dim={t.dim} data-t-accent={t.accent}
                     style={`background:${t.bg};border-color:${t.border}`}
                     title={t.id}
+                    aria-label={`Theme ${t.id} anwenden`}
                   ><span style={`background:${t.accent}`}></span></button>
                 ))}
               </div>
