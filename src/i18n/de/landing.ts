@@ -5,7 +5,7 @@ const landing = {
     taglineSub: 'for Makers.',
     taglineEnd: 'And everyone else.',
     subtext:
-      'CIPHER-MUX macht KI-gestütztes Bauen zugänglich, transparent und lehrbar. Für alle die Ideen haben.',
+      'Eine grafische Schicht über Claude Code. Für alle die bauen wollen, ohne alles im Terminal zu jonglieren.',
     buttons: [
       { label: 'Dokumentation', href: '/de/docs', primary: true },
       { label: 'Features', href: '/de/features' },
