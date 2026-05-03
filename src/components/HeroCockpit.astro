@@ -3,12 +3,13 @@ interface Props {
   label: string;
   tagline: string;
   taglineSub: string;
+  taglineEnd?: string;
   subtext: string;
   buttons: Array<{ label: string; href: string; primary?: boolean }>;
   lang: string;
 }
 
-const { label, tagline, taglineSub, subtext, buttons, lang } = Astro.props;
+const { label, tagline, taglineSub, taglineEnd, subtext, buttons, lang } = Astro.props;
 ---
 
 <section class="cm-cockpit-hero">
@@ -18,7 +19,7 @@ const { label, tagline, taglineSub, subtext, buttons, lang } = Astro.props;
   <div class="cm-cockpit-hero__copy">
     <span class="cm-label-tag" style="align-self: flex-start;">{label}</span>
     <h1 class="cm-tagline cm-cockpit-hero__tagline">
-      {tagline}<br /><span style="color: var(--color-accent);">{taglineSub}</span>
+      {tagline}<br /><span style="color: var(--color-accent);">{taglineSub}</span>{taglineEnd && <><br /><span class="cm-cockpit-hero__tagline-end">{taglineEnd}</span></>}
     </h1>
     <p class="cm-hero-sub cm-cockpit-hero__sub" set:html={subtext.replace('CIPHER-MUX', '<strong>CIPHER-MUX</strong>')} />
     <div style="display: flex; gap: 12px; margin-top: 8px;">

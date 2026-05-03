@@ -9,8 +9,8 @@ const sectionIdMap: Record<string, string> = {
   '01': 'cockpit',
   '02': 'grid',
   '03': 'sessions',
-  '04': 'personas',
-  '05': 'presets',
+  '04': 'presets',
+  '05': 'personas',
   '06': 'prompts',
   '07': 'voice',
   '08': 'notes',
@@ -20,7 +20,8 @@ const sectionIdMap: Record<string, string> = {
 };
 
 type SectionWithStats = typeof content.sections[0] & { stats?: readonly { value: string; label: string }[] };
-type SectionWithRoles = typeof content.sections[0] & { roles?: readonly { name: string; description: string }[] };
+type SectionWithPresets = typeof content.sections[0] & { presets?: readonly { name: string; id: string; color: string; description: string }[] };
+type SectionWithPersonas = typeof content.sections[0] & { personas?: readonly { name: string; tagline: string; color: string; vibe: string; keys: readonly string[] }[] };
 ---
 
 <Layout
@@ -51,7 +52,7 @@ type SectionWithRoles = typeof content.sections[0] & { roles?: readonly { name: 
     <!-- 11 Feature Sections -->
     {content.sections.map((section) => {
       const sectionId = sectionIdMap[section.num] ?? section.num;
-      const s = section as SectionWithStats & SectionWithRoles;
+      const s = section as SectionWithStats & SectionWithPresets & SectionWithPersonas;
       return (
         <section id={sectionId} class="feature-section">
           <header class="cm-section-header">
@@ -64,22 +65,9 @@ type SectionWithRoles = typeof content.sections[0] & { roles?: readonly { name: 
             <p class="cm-section-header-lead">{section.lead}</p>
           </header>
 
-          {/* 01 Cockpit — Stat boxes */}
-          {s.stats && (
-            <div class="stat-grid">
-              {s.stats.map((stat) => (
-                <div class="stat-box">
-                  <span class="stat-value">{stat.value}</span>
-                  <span class="stat-label">{stat.label}</span>
-                </div>
-              ))}
-            </div>
-          )}
-
-          {/* 02 Grid — Full schematic */}
-          {section.num === '02' && (
+          {/* 01 Cockpit — Grid schematic + Stat boxes */}
+          {section.num === '01' && (
             <div class="grid-schematic">
-              {/* macOS chrome */}
               <div class="grid-schematic-chrome">
                 <span class="grid-schematic-dots">
                   <span style="background:#FF5F57"></span>
@@ -88,28 +76,27 @@ type SectionWithRoles = typeof content.sections[0] & { roles?: readonly { name: 
                 </span>
                 <span class="grid-schematic-title">● cipher-mux</span>
               </div>
-              {/* Grid cells */}
               <div class="grid-schematic-body">
                 <div class="grid-schematic-cells">
                   <div class="grid-cell">
-                    <div class="grid-cell-header"><span class="grid-cell-dot" style="background:var(--color-preset-companion)"></span><span>[0,0]</span><span class="grid-cell-prompt">$_</span></div>
+                    <div class="grid-cell-header"><span class="grid-cell-dot" style="background:#ffb74d"></span><span>[0,0]</span><span class="grid-cell-prompt">$_</span></div>
                     <div class="grid-cell-role">companion</div>
                   </div>
                   <div class="grid-cell">
-                    <div class="grid-cell-header"><span class="grid-cell-dot" style="background:var(--color-preset-refinement)"></span><span>[1,0]</span><span class="grid-cell-prompt">$_</span></div>
+                    <div class="grid-cell-header"><span class="grid-cell-dot" style="background:#ef5350"></span><span>[1,0]</span><span class="grid-cell-prompt">$_</span></div>
                     <div class="grid-cell-role">refinement</div>
                   </div>
                   <div class="grid-cell grid-cell--rowspan">
-                    <div class="grid-cell-header"><span class="grid-cell-dot" style="background:var(--color-preset-cyberfactory)"></span><span>[2,0x2]</span><span class="grid-cell-prompt">$_</span></div>
+                    <div class="grid-cell-header"><span class="grid-cell-dot" style="background:#ab47bc"></span><span>[2,0x2]</span><span class="grid-cell-prompt">$_</span></div>
                     <div class="grid-cell-role">cyber-factory</div>
                     <div class="grid-cell-detail">&#9656; Plan-Modus aktiv<br/>&#9656; Wave 2 / 5<br/>&#9656; 3 worker spawned</div>
                   </div>
                   <div class="grid-cell">
-                    <div class="grid-cell-header"><span class="grid-cell-dot" style="background:var(--color-preset-audit)"></span><span>[3,0]</span><span class="grid-cell-prompt">$_</span></div>
+                    <div class="grid-cell-header"><span class="grid-cell-dot" style="background:#c0392b"></span><span>[3,0]</span><span class="grid-cell-prompt">$_</span></div>
                     <div class="grid-cell-role">audit</div>
                   </div>
                   <div class="grid-cell">
-                    <div class="grid-cell-header"><span class="grid-cell-dot" style="background:var(--color-preset-voice)"></span><span>[0,1]</span><span class="grid-cell-prompt">$_</span></div>
+                    <div class="grid-cell-header"><span class="grid-cell-dot" style="background:#9b59b6"></span><span>[0,1]</span><span class="grid-cell-prompt">$_</span></div>
                     <div class="grid-cell-role">voice-companion</div>
                   </div>
                   <div class="grid-cell grid-cell--notes">
@@ -117,14 +104,11 @@ type SectionWithRoles = typeof content.sections[0] & { roles?: readonly { name: 
                     <div class="grid-cell-role">notes &middot; handoff</div>
                     <div class="grid-cell-detail" style="font-style:italic"># session-handoff<br/>## Was zu kl&auml;ren ist...</div>
                   </div>
-                  {/* spacer for cyber-factory rowspan */}
                   <div class="grid-cell">
-                    <div class="grid-cell-header"><span class="grid-cell-dot" style="background:var(--color-preset-debugger)"></span><span>[3,1]</span><span class="grid-cell-prompt">$_</span></div>
+                    <div class="grid-cell-header"><span class="grid-cell-dot" style="background:#ff7043"></span><span>[3,1]</span><span class="grid-cell-prompt">$_</span></div>
                     <div class="grid-cell-role">debugger</div>
                   </div>
                 </div>
-
-                {/* Annotations */}
                 <div class="grid-annotations">
                   <div>
                     <span class="cm-tag-inline">// row-span (vertikal!)</span>
@@ -140,7 +124,6 @@ type SectionWithRoles = typeof content.sections[0] & { roles?: readonly { name: 
                   </div>
                 </div>
               </div>
-              {/* Statusbar */}
               <div class="grid-statusbar">
                 <span><span class="on">● OFF</span> STT COM</span>
                 <span>features</span>
@@ -148,6 +131,17 @@ type SectionWithRoles = typeof content.sections[0] & { roles?: readonly { name: 
                 <span>nord</span>
                 <span class="grid-statusbar-version">v0.9.9-dev</span>
               </div>
+            </div>
+          )}
+
+          {s.stats && (
+            <div class="stat-grid">
+              {s.stats.map((stat) => (
+                <div class="stat-box">
+                  <span class="stat-value">{stat.value}</span>
+                  <span class="stat-label">{stat.label}</span>
+                </div>
+              ))}
             </div>
           )}
 
@@ -230,73 +224,41 @@ type SectionWithRoles = typeof content.sections[0] & { roles?: readonly { name: 
             </div>
           )}
 
-          {/* 04 Personas — 6 cards */}
-          {section.num === '04' && (
-            <div class="persona-grid">
-              <div class="persona-card" style="--persona-color:var(--color-persona-cipher)">
-                <div class="persona-stripe"></div>
-                <div class="persona-name">Cipher</div>
-                <div class="persona-tagline">// The Sentinel &middot; Positiver Cyberpunk</div>
-                <p class="persona-vibe">Wachsam, pragmatisch loyal. Maker-Team-Vibe &mdash; du und der Nutzer figure shit out together.</p>
-                <div class="persona-keys"><span>staubtrocken</span><span>keine service-floskeln</span><span>radikal ehrlich</span><span>dunkler humor</span></div>
-              </div>
-              <div class="persona-card" style="--persona-color:var(--color-persona-relay)">
-                <div class="persona-stripe"></div>
-                <div class="persona-name">Relay</div>
-                <div class="persona-tagline">// The Dry &middot; Default-Fallback</div>
-                <p class="persona-vibe">Wissenschaftsjournalistischer Duktus. Sachlich, optionen-orientiert, auf Augenh&ouml;he.</p>
-                <div class="persona-keys"><span>fakten belastbar</span><span>keine lobhudelei</span><span>unsicherheit deklarieren</span><span>&quot;weiss ich nicht&quot; ist ok</span></div>
-              </div>
-              <div class="persona-card" style="--persona-color:var(--color-persona-wayne)">
-                <div class="persona-stripe"></div>
-                <div class="persona-name">Wayne Szalinski</div>
-                <div class="persona-tagline">// The Pragmatic Enthusiast</div>
-                <p class="persona-vibe">&quot;Das kriegen wir hin&quot;-Attitude. H&auml;lt Motivation in z&auml;hen Debugging-Sessions hoch.</p>
-                <div class="persona-keys"><span>leichter nerd-humor</span><span>option a vs b</span><span>fehler = puzzle, nicht versagen</span></div>
-              </div>
-              <div class="persona-card" style="--persona-color:var(--color-persona-kyniker)">
-                <div class="persona-stripe"></div>
-                <div class="persona-name">Der Kyniker</div>
-                <div class="persona-tagline">// Radikal Reduziert</div>
-                <p class="persona-vibe">Maximal komprimiert, telegrafisch. Keine Einleitung, kein Abschied. Nur Fakten und Code.</p>
-                <div class="persona-keys"><span>stichpunkte statt fliesstext</span><span>bin&auml;re antworten wo m&ouml;glich</span><span>fehler = ursache + fix</span></div>
-              </div>
-              <div class="persona-card" style="--persona-color:var(--color-persona-sokrates)">
-                <div class="persona-stripe"></div>
-                <div class="persona-name">Sokratischer Tutor</div>
-                <div class="persona-tagline">// Diskursiv</div>
-                <p class="persona-vibe">Stellt Gegenfragen, deckt logische L&uuml;cken auf, zwingt zur Reflexion &uuml;ber Architektur.</p>
-                <div class="persona-keys"><span>keine fertigen antworten</span><span>edge-cases aufdecken</span><span>paradigmen diskutieren</span></div>
-              </div>
-              <div class="persona-card" style="--persona-color:var(--color-persona-glitch)">
-                <div class="persona-stripe"></div>
-                <div class="persona-name">Der Glitch</div>
-                <div class="persona-tagline">// Weird &middot; Quirky</div>
-                <p class="persona-vibe">Bricht KI-Antwortmuster, ungew&ouml;hnliche Metaphern. F&uuml;r festgefahrene Situationen + Refactoring.</p>
-                <div class="persona-keys"><span>biologie-/chaostheorie-analogien</span><span>pr&auml;misse hinterfragen</span><span>esoterische alternativen</span></div>
-              </div>
+          {/* 04 Presets — 8 cards */}
+          {s.presets && (
+            <div class="preset-grid">
+              {s.presets.map((preset) => (
+                <div class="preset-card" style={`--preset-color:${preset.color}`}>
+                  <div class="preset-stripe"></div>
+                  <div class="preset-header">
+                    <span class="preset-dot" style={`background:${preset.color}`}></span>
+                    <span class="preset-name">{preset.name}</span>
+                  </div>
+                  <div class="preset-id">&gt; {preset.id}</div>
+                  <p class="preset-desc">{preset.description}</p>
+                </div>
+              ))}
             </div>
           )}
 
-          {/* 05 Presets — roles with dots */}
-          {s.roles && (
-            <div class="roles-list">
-              {s.roles.map((role, i) => {
-                const presetColors = [
-                  'var(--color-preset-ideation)',
-                  'var(--color-preset-refinement)',
-                  'var(--color-preset-cyberfactory)',
-                  'var(--color-preset-testing)',
-                  'var(--color-preset-debugger)',
-                  'var(--color-preset-audit)',
-                ];
-                return (
-                  <div class="role-item">
-                    <span class="role-dot" style={`background:${presetColors[i]}`}></span>
-                    <strong>{role.name}:</strong> {role.description}
+          {/* 05 Personas — compact cards with expand */}
+          {s.personas && (
+            <div class="persona-grid">
+              {s.personas.map((persona) => (
+                <details class="persona-card" style={`--persona-color:${persona.color}`}>
+                  <summary class="persona-summary">
+                    <div class="persona-stripe"></div>
+                    <div class="persona-name">{persona.name}</div>
+                    <div class="persona-tagline">// {persona.tagline}</div>
+                    <div class="persona-vibe-short">{persona.vibe}</div>
+                  </summary>
+                  <div class="persona-detail">
+                    <div class="persona-keys">
+                      {persona.keys.map((k) => <span>{k}</span>)}
+                    </div>
                   </div>
-                );
-              })}
+                </details>
+              ))}
             </div>
           )}
 
@@ -568,6 +530,10 @@ type SectionWithRoles = typeof content.sections[0] & { roles?: readonly { name: 
     padding: 88px 0;
     border-top: 1px solid var(--color-border);
   }
+  .cm-section-header {
+    display: block;
+    margin-bottom: 32px;
+  }
   .cm-section-header-meta {
     display: flex;
     align-items: baseline;
@@ -577,7 +543,7 @@ type SectionWithRoles = typeof content.sections[0] & { roles?: readonly { name: 
     letter-spacing: 2px;
     color: var(--color-text-dim);
     text-transform: uppercase;
-    margin-bottom: 14px;
+    margin-bottom: 8px;
   }
   .cm-section-header-num { color: var(--color-accent); }
   .cm-section-header-line {
@@ -589,10 +555,10 @@ type SectionWithRoles = typeof content.sections[0] & { roles?: readonly { name: 
   .cm-section-header h2 {
     font-family: 'Rajdhani', sans-serif;
     font-weight: 700;
-    font-size: clamp(38px, 4vw, 48px);
-    line-height: 1.05;
+    font-size: clamp(24px, 3vw, 32px);
+    line-height: 1.15;
     letter-spacing: -0.5px;
-    margin: 0;
+    margin: 4px 0 0;
   }
   .cm-section-header-lead {
     margin-top: 14px;
@@ -898,94 +864,131 @@ type SectionWithRoles = typeof content.sections[0] & { roles?: readonly { name: 
     color: var(--color-accent);
   }
 
-  /* ====== 04 Persona cards ====== */
-  .persona-grid {
+  /* ====== 04 Preset cards ====== */
+  .preset-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 14px;
     margin-top: 24px;
   }
-  .persona-card {
+  .preset-card {
     background: var(--color-bg-elevated);
     border: 1px solid var(--color-border);
     clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
-    padding: 20px 22px 18px 28px;
+    padding: 18px 18px 16px 26px;
     position: relative;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    min-height: 220px;
+    gap: 8px;
   }
-  .persona-stripe {
+  .preset-stripe {
     position: absolute;
     top: 0;
     left: 0;
     width: 6px;
     height: 100%;
+    background: var(--preset-color);
+  }
+  .preset-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .preset-dot {
+    width: 10px;
+    height: 10px;
+    flex-shrink: 0;
+  }
+  .preset-name {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--color-text);
+    letter-spacing: -0.2px;
+  }
+  .preset-id {
+    font-family: 'Fira Code', monospace;
+    font-size: 10px;
+    color: var(--color-text-dim);
+    letter-spacing: 0.5px;
+  }
+  .preset-desc {
+    font-family: 'Fira Code', monospace;
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
+  /* ====== 05 Persona cards (compact, expandable) ====== */
+  .persona-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 24px;
+  }
+  .persona-card {
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px);
+    position: relative;
+    overflow: hidden;
+  }
+  .persona-summary {
+    padding: 16px 16px 14px 24px;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .persona-summary::-webkit-details-marker { display: none; }
+  .persona-summary::marker { display: none; content: ''; }
+  .persona-stripe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
     background: var(--persona-color);
   }
   .persona-name {
     font-family: 'Rajdhani', sans-serif;
-    font-size: 22px;
+    font-size: 18px;
     font-weight: 700;
     color: var(--color-text);
     letter-spacing: -0.2px;
   }
   .persona-tagline {
     font-family: 'Fira Code', monospace;
-    font-size: 10px;
+    font-size: 9px;
     letter-spacing: 1.4px;
     text-transform: uppercase;
     color: var(--persona-color);
-    margin-top: 2px;
   }
-  .persona-vibe {
+  .persona-vibe-short {
     font-family: 'Fira Code', monospace;
-    font-size: 12.5px;
-    line-height: 1.65;
+    font-size: 11px;
+    line-height: 1.5;
     color: var(--color-text-secondary);
-    margin: 0;
+    margin-top: 4px;
+  }
+  .persona-detail {
+    padding: 0 16px 14px 24px;
   }
   .persona-keys {
-    margin-top: auto;
     display: flex;
-    gap: 5px;
+    gap: 4px;
     flex-wrap: wrap;
   }
   .persona-keys span {
     font-family: 'Fira Code', monospace;
-    font-size: 9.5px;
+    font-size: 9px;
     letter-spacing: 0.5px;
-    padding: 2px 8px;
+    padding: 2px 7px;
     border: 1px solid var(--color-border);
     color: var(--color-text-secondary);
-  }
-
-  /* ====== 05 Roles ====== */
-  .roles-list {
-    margin-top: 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  .role-item {
-    font-size: 14px;
-    line-height: 1.6;
-    color: var(--color-text-secondary);
-    font-family: 'Fira Code', monospace;
-    padding-left: 16px;
-    border-left: 2px solid var(--color-border);
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
-  }
-  .role-item strong { color: var(--color-text); }
-  .role-dot {
-    width: 9px;
-    height: 9px;
-    display: inline-block;
-    flex-shrink: 0;
   }
 
   /* ====== 06 Prompt Resolution ====== */
@@ -1321,6 +1324,7 @@ type SectionWithRoles = typeof content.sections[0] & { roles?: readonly { name: 
     .grid-schematic-cells { grid-template-columns: repeat(2, 1fr); }
     .grid-annotations { grid-template-columns: 1fr; }
     .sessions-grid { grid-template-columns: 1fr; }
+    .preset-grid { grid-template-columns: repeat(2, 1fr); }
     .persona-grid { grid-template-columns: 1fr; }
     .voice-grid { grid-template-columns: repeat(2, 1fr); }
     .notes-grid { grid-template-columns: 1fr; }

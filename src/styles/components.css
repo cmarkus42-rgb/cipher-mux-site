@@ -387,6 +387,10 @@
   font-size: 68px;
   line-height: 0.98;
 }
+.cm-cockpit-hero__tagline-end {
+  font-size: 0.75em;
+  color: var(--color-text-secondary);
+}
 .cm-cockpit-hero__sub {
   max-width: 480px;
   font-size: 18px;
@@ -647,9 +651,7 @@
    SECTION HEADER (num + kicker)
    ============================================================ */
 .cm-section-header {
-  display: flex;
-  align-items: baseline;
-  gap: 16px;
+  display: block;
   margin-bottom: 32px;
 }
 .cm-section-header__num {

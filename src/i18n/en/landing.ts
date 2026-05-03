@@ -1,12 +1,13 @@
 const landing = {
   hero: {
-    label: 'v0.9.9 · macOS · MIT',
-    tagline: 'Your',
-    taglineSub: 'Coding Cockpit.',
+    label: 'Open Source · macOS · MIT',
+    tagline: 'Agentic Engineering',
+    taglineSub: 'for Makers.',
+    taglineEnd: 'And everyone else.',
     subtext:
-      'CIPHER-MUX orchestrates multiple Claude Code sessions in parallel — visible, controllable, teachable.',
+      'CIPHER-MUX makes AI-powered building accessible, transparent and teachable. For everyone with ideas.',
     buttons: [
-      { label: 'Get Started', href: '/en/start', primary: true },
+      { label: 'Documentation', href: '/en/docs', primary: true },
       { label: 'Features', href: '/en/features' },
       { label: 'GitHub', href: 'https://github.com/cmarkus42/cipher-mux-electron' },
     ],
