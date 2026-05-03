@@ -5,7 +5,7 @@ import content from '../../i18n/de/landing';
 
 const lang = 'de';
 
-const pillarAnchors = ['presets', 'resolution', 'sessions', 'voice'];
+// pillar anchors removed — pillars no longer link to specific features sections
 
 const schema = JSON.stringify([
   {
@@ -47,22 +47,21 @@ const schema = JSON.stringify([
     lang={lang}
   />
 
-  <!-- Pillars with preset markers -->
+  <!-- Pillars -->
   <section class="cm-pillars">
-    {content.pillars.map((pillar, i) => (
-      <div class="cm-pillar">
-        <div class="cm-pillar-marker">
-          <span class="cm-pillar-marker__dot" style={`background: ${pillar.color};`}></span>
-          <span class="cm-pillar-marker__tag">&gt; {pillar.tag}</span>
-          <span class="cm-pillar-marker__num">0{i + 1}</span>
+    {content.pillars.map((pillar, i) => {
+      const accents = ['#ab47bc', '#ffb74d', '#5C9A6E', '#88C0D0'];
+      return (
+        <div class="cm-pillar" style={`--pillar-accent: ${accents[i]}`}>
+          <div class="cm-pillar-stripe"></div>
+          <div class="cm-pillar-marker">
+            <span class="cm-pillar-marker__num">0{i + 1}</span>
+          </div>
+          <h3>{pillar.title}</h3>
+          <p>{pillar.description}</p>
         </div>
-        <h3>{pillar.title}</h3>
-        <p>{pillar.description}</p>
-        <a class="cm-pillar-link" href={`/${lang}/features#${pillarAnchors[i]}`}>
-          Details
-        </a>
-      </div>
-    ))}
+      );
+    })}
   </section>
 
   <!-- Not-Section -->

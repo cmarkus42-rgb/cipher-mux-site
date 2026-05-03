@@ -291,9 +291,25 @@
   border-bottom: 1px solid var(--color-border);
 }
 .cm-pillar {
-  padding: 44px 36px;
+  padding: 44px 36px 44px 44px;
   border-color: var(--color-border);
   transition: background var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+.cm-pillar-stripe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background: var(--pillar-accent);
+  opacity: 0.7;
+  transition: opacity var(--transition-base), width var(--transition-base);
+}
+.cm-pillar:hover .cm-pillar-stripe {
+  opacity: 1;
+  width: 6px;
 }
 .cm-pillar:hover {
   background: var(--color-bg-elevated);
@@ -308,61 +324,34 @@
 .cm-pillar h3 {
   font-family: 'Rajdhani', sans-serif;
   font-weight: 700;
-  font-size: 22px;
-  letter-spacing: 1.2px;
-  margin: 0 0 8px 0;
+  font-size: 26px;
+  letter-spacing: -0.3px;
+  margin: 0 0 12px;
   color: var(--color-text);
 }
 .cm-pillar p {
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.7;
   color: var(--color-text-secondary);
   margin: 0;
 }
-.cm-pillar-link {
-  display: inline-block;
-  margin-top: 14px;
-  font-size: 11px;
-  text-decoration: none;
-  letter-spacing: 1.8px;
-  text-transform: uppercase;
-  font-family: 'Fira Code', monospace;
-  color: var(--color-accent);
-  transition: color var(--transition-base);
-}
-.cm-pillar-link::after { content: ' \2192'; }
-.cm-pillar-link:hover { text-decoration: none; color: var(--color-accent-hover); }
 
 /* ============================================================
-   PILLAR PRESET TAG MARKER
+   PILLAR MARKER (number as watermark)
    ============================================================ */
 .cm-pillar-marker {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 22px;
-}
-.cm-pillar-marker__dot {
-  width: 22px;
-  height: 22px;
-  display: inline-block;
-  flex-shrink: 0;
-  clip-path: polygon(5px 0, 100% 0, 100% calc(100% - 5px), calc(100% - 5px) 100%, 0 100%, 0 5px);
-}
-.cm-pillar-marker__tag {
-  font-family: 'Fira Code', monospace;
-  font-size: 10.5px;
-  color: var(--color-text-dim);
-  letter-spacing: 1.6px;
-  text-transform: lowercase;
+  margin-bottom: 18px;
 }
 .cm-pillar-marker__num {
-  margin-left: auto;
-  font-family: 'Fira Code', monospace;
-  font-size: 10px;
-  color: var(--color-text-dim);
-  opacity: 0.6;
-  letter-spacing: 1.2px;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 1;
+  color: var(--pillar-accent);
+  opacity: 0.25;
+  letter-spacing: -1px;
 }
 
 /* ============================================================

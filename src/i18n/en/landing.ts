@@ -14,32 +14,24 @@ const landing = {
   },
   pillars: [
     {
-      title: 'Requirements-driven development',
+      title: 'Vibecoding, done right',
       description:
-        'You define the specifications, while agents work in parallel to implement them. The visual grid system allows you to manage and observe this process comfortably.',
-      tag: 'orchestrator',
-      color: 'var(--color-preset-cyberfactory)',
+        'Got an idea? Build it. cipher-mux structures the path from idea to code — with specialized agents that build in quality and security you can\'t get from a single chat session.',
     },
     {
-      title: 'Structured software lifecycle',
+      title: 'Built for everyone',
       description:
-        'The cockpit guides you through five phases (from ideation to final audit). Specialized system prompts take care of the heavy lifting regarding structural organization.',
-      tag: 'project-launcher',
-      color: 'var(--color-preset-debugger)',
+        'No CS degree required. The Companion shows you everything — via chat, voice, or UI highlighting. If you can describe an idea, you can build here.',
     },
     {
-      title: 'Transparent architecture',
+      title: 'Transparent, not magic',
       description:
-        'We believe the best way to understand AI is to watch it work. Prompts, context windows, and agent decisions are fully exposed so you can analytically trace their workflows.',
-      tag: 'companion',
-      color: 'var(--color-preset-companion)',
+        'You see what the agents do. Prompts, context, decisions — everything is exposed. Learn how AI-powered development works by watching it happen.',
     },
     {
-      title: 'Alternative access methods',
+      title: 'Designed for access',
       description:
-        'Technology should adapt to you. The interface offers local speech recognition (Whisper), text-to-speech, and accessibility-optimized themes (WCAG AAA) as alternative ways to interact.',
-      tag: 'voice-relay',
-      color: 'var(--color-preset-voice)',
+        'WCAG AAA themes, local speech recognition, Bluetooth remote control. Technology adapts to you — not the other way around.',
     },
   ],
   notSection: {

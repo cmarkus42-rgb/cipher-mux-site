@@ -14,32 +14,24 @@ const landing = {
   },
   pillars: [
     {
-      title: 'Anforderungsbasierte Entwicklung',
+      title: 'Vibecoding, aber richtig',
       description:
-        'Du formulierst die Spezifikationen, während parallel arbeitende Agenten an der Umsetzung arbeiten. Das visuelle Grid-System hilft dir dabei, diesen Prozess entspannt zu steuern und zu beobachten.',
-      tag: 'orchestrator',
-      color: 'var(--color-preset-cyberfactory)',
+        'Du hast eine Idee? Dann bau sie. cipher-mux strukturiert den Weg von der Idee zum Code — mit spezialisierten Agenten, die Qualität und Sicherheit einbauen, die man mit einer einzelnen Chat-Session nicht erreicht.',
     },
     {
-      title: 'Strukturierter Software-Lebenszyklus',
+      title: 'Gebaut für alle',
       description:
-        'Das Cockpit begleitet dich durch fünf Phasen (von der ersten Idee bis zum finalen Audit). Spezialisierte System-Prompts nehmen dir dabei die Strukturierung ab.',
-      tag: 'project-launcher',
-      color: 'var(--color-preset-debugger)',
+        'Kein Informatikstudium nötig. Der Companion zeigt dir alles — per Chat, per Voice, per UI-Highlighting. Wer eine Idee beschreiben kann, kann hier bauen.',
     },
     {
-      title: 'Transparente Architektur',
+      title: 'Transparent statt magisch',
       description:
-        'Wir glauben, dass man KI am besten lernt, wenn man ihr zuschauen kann. Prompts, Kontext-Fenster und Agenten-Entscheidungen liegen offen, damit du die Arbeitsweise analytisch nachvollziehen kannst.',
-      tag: 'companion',
-      color: 'var(--color-preset-companion)',
+        'Du siehst, was die Agenten tun. Prompts, Kontext, Entscheidungen — alles liegt offen. So lernst du nebenbei, wie KI-gestütztes Entwickeln funktioniert.',
     },
     {
-      title: 'Alternative Zugangswege',
+      title: 'Zugänglich gestaltet',
       description:
-        'Technik sollte sich anpassen, nicht umgekehrt. Das Interface bietet lokale Spracherkennung (Whisper), Text-to-Speech und auf Barrierefreiheit optimierte Themes (WCAG AAA) als alternative Zugangswege.',
-      tag: 'voice-relay',
-      color: 'var(--color-preset-voice)',
+        'WCAG-AAA-Themes, lokale Spracherkennung, Bluetooth-Fernbedienung. Technik passt sich an — nicht umgekehrt.',
     },
   ],
   notSection: {
