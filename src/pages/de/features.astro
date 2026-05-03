@@ -144,6 +144,9 @@ type SectionWithA11y = typeof content.sections[0] & { a11yProfiles?: readonly { 
                   { id: 'matrix',          bg: '#000000', elevated: '#030805', sunken: '#000000', border: '#0A5030', text: '#00FF41', dim: '#008820', accent: '#00FF41' },
                   { id: 'brutalist',       bg: '#FFFFFF', elevated: '#FFFFFF', sunken: '#F0F0F0', border: '#000000', text: '#000000', dim: '#707070', accent: '#FF3300' },
                   { id: 'high-contrast',   bg: '#000000', elevated: '#0A0A0A', sunken: '#000000', border: '#FFFFFF', text: '#FFFFFF', dim: '#B0B0B0', accent: '#FFFF00' },
+                  { id: 'cvd-deuteranopia', bg: '#1C1C24', elevated: '#26262F', sunken: '#141418', border: '#3C3C4A', text: '#E8E8F0', dim: '#9696A8', accent: '#56B4E9' },
+                  { id: 'cvd-tritanopia',   bg: '#1C1C24', elevated: '#26262F', sunken: '#141418', border: '#3C3C4A', text: '#E8E8F0', dim: '#9696A8', accent: '#E06090' },
+                  { id: 'cvd-achromatopsia',bg: '#1A1A1A', elevated: '#252525', sunken: '#111111', border: '#404040', text: '#E8E8E8', dim: '#949494', accent: '#E0E0E0' },
                 ].map((t) => (
                   <button
                     class="grid-theme-dot"
