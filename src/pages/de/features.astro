@@ -122,24 +122,24 @@ type SectionWithA11y = typeof content.sections[0] & { a11yProfiles?: readonly { 
             </div>
           )}
 
-          {/* 02 Grid — Layout screenshots */}
+          {/* 02 Grid — Layout screenshots, proportional to grid columns */}
           {section.num === '02' && (
             <div class="layout-gallery">
               <span class="cm-tag-inline">// typische Grid-Konfigurationen</span>
               <div class="layout-screenshot-row">
-                <div class="layout-screenshot-item">
-                  <div class="layout-screenshot-label"><span>Solo Focus</span><span>1×1</span></div>
+                <div class="layout-screenshot-item" style="flex: 1">
+                  <div class="layout-screenshot-label"><span>Solo</span><span>1×1</span></div>
                   <img src="/images/screenshots/layout-1x1_companion.webp" alt="1×1 Grid — Solo Companion Session" loading="lazy" />
                 </div>
-                <div class="layout-screenshot-item">
-                  <div class="layout-screenshot-label"><span>Dual</span><span>1×2</span></div>
-                  <img src="/images/screenshots/layout-1x2_companion_debugger.webp" alt="1×2 Grid — Companion und Debugger" loading="lazy" />
+                <div class="layout-screenshot-item" style="flex: 2">
+                  <div class="layout-screenshot-label"><span>Dual</span><span>2×1</span></div>
+                  <img src="/images/screenshots/layout-2x1_companion_cyberfactory.webp" alt="2×1 Grid — Companion und Cyber Factory" loading="lazy" />
                 </div>
-                <div class="layout-screenshot-item">
+                <div class="layout-screenshot-item" style="flex: 3">
                   <div class="layout-screenshot-label"><span>Triage</span><span>3×2</span></div>
                   <img src="/images/screenshots/layout-3x2_six_sessions.webp" alt="3×2 Grid — 6 Sessions" loading="lazy" />
                 </div>
-                <div class="layout-screenshot-item">
+                <div class="layout-screenshot-item" style="flex: 4">
                   <div class="layout-screenshot-label"><span>Maker</span><span>4×2</span></div>
                   <img src="/images/screenshots/layout-4x2_all8_sessions.webp" alt="4×2 Grid — 8 Sessions" loading="lazy" />
                 </div>
@@ -783,10 +783,10 @@ type SectionWithA11y = typeof content.sections[0] & { a11yProfiles?: readonly { 
     margin-top: 32px;
   }
   .layout-screenshot-row {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 14px;
+    display: flex;
+    gap: 12px;
     margin-top: 14px;
+    align-items: flex-end;
   }
   .layout-screenshot-item img {
     width: 100%;
@@ -1358,7 +1358,7 @@ type SectionWithA11y = typeof content.sections[0] & { a11yProfiles?: readonly { 
     .a11y-grid { grid-template-columns: 1fr; }
     .efficiency-grid { grid-template-columns: 1fr; }
     .prompt-resolution { grid-template-columns: 1fr; }
-    .layout-screenshot-row { grid-template-columns: repeat(2, 1fr); }
+    .layout-screenshot-row { flex-wrap: wrap; }
     .tts-strip { flex-direction: column; align-items: flex-start; }
   }
 </style>

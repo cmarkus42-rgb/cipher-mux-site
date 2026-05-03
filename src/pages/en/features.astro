@@ -107,10 +107,10 @@ type SectionWithA11y = typeof content.sections[0] & { a11yProfiles?: readonly { 
             <div class="layout-gallery">
               <span class="cm-tag-inline">// typical grid configurations</span>
               <div class="layout-screenshot-row">
-                <div class="layout-screenshot-item"><div class="layout-screenshot-label"><span>Solo Focus</span><span>1×1</span></div><img src="/images/screenshots/layout-1x1_companion.webp" alt="1×1 grid — solo Companion session" loading="lazy" /></div>
-                <div class="layout-screenshot-item"><div class="layout-screenshot-label"><span>Dual</span><span>1×2</span></div><img src="/images/screenshots/layout-1x2_companion_debugger.webp" alt="1×2 grid — Companion and Debugger" loading="lazy" /></div>
-                <div class="layout-screenshot-item"><div class="layout-screenshot-label"><span>Triage</span><span>3×2</span></div><img src="/images/screenshots/layout-3x2_six_sessions.webp" alt="3×2 grid — 6 sessions" loading="lazy" /></div>
-                <div class="layout-screenshot-item"><div class="layout-screenshot-label"><span>Maker</span><span>4×2</span></div><img src="/images/screenshots/layout-4x2_all8_sessions.webp" alt="4×2 grid — 8 sessions" loading="lazy" /></div>
+                <div class="layout-screenshot-item" style="flex: 1"><div class="layout-screenshot-label"><span>Solo</span><span>1×1</span></div><img src="/images/screenshots/layout-1x1_companion.webp" alt="1×1 grid — solo Companion session" loading="lazy" /></div>
+                <div class="layout-screenshot-item" style="flex: 2"><div class="layout-screenshot-label"><span>Dual</span><span>2×1</span></div><img src="/images/screenshots/layout-2x1_companion_cyberfactory.webp" alt="2×1 grid — Companion and Cyber Factory" loading="lazy" /></div>
+                <div class="layout-screenshot-item" style="flex: 3"><div class="layout-screenshot-label"><span>Triage</span><span>3×2</span></div><img src="/images/screenshots/layout-3x2_six_sessions.webp" alt="3×2 grid — 6 sessions" loading="lazy" /></div>
+                <div class="layout-screenshot-item" style="flex: 4"><div class="layout-screenshot-label"><span>Maker</span><span>4×2</span></div><img src="/images/screenshots/layout-4x2_all8_sessions.webp" alt="4×2 grid — 8 sessions" loading="lazy" /></div>
               </div>
             </div>
           )}
@@ -359,7 +359,7 @@ type SectionWithA11y = typeof content.sections[0] & { a11yProfiles?: readonly { 
   .grid-schematic--themed .grid-theme-bar { background: var(--gs-sunken); border-color: var(--gs-border); }
   .grid-schematic--themed { border-color: var(--gs-border); }
   .layout-gallery { margin-top: 32px; }
-  .layout-screenshot-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 14px; }
+  .layout-screenshot-row { display: flex; gap: 12px; margin-top: 14px; align-items: flex-end; }
   .layout-screenshot-item img { width: 100%; height: auto; display: block; border: 1px solid var(--color-border); clip-path: polygon(4px 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%, 0 4px); }
   .layout-screenshot-label { font-family: 'Fira Code', monospace; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--color-text-dim); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
   .layout-screenshot-label span:last-child { margin-left: auto; opacity: 0.6; }
@@ -451,5 +451,5 @@ type SectionWithA11y = typeof content.sections[0] & { a11yProfiles?: readonly { 
   .efficiency-num { font-family: 'Fira Code', monospace; font-size: 11px; color: var(--color-accent); letter-spacing: 1px; flex-shrink: 0; padding-top: 2px; }
   .efficiency-title { font-family: 'Rajdhani', sans-serif; font-size: 16px; font-weight: 600; color: var(--color-text); letter-spacing: 0.2px; margin-bottom: 4px; }
   .efficiency-desc { font-family: 'Fira Code', monospace; font-size: 12px; color: var(--color-text-secondary); line-height: 1.6; }
-  @media (max-width: 768px) { .features-page { padding: 0 20px; } .features-hero { padding: 80px 0 48px; } .feature-section { padding: 48px 0; } .stat-grid { grid-template-columns: repeat(2, 1fr); } .grid-schematic-cells { grid-template-columns: repeat(2, 1fr); } .grid-annotations { grid-template-columns: 1fr; } .sessions-grid { grid-template-columns: 1fr; } .preset-grid { grid-template-columns: repeat(2, 1fr); } .persona-grid { grid-template-columns: 1fr; } .voice-grid { grid-template-columns: repeat(2, 1fr); } .notes-grid { grid-template-columns: 1fr; } .mcp-grid { grid-template-columns: repeat(2, 1fr); } .a11y-grid { grid-template-columns: 1fr; } .efficiency-grid { grid-template-columns: 1fr; } .prompt-resolution { grid-template-columns: 1fr; } .layout-screenshot-row { grid-template-columns: repeat(2, 1fr); } .tts-strip { flex-direction: column; align-items: flex-start; } }
+  @media (max-width: 768px) { .features-page { padding: 0 20px; } .features-hero { padding: 80px 0 48px; } .feature-section { padding: 48px 0; } .stat-grid { grid-template-columns: repeat(2, 1fr); } .grid-schematic-cells { grid-template-columns: repeat(2, 1fr); } .grid-annotations { grid-template-columns: 1fr; } .sessions-grid { grid-template-columns: 1fr; } .preset-grid { grid-template-columns: repeat(2, 1fr); } .persona-grid { grid-template-columns: 1fr; } .voice-grid { grid-template-columns: repeat(2, 1fr); } .notes-grid { grid-template-columns: 1fr; } .mcp-grid { grid-template-columns: repeat(2, 1fr); } .a11y-grid { grid-template-columns: 1fr; } .efficiency-grid { grid-template-columns: 1fr; } .prompt-resolution { grid-template-columns: 1fr; } .layout-screenshot-row { flex-wrap: wrap; } .tts-strip { flex-direction: column; align-items: flex-start; } }
 </style>
