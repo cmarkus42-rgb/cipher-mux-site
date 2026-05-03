@@ -90,10 +90,10 @@ const features = {
       title: 'Zugänglich für alle',
       lead: 'cipher-mux nimmt Barrierefreiheit ernst. Neben 10 wählbaren Farbthemes (siehe oben) gibt es dedizierte Profile für Farbfehlsichtigkeit — damit alle Statusinformationen auch ohne Farbunterscheidung lesbar bleiben.',
       a11yProfiles: [
-        { name: 'High Contrast', type: 'Sehschwäche', affected: 'variabel', strategy: 'WCAG AAA · Schwarz/Weiß/Gelb · Maximaler Kontrast', colors: ['#000000', '#FFFFFF', '#FFFF00', '#00FFFF'] },
-        { name: 'Deuteranopie', type: 'Rot-Grün-Schwäche', affected: '~7 % der Männer', strategy: 'Rot/Grün → Blau/Orange · Okabe-Ito-Palette', colors: ['#0072B2', '#E69F00', '#56B4E9', '#D55E00'] },
-        { name: 'Tritanopie', type: 'Blau-Gelb-Schwäche', affected: '<0,01 %', strategy: 'Blau/Gelb → Magenta/Grün', colors: ['#CC79A7', '#009E73', '#F0E442', '#D55E00'] },
-        { name: 'Achromatopsie', type: 'Komplett farbenblind', affected: '~0,003 %', strategy: 'Reine Graustufen · Formen und Text als Informationsträger', colors: ['#000000', '#555555', '#AAAAAA', '#FFFFFF'] },
+        { name: 'High Contrast', type: 'Sehschwäche', affected: 'variabel', strategy: 'WCAG AAA · Schwarz/Weiß/Gelb · Maximaler Kontrast', colors: ['#000000', '#FFFFFF', '#FFFF00', '#00FFFF'], screenshot: '/images/screenshots/high-contrast-2x2.webp' },
+        { name: 'Deuteranopie', type: 'Rot-Grün-Schwäche', affected: '~7 % der Männer', strategy: 'Rot/Grün → Blau/Orange · Okabe-Ito-Palette', colors: ['#0072B2', '#E69F00', '#56B4E9', '#D55E00'], screenshot: '/images/screenshots/cvd-deuteranopia-2x2.webp' },
+        { name: 'Tritanopie', type: 'Blau-Gelb-Schwäche', affected: '<0,01 %', strategy: 'Blau/Gelb → Magenta/Grün', colors: ['#CC79A7', '#009E73', '#F0E442', '#D55E00'], screenshot: '/images/screenshots/cvd-tritanopia-2x2.webp' },
+        { name: 'Achromatopsie', type: 'Komplett farbenblind', affected: '~0,003 %', strategy: 'Reine Graustufen · Formen und Text als Informationsträger', colors: ['#000000', '#555555', '#AAAAAA', '#FFFFFF'], screenshot: '/images/screenshots/cvd-achromatopsia-2x2.webp' },
       ],
     },
     {

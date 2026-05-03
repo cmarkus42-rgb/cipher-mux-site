@@ -90,10 +90,10 @@ const features = {
       title: 'Accessible for everyone',
       lead: 'cipher-mux takes accessibility seriously. Beyond 10 selectable color themes (see above), dedicated profiles for color vision deficiency ensure all status information remains readable without relying on color alone.',
       a11yProfiles: [
-        { name: 'High Contrast', type: 'Low vision', affected: 'variable', strategy: 'WCAG AAA · Black/White/Yellow · Maximum contrast', colors: ['#000000', '#FFFFFF', '#FFFF00', '#00FFFF'] },
-        { name: 'Deuteranopia', type: 'Red-green deficiency', affected: '~7% of men', strategy: 'Red/Green → Blue/Orange · Okabe-Ito palette', colors: ['#0072B2', '#E69F00', '#56B4E9', '#D55E00'] },
-        { name: 'Tritanopia', type: 'Blue-yellow deficiency', affected: '<0.01%', strategy: 'Blue/Yellow → Magenta/Green', colors: ['#CC79A7', '#009E73', '#F0E442', '#D55E00'] },
-        { name: 'Achromatopsia', type: 'Complete color blindness', affected: '~0.003%', strategy: 'Pure grayscale · Shapes and text as information carriers', colors: ['#000000', '#555555', '#AAAAAA', '#FFFFFF'] },
+        { name: 'High Contrast', type: 'Low vision', affected: 'variable', strategy: 'WCAG AAA · Black/White/Yellow · Maximum contrast', colors: ['#000000', '#FFFFFF', '#FFFF00', '#00FFFF'], screenshot: '/images/screenshots/high-contrast-2x2.webp' },
+        { name: 'Deuteranopia', type: 'Red-green deficiency', affected: '~7% of men', strategy: 'Red/Green → Blue/Orange · Okabe-Ito palette', colors: ['#0072B2', '#E69F00', '#56B4E9', '#D55E00'], screenshot: '/images/screenshots/cvd-deuteranopia-2x2.webp' },
+        { name: 'Tritanopia', type: 'Blue-yellow deficiency', affected: '<0.01%', strategy: 'Blue/Yellow → Magenta/Green', colors: ['#CC79A7', '#009E73', '#F0E442', '#D55E00'], screenshot: '/images/screenshots/cvd-tritanopia-2x2.webp' },
+        { name: 'Achromatopsia', type: 'Complete color blindness', affected: '~0.003%', strategy: 'Pure grayscale · Shapes and text as information carriers', colors: ['#000000', '#555555', '#AAAAAA', '#FFFFFF'], screenshot: '/images/screenshots/cvd-achromatopsia-2x2.webp' },
       ],
     },
     {

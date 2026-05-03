@@ -22,7 +22,7 @@ const sectionIdMap: Record<string, string> = {
 type SectionWithStats = typeof content.sections[0] & { stats?: readonly { value: string; label: string }[] };
 type SectionWithPresets = typeof content.sections[0] & { presets?: readonly { name: string; id: string; color: string; description: string }[] };
 type SectionWithPersonas = typeof content.sections[0] & { personas?: readonly { name: string; tagline: string; color: string; vibe: string; keys: readonly string[] }[] };
-type SectionWithA11y = typeof content.sections[0] & { a11yProfiles?: readonly { name: string; type: string; affected: string; strategy: string; colors: readonly string[] }[] };
+type SectionWithA11y = typeof content.sections[0] & { a11yProfiles?: readonly { name: string; type: string; affected: string; strategy: string; colors: readonly string[]; screenshot: string }[] };
 ---
 
 <Layout
@@ -226,14 +226,17 @@ type SectionWithA11y = typeof content.sections[0] & { a11yProfiles?: readonly { 
             <div class="a11y-grid">
               {s.a11yProfiles.map((profile) => (
                 <div class="a11y-card">
-                  <div class="a11y-card-colors">
-                    {profile.colors.map((c) => (
-                      <span class="a11y-color-dot" style={`background:${c}`}></span>
-                    ))}
+                  <img class="a11y-card-screenshot" src={profile.screenshot} alt={`CIPHER-MUX in ${profile.name} profile`} loading="lazy" />
+                  <div class="a11y-card-body">
+                    <div class="a11y-card-colors">
+                      {profile.colors.map((c) => (
+                        <span class="a11y-color-dot" style={`background:${c}`}></span>
+                      ))}
+                    </div>
+                    <div class="a11y-card-name">{profile.name}</div>
+                    <div class="a11y-card-type">{profile.type} &middot; {profile.affected}</div>
+                    <div class="a11y-card-strategy">{profile.strategy}</div>
                   </div>
-                  <div class="a11y-card-name">{profile.name}</div>
-                  <div class="a11y-card-type">{profile.type} &middot; {profile.affected}</div>
-                  <div class="a11y-card-strategy">{profile.strategy}</div>
                 </div>
               ))}
             </div>
@@ -435,7 +438,9 @@ type SectionWithA11y = typeof content.sections[0] & { a11yProfiles?: readonly { 
   .mcp-card-ex { font-family: 'Fira Code', monospace; font-size: 10.5px; color: var(--color-text-dim); letter-spacing: 0.3px; line-height: 1.5; }
   .mcp-footer-strip { margin-top: 18px; padding: 14px 18px; background: var(--color-bg-sunken); border: 1px solid var(--color-border); font-family: 'Fira Code', monospace; font-size: 11.5px; color: var(--color-text-secondary); display: flex; justify-content: space-between; align-items: center; gap: 16px; }
   .a11y-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 24px; }
-  .a11y-card { background: var(--color-bg-elevated); border: 1px solid var(--color-border); clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px); padding: 22px; display: flex; flex-direction: column; gap: 8px; }
+  .a11y-card { background: var(--color-bg-elevated); border: 1px solid var(--color-border); clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px); overflow: hidden; display: flex; flex-direction: column; }
+  .a11y-card-screenshot { width: 100%; height: auto; display: block; border-bottom: 1px solid var(--color-border); }
+  .a11y-card-body { padding: 18px 22px; display: flex; flex-direction: column; gap: 8px; }
   .a11y-card-colors { display: flex; gap: 6px; margin-bottom: 4px; }
   .a11y-color-dot { width: 18px; height: 18px; border: 1px solid var(--color-border); clip-path: polygon(3px 0, 100% 0, 100% calc(100% - 3px), calc(100% - 3px) 100%, 0 100%, 0 3px); }
   .a11y-card-name { font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 20px; color: var(--color-text); }
