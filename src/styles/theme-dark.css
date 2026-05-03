@@ -7,7 +7,7 @@
   --color-border-strong: #4C566A;
   --color-text: #ECEFF4;
   --color-text-secondary: #E5E9F0;  /* brighter: was #D8DEE9 */
-  --color-text-dim: #9BA3B0;        /* brighter: was #7B8394 */
+  --color-text-dim: #A8B1BD;        /* WCAG AA: 4.5:1 on #2E3440 */
   --color-accent: #88C0D0;
   --color-accent-hover: #8FBCBB;
   --color-neon-green: #A3BE8C;
