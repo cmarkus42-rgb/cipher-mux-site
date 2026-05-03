@@ -4,6 +4,7 @@ export const defaultLang: Lang = 'de';
 
 export const ui: Record<Lang, Record<string, string>> = {
   de: {
+    'nav.home': 'Home',
     'nav.features': 'Features',
     'nav.download': 'Download',
     'nav.docs': 'Dokumentation',
@@ -17,6 +18,7 @@ export const ui: Record<Lang, Record<string, string>> = {
     'scroll.label': '// auf dieser seite',
   },
   en: {
+    'nav.home': 'Home',
     'nav.features': 'Features',
     'nav.download': 'Download',
     'nav.docs': 'Documentation',

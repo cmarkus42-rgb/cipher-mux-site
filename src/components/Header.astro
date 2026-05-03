@@ -12,6 +12,7 @@ const { lang, active } = Astro.props;
 const l = lang as Lang;
 
 const navItems = [
+  { key: 'landing',  label: t(l, 'nav.home'),     href: `/${lang}/` },
   { key: 'features', label: t(l, 'nav.features'), href: `/${lang}/features` },
   { key: 'download', label: t(l, 'nav.download'), href: `/${lang}/start` },
   { key: 'docs',     label: t(l, 'nav.docs'),     href: `/${lang}/docs` },
