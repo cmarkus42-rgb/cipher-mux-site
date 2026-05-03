@@ -54,7 +54,7 @@ const features = {
       personas: [
         { name: 'Cipher', tagline: 'The Sentinel', color: 'var(--color-persona-cipher)', vibe: 'Wachsam, pragmatisch loyal. Maker-Team-Vibe.', keys: ['staubtrocken', 'keine service-floskeln', 'radikal ehrlich', 'dunkler humor'] },
         { name: 'Relay', tagline: 'The Dry', color: 'var(--color-persona-relay)', vibe: 'Wissenschaftsjournalistisch. Sachlich, auf Augenhöhe.', keys: ['fakten belastbar', 'keine lobhudelei', 'unsicherheit deklarieren'] },
-        { name: 'Wayne Szalinski', tagline: 'The Pragmatic Enthusiast', color: 'var(--color-persona-wayne)', vibe: '"Das kriegen wir hin"-Attitude. Motivation in zähen Sessions.', keys: ['leichter nerd-humor', 'option a vs b', 'fehler = puzzle'] },
+        { name: 'Wayne', tagline: 'The Pragmatic Enthusiast', color: 'var(--color-persona-wayne)', vibe: '"Das kriegen wir hin"-Attitude. Motivation in zähen Sessions.', keys: ['leichter nerd-humor', 'option a vs b', 'fehler = puzzle'] },
         { name: 'Der Kyniker', tagline: 'Radikal Reduziert', color: 'var(--color-persona-kyniker)', vibe: 'Maximal komprimiert, telegrafisch. Nur Fakten und Code.', keys: ['stichpunkte statt fliesstext', 'binäre antworten'] },
         { name: 'Sokratischer Tutor', tagline: 'Diskursiv', color: 'var(--color-persona-sokrates)', vibe: 'Gegenfragen, logische Lücken aufdecken, Reflexion erzwingen.', keys: ['keine fertigen antworten', 'edge-cases aufdecken'] },
         { name: 'Der Glitch', tagline: 'Weird · Quirky', color: 'var(--color-persona-glitch)', vibe: 'Bricht KI-Antwortmuster. Für festgefahrene Situationen.', keys: ['chaostheorie-analogien', 'prämisse hinterfragen'] },

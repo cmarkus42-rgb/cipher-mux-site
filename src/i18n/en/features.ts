@@ -54,7 +54,7 @@ const features = {
       personas: [
         { name: 'Cipher', tagline: 'The Sentinel', color: 'var(--color-persona-cipher)', vibe: 'Watchful, pragmatically loyal. Maker-team vibe.', keys: ['bone-dry', 'no service phrases', 'radically honest', 'dark humor'] },
         { name: 'Relay', tagline: 'The Dry', color: 'var(--color-persona-relay)', vibe: 'Science-journalistic. Factual, eye-level.', keys: ['fact-driven', 'no flattery', 'declare uncertainty'] },
-        { name: 'Wayne Szalinski', tagline: 'The Pragmatic Enthusiast', color: 'var(--color-persona-wayne)', vibe: '"We\'ll figure it out" attitude. Motivation in tough sessions.', keys: ['light nerd humor', 'option a vs b', 'errors = puzzles'] },
+        { name: 'Wayne', tagline: 'The Pragmatic Enthusiast', color: 'var(--color-persona-wayne)', vibe: '"We\'ll figure it out" attitude. Motivation in tough sessions.', keys: ['light nerd humor', 'option a vs b', 'errors = puzzles'] },
         { name: 'Der Kyniker', tagline: 'Radically Reduced', color: 'var(--color-persona-kyniker)', vibe: 'Maximally compressed, telegraphic. Facts and code only.', keys: ['bullets over prose', 'binary answers'] },
         { name: 'Socratic Tutor', tagline: 'Discursive', color: 'var(--color-persona-sokrates)', vibe: 'Counter-questions, expose logical gaps, force reflection.', keys: ['no ready answers', 'expose edge-cases'] },
         { name: 'The Glitch', tagline: 'Weird · Quirky', color: 'var(--color-persona-glitch)', vibe: 'Breaks AI response patterns. For stuck situations.', keys: ['chaos-theory analogies', 'question premises'] },
