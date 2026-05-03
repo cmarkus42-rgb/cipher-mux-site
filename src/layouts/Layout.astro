@@ -37,15 +37,21 @@ const ogUrl = `https://cipher-mux.dev${Astro.url.pathname}`;
     <script is:inline>
       (function () {
         var stored = localStorage.getItem('theme');
-        var theme = stored === 'dark' ? 'dark' : 'light';
+        var theme;
+        if (stored === 'dark' || stored === 'light') {
+          theme = stored;
+        } else {
+          theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
         document.documentElement.setAttribute('data-theme', theme);
       })();
     </script>
     <slot name="head" />
   </head>
   <body>
+    <a href="#main-content" class="skip-link">{lang === 'de' ? 'Zum Inhalt springen' : 'Skip to content'}</a>
     <Header lang={lang} active={active} />
-    <main>
+    <main id="main-content">
       <slot />
     </main>
     <Footer lang={lang} />
