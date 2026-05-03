@@ -22,6 +22,7 @@ const sectionIdMap: Record<string, string> = {
 type SectionWithStats = typeof content.sections[0] & { stats?: readonly { value: string; label: string }[] };
 type SectionWithPresets = typeof content.sections[0] & { presets?: readonly { name: string; id: string; color: string; description: string }[] };
 type SectionWithPersonas = typeof content.sections[0] & { personas?: readonly { name: string; tagline: string; color: string; vibe: string; keys: readonly string[] }[] };
+type SectionWithA11y = typeof content.sections[0] & { a11yProfiles?: readonly { name: string; type: string; affected: string; strategy: string; colors: readonly string[] }[] };
 ---
 
 <Layout
@@ -52,7 +53,7 @@ type SectionWithPersonas = typeof content.sections[0] & { personas?: readonly { 
     <!-- 11 Feature Sections -->
     {content.sections.map((section) => {
       const sectionId = sectionIdMap[section.num] ?? section.num;
-      const s = section as SectionWithStats & SectionWithPresets & SectionWithPersonas;
+      const s = section as SectionWithStats & SectionWithPresets & SectionWithPersonas & SectionWithA11y;
       return (
         <section id={sectionId} class="feature-section">
           <header class="cm-section-header">
@@ -402,25 +403,19 @@ type SectionWithPersonas = typeof content.sections[0] & { personas?: readonly { 
             </div>
           )}
 
-          {/* 10 Themes — Swatches */}
-          {section.num === '10' && (
-            <div class="themes-grid">
-              {[
-                { name: 'cipher-ivory', bg: '#F4F3ED', fg: '#1A1A1D', tag: 'Light Default' },
-                { name: 'cipher-dark', bg: '#1F1F23', fg: '#E8E6DD', tag: 'Dark Default' },
-                { name: 'blueprint', bg: '#0E2B47', fg: '#7FB3FF', tag: '' },
-                { name: 'warm-paper', bg: '#F1E9D2', fg: '#3A2E1F', tag: '' },
-                { name: 'gruvbox-dark', bg: '#282828', fg: '#FBF1C7', tag: '' },
-                { name: 'nord', bg: '#2E3440', fg: '#88C0D0', tag: 'Nord' },
-                { name: 'synthwave', bg: '#1A0E2E', fg: '#FF6EC7', tag: '' },
-                { name: 'matrix', bg: '#000000', fg: '#33FF66', tag: '' },
-                { name: 'brutalist', bg: '#FFFFFF', fg: '#000000', tag: '' },
-                { name: 'high-contrast', bg: '#000000', fg: '#FFFFFF', tag: 'WCAG AAA' },
-              ].map((theme) => (
-                <div class="theme-swatch">
-                  <div class="theme-swatch-top" style={`background:${theme.bg};color:${theme.fg}`}>{theme.name}</div>
-                  <div class="theme-swatch-bar" style={`background:${theme.fg}`}></div>
-                  {theme.tag && <div class="theme-swatch-tag">{theme.tag}</div>}
+          {/* 10 Accessibility — CVD profile cards */}
+          {s.a11yProfiles && (
+            <div class="a11y-grid">
+              {s.a11yProfiles.map((profile) => (
+                <div class="a11y-card">
+                  <div class="a11y-card-colors">
+                    {profile.colors.map((c) => (
+                      <span class="a11y-color-dot" style={`background:${c}`}></span>
+                    ))}
+                  </div>
+                  <div class="a11y-card-name">{profile.name}</div>
+                  <div class="a11y-card-type">{profile.type} &middot; {profile.affected}</div>
+                  <div class="a11y-card-strategy">{profile.strategy}</div>
                 </div>
               ))}
             </div>
@@ -1338,39 +1333,51 @@ type SectionWithPersonas = typeof content.sections[0] & { personas?: readonly { 
     gap: 16px;
   }
 
-  /* ====== 10 Themes ====== */
-  .themes-grid {
+  /* ====== 10 Accessibility CVD Cards ====== */
+  .a11y-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 8px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
     margin-top: 24px;
   }
-  .theme-swatch {
+  .a11y-card {
+    background: var(--color-bg-elevated);
     border: 1px solid var(--color-border);
-    clip-path: polygon(5px 0, 100% 0, 100% calc(100% - 5px), calc(100% - 5px) 100%, 0 100%, 0 5px);
+    clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+    padding: 22px;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    gap: 8px;
   }
-  .theme-swatch-top {
-    height: 56px;
+  .a11y-card-colors {
     display: flex;
-    align-items: flex-end;
-    padding: 6px;
-    font-family: 'Fira Code', monospace;
-    font-size: 9px;
-    opacity: 0.85;
+    gap: 6px;
+    margin-bottom: 4px;
   }
-  .theme-swatch-bar { height: 16px; }
-  .theme-swatch-tag {
-    padding: 4px 8px;
+  .a11y-color-dot {
+    width: 18px;
+    height: 18px;
+    border: 1px solid var(--color-border);
+    clip-path: polygon(3px 0, 100% 0, 100% calc(100% - 3px), calc(100% - 3px) 100%, 0 100%, 0 3px);
+  }
+  .a11y-card-name {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--color-text);
+  }
+  .a11y-card-type {
     font-family: 'Fira Code', monospace;
-    font-size: 9px;
-    color: var(--color-accent);
+    font-size: 10px;
     letter-spacing: 1px;
     text-transform: uppercase;
-    border-top: 1px solid var(--color-border);
-    background: var(--color-bg);
+    color: var(--color-accent);
+  }
+  .a11y-card-strategy {
+    font-family: 'Fira Code', monospace;
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
   }
 
   /* ====== 11 Efficiency ====== */
@@ -1425,7 +1432,7 @@ type SectionWithPersonas = typeof content.sections[0] & { personas?: readonly { 
     .voice-grid { grid-template-columns: repeat(2, 1fr); }
     .notes-grid { grid-template-columns: 1fr; }
     .mcp-grid { grid-template-columns: repeat(2, 1fr); }
-    .themes-grid { grid-template-columns: repeat(3, 1fr); }
+    .a11y-grid { grid-template-columns: 1fr; }
     .efficiency-grid { grid-template-columns: 1fr; }
     .prompt-resolution { grid-template-columns: 1fr; }
     .layout-gallery-row { flex-wrap: wrap; }

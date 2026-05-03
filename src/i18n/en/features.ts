@@ -86,9 +86,15 @@ const features = {
     },
     {
       num: '10',
-      kicker: 'Visual Representation',
-      title: 'Display and Accessibility',
-      lead: 'The cockpit is designed to be usable for everyone. Therefore, 10 color profiles are available, including a strictly WCAG AAA compliant High-Contrast theme. To ease the learning curve, the app abstracts many complex command-line processes and can even be physically controlled via Bluetooth remotes if desired.',
+      kicker: 'Accessibility',
+      title: 'Accessible for everyone',
+      lead: 'cipher-mux takes accessibility seriously. Beyond 10 selectable color themes (see above), dedicated profiles for color vision deficiency ensure all status information remains readable without relying on color alone.',
+      a11yProfiles: [
+        { name: 'High Contrast', type: 'Low vision', affected: 'variable', strategy: 'WCAG AAA · Black/White/Yellow · Maximum contrast', colors: ['#000000', '#FFFFFF', '#FFFF00', '#00FFFF'] },
+        { name: 'Deuteranopia', type: 'Red-green deficiency', affected: '~7% of men', strategy: 'Red/Green → Blue/Orange · Okabe-Ito palette', colors: ['#0072B2', '#E69F00', '#56B4E9', '#D55E00'] },
+        { name: 'Tritanopia', type: 'Blue-yellow deficiency', affected: '<0.01%', strategy: 'Blue/Yellow → Magenta/Green', colors: ['#CC79A7', '#009E73', '#F0E442', '#D55E00'] },
+        { name: 'Achromatopsia', type: 'Complete color blindness', affected: '~0.003%', strategy: 'Pure grayscale · Shapes and text as information carriers', colors: ['#000000', '#555555', '#AAAAAA', '#FFFFFF'] },
+      ],
     },
     {
       num: '11',
@@ -107,7 +113,7 @@ const features = {
     { id: 'voice', label: '07 · Voice & TTS' },
     { id: 'notes', label: '08 · Notes' },
     { id: 'mcp', label: '09 · MCP' },
-    { id: 'themes', label: '10 · Themes' },
+    { id: 'themes', label: '10 · A11y' },
     { id: 'efficiency', label: '11 · Efficiency' },
   ],
 } as const;
