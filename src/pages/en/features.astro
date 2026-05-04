@@ -67,9 +67,20 @@ type SectionWithA11y = typeof content.sections[0] & { a11yProfiles?: readonly { 
           {section.num === '01' && (
             <div class="grid-schematic">
               <div class="app-screenshot-wrap">
-                <img class="app-screenshot" src="/images/screenshots/cipher-ivory-2x2.webp" alt="CIPHER-MUX — 2×2 grid with Companion, Cyber Factory, Debugger and Refinement in cipher-ivory theme" loading="eager" />
+                <img
+                  class="app-screenshot screenshot-light"
+                  src="/images/screenshots/cipher-ivory-2x2.webp"
+                  alt="CIPHER-MUX — 2×2 grid with Companion, Cyber Factory, Debugger and Refinement in cipher-ivory theme"
+                  loading="eager"
+                />
+                <img
+                  class="app-screenshot screenshot-dark"
+                  src="/images/screenshots/cipher-dark-2x2.webp"
+                  alt="CIPHER-MUX — 2×2 grid with Companion, Cyber Factory, Debugger and Refinement in cipher-dark theme"
+                  loading="eager"
+                />
               </div>
-              <div class="grid-statusbar"><span class="grid-statusbar-theme">cipher-ivory</span><span class="grid-statusbar-version">v0.9.9</span></div>
+              <div class="grid-statusbar"><span class="grid-statusbar-theme">cipher-ivory</span><span class="grid-statusbar-version">v0.9.99</span></div>
               <div class="grid-theme-bar">
                 {[
                   { id: 'cipher-ivory',    bg: '#F2F2E8', elevated: '#FFFFF0', sunken: '#E8E8DE', border: '#3A3F47', text: '#1A1A1D', dim: '#6A6A72', accent: '#2d8a4e' },
@@ -107,14 +118,36 @@ type SectionWithA11y = typeof content.sections[0] & { a11yProfiles?: readonly { 
             <div class="layout-gallery">
               <span class="cm-tag-inline">// typical grid configurations</span>
               <div class="layout-screenshot-row">
-                <div class="layout-screenshot-item" style="flex: 1"><div class="layout-screenshot-label"><span>Solo</span><span>1×1</span></div><img src="/images/screenshots/layout-1x1_companion.webp" alt="1×1 grid — solo Companion session" loading="lazy" /></div>
-                <div class="layout-screenshot-item" style="flex: 2"><div class="layout-screenshot-label"><span>Dual</span><span>2×1</span></div><img src="/images/screenshots/layout-2x1_companion_cyberfactory.webp" alt="2×1 grid — Companion and Cyber Factory" loading="lazy" /></div>
-                <div class="layout-screenshot-item" style="flex: 3"><div class="layout-screenshot-label"><span>Triage</span><span>3×2</span></div><img src="/images/screenshots/layout-3x2_six_sessions.webp" alt="3×2 grid — 6 sessions" loading="lazy" /></div>
-                <div class="layout-screenshot-item" style="flex: 4"><div class="layout-screenshot-label"><span>Maker</span><span>4×2</span></div><img src="/images/screenshots/layout-4x2_all8_sessions.webp" alt="4×2 grid — 8 sessions" loading="lazy" /></div>
+                <div class="layout-screenshot-item" style="flex: 1">
+                  <div class="layout-screenshot-label"><span>Solo</span><span>1×1</span></div>
+                  <img class="screenshot-light" src="/images/screenshots/cipher-ivory-1x1.webp" alt="1×1 grid — solo session" loading="lazy" />
+                  <img class="screenshot-dark" src="/images/screenshots/cipher-dark-1x1.webp" alt="1×1 grid — solo session" loading="lazy" />
+                </div>
+                <div class="layout-screenshot-item" style="flex: 2">
+                  <div class="layout-screenshot-label"><span>Dual</span><span>2×1</span></div>
+                  <img class="screenshot-light" src="/images/screenshots/cipher-ivory-2x1.webp" alt="2×1 grid — two sessions" loading="lazy" />
+                  <img class="screenshot-dark" src="/images/screenshots/cipher-dark-2x1.webp" alt="2×1 grid — two sessions" loading="lazy" />
+                </div>
+                <div class="layout-screenshot-item" style="flex: 3">
+                  <div class="layout-screenshot-label"><span>Triage</span><span>3×2</span></div>
+                  <img class="screenshot-light" src="/images/screenshots/cipher-ivory-3x2.webp" alt="3×2 grid — 6 sessions" loading="lazy" />
+                  <img class="screenshot-dark" src="/images/screenshots/cipher-dark-3x2.webp" alt="3×2 grid — 6 sessions" loading="lazy" />
+                </div>
+                <div class="layout-screenshot-item" style="flex: 4">
+                  <div class="layout-screenshot-label"><span>Maker</span><span>4×2</span></div>
+                  <img class="screenshot-light" src="/images/screenshots/cipher-ivory-4x2.webp" alt="4×2 grid — 8 sessions" loading="lazy" />
+                  <img class="screenshot-dark" src="/images/screenshots/cipher-dark-4x2.webp" alt="4×2 grid — 8 sessions" loading="lazy" />
+                </div>
               </div>
             </div>
           )}
 
+          {section.num === '03' && (
+            <div class="detail-screenshot-wrap">
+              <img class="detail-screenshot screenshot-light" src="/images/screenshots/detail-workspaces-full-light.webp" alt="Workspace manager with grid preview and project settings" loading="lazy" />
+              <img class="detail-screenshot screenshot-dark" src="/images/screenshots/detail-workspaces-full-dark.webp" alt="Workspace manager with grid preview and project settings" loading="lazy" />
+            </div>
+          )}
           {section.num === '03' && (
             <div class="sessions-grid">
               <div class="sessions-anatomy">
@@ -133,7 +166,13 @@ type SectionWithA11y = typeof content.sections[0] & { a11yProfiles?: readonly { 
             </div>
           )}
 
-          {/* 04 Presets — 8 cards */}
+          {/* 04 Presets — Sidebar screenshot + 8 cards */}
+          {section.num === '04' && (
+            <div class="detail-screenshot-wrap">
+              <img class="detail-screenshot screenshot-light" src="/images/screenshots/detail-presets-light.webp" alt="Presets sidebar with entity list and global rules" loading="lazy" />
+              <img class="detail-screenshot screenshot-dark" src="/images/screenshots/detail-presets-dark.webp" alt="Presets sidebar with entity list and global rules" loading="lazy" />
+            </div>
+          )}
           {s.presets && (
             <div class="preset-grid">
               {s.presets.map((preset) => (
@@ -150,7 +189,13 @@ type SectionWithA11y = typeof content.sections[0] & { a11yProfiles?: readonly { 
             </div>
           )}
 
-          {/* 05 Personas — compact cards with expand */}
+          {/* 05 Personas — Companion screenshot + compact cards */}
+          {section.num === '05' && (
+            <div class="detail-screenshot-wrap">
+              <img class="detail-screenshot screenshot-light" src="/images/screenshots/detail-companion-light.webp" alt="Companion sidebar with persona editor — Relay active" loading="lazy" />
+              <img class="detail-screenshot screenshot-dark" src="/images/screenshots/detail-companion-dark.webp" alt="Companion sidebar with persona editor — Relay active" loading="lazy" />
+            </div>
+          )}
           {s.personas && (
             <div class="persona-grid">
               {s.personas.map((persona) => (
@@ -202,9 +247,24 @@ type SectionWithA11y = typeof content.sections[0] & { a11yProfiles?: readonly { 
             </div>
           )}
           {section.num === '07' && (
+            <div class="detail-screenshot-wrap" style="max-width:520px">
+              <img class="detail-screenshot" src="/images/screenshots/detail-bugreport.webp" alt="Bug report dialog with voice interview — describe the bug by speaking" loading="lazy" />
+            </div>
+          )}
+          {section.num === '07' && (
             <div class="tts-strip"><div class="tts-strip-title">TTS</div><div class="tts-strip-body">Any entity session can have text read aloud. Piper in voice mode, macOS <code>say</code> as fallback.</div><div class="tts-strip-modes"><span>NORMAL</span><span class="tts-mode--active">INTERRUPT</span></div></div>
           )}
 
+          {section.num === '08' && (
+            <div class="detail-screenshot-pair">
+              <div class="detail-screenshot-wrap">
+                <img class="detail-screenshot" src="/images/screenshots/detail-notes-editor.webp" alt="Notes editor with Markdown, tags and feature spec" loading="lazy" />
+              </div>
+              <div class="detail-screenshot-wrap">
+                <img class="detail-screenshot" src="/images/screenshots/detail-tags.webp" alt="Tag management with categories and note counters" loading="lazy" />
+              </div>
+            </div>
+          )}
           {section.num === '08' && (
             <div class="notes-grid">
               <div class="notes-editor-box"><span class="cm-tag-inline">// notes editor</span><div class="notes-editor-title">CodeMirror 6 &middot; Live Markdown</div><ul class="accent-list"><li>YAML frontmatter (title, tags)</li><li>Auto-save after 2s &middot; Cmd+S triggers auto-tagging</li><li>Ollama gemma3:4b (local) for tag suggestions</li><li>Global or workspace-scoped</li><li>Tag tree in sidebar (NotesTreeView)</li><li>TestcaseView with checkboxes + screenshots</li><li>Full MCP access: read, write, search, handoff</li></ul></div>
@@ -221,7 +281,17 @@ type SectionWithA11y = typeof content.sections[0] & { a11yProfiles?: readonly { 
           )}
           {section.num === '09' && (<div class="mcp-footer-strip"><span><span class="on">&#9656;</span> Bearer token auto-injected per entity</span><span><span class="on">&#9656;</span> Streamable HTTP &mdash; standard MCP spec</span><span>github.com/.../mcp &#8599;</span></div>)}
 
-          {/* 10 Accessibility — CVD profile cards */}
+          {/* 10 Accessibility — Settings screenshots + CVD profile cards */}
+          {section.num === '10' && (
+            <div class="detail-screenshot-pair">
+              <div class="detail-screenshot-wrap">
+                <img class="detail-screenshot" src="/images/screenshots/detail-settings-a11y.webp" alt="Settings — color blindness themes, system preferences, reduce motion" loading="lazy" />
+              </div>
+              <div class="detail-screenshot-wrap">
+                <img class="detail-screenshot" src="/images/screenshots/detail-settings-a11y-font.webp" alt="Settings — font size, line height, letter spacing, focus mode" loading="lazy" />
+              </div>
+            </div>
+          )}
           {s.a11yProfiles && (
             <div class="a11y-grid">
               {s.a11yProfiles.map((profile) => (
@@ -270,14 +340,20 @@ type SectionWithA11y = typeof content.sections[0] & { a11yProfiles?: readonly { 
       }, { rootMargin: '-20% 0px -70% 0px' });
       sections.forEach(s => observer.observe(s));
 
-      const screenshot = document.querySelector('.app-screenshot') as HTMLImageElement | null;
+      // Theme Easter Egg — click dots to swap app screenshot
+      const screenshots = document.querySelectorAll('.grid-schematic .app-screenshot') as NodeListOf<HTMLImageElement>;
       const themeLabel = document.querySelector('.grid-statusbar-theme') as HTMLElement | null;
       document.querySelectorAll('.grid-theme-dot').forEach(btn => {
         btn.addEventListener('click', () => {
-          if (!screenshot) return;
+          if (!screenshots.length) return;
           const themeId = (btn as HTMLElement).dataset.themeId!;
-          screenshot.src = `/images/screenshots/${themeId}-2x2.webp`;
-          screenshot.alt = `CIPHER-MUX in ${themeId} theme`;
+          // Update all screenshots (both light and dark variants)
+          screenshots.forEach(img => {
+            img.src = `/images/screenshots/${themeId}-2x2.webp`;
+            img.alt = `CIPHER-MUX in ${themeId} theme`;
+            // Remove light/dark class so both hide/show logic doesn't interfere
+            img.classList.remove('screenshot-light', 'screenshot-dark');
+          });
           if (themeLabel) themeLabel.textContent = themeId;
           document.querySelectorAll('.grid-theme-dot').forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
@@ -358,6 +434,7 @@ type SectionWithA11y = typeof content.sections[0] & { a11yProfiles?: readonly { 
   .grid-schematic--themed .on { color: var(--gs-accent); }
   .grid-schematic--themed .grid-theme-bar { background: var(--gs-sunken); border-color: var(--gs-border); }
   .grid-schematic--themed { border-color: var(--gs-border); }
+  .detail-screenshot-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 24px; }
   .layout-gallery { margin-top: 32px; }
   .layout-screenshot-row { display: flex; gap: 12px; margin-top: 14px; align-items: flex-end; }
   .layout-screenshot-item img { width: 100%; height: auto; display: block; }
@@ -451,5 +528,5 @@ type SectionWithA11y = typeof content.sections[0] & { a11yProfiles?: readonly { 
   .efficiency-num { font-family: 'Fira Code', monospace; font-size: 11px; color: var(--color-accent); letter-spacing: 1px; flex-shrink: 0; padding-top: 2px; }
   .efficiency-title { font-family: 'Rajdhani', sans-serif; font-size: 16px; font-weight: 600; color: var(--color-text); letter-spacing: 0.2px; margin-bottom: 4px; }
   .efficiency-desc { font-family: 'Fira Code', monospace; font-size: 12px; color: var(--color-text-secondary); line-height: 1.6; }
-  @media (max-width: 768px) { .features-page { padding: 0 20px; } .features-hero { padding: 80px 0 48px; } .feature-section { padding: 48px 0; } .stat-grid { grid-template-columns: repeat(2, 1fr); } .grid-schematic-cells { grid-template-columns: repeat(2, 1fr); } .grid-annotations { grid-template-columns: 1fr; } .sessions-grid { grid-template-columns: 1fr; } .preset-grid { grid-template-columns: repeat(2, 1fr); } .persona-grid { grid-template-columns: 1fr; } .voice-grid { grid-template-columns: repeat(2, 1fr); } .notes-grid { grid-template-columns: 1fr; } .mcp-grid { grid-template-columns: repeat(2, 1fr); } .a11y-grid { grid-template-columns: 1fr; } .efficiency-grid { grid-template-columns: 1fr; } .prompt-resolution { grid-template-columns: 1fr; } .layout-screenshot-row { flex-wrap: wrap; } .tts-strip { flex-direction: column; align-items: flex-start; } }
+  @media (max-width: 768px) { .features-page { padding: 0 20px; } .features-hero { padding: 80px 0 48px; } .feature-section { padding: 48px 0; } .stat-grid { grid-template-columns: repeat(2, 1fr); } .grid-schematic-cells { grid-template-columns: repeat(2, 1fr); } .grid-annotations { grid-template-columns: 1fr; } .sessions-grid { grid-template-columns: 1fr; } .preset-grid { grid-template-columns: repeat(2, 1fr); } .persona-grid { grid-template-columns: 1fr; } .voice-grid { grid-template-columns: repeat(2, 1fr); } .notes-grid { grid-template-columns: 1fr; } .mcp-grid { grid-template-columns: repeat(2, 1fr); } .a11y-grid { grid-template-columns: 1fr; } .efficiency-grid { grid-template-columns: 1fr; } .prompt-resolution { grid-template-columns: 1fr; } .detail-screenshot-pair { grid-template-columns: 1fr; } .layout-screenshot-row { flex-wrap: wrap; } .tts-strip { flex-direction: column; align-items: flex-start; } }
 </style>

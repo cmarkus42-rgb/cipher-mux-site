@@ -71,15 +71,21 @@ type SectionWithA11y = typeof content.sections[0] & { a11yProfiles?: readonly { 
             <div class="grid-schematic">
               <div class="app-screenshot-wrap">
                 <img
-                  class="app-screenshot"
+                  class="app-screenshot screenshot-light"
                   src="/images/screenshots/cipher-ivory-2x2.webp"
-                  alt="CIPHER-MUX — 2×2 Grid mit Companion, Cyber Factory, Debugger und Refinement im cipher-ivory Theme"
+                  alt="CIPHER-MUX — 2×2 Grid im cipher-ivory Theme"
+                  loading="eager"
+                />
+                <img
+                  class="app-screenshot screenshot-dark"
+                  src="/images/screenshots/cipher-dark-2x2.webp"
+                  alt="CIPHER-MUX — 2×2 Grid im cipher-dark Theme"
                   loading="eager"
                 />
               </div>
               <div class="grid-statusbar">
                 <span class="grid-statusbar-theme">cipher-ivory</span>
-                <span class="grid-statusbar-version">v0.9.9</span>
+                <span class="grid-statusbar-version">v0.9.99</span>
               </div>
               <div class="grid-theme-bar">
                 {[
@@ -129,25 +135,35 @@ type SectionWithA11y = typeof content.sections[0] & { a11yProfiles?: readonly { 
               <div class="layout-screenshot-row">
                 <div class="layout-screenshot-item" style="flex: 1">
                   <div class="layout-screenshot-label"><span>Solo</span><span>1×1</span></div>
-                  <img src="/images/screenshots/layout-1x1_companion.webp" alt="1×1 Grid — Solo Companion Session" loading="lazy" />
+                  <img class="screenshot-light" src="/images/screenshots/cipher-ivory-1x1.webp" alt="1×1 Grid — Solo Session" loading="lazy" />
+                  <img class="screenshot-dark" src="/images/screenshots/cipher-dark-1x1.webp" alt="1×1 Grid — Solo Session" loading="lazy" />
                 </div>
                 <div class="layout-screenshot-item" style="flex: 2">
                   <div class="layout-screenshot-label"><span>Dual</span><span>2×1</span></div>
-                  <img src="/images/screenshots/layout-2x1_companion_cyberfactory.webp" alt="2×1 Grid — Companion und Cyber Factory" loading="lazy" />
+                  <img class="screenshot-light" src="/images/screenshots/cipher-ivory-2x1.webp" alt="2×1 Grid — Zwei Sessions" loading="lazy" />
+                  <img class="screenshot-dark" src="/images/screenshots/cipher-dark-2x1.webp" alt="2×1 Grid — Zwei Sessions" loading="lazy" />
                 </div>
                 <div class="layout-screenshot-item" style="flex: 3">
                   <div class="layout-screenshot-label"><span>Triage</span><span>3×2</span></div>
-                  <img src="/images/screenshots/layout-3x2_six_sessions.webp" alt="3×2 Grid — 6 Sessions" loading="lazy" />
+                  <img class="screenshot-light" src="/images/screenshots/cipher-ivory-3x2.webp" alt="3×2 Grid — 6 Sessions" loading="lazy" />
+                  <img class="screenshot-dark" src="/images/screenshots/cipher-dark-3x2.webp" alt="3×2 Grid — 6 Sessions" loading="lazy" />
                 </div>
                 <div class="layout-screenshot-item" style="flex: 4">
                   <div class="layout-screenshot-label"><span>Maker</span><span>4×2</span></div>
-                  <img src="/images/screenshots/layout-4x2_all8_sessions.webp" alt="4×2 Grid — 8 Sessions" loading="lazy" />
+                  <img class="screenshot-light" src="/images/screenshots/cipher-ivory-4x2.webp" alt="4×2 Grid — 8 Sessions" loading="lazy" />
+                  <img class="screenshot-dark" src="/images/screenshots/cipher-dark-4x2.webp" alt="4×2 Grid — 8 Sessions" loading="lazy" />
                 </div>
               </div>
             </div>
           )}
 
-          {/* 03 Sessions — Two-column layout */}
+          {/* 03 Sessions — Workspace screenshot + Two-column layout */}
+          {section.num === '03' && (
+            <div class="detail-screenshot-wrap">
+              <img class="detail-screenshot screenshot-light" src="/images/screenshots/detail-workspaces-full-light.webp" alt="Workspace-Manager mit Grid-Preview und Projekteinstellungen" loading="lazy" />
+              <img class="detail-screenshot screenshot-dark" src="/images/screenshots/detail-workspaces-full-dark.webp" alt="Workspace-Manager mit Grid-Preview und Projekteinstellungen" loading="lazy" />
+            </div>
+          )}
           {section.num === '03' && (
             <div class="sessions-grid">
               <div class="sessions-anatomy">
@@ -180,7 +196,13 @@ type SectionWithA11y = typeof content.sections[0] & { a11yProfiles?: readonly { 
             </div>
           )}
 
-          {/* 04 Presets — 8 cards */}
+          {/* 04 Presets — Sidebar screenshot + 8 cards */}
+          {section.num === '04' && (
+            <div class="detail-screenshot-wrap">
+              <img class="detail-screenshot screenshot-light" src="/images/screenshots/detail-presets-light.webp" alt="Presets-Sidebar mit Entity-Liste und Global Rules" loading="lazy" />
+              <img class="detail-screenshot screenshot-dark" src="/images/screenshots/detail-presets-dark.webp" alt="Presets-Sidebar mit Entity-Liste und Global Rules" loading="lazy" />
+            </div>
+          )}
           {s.presets && (
             <div class="preset-grid">
               {s.presets.map((preset) => (
@@ -197,7 +219,13 @@ type SectionWithA11y = typeof content.sections[0] & { a11yProfiles?: readonly { 
             </div>
           )}
 
-          {/* 05 Personas — compact cards with expand */}
+          {/* 05 Personas — Companion screenshot + compact cards */}
+          {section.num === '05' && (
+            <div class="detail-screenshot-wrap">
+              <img class="detail-screenshot screenshot-light" src="/images/screenshots/detail-companion-light.webp" alt="Companion-Sidebar mit Persona-Editor — Relay aktiv" loading="lazy" />
+              <img class="detail-screenshot screenshot-dark" src="/images/screenshots/detail-companion-dark.webp" alt="Companion-Sidebar mit Persona-Editor — Relay aktiv" loading="lazy" />
+            </div>
+          )}
           {s.personas && (
             <div class="persona-grid">
               {s.personas.map((persona) => (
@@ -267,6 +295,11 @@ type SectionWithA11y = typeof content.sections[0] & { a11yProfiles?: readonly { 
             </div>
           )}
           {section.num === '07' && (
+            <div class="detail-screenshot-wrap" style="max-width:520px">
+              <img class="detail-screenshot" src="/images/screenshots/detail-bugreport.webp" alt="Bug-Report Dialog mit Voice-Interview — Beschreib den Bug per Sprache" loading="lazy" />
+            </div>
+          )}
+          {section.num === '07' && (
             <div class="tts-strip">
               <div class="tts-strip-title">TTS</div>
               <div class="tts-strip-body">Jede Entity-Session kann Text vorlesen lassen. Piper im Voice-Modus, macOS <code>say</code> als Fallback.</div>
@@ -274,7 +307,17 @@ type SectionWithA11y = typeof content.sections[0] & { a11yProfiles?: readonly { 
             </div>
           )}
 
-          {/* 08 Notes — Two-column */}
+          {/* 08 Notes — Screenshots + Two-column */}
+          {section.num === '08' && (
+            <div class="detail-screenshot-pair">
+              <div class="detail-screenshot-wrap">
+                <img class="detail-screenshot" src="/images/screenshots/detail-notes-editor.webp" alt="Notes-Editor mit Markdown, Tags und Feature-Spec" loading="lazy" />
+              </div>
+              <div class="detail-screenshot-wrap">
+                <img class="detail-screenshot" src="/images/screenshots/detail-tags.webp" alt="Tag-Verwaltung mit Kategorien und Notiz-Zählern" loading="lazy" />
+              </div>
+            </div>
+          )}
           {section.num === '08' && (
             <div class="notes-grid">
               <div class="notes-editor-box">
@@ -334,7 +377,17 @@ type SectionWithA11y = typeof content.sections[0] & { a11yProfiles?: readonly { 
             </div>
           )}
 
-          {/* 10 Accessibility — CVD profile cards */}
+          {/* 10 Accessibility — Settings screenshots + CVD profile cards */}
+          {section.num === '10' && (
+            <div class="detail-screenshot-pair">
+              <div class="detail-screenshot-wrap">
+                <img class="detail-screenshot" src="/images/screenshots/detail-settings-a11y.webp" alt="Einstellungen — Farbenblindheits-Themes, Systemeinstellungen, Bewegung reduzieren" loading="lazy" />
+              </div>
+              <div class="detail-screenshot-wrap">
+                <img class="detail-screenshot" src="/images/screenshots/detail-settings-a11y-font.webp" alt="Einstellungen — Schriftgröße, Zeilenhöhe, Buchstabenabstand, Focus Mode" loading="lazy" />
+              </div>
+            </div>
+          )}
           {s.a11yProfiles && (
             <div class="a11y-grid">
               {s.a11yProfiles.map((profile) => (
@@ -398,14 +451,19 @@ type SectionWithA11y = typeof content.sections[0] & { a11yProfiles?: readonly { 
       sections.forEach(s => observer.observe(s));
 
       // Theme Easter Egg — click dots to swap app screenshot
-      const screenshot = document.querySelector('.app-screenshot') as HTMLImageElement | null;
+      const screenshots = document.querySelectorAll('.grid-schematic .app-screenshot') as NodeListOf<HTMLImageElement>;
       const themeLabel = document.querySelector('.grid-statusbar-theme') as HTMLElement | null;
       document.querySelectorAll('.grid-theme-dot').forEach(btn => {
         btn.addEventListener('click', () => {
-          if (!screenshot) return;
+          if (!screenshots.length) return;
           const themeId = (btn as HTMLElement).dataset.themeId!;
-          screenshot.src = `/images/screenshots/${themeId}-2x2.webp`;
-          screenshot.alt = `CIPHER-MUX im ${themeId} Theme`;
+          // Update all screenshots (both light and dark variants)
+          screenshots.forEach(img => {
+            img.src = `/images/screenshots/${themeId}-2x2.webp`;
+            img.alt = `CIPHER-MUX im ${themeId} Theme`;
+            // Remove light/dark class so both hide/show logic doesn't interfere
+            img.classList.remove('screenshot-light', 'screenshot-dark');
+          });
           if (themeLabel) themeLabel.textContent = themeId;
           document.querySelectorAll('.grid-theme-dot').forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
@@ -774,6 +832,14 @@ type SectionWithA11y = typeof content.sections[0] & { a11yProfiles?: readonly { 
   .grid-schematic--themed .on { color: var(--gs-accent); }
   .grid-schematic--themed .grid-theme-bar { background: var(--gs-sunken); border-color: var(--gs-border); }
   .grid-schematic--themed { border-color: var(--gs-border); }
+
+  /* Detail screenshot pairs */
+  .detail-screenshot-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 24px;
+  }
 
   /* Layout gallery (screenshots) */
   .layout-gallery {
@@ -1352,6 +1418,7 @@ type SectionWithA11y = typeof content.sections[0] & { a11yProfiles?: readonly { 
     .a11y-grid { grid-template-columns: 1fr; }
     .efficiency-grid { grid-template-columns: 1fr; }
     .prompt-resolution { grid-template-columns: 1fr; }
+    .detail-screenshot-pair { grid-template-columns: 1fr; }
     .layout-screenshot-row { flex-wrap: wrap; }
     .tts-strip { flex-direction: column; align-items: flex-start; }
   }

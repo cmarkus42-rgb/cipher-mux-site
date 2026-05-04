@@ -75,6 +75,44 @@ const schema = JSON.stringify([
     </ul>
   </section>
 
+  <!-- Built with Itself -->
+  <section class="cm-built">
+    <div class="cm-built-header">
+      <span class="cm-built-marker">// dogfooding</span>
+      <h2>{content.builtWithItself.title}</h2>
+      <p class="cm-lead">{content.builtWithItself.lead}</p>
+    </div>
+    <div class="cm-built-stats">
+      {content.builtWithItself.stats.map((stat) => (
+        <div class="cm-built-stat">
+          <span class="cm-built-stat__value">{stat.value}</span>
+          <span class="cm-built-stat__label">{stat.label}</span>
+        </div>
+      ))}
+    </div>
+    <div class="cm-waves">
+      {content.builtWithItself.waves.map((wave, i) => {
+        const max = 1207;
+        const pct = Math.round((wave.tests / max) * 100);
+        const isPivot = i === 3;
+        return (
+          <div class:list={['cm-wave', { 'cm-wave--pivot': isPivot }]}>
+            <span class="cm-wave__label">{wave.label}</span>
+            <div class="cm-wave__track">
+              <div class="cm-wave__bar" style={`width: ${pct}%`}></div>
+            </div>
+            <span class="cm-wave__count">{wave.tests}</span>
+            <span class="cm-wave__note">{wave.note}</span>
+          </div>
+        );
+      })}
+    </div>
+    <blockquote class="cm-built-quote">
+      <p>{content.builtWithItself.detail}</p>
+      <footer>{content.builtWithItself.closer}</footer>
+    </blockquote>
+  </section>
+
   <!-- Bottom CTA -->
   <div class="cm-cta-row">
     <a href="/en/start" class="cm-btn cm-btn--primary">Download</a>
@@ -92,11 +130,192 @@ const schema = JSON.stringify([
     padding: 48px 32px 72px;
   }
 
+  .cm-built {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 64px 32px 48px;
+  }
+
+  .cm-built-header {
+    margin-bottom: 40px;
+  }
+
+  .cm-built-marker {
+    font-family: 'Rajdhani', system-ui, sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent, #ab47bc);
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .cm-built-header h2 {
+    font-family: 'Rajdhani', system-ui, sans-serif;
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    font-weight: 700;
+    margin: 0 0 12px;
+  }
+
+  .cm-built-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-bottom: 40px;
+    padding: 28px 24px;
+    border: 1px solid var(--border, rgba(255, 255, 255, 0.08));
+    border-radius: 8px;
+    background: var(--surface-raised, rgba(255, 255, 255, 0.02));
+  }
+
+  .cm-built-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 4px;
+  }
+
+  .cm-built-stat__value {
+    font-family: 'Rajdhani', system-ui, sans-serif;
+    font-size: clamp(1.5rem, 3.5vw, 2rem);
+    font-weight: 700;
+    color: var(--accent, #ab47bc);
+    line-height: 1.1;
+  }
+
+  .cm-built-stat__label {
+    font-size: 0.82rem;
+    opacity: 0.7;
+    line-height: 1.3;
+  }
+
+  .cm-waves {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 40px;
+  }
+
+  .cm-wave {
+    display: grid;
+    grid-template-columns: 80px 1fr 48px;
+    grid-template-rows: auto auto;
+    align-items: center;
+    gap: 0 12px;
+    font-family: 'Fira Code', 'Rajdhani', monospace;
+    font-size: 0.78rem;
+  }
+
+  .cm-wave__label {
+    grid-column: 1;
+    grid-row: 1;
+    opacity: 0.6;
+    white-space: nowrap;
+  }
+
+  .cm-wave__track {
+    grid-column: 2;
+    grid-row: 1;
+    height: 6px;
+    background: var(--border, rgba(255, 255, 255, 0.08));
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .cm-wave__bar {
+    height: 100%;
+    background: var(--accent, #ab47bc);
+    border-radius: 3px;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+  }
+
+  .cm-wave--pivot .cm-wave__bar {
+    opacity: 1;
+  }
+
+  .cm-wave--pivot .cm-wave__label,
+  .cm-wave--pivot .cm-wave__count {
+    color: var(--accent, #ab47bc);
+    font-weight: 700;
+  }
+
+  .cm-wave__count {
+    grid-column: 3;
+    grid-row: 1;
+    text-align: right;
+    font-weight: 600;
+    opacity: 0.8;
+  }
+
+  .cm-wave__note {
+    grid-column: 2;
+    grid-row: 2;
+    font-size: 0.7rem;
+    opacity: 0.4;
+    margin-top: 1px;
+  }
+
+  .cm-wave--pivot .cm-wave__note {
+    opacity: 0.7;
+  }
+
+  .cm-built-quote {
+    margin: 0;
+    padding: 24px 28px;
+    border-left: 3px solid var(--accent, #ab47bc);
+    background: var(--surface-raised, rgba(255, 255, 255, 0.02));
+    border-radius: 0 8px 8px 0;
+  }
+
+  .cm-built-quote p {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    margin: 0 0 16px;
+    opacity: 0.85;
+  }
+
+  .cm-built-quote footer {
+    font-family: 'Rajdhani', system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--accent, #ab47bc);
+  }
+
   @media (max-width: 768px) {
     .cm-cta-row {
       flex-direction: column;
       align-items: center;
       padding: 36px 20px 56px;
+    }
+
+    .cm-built {
+      padding: 48px 20px 36px;
+    }
+
+    .cm-built-stats {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      padding: 20px 16px;
+    }
+
+    .cm-wave {
+      grid-template-columns: 65px 1fr 40px;
+      font-size: 0.7rem;
+    }
+
+    .cm-wave__note {
+      font-size: 0.6rem;
+    }
+
+    .cm-built-quote {
+      padding: 18px 20px;
+    }
+
+    .cm-built-quote p {
+      font-size: 0.88rem;
     }
   }
 </style>

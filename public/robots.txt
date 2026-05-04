@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://cipher-mux.dev/sitemap-index.xml

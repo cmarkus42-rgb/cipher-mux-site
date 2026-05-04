@@ -1,0 +1,50 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="404 — CIPHER-MUX" description="Seite nicht gefunden." lang="de" active="">
+  <section class="cm-404">
+    <span class="cm-404__code">404</span>
+    <h1>Seite nicht gefunden.</h1>
+    <p>Die angeforderte Seite existiert nicht oder wurde verschoben.</p>
+    <div class="cm-404__links">
+      <a href="/de/" class="cm-btn cm-btn--primary">Startseite</a>
+      <a href="/de/features" class="cm-btn">Features</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .cm-404 {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 120px 32px 80px;
+    text-align: center;
+  }
+
+  .cm-404__code {
+    font-family: 'Rajdhani', system-ui, sans-serif;
+    font-size: clamp(4rem, 10vw, 6rem);
+    font-weight: 700;
+    color: var(--accent, #ab47bc);
+    line-height: 1;
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .cm-404 h1 {
+    font-size: 1.4rem;
+    margin: 0 0 12px;
+  }
+
+  .cm-404 p {
+    opacity: 0.7;
+    margin: 0 0 32px;
+  }
+
+  .cm-404__links {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+  }
+</style>

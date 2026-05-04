@@ -1,6 +1,6 @@
 const docs = {
   hero: {
-    kicker: 'Handbuch · v0.9.9',
+    kicker: 'Handbuch · v0.9.99',
     title: 'Das Handbuch.',
     titleAccent: 'Vollständig.',
     titleEnd: 'Zum Nachschlagen.',

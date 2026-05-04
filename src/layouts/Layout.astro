@@ -50,6 +50,10 @@ const ogUrl = `https://cipher-mux.dev${Astro.url.pathname}`;
   </head>
   <body>
     <a href="#main-content" class="skip-link">{lang === 'de' ? 'Zum Inhalt springen' : 'Skip to content'}</a>
+    <div class="prerelease-banner" role="status">
+      <span class="prerelease-banner__tag">PRE-RELEASE</span>
+      <span class="prerelease-banner__text">{lang === 'de' ? 'Preview-Version — nicht für den produktiven Einsatz.' : 'Preview build — not for production use.'}</span>
+    </div>
     <Header lang={lang} active={active} />
     <main id="main-content">
       <slot />

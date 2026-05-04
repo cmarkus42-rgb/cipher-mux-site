@@ -13,9 +13,9 @@ const features = {
       lead: 'CIPHER-MUX is an Electron environment. Its core is a grid with up to 21 cells for Claude Code sessions and Markdown editors. In the background, tmux ensures that your sessions are safely preserved, even during a system restart or crash.',
       stats: [
         { value: '21', label: 'cells max (7×3)' },
-        { value: '7', label: 'entity types' },
-        { value: '37', label: 'MCP tools across 9 categories' },
-        { value: '10', label: 'UI themes (incl. WCAG AAA)' },
+        { value: '13', label: 'entity types' },
+        { value: '62', label: 'MCP tools across 10 categories' },
+        { value: '15', label: 'UI themes (incl. WCAG AAA)' },
       ],
     },
     {

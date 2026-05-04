@@ -3,31 +3,54 @@ import Layout from '../../layouts/Layout.astro';
 const lang = 'de';
 ---
 
-<Layout title="Datenschutz — CIPHER-MUX" description="Datenschutzerklaerung gemaess DSGVO" lang={lang}>
+<Layout title="Datenschutz — CIPHER-MUX" description="Datenschutzerklärung gemäß DSGVO" lang={lang}>
   <div class="legal-page">
     <div class="legal-inner">
-      <h1>Datenschutzerklaerung</h1>
+      <h1>Datenschutzerklärung</h1>
 
-      <h2>Vorab-Hinweis</h2>
-      <p>Diese Website verwendet bewusst keine Tracking- oder Analyse-Werkzeuge. Im Einzelnen gilt:</p>
+      <h2>Verantwortlicher</h2>
+      <p>
+        Christian Markus<br>
+        Frankenstraße 32<br>
+        91126 Schwabach<br>
+        E-Mail: <a href="mailto:christian@cipher-mux.dev">christian@cipher-mux.dev</a>
+      </p>
+
+      <h2>Kurzfassung</h2>
+      <p>Diese Website wurde bewusst datensparsam gestaltet:</p>
       <ul>
-        <li>Kein Tracking</li>
+        <li>Kein Tracking, keine Analytics</li>
         <li>Keine Cookies</li>
-        <li>Keine Analytics</li>
-        <li>Keine externen Schriften (alle lokal gebundelt)</li>
-        <li>Kein CDN</li>
-        <li>localStorage ausschliesslich fuer die Theme-Praeferenz (hell/dunkel)</li>
+        <li>Keine externen Schriften, Skripte oder CDNs</li>
+        <li>Keine Formulare, kein Newsletter</li>
+        <li>localStorage ausschließlich für die Theme-Präferenz (hell/dunkel)</li>
       </ul>
-      <p>Die einzige externe Verbindung ist das Hosting ueber GitHub Pages (Microsoft/GitHub). Beim Aufruf der Seite wird deine IP-Adresse durch GitHub-Server verarbeitet — wie bei jedem Webhosting. Auf diese Daten hat der Betreiber keinen Zugriff.</p>
 
-      <!-- PLATZHALTER: Hier den generierten Datenschutz-Text einfuegen -->
-      <!-- Generator: https://datenschutz-generator.de/ -->
+      <h2>Hosting</h2>
+      <p>Die Website wird auf einem Virtual Private Server (VPS) bei Hostinger International Ltd. betrieben. Der Serverstandort ist in der EU (Litauen). Beim Aufruf der Seite werden technisch bedingt folgende Daten in Server-Logfiles erfasst:</p>
+      <ul>
+        <li>IP-Adresse des anfragenden Geräts</li>
+        <li>Datum und Uhrzeit des Zugriffs</li>
+        <li>Angeforderte URL</li>
+        <li>HTTP-Statuscode</li>
+        <li>Übertragene Datenmenge</li>
+        <li>Browser und Betriebssystem (User-Agent)</li>
+      </ul>
+      <p>Diese Daten werden zur Sicherstellung des Betriebs und zur Erkennung von Missbrauch verarbeitet. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Sicherheit und Stabilität des Angebots). Die Logfiles werden nach 14 Tagen automatisch gelöscht. Eine Zusammenführung mit anderen Datenquellen findet nicht statt.</p>
 
-      <div class="legal-placeholder">
-        <p>Vollstaendige Datenschutzerklaerung wird noch eingefuegt.</p>
-        <p>Bitte generiere deinen Datenschutz-Text unter:<br>
-        <a href="https://datenschutz-generator.de/">datenschutz-generator.de</a></p>
-      </div>
+      <h2>TLS-Verschlüsselung</h2>
+      <p>Die Verbindung zu dieser Website ist per TLS (HTTPS) verschlüsselt. Die Zertifikate werden automatisch über Let's Encrypt bereitgestellt.</p>
+
+      <h2>localStorage</h2>
+      <p>Die Website speichert einen einzigen Wert im localStorage deines Browsers: die gewählte Theme-Präferenz (hell oder dunkel). Dieser Wert verlässt deinen Browser nicht und wird an keinen Server übertragen.</p>
+
+      <h2>Externe Links</h2>
+      <p>Die Website enthält Links zu externen Seiten (u.a. GitHub, Anthropic). Beim Klick auf diese Links gelten die Datenschutzbestimmungen des jeweiligen Anbieters. Wir haben keinen Einfluss auf die dort erhobenen Daten.</p>
+
+      <h2>Deine Rechte</h2>
+      <p>Du hast nach DSGVO das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch. Bei Fragen wende dich an die oben genannte E-Mail-Adresse. Du hast außerdem das Recht, dich bei einer Datenschutz-Aufsichtsbehörde zu beschweren.</p>
+
+      <p class="legal-date">Stand: Mai 2026</p>
     </div>
   </div>
 </Layout>
@@ -100,30 +123,19 @@ const lang = 'de';
     font-size: 12px;
   }
 
-  .legal-placeholder {
-    border: 2px dashed var(--color-border);
-    padding: 24px;
-    color: var(--color-text-dim);
-    background: var(--color-bg-sunken);
-    margin-top: var(--space-2xl);
-  }
-
-  .legal-placeholder p {
-    color: var(--color-text-dim);
-    margin-bottom: var(--space-sm);
-  }
-
-  .legal-placeholder p:last-child {
-    margin-bottom: 0;
-  }
-
-  .legal-placeholder a {
+  a {
     color: var(--color-accent);
     text-decoration: none;
   }
 
-  .legal-placeholder a:hover {
+  a:hover {
     text-decoration: underline;
+  }
+
+  .legal-date {
+    margin-top: var(--space-3xl);
+    color: var(--color-text-dim);
+    font-size: 12px;
   }
 
   @media (max-width: 768px) {
