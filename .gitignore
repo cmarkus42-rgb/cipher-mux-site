@@ -27,3 +27,6 @@ pnpm-debug.log*
 .superpowers/
 ClaudeDesign/
 .netlify/
+
+# source screenshots (PNGs) — WebP versions are in public/images/screenshots/
+screens/

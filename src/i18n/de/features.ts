@@ -13,9 +13,9 @@ const features = {
       lead: 'CIPHER-MUX ist eine Electron-Umgebung. Das Herzstück ist ein Grid mit bis zu 21 Zellen für Claude-Code-Sessions und Markdown-Editoren. Im Hintergrund sorgt tmux dafür, dass deine Sitzungen auch bei einem Neustart oder Systemausfall sicher erhalten bleiben.',
       stats: [
         { value: '21', label: 'Zellen max (7×3)' },
-        { value: '13', label: 'Entity-Typen' },
-        { value: '62', label: 'MCP-Tools in 10 Kategorien' },
-        { value: '15', label: 'UI-Themes (inkl. WCAG AAA)' },
+        { value: '13', label: 'Entity-Typen (bis v0.9.99)' },
+        { value: '62', label: 'MCP-Tools in 10 Kategorien (bis v0.9.99)' },
+        { value: '15', label: 'UI-Themes inkl. WCAG AAA (bis v0.9.99)' },
       ],
     },
     {
