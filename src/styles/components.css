@@ -359,7 +359,7 @@
    ============================================================ */
 .cm-cockpit-hero {
   display: grid;
-  grid-template-columns: 1fr 580px;
+  grid-template-columns: 1fr minmax(0, 580px);
   gap: 56px;
   align-items: center;
   padding: 76px 48px 88px;

@@ -76,6 +76,7 @@ a:hover { text-decoration: underline; }
   clip-path: polygon(4px 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%, 0 4px);
 }
 .skip-link:focus { top: 8px; }
+html, body { overflow-x: hidden; }
 img { max-width: 100%; display: block; }
 p { text-wrap: pretty; }
 
