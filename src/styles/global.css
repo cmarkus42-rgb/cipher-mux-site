@@ -113,6 +113,17 @@ h3 { font-size: 22px; letter-spacing: 1px; }
 [data-theme="light"] .screenshot-dark { display: none !important; }
 [data-theme="dark"] .screenshot-light { display: none !important; }
 
+/* === Subtle shadow on all screenshot images === */
+.cm-cockpit-screenshot img,
+.entity-gallery-preview img,
+.layout-screenshot-item img,
+.app-screenshot,
+.docs-screenshot-sm img,
+.a11y-screenshot img {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10), 0 1px 3px rgba(0,0,0,0.06);
+  border-radius: 6px;
+}
+
 /* === Detail screenshot styling === */
 .detail-screenshot-wrap {
   margin-top: 24px;
