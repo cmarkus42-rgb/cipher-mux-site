@@ -696,4 +696,5 @@
   .cm-tagline { font-size: 36px; }
   .cm-anchor-nav { display: none; }
   .cm-footer { flex-direction: column; text-align: center; padding: 20px 16px; }
+  .cm-btn { padding: 9px 16px; font-size: 10px; letter-spacing: 1px; }
 }
