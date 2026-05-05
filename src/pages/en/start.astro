@@ -77,6 +77,9 @@ const lang = 'en';
             <div class="t-cmd"><span class="t-prompt">$</span> npm install -g @anthropic-ai/claude-code</div>
             <div class="t-out">+ @anthropic-ai/claude-code@1.x.x</div>
             <div class="t-spacer"></div>
+            <div class="t-comment"># Install tmux (required by CIPHER-MUX):</div>
+            <div class="t-cmd"><span class="t-prompt">$</span> brew install tmux</div>
+            <div class="t-spacer"></div>
             <div class="t-comment"># Verify + first launch (browser login):</div>
             <div class="t-cmd"><span class="t-prompt">$</span> claude --version</div>
             <div class="t-out">claude-code 1.x.x</div>
@@ -100,7 +103,7 @@ const lang = 'en';
           <div class="step-badge">B</div>
           <div>
             <h3>Install CIPHER-MUX</h3>
-            <p class="step-desc">Standard DMG flow. tmux is bundled &mdash; no more terminal needed.</p>
+            <p class="step-desc">Standard DMG flow.</p>
           </div>
         </div>
         <div class="dmg-flow-grid">
@@ -122,7 +125,7 @@ const lang = 'en';
           <ul>
             <li>Gatekeeper blocks first launch &mdash; Right-click &rarr; Open &rarr; Confirm. Normal double-click after that.</li>
             <li>Accessibility permission must be enabled in System Settings &rarr; Privacy.</li>
-            <li>tmux is bundled internally &mdash; no manual installation needed.</li>
+            <li>tmux must be installed (<code>brew install tmux</code>) &mdash; CIPHER-MUX won't start without it.</li>
           </ul>
         </div>
       </div>

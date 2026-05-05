@@ -89,6 +89,9 @@ const lang = 'de';
             <div class="t-cmd"><span class="t-prompt">$</span> npm install -g @anthropic-ai/claude-code</div>
             <div class="t-out">+ @anthropic-ai/claude-code@1.x.x</div>
             <div class="t-spacer"></div>
+            <div class="t-comment"># tmux installieren (wird von CIPHER-MUX ben&ouml;tigt):</div>
+            <div class="t-cmd"><span class="t-prompt">$</span> brew install tmux</div>
+            <div class="t-spacer"></div>
             <div class="t-comment"># Pr&uuml;fen + erstmalig starten (Login im Browser):</div>
             <div class="t-cmd"><span class="t-prompt">$</span> claude --version</div>
             <div class="t-out">claude-code 1.x.x</div>
@@ -114,7 +117,7 @@ const lang = 'de';
           <div class="step-badge">B</div>
           <div>
             <h3>CIPHER-MUX installieren</h3>
-            <p class="step-desc">Standard-DMG-Flow. tmux ist mitgeliefert &mdash; du musst nichts mehr im Terminal anfassen.</p>
+            <p class="step-desc">Standard-DMG-Flow.</p>
           </div>
         </div>
 
@@ -159,7 +162,7 @@ const lang = 'de';
           <ul>
             <li>Beim ersten Start blockiert Gatekeeper &mdash; Rechtsklick &rarr; &Ouml;ffnen &rarr; Best&auml;tigen. Danach normaler Doppelklick.</li>
             <li>Accessibility-Berechtigung muss in Systemeinstellungen &rarr; Datenschutz aktiv geschaltet werden.</li>
-            <li>tmux wird intern mitgeliefert &mdash; du musst nichts manuell installieren.</li>
+            <li>tmux muss installiert sein (<code>brew install tmux</code>) &mdash; ohne tmux startet CIPHER-MUX nicht.</li>
           </ul>
         </div>
       </div>
