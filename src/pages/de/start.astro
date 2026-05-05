@@ -147,7 +147,7 @@ const lang = 'de';
               <span class="dmg-mock-title">cipher-mux-0.9.0</span>
             </div>
             <div class="dmg-mock-body">
-              <div class="dmg-mock-icon">CM</div>
+              <div class="dmg-mock-icon"><img src="/images/cipher-mux-icon.png" alt="CIPHER-MUX" /></div>
               <div class="dmg-mock-arrow">&rarr;</div>
               <div class="dmg-mock-target">A</div>
             </div>
@@ -698,15 +698,14 @@ const lang = 'de';
   .dmg-mock-icon {
     width: 72px;
     height: 72px;
-    background: var(--color-accent);
-    clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Rajdhani', sans-serif;
-    font-weight: 700;
-    font-size: 26px;
-    color: var(--color-bg);
+  }
+  .dmg-mock-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
   }
   .dmg-mock-arrow {
     font-family: 'Rajdhani', sans-serif;

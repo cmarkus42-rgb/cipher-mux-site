@@ -289,6 +289,17 @@ const lang = 'de';
           <div class="docs-callout-label">Faustregel · Memory vs. Notes</div>
           <div class="docs-callout-body">Was der User sehen, teilen oder in Obsidian lesen können soll, ist eine <strong>Note</strong> (Markdown-Datei). Was zur internen Run-Verwaltung gehört (Worker-Status, Risk-Reviews etc.), ist <strong>Memory</strong> (nicht sichtbar).</div>
         </div>
+
+        <div class="docs-screenshot-row">
+          <div class="docs-screenshot-sm">
+            <img src="/images/screenshots/detail-notes-editor.webp" alt="Notes-Editor mit Feature-Spec" loading="lazy" />
+            <span>Notes-Editor</span>
+          </div>
+          <div class="docs-screenshot-sm">
+            <img src="/images/screenshots/detail-tags.webp" alt="Tag-Verwaltung" loading="lazy" />
+            <span>Tag-Verwaltung</span>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -517,6 +528,17 @@ const lang = 'de';
           <div class="docs-table-row docs-table-2col"><div class="docs-table-label">Global aktivieren</div><div class="docs-table-desc">Toggle pro Persona — wenn an, gilt diese Persona für alle Presets.</div></div>
         </div>
         <p class="docs-p">Die sechs eingebauten Personas (Cipher, Relay, Wayne, Kyniker, Sokrates, Glitch) sind vorinstalliert und editierbar. Der Companion verwendet standardmäßig Relay.</p>
+
+        <div class="docs-screenshot-row">
+          <div class="docs-screenshot-sm">
+            <img src="/images/screenshots/detail-workspaces-full-light.webp" alt="Workspace-Editor mit Grid-Preview" loading="lazy" />
+            <span>Workspace-Editor</span>
+          </div>
+          <div class="docs-screenshot-sm">
+            <img src="/images/screenshots/detail-companion-light.webp" alt="Companion-Tab mit Persona-Editor" loading="lazy" />
+            <span>Companion / Personas</span>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -593,6 +615,25 @@ const lang = 'de';
 
         <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>Tab: About</span></h3>
         <p class="docs-p">Feature-Übersicht mit Erklärungen zu: Was ist cipher-mux, Grid-System, Orchestrierung, Message Bus, MCP-Server, Context-Monitoring, Bugreports, Themes.</p>
+
+        <div class="docs-screenshot-row docs-screenshot-row--4">
+          <div class="docs-screenshot-sm">
+            <img src="/images/screenshots/detail-settings-general.webp" alt="Allgemein" loading="lazy" />
+            <span>Allgemein</span>
+          </div>
+          <div class="docs-screenshot-sm">
+            <img src="/images/screenshots/detail-settings-themes.webp" alt="Themes" loading="lazy" />
+            <span>Themes</span>
+          </div>
+          <div class="docs-screenshot-sm">
+            <img src="/images/screenshots/detail-settings-a11y.webp" alt="A11y" loading="lazy" />
+            <span>Barrierefreiheit</span>
+          </div>
+          <div class="docs-screenshot-sm">
+            <img src="/images/screenshots/detail-settings-models.webp" alt="Models" loading="lazy" />
+            <span>LLM-Provider</span>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1280,6 +1321,41 @@ const lang = 'de';
   }
 
   .docs-bottom-link:hover { color: var(--color-text); }
+
+  /* ─── Docs Screenshot Rows ─── */
+  .docs-screenshot-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 20px;
+  }
+  .docs-screenshot-row--4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .docs-screenshot-sm {
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    overflow: hidden;
+    background: var(--color-bg-elevated);
+  }
+  .docs-screenshot-sm img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .docs-screenshot-sm span {
+    display: block;
+    padding: 6px 8px;
+    font-family: 'Fira Code', monospace;
+    font-size: 9px;
+    letter-spacing: 0.5px;
+    color: var(--color-text-dim);
+    border-top: 1px solid var(--color-border);
+  }
+  @media (max-width: 768px) {
+    .docs-screenshot-row { grid-template-columns: 1fr; }
+    .docs-screenshot-row--4 { grid-template-columns: repeat(2, 1fr); }
+  }
 
   /* ─── Buttons ─── */
   .cm-btn {

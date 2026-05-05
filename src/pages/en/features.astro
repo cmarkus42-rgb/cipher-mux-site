@@ -160,28 +160,32 @@ type SectionWithA11y = typeof content.sections[0] & { a11yProfiles?: readonly { 
             </div>
           )}
 
-          {/* 04 Presets — Entity gallery + 8 cards */}
+          {/* 04 Presets — Entity cell gallery: preview + thumbnails */}
           {section.num === '04' && (
             <div class="entity-gallery">
               <span class="cm-tag-inline">// how the entities introduce themselves</span>
-              <div class="entity-gallery-grid">
+              <div class="entity-gallery-preview">
+                <img id="entity-preview-img" src="/images/screenshots/detail-coding-companion.webp" alt="Coding Companion — Entity Session" loading="lazy" />
+              </div>
+              <div class="entity-gallery-thumbs">
                 {[
                   { id: 'coding-companion', name: 'Coding Companion', color: '#ffb74d' },
-                  { id: 'entity-ideation', name: 'Ideation Partner', color: '#ab47bc' },
+                  { id: 'entity-ideation', name: 'Ideation Partner', color: '#26a69a' },
                   { id: 'entity-refinement', name: 'Refinement', color: '#ef5350' },
-                  { id: 'entity-cyberfactory', name: 'Cyber Factory', color: '#5C9A6E' },
-                  { id: 'entity-debugger', name: 'Debugger', color: '#ef5350' },
-                  { id: 'entity-testing', name: 'Testing Assistant', color: '#29B6F6' },
-                  { id: 'entity-audit', name: 'Audit', color: '#ef5350' },
-                  { id: 'entity-workshop', name: 'Workshop', color: '#42A5F5' },
-                ].map((entity) => (
-                  <div class="entity-gallery-item">
-                    <img src={`/images/screenshots/detail-${entity.id}.webp`} alt={`${entity.name} — Entity Session`} loading="lazy" />
-                    <div class="entity-gallery-label">
-                      <span class="entity-gallery-dot" style={`background:${entity.color}`}></span>
-                      <span>{entity.name}</span>
-                    </div>
-                  </div>
+                  { id: 'entity-cyberfactory', name: 'Cyber Factory', color: '#ab47bc' },
+                  { id: 'entity-testing', name: 'Testing Assistant', color: '#2ecc71' },
+                  { id: 'entity-debugger', name: 'Debugger', color: '#ff7043' },
+                  { id: 'entity-workshop', name: 'Workshop', color: '#4fc3f7' },
+                  { id: 'entity-audit', name: 'Audit', color: '#c0392b' },
+                ].map((entity, i) => (
+                  <button
+                    class:list={['entity-thumb', { 'entity-thumb--active': i === 0 }]}
+                    data-entity-src={`/images/screenshots/detail-${entity.id}.webp`}
+                    data-entity-name={entity.name}
+                    style={`--entity-color:${entity.color}`}
+                  >
+                    <img src={`/images/screenshots/detail-${entity.id}.webp`} alt={entity.name} loading="lazy" />
+                  </button>
                 ))}
               </div>
             </div>
@@ -328,15 +332,33 @@ type SectionWithA11y = typeof content.sections[0] & { a11yProfiles?: readonly { 
           if (!screenshots.length) return;
           const themeId = (btn as HTMLElement).dataset.themeId!;
           // Update all screenshots (both light and dark variants)
-          screenshots.forEach(img => {
+          screenshots.forEach((img, idx) => {
             img.src = `/images/screenshots/${themeId}-2x2.webp`;
             img.alt = `CIPHER-MUX in ${themeId} theme`;
-            // Remove light/dark class so both hide/show logic doesn't interfere
-            img.classList.remove('screenshot-light', 'screenshot-dark');
+            if (idx === 0) {
+              img.classList.remove('screenshot-light', 'screenshot-dark');
+              img.style.display = 'block';
+            } else {
+              img.style.display = 'none';
+            }
           });
           if (themeLabel) themeLabel.textContent = themeId;
           document.querySelectorAll('.grid-theme-dot').forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
+        });
+      });
+
+      // Entity gallery — click thumbnail to swap preview
+      const previewImg = document.getElementById('entity-preview-img') as HTMLImageElement | null;
+      document.querySelectorAll('.entity-thumb').forEach(thumb => {
+        thumb.addEventListener('click', () => {
+          if (!previewImg) return;
+          const src = (thumb as HTMLElement).dataset.entitySrc!;
+          const name = (thumb as HTMLElement).dataset.entityName!;
+          previewImg.src = src;
+          previewImg.alt = `${name} — Entity Session`;
+          document.querySelectorAll('.entity-thumb').forEach(t => t.classList.remove('entity-thumb--active'));
+          thumb.classList.add('entity-thumb--active');
         });
       });
     });
@@ -415,11 +437,13 @@ type SectionWithA11y = typeof content.sections[0] & { a11yProfiles?: readonly { 
   .grid-schematic--themed .grid-theme-bar { background: var(--gs-sunken); border-color: var(--gs-border); }
   .grid-schematic--themed { border-color: var(--gs-border); }
   .entity-gallery { margin-top: 32px; }
-  .entity-gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 14px; }
-  .entity-gallery-item { border: 1px solid var(--color-border); border-radius: 6px; overflow: hidden; background: var(--color-bg-elevated); }
-  .entity-gallery-item img { width: 100%; height: auto; display: block; }
-  .entity-gallery-label { display: flex; align-items: center; gap: 6px; padding: 8px 10px; font-family: 'Fira Code', monospace; font-size: 10px; letter-spacing: 0.5px; color: var(--color-text); border-top: 1px solid var(--color-border); }
-  .entity-gallery-dot { width: 8px; height: 8px; flex-shrink: 0; border-radius: 2px; }
+  .entity-gallery-preview { margin-top: 14px; max-width: 680px; margin-left: auto; margin-right: auto; }
+  .entity-gallery-preview img { width: 100%; height: auto; display: block; border: 1px solid var(--color-border); border-radius: 6px; }
+  .entity-gallery-thumbs { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; justify-content: center; }
+  .entity-thumb { width: 72px; height: 48px; border: 2px solid var(--color-border); border-radius: 4px; overflow: hidden; cursor: pointer; padding: 0; background: var(--color-bg-elevated); opacity: 0.6; transition: opacity 0.15s, border-color 0.15s; }
+  .entity-thumb:hover { opacity: 1; }
+  .entity-thumb--active { opacity: 1; border-color: var(--entity-color); }
+  .entity-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block; }
   .layout-gallery { margin-top: 32px; }
   .layout-screenshot-row { display: flex; gap: 12px; margin-top: 14px; align-items: flex-end; }
   .layout-screenshot-item img { width: 100%; height: auto; display: block; }
