@@ -30,3 +30,7 @@ ClaudeDesign/
 
 # source screenshots (PNGs) — WebP versions are in public/images/screenshots/
 screens/
+
+# local artifacts
+CIPHER-MUX-Website.zip
+MIGRATED.md
