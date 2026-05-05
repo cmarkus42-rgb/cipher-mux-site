@@ -691,8 +691,10 @@
 @media (max-width: 768px) {
   .cm-pillars { grid-template-columns: 1fr; }
   .cm-pillar:nth-child(odd) { border-right: none; }
-  .cm-header { padding: 0 16px; }
-  .cm-nav { gap: 16px; }
+  .cm-header { padding: 8px 16px; height: auto; flex-wrap: wrap; gap: 4px 16px; }
+  .cm-wordmark { font-size: 14px; letter-spacing: 4px; width: 100%; }
+  .cm-nav { gap: 12px; }
+  .cm-nav a { font-size: 10px; letter-spacing: 1.2px; }
   .cm-tagline { font-size: 36px; }
   .cm-anchor-nav { display: none; }
   .cm-footer { flex-direction: column; text-align: center; padding: 20px 16px; }
