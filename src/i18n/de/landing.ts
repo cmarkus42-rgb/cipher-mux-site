@@ -5,7 +5,7 @@ const landing = {
     taglineSub: 'for Makers.',
     taglineEnd: 'And everyone else.',
     subtext:
-      'Eine grafische Schicht über Claude Code. Für alle die bauen wollen, ohne alles im Terminal zu jonglieren.',
+      'Orchestriert Claude Code zu einem echten Entwicklungsprozess — mit Rollen, Gedächtnis und Stimme.',
     buttons: [
       { label: 'Dokumentation', href: '/de/docs', primary: true },
       { label: 'Features', href: '/de/features' },

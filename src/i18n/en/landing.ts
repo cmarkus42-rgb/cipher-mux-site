@@ -5,7 +5,7 @@ const landing = {
     taglineSub: 'for Makers.',
     taglineEnd: 'And everyone else.',
     subtext:
-      'A graphical layer on top of Claude Code. For everyone who wants to build without juggling terminals.',
+      'Orchestrates Claude Code into a real development process — with roles, memory, and voice.',
     buttons: [
       { label: 'Documentation', href: '/en/docs', primary: true },
       { label: 'Features', href: '/en/features' },
