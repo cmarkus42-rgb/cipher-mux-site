@@ -9,7 +9,7 @@ const landing = {
     buttons: [
       { label: 'Documentation', href: '/en/docs', primary: true },
       { label: 'Features', href: '/en/features' },
-      { label: 'GitHub', href: 'https://github.com/cmarkus42/cipher-mux-electron' },
+      { label: 'GitHub', href: 'https://github.com/cmarkus42-rgb/cipher-mux-electron' },
     ],
   },
   pillars: [
@@ -69,8 +69,8 @@ const landing = {
     mark: 'CIPHER-MUX',
     version: 'v0.9.99 · macOS · MIT',
     links: [
-      { label: 'GitHub', href: 'https://github.com/cmarkus42/cipher-mux-electron' },
-      { label: 'Issues', href: 'https://github.com/cmarkus42/cipher-mux-electron/issues' },
+      { label: 'GitHub', href: 'https://github.com/cmarkus42-rgb/cipher-mux-electron' },
+      { label: 'Issues', href: 'https://github.com/cmarkus42-rgb/cipher-mux-electron/issues' },
       { label: 'Privacy Policy', href: '/en/privacy' },
       { label: 'Imprint', href: '/en/imprint' },
     ],
