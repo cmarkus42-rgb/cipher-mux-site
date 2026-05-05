@@ -143,12 +143,6 @@ type SectionWithA11y = typeof content.sections[0] & { a11yProfiles?: readonly { 
           )}
 
           {section.num === '03' && (
-            <div class="detail-screenshot-wrap">
-              <img class="detail-screenshot screenshot-light" src="/images/screenshots/detail-workspaces-full-light.webp" alt="Workspace manager with grid preview and project settings" loading="lazy" />
-              <img class="detail-screenshot screenshot-dark" src="/images/screenshots/detail-workspaces-full-dark.webp" alt="Workspace manager with grid preview and project settings" loading="lazy" />
-            </div>
-          )}
-          {section.num === '03' && (
             <div class="sessions-grid">
               <div class="sessions-anatomy">
                 <span class="cm-tag-inline">// session anatomy</span>
@@ -166,11 +160,30 @@ type SectionWithA11y = typeof content.sections[0] & { a11yProfiles?: readonly { 
             </div>
           )}
 
-          {/* 04 Presets — Sidebar screenshot + 8 cards */}
+          {/* 04 Presets — Entity gallery + 8 cards */}
           {section.num === '04' && (
-            <div class="detail-screenshot-wrap">
-              <img class="detail-screenshot screenshot-light" src="/images/screenshots/detail-presets-light.webp" alt="Presets sidebar with entity list and global rules" loading="lazy" />
-              <img class="detail-screenshot screenshot-dark" src="/images/screenshots/detail-presets-dark.webp" alt="Presets sidebar with entity list and global rules" loading="lazy" />
+            <div class="entity-gallery">
+              <span class="cm-tag-inline">// how the entities introduce themselves</span>
+              <div class="entity-gallery-grid">
+                {[
+                  { id: 'coding-companion', name: 'Coding Companion', color: '#ffb74d' },
+                  { id: 'entity-ideation', name: 'Ideation Partner', color: '#ab47bc' },
+                  { id: 'entity-refinement', name: 'Refinement', color: '#ef5350' },
+                  { id: 'entity-cyberfactory', name: 'Cyber Factory', color: '#5C9A6E' },
+                  { id: 'entity-debugger', name: 'Debugger', color: '#ef5350' },
+                  { id: 'entity-testing', name: 'Testing Assistant', color: '#29B6F6' },
+                  { id: 'entity-audit', name: 'Audit', color: '#ef5350' },
+                  { id: 'entity-workshop', name: 'Workshop', color: '#42A5F5' },
+                ].map((entity) => (
+                  <div class="entity-gallery-item">
+                    <img src={`/images/screenshots/detail-${entity.id}.webp`} alt={`${entity.name} — Entity Session`} loading="lazy" />
+                    <div class="entity-gallery-label">
+                      <span class="entity-gallery-dot" style={`background:${entity.color}`}></span>
+                      <span>{entity.name}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           )}
           {s.presets && (
@@ -189,13 +202,6 @@ type SectionWithA11y = typeof content.sections[0] & { a11yProfiles?: readonly { 
             </div>
           )}
 
-          {/* 05 Personas — Companion screenshot + compact cards */}
-          {section.num === '05' && (
-            <div class="detail-screenshot-wrap">
-              <img class="detail-screenshot screenshot-light" src="/images/screenshots/detail-companion-light.webp" alt="Companion sidebar with persona editor — Relay active" loading="lazy" />
-              <img class="detail-screenshot screenshot-dark" src="/images/screenshots/detail-companion-dark.webp" alt="Companion sidebar with persona editor — Relay active" loading="lazy" />
-            </div>
-          )}
           {s.personas && (
             <div class="persona-grid">
               {s.personas.map((persona) => (
@@ -247,24 +253,9 @@ type SectionWithA11y = typeof content.sections[0] & { a11yProfiles?: readonly { 
             </div>
           )}
           {section.num === '07' && (
-            <div class="detail-screenshot-wrap" style="max-width:520px">
-              <img class="detail-screenshot" src="/images/screenshots/detail-bugreport.webp" alt="Bug report dialog with voice interview — describe the bug by speaking" loading="lazy" />
-            </div>
-          )}
-          {section.num === '07' && (
             <div class="tts-strip"><div class="tts-strip-title">TTS</div><div class="tts-strip-body">Any entity session can have text read aloud. Piper in voice mode, macOS <code>say</code> as fallback.</div><div class="tts-strip-modes"><span>NORMAL</span><span class="tts-mode--active">INTERRUPT</span></div></div>
           )}
 
-          {section.num === '08' && (
-            <div class="detail-screenshot-pair">
-              <div class="detail-screenshot-wrap">
-                <img class="detail-screenshot" src="/images/screenshots/detail-notes-editor.webp" alt="Notes editor with Markdown, tags and feature spec" loading="lazy" />
-              </div>
-              <div class="detail-screenshot-wrap">
-                <img class="detail-screenshot" src="/images/screenshots/detail-tags.webp" alt="Tag management with categories and note counters" loading="lazy" />
-              </div>
-            </div>
-          )}
           {section.num === '08' && (
             <div class="notes-grid">
               <div class="notes-editor-box"><span class="cm-tag-inline">// notes editor</span><div class="notes-editor-title">CodeMirror 6 &middot; Live Markdown</div><ul class="accent-list"><li>YAML frontmatter (title, tags)</li><li>Auto-save after 2s &middot; Cmd+S triggers auto-tagging</li><li>Ollama gemma3:4b (local) for tag suggestions</li><li>Global or workspace-scoped</li><li>Tag tree in sidebar (NotesTreeView)</li><li>TestcaseView with checkboxes + screenshots</li><li>Full MCP access: read, write, search, handoff</li></ul></div>
@@ -281,17 +272,6 @@ type SectionWithA11y = typeof content.sections[0] & { a11yProfiles?: readonly { 
           )}
           {section.num === '09' && (<div class="mcp-footer-strip"><span><span class="on">&#9656;</span> Bearer token auto-injected per entity</span><span><span class="on">&#9656;</span> Streamable HTTP &mdash; standard MCP spec</span><span>github.com/.../mcp &#8599;</span></div>)}
 
-          {/* 10 Accessibility — Settings screenshots + CVD profile cards */}
-          {section.num === '10' && (
-            <div class="detail-screenshot-pair">
-              <div class="detail-screenshot-wrap">
-                <img class="detail-screenshot" src="/images/screenshots/detail-settings-a11y.webp" alt="Settings — color blindness themes, system preferences, reduce motion" loading="lazy" />
-              </div>
-              <div class="detail-screenshot-wrap">
-                <img class="detail-screenshot" src="/images/screenshots/detail-settings-a11y-font.webp" alt="Settings — font size, line height, letter spacing, focus mode" loading="lazy" />
-              </div>
-            </div>
-          )}
           {s.a11yProfiles && (
             <div class="a11y-grid">
               {s.a11yProfiles.map((profile) => (
@@ -434,7 +414,12 @@ type SectionWithA11y = typeof content.sections[0] & { a11yProfiles?: readonly { 
   .grid-schematic--themed .on { color: var(--gs-accent); }
   .grid-schematic--themed .grid-theme-bar { background: var(--gs-sunken); border-color: var(--gs-border); }
   .grid-schematic--themed { border-color: var(--gs-border); }
-  .detail-screenshot-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 24px; }
+  .entity-gallery { margin-top: 32px; }
+  .entity-gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 14px; }
+  .entity-gallery-item { border: 1px solid var(--color-border); border-radius: 6px; overflow: hidden; background: var(--color-bg-elevated); }
+  .entity-gallery-item img { width: 100%; height: auto; display: block; }
+  .entity-gallery-label { display: flex; align-items: center; gap: 6px; padding: 8px 10px; font-family: 'Fira Code', monospace; font-size: 10px; letter-spacing: 0.5px; color: var(--color-text); border-top: 1px solid var(--color-border); }
+  .entity-gallery-dot { width: 8px; height: 8px; flex-shrink: 0; border-radius: 2px; }
   .layout-gallery { margin-top: 32px; }
   .layout-screenshot-row { display: flex; gap: 12px; margin-top: 14px; align-items: flex-end; }
   .layout-screenshot-item img { width: 100%; height: auto; display: block; }
@@ -528,5 +513,5 @@ type SectionWithA11y = typeof content.sections[0] & { a11yProfiles?: readonly { 
   .efficiency-num { font-family: 'Fira Code', monospace; font-size: 11px; color: var(--color-accent); letter-spacing: 1px; flex-shrink: 0; padding-top: 2px; }
   .efficiency-title { font-family: 'Rajdhani', sans-serif; font-size: 16px; font-weight: 600; color: var(--color-text); letter-spacing: 0.2px; margin-bottom: 4px; }
   .efficiency-desc { font-family: 'Fira Code', monospace; font-size: 12px; color: var(--color-text-secondary); line-height: 1.6; }
-  @media (max-width: 768px) { .features-page { padding: 0 20px; } .features-hero { padding: 80px 0 48px; } .feature-section { padding: 48px 0; } .stat-grid { grid-template-columns: repeat(2, 1fr); } .grid-schematic-cells { grid-template-columns: repeat(2, 1fr); } .grid-annotations { grid-template-columns: 1fr; } .sessions-grid { grid-template-columns: 1fr; } .preset-grid { grid-template-columns: repeat(2, 1fr); } .persona-grid { grid-template-columns: 1fr; } .voice-grid { grid-template-columns: repeat(2, 1fr); } .notes-grid { grid-template-columns: 1fr; } .mcp-grid { grid-template-columns: repeat(2, 1fr); } .a11y-grid { grid-template-columns: 1fr; } .efficiency-grid { grid-template-columns: 1fr; } .prompt-resolution { grid-template-columns: 1fr; } .detail-screenshot-pair { grid-template-columns: 1fr; } .layout-screenshot-row { flex-wrap: wrap; } .tts-strip { flex-direction: column; align-items: flex-start; } }
+  @media (max-width: 768px) { .features-page { padding: 0 20px; } .features-hero { padding: 80px 0 48px; } .feature-section { padding: 48px 0; } .stat-grid { grid-template-columns: repeat(2, 1fr); } .grid-schematic-cells { grid-template-columns: repeat(2, 1fr); } .grid-annotations { grid-template-columns: 1fr; } .sessions-grid { grid-template-columns: 1fr; } .preset-grid { grid-template-columns: repeat(2, 1fr); } .persona-grid { grid-template-columns: 1fr; } .voice-grid { grid-template-columns: repeat(2, 1fr); } .notes-grid { grid-template-columns: 1fr; } .mcp-grid { grid-template-columns: repeat(2, 1fr); } .a11y-grid { grid-template-columns: 1fr; } .efficiency-grid { grid-template-columns: 1fr; } .prompt-resolution { grid-template-columns: 1fr; } .entity-gallery-grid { grid-template-columns: repeat(2, 1fr); } .layout-screenshot-row { flex-wrap: wrap; } .tts-strip { flex-direction: column; align-items: flex-start; } }
 </style>
