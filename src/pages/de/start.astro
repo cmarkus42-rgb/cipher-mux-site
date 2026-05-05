@@ -41,10 +41,10 @@ const lang = 'de';
         <span class="dmg-meta">macOS &middot; Apple Silicon &middot; 142 MB &middot; SHA-256 verifiziert</span>
       </div>
 
-      <!-- Honest disclosure -->
+      <!-- Requirements -->
       <div class="disclosure-box">
-        <div class="disclosure-label">Ehrlich gesagt</div>
-        <p>Phase 1 verlangt Terminal-Befehle. Nicht weil wir&apos;s hipster finden, sondern weil Claude Code CLI Voraussetzung ist und sich nicht per Klick installiert. Wir f&uuml;hren dich Schritt f&uuml;r Schritt durch &mdash; copy/paste reicht.</p>
+        <div class="disclosure-label">Was du brauchst</div>
+        <p>macOS 12 Monterey oder neuer (Apple Silicon oder Intel) &middot; Anthropic-Account mit Claude Max oder API Key &middot; ca. 1 GB freier Speicher (App ~140 MB, Voice Models optional ~530 MB)</p>
       </div>
     </section>
 
@@ -52,72 +52,18 @@ const lang = 'de';
     <section id="phase1" class="install-phase">
       <div class="phase-header">
         <span class="phase-header-num">01 &middot; Installation</span>
-        <span class="phase-time">~10 min &middot; einmalig</span>
+        <span class="phase-time">~5 min &middot; einmalig</span>
       </div>
       <h2>{content.phases[0].title}</h2>
       <p class="install-lead">{content.phases[0].lead}</p>
 
-      <!-- Step A -->
+      <!-- Step A: DMG installieren -->
       <div class="step-block">
         <div class="step-badge-row">
           <div class="step-badge">A</div>
           <div>
-            <h3>Claude Code CLI installieren</h3>
-            <p class="step-desc">Voraussetzung &mdash; ohne Claude Code l&auml;uft nichts. Wenn npm bereits da ist, ist&apos;s ein Einzeiler.</p>
-          </div>
-        </div>
-
-        <div class="cm-terminal">
-          <div class="cm-terminal-bar">
-            <span class="cm-terminal-dot" style="background:#FF5F57"></span>
-            <span class="cm-terminal-dot" style="background:#FEBC2E"></span>
-            <span class="cm-terminal-dot" style="background:#28C840"></span>
-            <span class="cm-terminal-title">Terminal &middot; Spotlight &rarr; Terminal</span>
-          </div>
-          <div class="cm-terminal-body">
-            <div class="t-comment"># Falls du bereits npm hast &mdash; direkt los:</div>
-            <div class="t-cmd"><span class="t-prompt">$</span> npm install -g @anthropic-ai/claude-code</div>
-            <div class="t-spacer"></div>
-            <div class="t-comment"># Sonst zuerst Homebrew installieren:</div>
-            <div class="t-cmd"><span class="t-prompt">$</span> /bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot;</div>
-            <div class="t-out">=&gt; Installation successful!</div>
-            <div class="t-spacer"></div>
-            <div class="t-comment"># Dann Node &mdash; bringt npm mit:</div>
-            <div class="t-cmd"><span class="t-prompt">$</span> brew install node</div>
-            <div class="t-spacer"></div>
-            <div class="t-comment"># Und jetzt Claude Code:</div>
-            <div class="t-cmd"><span class="t-prompt">$</span> npm install -g @anthropic-ai/claude-code</div>
-            <div class="t-out">+ @anthropic-ai/claude-code@1.x.x</div>
-            <div class="t-spacer"></div>
-            <div class="t-comment"># tmux installieren (wird von CIPHER-MUX ben&ouml;tigt):</div>
-            <div class="t-cmd"><span class="t-prompt">$</span> brew install tmux</div>
-            <div class="t-spacer"></div>
-            <div class="t-comment"># Pr&uuml;fen + erstmalig starten (Login im Browser):</div>
-            <div class="t-cmd"><span class="t-prompt">$</span> claude --version</div>
-            <div class="t-out">claude-code 1.x.x</div>
-            <div class="t-cmd"><span class="t-prompt">$</span> claude</div>
-            <div class="t-out">&rarr; Browser &ouml;ffnet sich, einloggen, Tab schlie&szlig;t sich.</div>
-            <div class="t-out">&rarr; CLI ist autorisiert. Strg+C zum Beenden.</div>
-          </div>
-        </div>
-
-        <div class="pitfall-card">
-          <div class="pitfall-label">&#9888; Stolperstellen</div>
-          <ul>
-            <li>Du brauchst einen Anthropic-Account mit Claude Code Zugang. Welches Abo das aktuell einschließt: <a href="https://www.anthropic.com" target="_blank" rel="noopener noreferrer">anthropic.com</a></li>
-            <li>Beim ersten brew-Aufruf installiert macOS die Xcode Command Line Tools &mdash; das dauert ca. 5 Minuten. Geduld.</li>
-            <li>Wenn npm install -g eine Permission-Warnung wirft, mit sudo nachschie&szlig;en: <code>sudo npm install -g @anthropic-ai/claude-code</code></li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Step B -->
-      <div class="step-block">
-        <div class="step-badge-row">
-          <div class="step-badge">B</div>
-          <div>
-            <h3>CIPHER-MUX installieren</h3>
-            <p class="step-desc">Standard-DMG-Flow.</p>
+            <h3>App installieren</h3>
+            <p class="step-desc">Standard-DMG-Flow &mdash; herunterladen, &ouml;ffnen, in Applications ziehen.</p>
           </div>
         </div>
 
@@ -126,19 +72,19 @@ const lang = 'de';
             <ol class="dmg-steps">
               <li>
                 <span class="dmg-step-num">1</span>
-                <div><strong>DMG &ouml;ffnen</strong><br/>Doppelklick auf cipher-mux-0.9.99.dmg</div>
+                <div><strong>DMG herunterladen</strong><br/><a href="https://github.com/cmarkus42-rgb/cipher-mux-electron/releases/latest" target="_blank" rel="noopener noreferrer">GitHub Releases</a> &rarr; <code>cipher-mux-0.9.99-arm64.dmg</code></div>
               </li>
               <li>
                 <span class="dmg-step-num">2</span>
-                <div><strong>In Applications ziehen</strong><br/>Standard-macOS-Drag-and-Drop</div>
+                <div><strong>DMG &ouml;ffnen</strong><br/>Doppelklick &rarr; cipher-mux.app in Applications ziehen</div>
               </li>
               <li>
                 <span class="dmg-step-num">3</span>
-                <div><strong>Erster Start: Rechtsklick &rarr; &Ouml;ffnen</strong><br/>Wegen Gatekeeper bei unsignierter App. Einmalig.</div>
+                <div><strong>macOS-Sperre aufheben</strong><br/>Einmalig im Terminal: <code>xattr -cr /Applications/cipher-mux.app</code></div>
               </li>
               <li>
                 <span class="dmg-step-num">4</span>
-                <div><strong>Berechtigungen erteilen</strong><br/>Accessibility (f&uuml;r globale Shortcuts) &middot; evtl. Mikrofon (f&uuml;r Voice)</div>
+                <div><strong>Starten</strong><br/>Spotlight &rarr; cipher-mux &rarr; Enter</div>
               </li>
             </ol>
           </div>
@@ -158,11 +104,90 @@ const lang = 'de';
         </div>
 
         <div class="pitfall-card">
+          <div class="pitfall-label">&#9888; Warum xattr?</div>
+          <ul>
+            <li>cipher-mux ist Open Source, aber noch nicht mit einem Apple-Zertifikat signiert. macOS blockiert deshalb den ersten Start &mdash; das ist normales Sicherheitsverhalten.</li>
+            <li>Der <code>xattr -cr</code> Befehl entfernt die Quarant&auml;ne-Markierung. Die App wird dabei nicht ver&auml;ndert. Einmalig.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Step B: Setup-Wizard -->
+      <div class="step-block">
+        <div class="step-badge-row">
+          <div class="step-badge">B</div>
+          <div>
+            <h3>Setup-Wizard</h3>
+            <p class="step-desc">Beim ersten Start erkennt die App automatisch, was auf deinem System fehlt. Du entscheidest, was installiert wird &mdash; ein Klick auf &bdquo;Setup starten&ldquo;, der Rest l&auml;uft automatisch.</p>
+          </div>
+        </div>
+
+        <div class="disclosure-box">
+          <div class="disclosure-label">Was der Wizard einrichtet</div>
+          <div class="wizard-grid">
+            <div class="wizard-item">
+              <div class="wizard-item-header"><strong>Homebrew</strong> <span class="wizard-tag">Pflicht &middot; ~200 MB</span></div>
+              <p>Der Standard-Paketmanager f&uuml;r macOS. Falls schon vorhanden, wird der Schritt &uuml;bersprungen. F&uuml;r die Installation erscheint einmalig der macOS-Passwortdialog.</p>
+            </div>
+            <div class="wizard-item">
+              <div class="wizard-item-header"><strong>tmux</strong> <span class="wizard-tag">Pflicht &middot; ~2 MB</span></div>
+              <p>Terminal-Multiplexer &mdash; die unsichtbare Infrastruktur, auf der cipher-mux aufbaut. Jede Claude-Session l&auml;uft in einer eigenen tmux-Session. Ohne tmux startet keine einzige Session.</p>
+            </div>
+            <div class="wizard-item">
+              <div class="wizard-item-header"><strong>Node.js</strong> <span class="wizard-tag">Empfohlen &middot; ~30 MB</span></div>
+              <p>JavaScript-Runtime f&uuml;r Claude Code CLI und die TTS-Engine. Falls &uuml;ber NVM, Volta oder Homebrew schon da, wird es erkannt.</p>
+            </div>
+            <div class="wizard-item">
+              <div class="wizard-item-header"><strong>Whisper Model</strong> <span class="wizard-tag">Optional &middot; ~500 MB</span></div>
+              <p>Lokales Speech-to-Text. Sprache steuern, ohne Cloud. Komplett offline. Kann jederzeit sp&auml;ter nachinstalliert werden.</p>
+            </div>
+            <div class="wizard-item">
+              <div class="wizard-item-header"><strong>Piper TTS</strong> <span class="wizard-tag">Optional &middot; ~30 MB</span></div>
+              <p>Lokale Sprachausgabe f&uuml;r deutsch. Zusammenfassungen, Status-Updates, Meilensteine &mdash; gesprochen statt nur geschrieben.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="pitfall-card">
+          <div class="pitfall-label">&#9432; Hinweis</div>
+          <ul>
+            <li>Voice ist ein Upgrade, kein Muss. Ohne Whisper und Piper funktioniert cipher-mux vollst&auml;ndig &mdash; Chat, Sessions, alle Entities, der gesamte Workflow.</li>
+            <li>Der Wizard zeigt dir live, was gerade installiert wird. Nach Abschluss startet die App automatisch.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Step C: Claude Code einrichten -->
+      <div class="step-block">
+        <div class="step-badge-row">
+          <div class="step-badge">C</div>
+          <div>
+            <h3>Claude Code einrichten</h3>
+            <p class="step-desc">cipher-mux orchestriert Claude Code &mdash; das Kommandozeilen-Tool von Anthropic. Falls noch nicht installiert:</p>
+          </div>
+        </div>
+
+        <div class="cm-terminal">
+          <div class="cm-terminal-bar">
+            <span class="cm-terminal-dot" style="background:#FF5F57"></span>
+            <span class="cm-terminal-dot" style="background:#FEBC2E"></span>
+            <span class="cm-terminal-dot" style="background:#28C840"></span>
+            <span class="cm-terminal-title">Terminal</span>
+          </div>
+          <div class="cm-terminal-body">
+            <div class="t-cmd"><span class="t-prompt">$</span> npm install -g @anthropic-ai/claude-code</div>
+            <div class="t-spacer"></div>
+            <div class="t-comment"># Einmalig einloggen:</div>
+            <div class="t-cmd"><span class="t-prompt">$</span> claude login</div>
+            <div class="t-out">&rarr; Browser &ouml;ffnet sich, einloggen, fertig.</div>
+          </div>
+        </div>
+
+        <div class="pitfall-card">
           <div class="pitfall-label">&#9888; Stolperstellen</div>
           <ul>
-            <li>Beim ersten Start blockiert Gatekeeper &mdash; Rechtsklick &rarr; &Ouml;ffnen &rarr; Best&auml;tigen. Danach normaler Doppelklick.</li>
-            <li>Accessibility-Berechtigung muss in Systemeinstellungen &rarr; Datenschutz aktiv geschaltet werden.</li>
-            <li>tmux muss installiert sein (<code>brew install tmux</code>) &mdash; ohne tmux startet CIPHER-MUX nicht.</li>
+            <li>Du brauchst einen Anthropic-Account mit Claude Code Zugang. Welches Abo das einschlie&szlig;t: <a href="https://www.anthropic.com" target="_blank" rel="noopener noreferrer">anthropic.com</a></li>
+            <li>Wenn <code>npm</code> nicht gefunden wird, hat der Setup-Wizard Node.js nicht installiert &mdash; starte die App neu, der Wizard bietet es erneut an.</li>
           </ul>
         </div>
       </div>
@@ -452,6 +477,37 @@ const lang = 'de';
     color: var(--color-text-secondary);
     line-height: 1.45;
     margin: 0;
+  }
+  .wizard-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 10px;
+  }
+  .wizard-item {
+    padding: 10px 14px;
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+  }
+  .wizard-item-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 16px;
+  }
+  .wizard-tag {
+    font-family: 'Fira Code', monospace;
+    font-size: 10px;
+    color: var(--color-text-dim);
+    letter-spacing: 0.5px;
+  }
+  .wizard-item p {
+    font-family: 'Fira Code', monospace;
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    margin: 4px 0 0;
   }
 
   /* Phases */
