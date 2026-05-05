@@ -22,7 +22,7 @@ const { label, tagline, taglineSub, taglineEnd, subtext, buttons, lang } = Astro
       {tagline}<br /><span style="color: var(--color-accent);">{taglineSub}</span>{taglineEnd && <><br /><span class="cm-cockpit-hero__tagline-end">{taglineEnd}</span></>}
     </h1>
     <p class="cm-hero-sub cm-cockpit-hero__sub" set:html={subtext.replace('CIPHER-MUX', '<strong>CIPHER-MUX</strong>')} />
-    <div style="display: flex; gap: 12px; margin-top: 8px;">
+    <div style="display: flex; gap: 12px; margin-top: 8px; flex-wrap: wrap;">
       {buttons.map((btn) => (
         <a
           href={btn.href}
