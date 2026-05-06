@@ -98,7 +98,7 @@ const lang = 'en';
           <div class="wizard-grid">
             <div class="wizard-item">
               <div class="wizard-item-header"><strong>Homebrew</strong> <span class="wizard-tag">Required &middot; ~200 MB</span></div>
-              <p>The standard macOS package manager. Skipped if already present. The native macOS password dialog appears once during installation.</p>
+              <p>The standard macOS package manager. Skipped if already present. A Terminal window opens automatically &mdash; enter your macOS password there.</p>
             </div>
             <div class="wizard-item">
               <div class="wizard-item-header"><strong>tmux</strong> <span class="wizard-tag">Required &middot; ~2 MB</span></div>
@@ -107,6 +107,10 @@ const lang = 'en';
             <div class="wizard-item">
               <div class="wizard-item-header"><strong>Node.js</strong> <span class="wizard-tag">Recommended &middot; ~30 MB</span></div>
               <p>JavaScript runtime for Claude Code CLI and the TTS engine. Detected automatically if installed via NVM, Volta, or Homebrew.</p>
+            </div>
+            <div class="wizard-item">
+              <div class="wizard-item-header"><strong>Claude Code CLI</strong> <span class="wizard-tag">Recommended &middot; ~50 MB</span></div>
+              <p>Anthropic's AI coding assistant &mdash; the core engine behind cipher-mux. Installed via npm. Requires a one-time <code>claude login</code> in Terminal afterwards.</p>
             </div>
             <div class="wizard-item">
               <div class="wizard-item-header"><strong>Whisper Model</strong> <span class="wizard-tag">Optional &middot; ~500 MB</span></div>
@@ -123,34 +127,31 @@ const lang = 'en';
           <ul>
             <li>Voice is an upgrade, not a requirement. Without Whisper and Piper, cipher-mux works fully &mdash; chat, sessions, all entities, the entire workflow.</li>
             <li>The wizard shows you what's being installed in real time. After completion, the app starts automatically.</li>
+            <li>If Homebrew and tmux are already installed, a &ldquo;Skip&rdquo; link appears &mdash; the wizard becomes optional.</li>
           </ul>
         </div>
       </div>
 
-      <!-- Step C: Claude Code -->
+      <!-- Step C: Claude Code login -->
       <div class="step-block">
         <div class="step-badge-row">
           <div class="step-badge">C</div>
           <div>
-            <h3>Set up Claude Code</h3>
-            <p class="step-desc">cipher-mux orchestrates Claude Code &mdash; Anthropic's CLI tool. If not installed yet:</p>
+            <h3>Log in to Claude Code</h3>
+            <p class="step-desc">The Setup Wizard installs Claude Code CLI automatically. Then log in once in Terminal:</p>
           </div>
         </div>
         <div class="cm-terminal">
           <div class="cm-terminal-bar"><span class="cm-terminal-dot" style="background:#FF5F57"></span><span class="cm-terminal-dot" style="background:#FEBC2E"></span><span class="cm-terminal-dot" style="background:#28C840"></span><span class="cm-terminal-title">Terminal</span></div>
           <div class="cm-terminal-body">
-            <div class="t-cmd"><span class="t-prompt">$</span> npm install -g @anthropic-ai/claude-code</div>
-            <div class="t-spacer"></div>
-            <div class="t-comment"># Log in once:</div>
             <div class="t-cmd"><span class="t-prompt">$</span> claude login</div>
             <div class="t-out">&rarr; Browser opens, log in, done.</div>
           </div>
         </div>
         <div class="pitfall-card">
-          <div class="pitfall-label">&#9888; Pitfalls</div>
+          <div class="pitfall-label">&#9888; Note</div>
           <ul>
             <li>You need an Anthropic account with Claude Code access. Which plan includes it: <a href="https://www.anthropic.com" target="_blank" rel="noopener noreferrer">anthropic.com</a></li>
-            <li>If <code>npm</code> is not found, the Setup Wizard didn't install Node.js &mdash; restart the app, the wizard will offer it again.</li>
           </ul>
         </div>
       </div>

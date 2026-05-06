@@ -127,7 +127,7 @@ const lang = 'de';
           <div class="wizard-grid">
             <div class="wizard-item">
               <div class="wizard-item-header"><strong>Homebrew</strong> <span class="wizard-tag">Pflicht &middot; ~200 MB</span></div>
-              <p>Der Standard-Paketmanager f&uuml;r macOS. Falls schon vorhanden, wird der Schritt &uuml;bersprungen. F&uuml;r die Installation erscheint einmalig der macOS-Passwortdialog.</p>
+              <p>Der Standard-Paketmanager f&uuml;r macOS. Falls schon vorhanden, wird der Schritt &uuml;bersprungen. Ein Terminal-Fenster &ouml;ffnet sich automatisch &mdash; dort dein macOS-Passwort eingeben.</p>
             </div>
             <div class="wizard-item">
               <div class="wizard-item-header"><strong>tmux</strong> <span class="wizard-tag">Pflicht &middot; ~2 MB</span></div>
@@ -136,6 +136,10 @@ const lang = 'de';
             <div class="wizard-item">
               <div class="wizard-item-header"><strong>Node.js</strong> <span class="wizard-tag">Empfohlen &middot; ~30 MB</span></div>
               <p>JavaScript-Runtime f&uuml;r Claude Code CLI und die TTS-Engine. Falls &uuml;ber NVM, Volta oder Homebrew schon da, wird es erkannt.</p>
+            </div>
+            <div class="wizard-item">
+              <div class="wizard-item-header"><strong>Claude Code CLI</strong> <span class="wizard-tag">Empfohlen &middot; ~50 MB</span></div>
+              <p>Anthropics KI-Coding-Assistant &mdash; die Kernfunktion von cipher-mux. Wird via npm installiert. Danach einmalig <code>claude login</code> im Terminal.</p>
             </div>
             <div class="wizard-item">
               <div class="wizard-item-header"><strong>Whisper Model</strong> <span class="wizard-tag">Optional &middot; ~500 MB</span></div>
@@ -153,17 +157,18 @@ const lang = 'de';
           <ul>
             <li>Voice ist ein Upgrade, kein Muss. Ohne Whisper und Piper funktioniert cipher-mux vollst&auml;ndig &mdash; Chat, Sessions, alle Entities, der gesamte Workflow.</li>
             <li>Der Wizard zeigt dir live, was gerade installiert wird. Nach Abschluss startet die App automatisch.</li>
+            <li>Wenn Homebrew und tmux bereits installiert sind, erscheint ein &bdquo;&Uuml;berspringen&ldquo;-Link &mdash; der Wizard ist dann optional.</li>
           </ul>
         </div>
       </div>
 
-      <!-- Step C: Claude Code einrichten -->
+      <!-- Step C: Claude Code einloggen -->
       <div class="step-block">
         <div class="step-badge-row">
           <div class="step-badge">C</div>
           <div>
-            <h3>Claude Code einrichten</h3>
-            <p class="step-desc">cipher-mux orchestriert Claude Code &mdash; das Kommandozeilen-Tool von Anthropic. Falls noch nicht installiert:</p>
+            <h3>Claude Code einloggen</h3>
+            <p class="step-desc">Der Setup-Wizard installiert Claude Code CLI automatisch. Danach einmalig im Terminal einloggen:</p>
           </div>
         </div>
 
@@ -175,19 +180,15 @@ const lang = 'de';
             <span class="cm-terminal-title">Terminal</span>
           </div>
           <div class="cm-terminal-body">
-            <div class="t-cmd"><span class="t-prompt">$</span> npm install -g @anthropic-ai/claude-code</div>
-            <div class="t-spacer"></div>
-            <div class="t-comment"># Einmalig einloggen:</div>
             <div class="t-cmd"><span class="t-prompt">$</span> claude login</div>
             <div class="t-out">&rarr; Browser &ouml;ffnet sich, einloggen, fertig.</div>
           </div>
         </div>
 
         <div class="pitfall-card">
-          <div class="pitfall-label">&#9888; Stolperstellen</div>
+          <div class="pitfall-label">&#9888; Hinweis</div>
           <ul>
             <li>Du brauchst einen Anthropic-Account mit Claude Code Zugang. Welches Abo das einschlie&szlig;t: <a href="https://www.anthropic.com" target="_blank" rel="noopener noreferrer">anthropic.com</a></li>
-            <li>Wenn <code>npm</code> nicht gefunden wird, hat der Setup-Wizard Node.js nicht installiert &mdash; starte die App neu, der Wizard bietet es erneut an.</li>
           </ul>
         </div>
       </div>

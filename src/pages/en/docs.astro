@@ -667,6 +667,15 @@ const lang = 'en';
           <div class="docs-table-row docs-table-3col"><div class="docs-table-key">3</div><div class="docs-table-label-mid">Screenshot</div><div class="docs-table-desc">Capture screenshot and annotate.</div></div>
         </div>
         <p class="docs-p">Output is saved as a Markdown note with matching tags. Open via the status bar or <span class="docs-mono">Cmd+B</span>.</p>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>GitHub Delivery</span></h3>
+        <p class="docs-p">Bug reports can be delivered directly as GitHub Issues. Configurable in Settings or <span class="docs-mono">config.json</span>:</p>
+        <ul class="docs-list">
+          <li><span class="docs-list-marker">&rsaquo;</span><span>Report is saved locally in the outbox (backup)</span></li>
+          <li><span class="docs-list-marker">&rsaquo;</span><span>Browser opens a pre-filled GitHub Issue</span></li>
+          <li><span class="docs-list-marker">&rsaquo;</span><span>If <span class="docs-mono">gh</span> CLI is installed and authenticated: issue is created directly, no browser needed</span></li>
+          <li><span class="docs-list-marker">&rsaquo;</span><span>Issue URL is written back to the local outbox file</span></li>
+        </ul>
       </div>
     </section>
 
