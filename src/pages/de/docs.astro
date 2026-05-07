@@ -311,10 +311,24 @@ const lang = 'de';
           <span class="cm-section-header-line"></span>
           <span>kapitel</span>
         </div>
-        <h2>Projekte und Projekt-Struktur</h2>
-        <p class="docs-lead">Zentrales Verzeichnis als Quelle der Wahrheit für alle Projekte. Standardisierte Ordner-Struktur, drei Adoptions-Modi für bestehende Projekte.</p>
+        <h2>Projekte und Workspaces</h2>
+        <p class="docs-lead">Ein Projekt = ein Workspace = Heimat f&uuml;r alle Assets. Workspace anlegen, Projektordner hinterlegen &mdash; alle Sessions im Workspace wissen ab jetzt, woran gearbeitet wird.</p>
 
-        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>CIPHER-MUX-Hub · Standard-Struktur</span></h3>
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>Workspace als Einstieg</span></h3>
+        <p class="docs-p">Ein Workspace b&uuml;ndelt alles, was zu einem Projekt geh&ouml;rt: den Projektordner (oder mehrere Kontext-Ordner), das Grid-Layout, Preset-Zuweisungen und Persona-Einstellungen. Wenn du eine Session im Workspace startest, kennt sie den Kontext automatisch &mdash; du musst nicht jedes Mal einen Pfad eingeben.</p>
+        <ul class="docs-list">
+          <li><span class="docs-list-marker">&rsaquo;</span><span><strong>Workspace anlegen:</strong> &Uuml;ber die Statusleiste &rarr; &bdquo;workspaces&ldquo; &rarr; neuen Workspace erstellen, benennen, Projektordner zuweisen.</span></li>
+          <li><span class="docs-list-marker">&rsaquo;</span><span><strong>Mehrere Ordner:</strong> Ein Workspace kann mehrere Kontext-Ordner enthalten &mdash; z.B. Frontend-Repo + API-Repo + Docs.</span></li>
+          <li><span class="docs-list-marker">&rsaquo;</span><span><strong>Workspace wechseln:</strong> &Uuml;ber die Statusleiste oder den Workspace-Popup. Ein Klick, das Grid wird neu aufgebaut.</span></li>
+          <li><span class="docs-list-marker">&rsaquo;</span><span><strong>Projektauswahl:</strong> &Uuml;ber die Workspaces entsteht automatisch deine Projektliste &mdash; kein separates Projekt-Men&uuml; n&ouml;tig.</span></li>
+        </ul>
+
+        <div class="docs-callout docs-callout-rule">
+          <div class="docs-callout-label">Faustregel &middot; Warum Workspaces?</div>
+          <div class="docs-callout-body">Workspaces machen viele andere Features verst&auml;ndlich: Notes-Zuordnung, Screenshot-Pfade, Preset-Kontexte. Wer das Konzept fr&uuml;h hat, muss es sp&auml;ter nicht nachlernen.</div>
+        </div>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>CIPHER-MUX-Hub &middot; Standard-Struktur</span></h3>
         <pre class="docs-terminal">projekt-name/
   .claude/              <span class="dim">Claude Code Config</span>
   .cyber-factory/       <span class="dim">Run-Konfiguration</span>

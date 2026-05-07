@@ -300,10 +300,24 @@ const lang = 'en';
           <span class="cm-section-header-line"></span>
           <span>chapter</span>
         </div>
-        <h2>Projects and Project Structure</h2>
-        <p class="docs-lead">Central directory as single source of truth for all projects. Standardised folder structure, three adoption modes for existing projects.</p>
+        <h2>Projects and Workspaces</h2>
+        <p class="docs-lead">One project = one workspace = home for all assets. Create a workspace, assign your project folder &mdash; every session in the workspace knows what you&rsquo;re working on.</p>
 
-        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>CIPHER-MUX Hub · Default Structure</span></h3>
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>Workspace as Entry Point</span></h3>
+        <p class="docs-p">A workspace bundles everything related to a project: the project folder (or multiple context folders), the grid layout, preset assignments, and persona settings. When you start a session in a workspace, it knows the context automatically &mdash; no need to enter a path every time.</p>
+        <ul class="docs-list">
+          <li><span class="docs-list-marker">&rsaquo;</span><span><strong>Create workspace:</strong> Status bar &rarr; &ldquo;workspaces&rdquo; &rarr; create new workspace, name it, assign project folder.</span></li>
+          <li><span class="docs-list-marker">&rsaquo;</span><span><strong>Multiple folders:</strong> A workspace can contain multiple context folders &mdash; e.g. frontend repo + API repo + docs.</span></li>
+          <li><span class="docs-list-marker">&rsaquo;</span><span><strong>Switch workspace:</strong> Via status bar or workspace popup. One click, the grid rebuilds.</span></li>
+          <li><span class="docs-list-marker">&rsaquo;</span><span><strong>Project selection:</strong> Your workspaces automatically become your project list &mdash; no separate project menu needed.</span></li>
+        </ul>
+
+        <div class="docs-callout docs-callout-rule">
+          <div class="docs-callout-label">Rule of thumb &middot; Why Workspaces?</div>
+          <div class="docs-callout-body">Workspaces make many other features click: note assignment, screenshot paths, preset contexts. Learn the concept early, skip the confusion later.</div>
+        </div>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>CIPHER-MUX Hub &middot; Default Structure</span></h3>
         <pre class="docs-terminal">project-name/
   .claude/              <span class="dim">Claude Code config</span>
   .cyber-factory/       <span class="dim">Run configuration</span>
