@@ -1,0 +1,308 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const lang = 'en';
+---
+
+<Layout
+  title="Changelog — CIPHER-MUX"
+  description="Release notes and changelog for cipher-mux"
+  lang={lang}
+  active="changelog"
+>
+  <div class="changelog-page">
+
+    <section class="changelog-hero">
+      <div class="changelog-kicker">Release Notes</div>
+      <h1>What's new in<br/><span class="accent">CIPHER-MUX</span></h1>
+      <p class="changelog-hero-body">All notable changes, from the latest wave features to bugfixes. This page reflects the project's CHANGELOG.md.</p>
+    </section>
+
+    <!-- v0.9.99 Wave F1-F5 -->
+    <section class="changelog-release">
+      <div class="release-header">
+        <div class="release-version">v0.9.99</div>
+        <div class="release-date">2026-05-08</div>
+        <div class="release-tag release-tag--latest">latest</div>
+      </div>
+      <h2>Wave F1&ndash;F5 &mdash; Feature Sprint</h2>
+      <p class="release-summary">Six new features rounding out the pre-release experience: tag management, focus mode, session screenshots, persona avatars, a dedicated voice bundle, and an automatic update checker.</p>
+
+      <h3 class="changelog-category"><span class="cat-dot cat-dot--added"></span> Added</h3>
+      <ul class="changelog-list">
+        <li><strong>Tag Management System (F2):</strong> Merge, rename, and cycle tags. Exclusive tags for one-of-a-kind categorization. Notes file watching for external changes.</li>
+        <li><strong>Focus Mode (F3):</strong> Full-screen focus dims all grid cells except the active one. Reduces visual noise during deep work.</li>
+        <li><strong>Update Checker (F1):</strong> Automatic version check on launch. Non-intrusive notification when an update is available.</li>
+        <li><strong>Cipher Adult Voice Bundle (F1):</strong> Dedicated German adult TTS voice for natural-sounding speech output.</li>
+        <li><strong>Session Screenshots (F5):</strong> Capture any session's current state as a screenshot. Stored locally for documentation and bug reports.</li>
+        <li><strong>Persona Avatars (F5):</strong> Each persona now has a visual avatar displayed in session headers and the workspace editor.</li>
+        <li><strong>Workspace Notes Cells (F4):</strong> Notes can now be opened directly in grid cells as workspace-scoped editor tabs.</li>
+        <li><strong>Note Editor Font Size (F3):</strong> Configurable font size for the CodeMirror notes editor.</li>
+        <li><strong>Preset Sorting (F3):</strong> Presets sorted alphabetically in the launcher popup.</li>
+        <li><strong>Onboarding Flow (F4):</strong> Improved first-launch companion onboarding with workspace creation guide.</li>
+        <li><strong>Legacy Archive (F5):</strong> Old session data cleanly archived when migrating to new formats.</li>
+      </ul>
+    </section>
+
+    <!-- v0.9.99 Core -->
+    <section class="changelog-release">
+      <div class="release-header">
+        <div class="release-version">v0.9.99</div>
+        <div class="release-date">2026-05-06</div>
+      </div>
+      <h2>Workspace Scoping &amp; i18n</h2>
+      <p class="release-summary">Workspace-scoped notes and memory, internationalization foundation, session resume/fork, and the persona resolver.</p>
+
+      <h3 class="changelog-category"><span class="cat-dot cat-dot--added"></span> Added</h3>
+      <ul class="changelog-list">
+        <li><strong>i18n Foundation:</strong> i18next + react-i18next with EN/DE locales. Language switcher in Settings.</li>
+        <li><strong>Notes MCP Full CRUD:</strong> <code>mux_notes_read</code>, <code>mux_notes_update</code>, <code>mux_notes_search</code>, <code>mux_notes_delete</code>, <code>mux_notes_handoff_create</code>, <code>mux_notes_handoff_search</code>.</li>
+        <li><strong>Session Resume:</strong> <code>--resume</code> flag support for entity sessions. Manual sessions get a checkbox.</li>
+        <li><strong>Session Fork:</strong> Fork button in SessionCell for Claude Code sessions.</li>
+        <li><strong>Orphan Detection:</strong> Periodic scan for orphaned tmux sessions with Adopt/Terminate UI.</li>
+        <li><strong>Workspace-Scoped Notes:</strong> Notes auto-tagged with <code>workspace:&lt;name&gt;</code>. Sidebar filter by workspace scope.</li>
+        <li><strong>Workspace-Scoped Memory:</strong> Companion memory auto-scoped per workspace. Recall merges user + workspace memories.</li>
+        <li><strong>Workspace Context Injection:</strong> Workspace prompt + context directories injected into all entity sessions.</li>
+        <li><strong>Persona Resolver:</strong> Per-preset persona dropdown. Resolution: global &gt; preset override &gt; matrix default &gt; fallback.</li>
+      </ul>
+    </section>
+
+    <!-- v0.9.9 -->
+    <section class="changelog-release">
+      <div class="release-header">
+        <div class="release-version">v0.9.9</div>
+        <div class="release-date">2026-05-02</div>
+      </div>
+      <h2>Pre-Cyberfactory Plateau</h2>
+      <p class="release-summary">The "more-as-more" milestone. Multi-instance presets, voice &amp; TTS, universal persona injection, dynamic entity scanner, and 50+ bugfixes.</p>
+
+      <h3 class="changelog-category"><span class="cat-dot cat-dot--added"></span> Added</h3>
+      <ul class="changelog-list">
+        <li><strong>Multi-Instance Presets:</strong> Companion, Refinement, Voice, Audit can run multiple simultaneous sessions.</li>
+        <li><strong>Voice &amp; TTS:</strong> Global TTS playback, conversation engine voice commands, BT Shutter integration.</li>
+        <li><strong>Dynamic Entity Scanner:</strong> Scans <code>~/.config/cipher-mux/entities/</code> for custom presets.</li>
+        <li><strong>Universal Persona Injection:</strong> Active character injected into all entity CLAUDE.md at start.</li>
+        <li><strong>Preset Editor:</strong> 4-tab CLAUDE.md editor in the Workspaces window.</li>
+        <li><strong>Tag-based Notes Scoping:</strong> Flat storage with tag-based categorization.</li>
+        <li><strong>Hierarchical Tag Tree:</strong> Collapsible tag tree with tri-state filter.</li>
+        <li><strong>Context Usage Color Bar:</strong> Green/yellow/red progress bar in session headers.</li>
+        <li><strong>STT Pin-to-Session:</strong> Pin voice input to a specific session.</li>
+        <li><strong>STT in Notes Editor:</strong> Voice dictation directly into CodeMirror.</li>
+      </ul>
+
+      <h3 class="changelog-category"><span class="cat-dot cat-dot--fixed"></span> Fixed</h3>
+      <ul class="changelog-list">
+        <li>MCP HTTP timeout, drag-and-drop race, stale grid slots, orphaned entity session IDs</li>
+        <li>Keep Working restore 3-layer bug (race condition + stale IDs + tmux malformed lines)</li>
+        <li>50+ additional fixes across voice, sidebar, workspace, grid, and entity systems</li>
+      </ul>
+    </section>
+
+    <!-- v0.9.5-beta -->
+    <section class="changelog-release">
+      <div class="release-header">
+        <div class="release-version">v0.9.5-beta</div>
+        <div class="release-date">2026-04-24</div>
+      </div>
+      <h2>Unified Sidebar</h2>
+      <p class="release-summary">Unified Sidebar Panel replaces Chatroom + Input Requests. Detachable sidebar, background session cards, grid placement popup.</p>
+    </section>
+
+    <!-- v0.8.9-beta -->
+    <section class="changelog-release">
+      <div class="release-header">
+        <div class="release-version">v0.8.9-beta</div>
+        <div class="release-date">2026-04-24</div>
+      </div>
+      <h2>Workspaces &amp; Personas</h2>
+      <p class="release-summary">Grid-based workspace editor, 3-level prompt resolution, merge handles, persona skill sync, shell sessions, README and CI setup.</p>
+    </section>
+
+    <!-- v0.8.8-beta -->
+    <section class="changelog-release">
+      <div class="release-header">
+        <div class="release-version">v0.8.8-beta</div>
+        <div class="release-date">2026-04-23</div>
+      </div>
+      <h2>Theme System</h2>
+      <p class="release-summary">10 themes with CSS custom properties and ANSI terminal colors. Theme picker with live preview.</p>
+    </section>
+
+    <!-- Earlier -->
+    <section class="changelog-release">
+      <div class="release-header">
+        <div class="release-version">v0.5.0 &ndash; v0.8.3</div>
+        <div class="release-date">2026-04-13 &ndash; 2026-04-22</div>
+      </div>
+      <h2>Foundation</h2>
+      <p class="release-summary">Initial scaffold, core modules, voice pipeline, task system, orchestrator, MCP server, session grid, bug reports, and early UI.</p>
+    </section>
+
+    <section class="changelog-bottom">
+      <p>Full changelog on <a href="https://github.com/cmarkus42-rgb/cipher-mux-electron/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer">GitHub &nearr;</a></p>
+    </section>
+
+  </div>
+</Layout>
+
+<style>
+  .changelog-page {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 64px;
+  }
+  .accent { color: var(--color-accent); }
+
+  .changelog-hero {
+    padding: 120px 0 48px;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .changelog-kicker {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 18px;
+  }
+  .changelog-hero h1 {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: clamp(40px, 5vw, 64px);
+    line-height: 1.0;
+    letter-spacing: -1px;
+    margin: 0 0 16px;
+  }
+  .changelog-hero-body {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--color-text-secondary);
+    max-width: 700px;
+  }
+
+  .changelog-release {
+    padding: 48px 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .release-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 12px;
+  }
+  .release-version {
+    font-family: 'Fira Code', monospace;
+    font-size: 14px;
+    color: var(--color-accent);
+    letter-spacing: 0.5px;
+    padding: 4px 12px;
+    border: 1px solid var(--color-accent);
+    clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px);
+  }
+  .release-date {
+    font-family: 'Fira Code', monospace;
+    font-size: 12px;
+    color: var(--color-text-dim);
+    letter-spacing: 0.5px;
+  }
+  .release-tag {
+    font-family: 'Fira Code', monospace;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    clip-path: polygon(4px 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%, 0 4px);
+  }
+  .release-tag--latest {
+    background: var(--color-accent);
+    color: var(--color-bg);
+  }
+  .changelog-release h2 {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: clamp(24px, 3vw, 32px);
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+    margin: 0 0 10px;
+  }
+  .release-summary {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--color-text-secondary);
+    max-width: 780px;
+    margin: 0 0 24px;
+  }
+  .changelog-category {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin: 20px 0 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .cat-dot {
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    clip-path: polygon(3px 0, 100% 0, 100% calc(100% - 3px), calc(100% - 3px) 100%, 0 100%, 0 3px);
+  }
+  .cat-dot--added { background: var(--color-accent); }
+  .cat-dot--fixed { background: #E69F00; }
+  .cat-dot--changed { background: #56B4E9; }
+  .changelog-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .changelog-list li {
+    font-family: 'Fira Code', monospace;
+    font-size: 12.5px;
+    line-height: 1.8;
+    color: var(--color-text-secondary);
+    padding: 4px 0;
+    border-top: 1px dotted var(--color-border);
+  }
+  .changelog-list li:first-child { border-top: none; }
+  .changelog-list li::before {
+    content: '\25B8';
+    color: var(--color-accent);
+    margin-right: 8px;
+  }
+  .changelog-list strong {
+    color: var(--color-text);
+  }
+  .changelog-list code {
+    font-size: 11px;
+    background: var(--color-bg-elevated);
+    padding: 1px 5px;
+    border: 1px solid var(--color-border);
+  }
+  .changelog-bottom {
+    padding: 48px 0;
+  }
+  .changelog-bottom p {
+    font-family: 'Fira Code', monospace;
+    font-size: 14px;
+    color: var(--color-text-secondary);
+  }
+  .changelog-bottom a {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+  .changelog-bottom a:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .changelog-page { padding: 0 20px; }
+    .changelog-hero { padding: 80px 0 40px; }
+    .changelog-release { padding: 32px 0; }
+    .release-header { flex-wrap: wrap; }
+  }
+</style>

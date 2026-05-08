@@ -17,12 +17,14 @@ const sectionIdMap: Record<string, string> = {
   '09': 'mcp',
   '10': 'themes',
   '11': 'efficiency',
+  '12': 'new-features',
 };
 
 type SectionWithStats = typeof content.sections[0] & { stats?: readonly { value: string; label: string }[] };
 type SectionWithPresets = typeof content.sections[0] & { presets?: readonly { name: string; id: string; color: string; description: string }[] };
 type SectionWithPersonas = typeof content.sections[0] & { personas?: readonly { name: string; tagline: string; color: string; vibe: string; keys: readonly string[] }[] };
 type SectionWithA11y = typeof content.sections[0] & { a11yProfiles?: readonly { name: string; type: string; affected: string; strategy: string; colors: readonly string[]; screenshot: string }[] };
+type SectionWithNewFeatures = typeof content.sections[0] & { newFeatures?: readonly { name: string; description: string }[] };
 
 const presetScreenshotMap: Record<string, string> = {
   'companion': 'detail-coding-companion',
@@ -64,7 +66,7 @@ const presetScreenshotMap: Record<string, string> = {
     <!-- 11 Feature Sections -->
     {content.sections.map((section) => {
       const sectionId = sectionIdMap[section.num] ?? section.num;
-      const s = section as SectionWithStats & SectionWithPresets & SectionWithPersonas & SectionWithA11y;
+      const s = section as SectionWithStats & SectionWithPresets & SectionWithPersonas & SectionWithA11y & SectionWithNewFeatures;
       return (
         <section id={sectionId} class="feature-section">
           <header class="cm-section-header">
@@ -344,15 +346,16 @@ const presetScreenshotMap: Record<string, string> = {
           {section.num === '09' && (
             <div class="mcp-grid">
               {[
-                { name: 'Session Mgmt', count: '06', ex: 'create \u00b7 kill \u00b7 focus \u00b7 eject' },
+                { name: 'Session Mgmt', count: '08', ex: 'create \u00b7 kill \u00b7 focus \u00b7 eject \u00b7 scroll' },
                 { name: 'Message Bus', count: '02', ex: 'send \u00b7 read' },
                 { name: 'Context Monitor', count: '01', ex: 'context_status' },
                 { name: 'Task Queue', count: '04', ex: 'create \u00b7 update \u00b7 list \u00b7 get' },
                 { name: 'Bug Reports', count: '01', ex: 'resolve' },
                 { name: 'Input Requests', count: '01', ex: 'create' },
-                { name: 'Notes', count: '08', ex: 'CRUD \u00b7 search \u00b7 handoff_*' },
+                { name: 'Notes', count: '10', ex: 'CRUD \u00b7 search \u00b7 handoff_* \u00b7 open \u00b7 list' },
                 { name: 'Companion Memory', count: '04', ex: 'write \u00b7 recall \u00b7 search \u00b7 forget' },
-                { name: 'App Control', count: '10', ex: 'grid \u00b7 sidebar \u00b7 theme \u00b7 choreography' },
+                { name: 'App Control', count: '12', ex: 'grid \u00b7 sidebar \u00b7 theme \u00b7 choreography \u00b7 highlight' },
+                { name: 'Voice / TTS', count: '02', ex: 'tts_speak \u00b7 entity voice' },
               ].map((c) => (
                 <div class="mcp-card">
                   <div class="mcp-card-header">
@@ -410,6 +413,18 @@ const presetScreenshotMap: Record<string, string> = {
                     <div class="efficiency-title">{item.k}</div>
                     <div class="efficiency-desc">{item.d}</div>
                   </div>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* 12 New Features */}
+          {s.newFeatures && (
+            <div class="new-features-grid">
+              {s.newFeatures.map((feat) => (
+                <div class="new-feature-card">
+                  <div class="new-feature-name">{feat.name}</div>
+                  <p class="new-feature-desc">{feat.description}</p>
                 </div>
               ))}
             </div>
@@ -1426,6 +1441,35 @@ const presetScreenshotMap: Record<string, string> = {
     line-height: 1.6;
   }
 
+  /* ====== 12 New Features ====== */
+  .new-features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-top: 24px;
+  }
+  .new-feature-card {
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+    padding: 22px;
+    border-left: 3px solid var(--color-accent);
+  }
+  .new-feature-name {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--color-text);
+    margin-bottom: 8px;
+  }
+  .new-feature-desc {
+    font-family: 'Fira Code', monospace;
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
   /* ====== Responsive ====== */
   @media (max-width: 768px) {
     .features-page { padding: 0 20px; }
@@ -1442,6 +1486,7 @@ const presetScreenshotMap: Record<string, string> = {
     .mcp-grid { grid-template-columns: repeat(2, 1fr); }
     .a11y-grid { grid-template-columns: 1fr; }
     .efficiency-grid { grid-template-columns: 1fr; }
+    .new-features-grid { grid-template-columns: 1fr; }
     .prompt-resolution { grid-template-columns: 1fr; }
     .layout-screenshot-row { flex-wrap: wrap; }
     .tts-strip { flex-direction: column; align-items: flex-start; }
