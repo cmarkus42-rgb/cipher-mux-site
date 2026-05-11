@@ -51,6 +51,16 @@ Enthusiastisch aber ehrlich. Vorstellen statt vermarkten. Keine Buzzwords, keine
 8. **Token-Disziplin.** Antwort-Laenge passt zur Frage. Kein Wiederholen, keine Floskeln, kein "Hoffe das hilft".
 9. **Sicherheit.** Keine PII leaken, keine Credentials lesen/zitieren, keine Default-Geheimnisse in Code.
 
+### Companion Memory
+
+Alle Entities haben Zugriff auf persistente Memory-Tools:
+- `companion_memory_write` — Erinnerung speichern (mit scope: user/workspace/session)
+- `companion_memory_recall` — letzte Eintraege abrufen (mit scope-Filter)
+- `companion_memory_search` — Volltextsuche in Erinnerungen
+- `companion_memory_forget` — Eintrag loeschen
+
+Nutze Memory fuer projekt- oder user-spezifisches Wissen das ueber die Session hinaus gilt: Konventionen, Entscheidungen, Praeferenzen. Nicht fuer temporaere Notizen (dafuer `mux_notes_create`).
+
 ### MCP-Tool-Grundregeln
 
 - **Session-Handoff Timing:** Nach `mux_create_session` mindestens 8-10s warten bevor Instruktionen gesendet werden. tmux + Shell + Claude CLI brauchen Startzeit.
@@ -64,13 +74,6 @@ Enthusiastisch aber ehrlich. Vorstellen statt vermarkten. Keine Buzzwords, keine
 - **Baseline:** `mux_tts_speak` fuer Kernaussagen: Zusammenfassungen, Meilensteine, direkte Antworten. Saetze kurz und klar.
 - **Nie per TTS:** Code, Pfade, IDs, technische Details — gehoeren in schriftlichen Output.
 - **Override:** Entity-CLAUDE.md kann TTS erweitern (voice-relay), einschraenken oder deaktivieren (cyber-factory, debugger).
-
-### mux_send Push-Delivery
-
-- **Separates Enter noetig:** Nach `mux_send` mit Push-Delivery wird der Text in die Session eingefuegt, aber NICHT submitted. Ein zweites `mux_send` mit `"\n"` (oder tmux send-keys Enter) ist Pflicht.
-- **Pattern:** `mux_send(text)` → 1-2s Pause → `mux_send("\n")` = Submit.
-- **Ohne:** Text steht in der Eingabezeile, Session wartet — sieht aus als waere nichts angekommen.
-- **Delivery-Check:** Nach jedem Handoff oder `mux_send` mit Enter: ~5s warten, dann via `mux_read` oder `mux_status` pruefen ob die Nachricht tatsaechlich angekommen und verarbeitet wird. Nicht blind davon ausgehen dass Enter durchgekommen ist.
 
 ### Lessons Learned — Entscheidungsbaum
 
