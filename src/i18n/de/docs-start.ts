@@ -94,7 +94,7 @@ const docsStart = {
     ],
     linkNote: 'Alles weitere zur Sprachsteuerung — Voice Commands, BT-Clicker, TTS — findest du in der',
     linkLabel: 'Nutzung der App',
-    linkHref: '/de/docs/usage',
+    linkHref: '/de/docs/usage#voice',
   },
 
   next: {

@@ -231,7 +231,7 @@ const docsNutzung = {
     ],
 
     pinTitle: 'Voice Pin',
-    pinDesc: 'Im STT-Modus: Der Pin-Button im Header pinnt die Spracheingabe dauerhaft an eine Session. Deine Stimme geht dann immer dorthin, egal welche Zelle gerade fokussiert ist.',
+    pinDesc: 'Im STT-Modus: Der Pin-Button (◉) im Session-Header pinnt die Spracheingabe dauerhaft an eine Session. Deine Stimme geht dann immer dorthin, egal welche Zelle gerade fokussiert ist. Nochmal klicken loest den Pin — danach folgt die Stimme wieder dem Grid-Fokus.',
 
     ttsTitle: 'TTS-Konfiguration',
     ttsItems: [
@@ -288,7 +288,7 @@ const docsNutzung = {
     scopingDesc: 'Im aktiven Workspace filtert die Notes-Ansicht automatisch auf Notes mit dem Tag <span class="docs-mono">workspace:<Name></span>.',
 
     handoffTitle: 'Handoff-Notes',
-    handoffDesc: 'Spezielle Notes fuer Wissenstransfer zwischen Sessions. Im Frontmatter: <span class="docs-mono">from_session</span>, <span class="docs-mono">to_entity</span>, <span class="docs-mono">handoff_status</span>. Werden automatisch erstellt wenn eine Session ihre Arbeit an die naechste uebergibt.',
+    handoffDesc: 'Spezielle Notes fuer Wissenstransfer zwischen Sessions. Werden automatisch von den Entity-Sessions erstellt — z.B. wenn Testing seine Findings an den Workshop uebergibt. Im Frontmatter stehen drei Felder: <span class="docs-mono">from_session</span> (wer hat geschrieben), <span class="docs-mono">to_entity</span> (fuer welche Entity), <span class="docs-mono">handoff_status</span> (pending oder consumed). Du musst diese Notes nicht manuell anlegen — die Entities machen das ueber ihre Handoff-Tools.',
 
     testcaseTitle: 'Testcase-Notes',
     testcaseDesc: 'Notes mit <span class="docs-mono">noteType: testcase</span> werden im TestcaseView gerendert. Format: Checkbox + Bold-ID (<span class="docs-mono">- [ ] <strong>T-PREFIX.N</strong> Beschreibung</span>).',
@@ -317,9 +317,9 @@ const docsNutzung = {
 
     adoptionTitle: 'Bestehende Projekte einbinden — drei Modi',
     adoptionModes: [
-      { label: 'Voll-Adoption',     desc: 'Komplette Pack-Konventionen werden angewandt — alle Ordner, ADRs, Specs, .project-meta.json.' },
-      { label: 'Pack-Light',        desc: 'Nur einzelne Komponenten uebernehmen — z.B. nur docs/specs oder nur .claude/.' },
-      { label: 'Bestandsaufnahme',  desc: 'Nur Inventur — Pack ruehrt nichts an, dokumentiert nur was vorhanden ist.' },
+      { label: 'Voll-Adoption',     desc: 'Komplette Konventionen werden angewandt — alle Ordner, ADRs, Specs, .project-meta.json. Das Projekt bekommt die volle cipher-mux-Struktur.' },
+      { label: 'Pack-Light',        desc: 'Nur einzelne Komponenten uebernehmen — z.B. nur docs/specs oder nur .claude/. Das Projekt bleibt sonst wie es ist.' },
+      { label: 'Bestandsaufnahme',  desc: 'Nur Inventur — nichts wird veraendert, nur dokumentiert was vorhanden ist.' },
     ],
   },
 
