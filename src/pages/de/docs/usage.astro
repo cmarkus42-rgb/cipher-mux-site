@@ -1,0 +1,1200 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import DocsNav from '../../../components/DocsNav.astro';
+import content from '../../../i18n/de/docs-nutzung';
+
+const lang = 'de';
+---
+
+<Layout
+  title="Nutzung der App — CIPHER-MUX"
+  description={content.hero.body}
+  lang={lang}
+  active="docs"
+>
+  <div class="docs-page">
+
+    <DocsNav lang={lang} activePage="usage" />
+
+    <!-- Anchor Nav -->
+    <nav class="cm-anchor-nav">
+      <div class="cm-anchor-nav-label">Inhalt</div>
+      {content.sections.map((section) => (
+        <a href={`#${section.id}`} class="cm-anchor-nav-item">
+          <span class="cm-anchor-nav-num">{section.num}</span>
+          <span>{section.navLabel}</span>
+        </a>
+      ))}
+    </nav>
+
+    <!-- Hero -->
+    <section class="docs-hero">
+      <div class="cm-tag">{content.hero.kicker}</div>
+      <h1>{content.hero.title}<br /><span class="accent">{content.hero.titleAccent}</span></h1>
+      <p class="docs-body">{content.hero.body}</p>
+    </section>
+
+    <!-- ═══ §01 · Das Grid ═══ -->
+    <section id="grid" class="docs-section">
+      <div class="docs-inner">
+        <div class="cm-section-header-meta">
+          <span class="cm-section-header-num">&sect; 01</span>
+          <span class="cm-section-header-line"></span>
+          <span>kapitel</span>
+        </div>
+        <h2>Das Grid</h2>
+        <p class="docs-lead">{content.grid.lead}</p>
+
+        {content.grid.mainParagraphs.map((p) => (
+          <p class="docs-p" set:html={p} />
+        ))}
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.grid.dragTitle}</span></h3>
+        <ul class="docs-list">
+          {content.grid.dragItems.map((item) => (
+            <li><span class="docs-list-marker">&rsaquo;</span><span set:html={item} /></li>
+          ))}
+        </ul>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.grid.sizeTitle}</span></h3>
+        <ul class="docs-list">
+          {content.grid.sizeItems.map((item) => (
+            <li><span class="docs-list-marker">&rsaquo;</span><span set:html={item} /></li>
+          ))}
+        </ul>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.grid.layoutsTitle}</span></h3>
+        <div class="docs-table">
+          <div class="docs-table-header docs-table-2col"><div>Layout</div><div>Wofuer</div></div>
+          {content.grid.layouts.map((l, i) => (
+            <div class:list={["docs-table-row", "docs-table-2col", { "docs-table-row-first": i === 0 }]}>
+              <div class="docs-table-label">{l.label}</div>
+              <div class="docs-table-desc">{l.desc}</div>
+            </div>
+          ))}
+        </div>
+
+        <figure class="docs-screenshot">
+          <div class="docs-screenshot-placeholder">{content.grid.screenshot.placeholder}</div>
+          <figcaption>{content.grid.screenshot.caption}</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ═══ §02 · Session-Zell-Header ═══ -->
+    <section id="header" class="docs-section">
+      <div class="docs-inner">
+        <div class="cm-section-header-meta">
+          <span class="cm-section-header-num">&sect; 02</span>
+          <span class="cm-section-header-line"></span>
+          <span>kapitel</span>
+        </div>
+        <h2>Session-Zell-Header</h2>
+        <p class="docs-lead">{content.header.lead}</p>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.header.leftTitle}</span></h3>
+        <ul class="docs-list">
+          {content.header.leftItems.map((item) => (
+            <li><span class="docs-list-marker">&rsaquo;</span><span set:html={item} /></li>
+          ))}
+        </ul>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.header.contextTitle}</span></h3>
+        <p class="docs-p">{content.header.contextDesc}</p>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.header.buttonsTitle}</span></h3>
+        <div class="docs-table">
+          <div class="docs-table-header docs-table-3col"><div>Icon</div><div>Aktion</div><div>Beschreibung</div></div>
+          {content.header.buttons.map((b, i) => (
+            <div class:list={["docs-table-row", "docs-table-3col", { "docs-table-row-first": i === 0 }]}>
+              <div class="docs-table-key">{b.icon}{b.shortcut ? ` / ${b.shortcut}` : ''}</div>
+              <div class="docs-table-label-mid">{b.label}</div>
+              <div class="docs-table-desc">{b.desc}</div>
+            </div>
+          ))}
+        </div>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.header.entityTitle}</span></h3>
+        <div class="docs-table docs-table-compact">
+          <div class="docs-table-header docs-table-2col"><div>Entity</div><div>Farbe</div></div>
+          {content.header.entities.map((e, i) => (
+            <div class:list={["docs-table-row", "docs-table-2col", { "docs-table-row-first": i === 0 }]}>
+              <div class="docs-table-label">{e.label}</div>
+              <div class="docs-table-desc">{e.color}</div>
+            </div>
+          ))}
+        </div>
+
+        <figure class="docs-screenshot">
+          <div class="docs-screenshot-placeholder">{content.header.screenshot.placeholder}</div>
+          <figcaption>{content.header.screenshot.caption}</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ═══ §03 · Focus Mode und Pop-Out ═══ -->
+    <section id="focus" class="docs-section">
+      <div class="docs-inner">
+        <div class="cm-section-header-meta">
+          <span class="cm-section-header-num">&sect; 03</span>
+          <span class="cm-section-header-line"></span>
+          <span>kapitel</span>
+        </div>
+        <h2>Focus Mode &amp; Pop-Out</h2>
+        <p class="docs-lead">{content.focus.lead}</p>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.focus.focusTitle}</span></h3>
+        <ul class="docs-list">
+          {content.focus.focusItems.map((item) => (
+            <li><span class="docs-list-marker">&rsaquo;</span><span set:html={item} /></li>
+          ))}
+        </ul>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.focus.popoutTitle}</span></h3>
+        <ul class="docs-list">
+          {content.focus.popoutItems.map((item) => (
+            <li><span class="docs-list-marker">&rsaquo;</span><span set:html={item} /></li>
+          ))}
+        </ul>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.focus.sidebarTitle}</span></h3>
+        <p class="docs-p">{content.focus.sidebarDesc}</p>
+
+        <figure class="docs-screenshot">
+          <div class="docs-screenshot-placeholder">{content.focus.screenshot.placeholder}</div>
+          <figcaption>{content.focus.screenshot.caption}</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ═══ §04 · Die Sidebar ═══ -->
+    <section id="sidebar" class="docs-section">
+      <div class="docs-inner">
+        <div class="cm-section-header-meta">
+          <span class="cm-section-header-num">&sect; 04</span>
+          <span class="cm-section-header-line"></span>
+          <span>kapitel</span>
+        </div>
+        <h2>Die Sidebar</h2>
+        <p class="docs-lead">{content.sidebar.lead}</p>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.sidebar.sectionsTitle}</span></h3>
+        <div class="docs-table">
+          <div class="docs-table-header docs-table-2col"><div>Sektion</div><div>Inhalt</div></div>
+          {content.sidebar.sections.map((s, i) => (
+            <div class:list={["docs-table-row", "docs-table-2col", { "docs-table-row-first": i === 0 }]}>
+              <div class="docs-table-label">{s.label}</div>
+              <div class="docs-table-desc">{s.desc}</div>
+            </div>
+          ))}
+        </div>
+
+        <div class="docs-callout docs-callout-tip">
+          <div class="docs-callout-label">Tipp</div>
+          <div class="docs-callout-body">{content.sidebar.detachTip}</div>
+        </div>
+
+        <figure class="docs-screenshot">
+          <div class="docs-screenshot-placeholder">{content.sidebar.screenshot.placeholder}</div>
+          <figcaption>{content.sidebar.screenshot.caption}</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ═══ §05 · Sprachsteuerung ═══ -->
+    <section id="voice" class="docs-section">
+      <div class="docs-inner">
+        <div class="cm-section-header-meta">
+          <span class="cm-section-header-num">&sect; 05</span>
+          <span class="cm-section-header-line"></span>
+          <span>kapitel</span>
+        </div>
+        <h2>Sprachsteuerung</h2>
+        <p class="docs-lead">{content.voice.lead}</p>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.voice.modesTitle}</span></h3>
+        <div class="docs-table">
+          <div class="docs-table-header docs-table-2col"><div>Modus</div><div>Beschreibung</div></div>
+          {content.voice.modes.map((m, i) => (
+            <div class:list={["docs-table-row", "docs-table-2col", { "docs-table-row-first": i === 0 }]}>
+              <div class="docs-table-label">{m.label}</div>
+              <div class="docs-table-desc">{m.desc}</div>
+            </div>
+          ))}
+        </div>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.voice.ledTitle}</span></h3>
+        <div class="docs-led-row">
+          {content.voice.leds.map((led) => (
+            <div class="docs-led-item">
+              <span class={`docs-led-dot docs-led-${led.css}`}></span>
+              <span class="docs-led-label">{led.label}</span>
+              <span class="docs-led-desc">{led.desc}</span>
+            </div>
+          ))}
+        </div>
+
+        <div class="docs-callout docs-callout-rule">
+          <div class="docs-callout-label">Faustregel &middot; Wichtig</div>
+          <div class="docs-callout-body">Gesprochener Text wird eingefuegt aber <em>nicht automatisch gesendet</em>. Du kannst lesen, korrigieren, dann per <span class="docs-mono">"abschicken"</span> oder Enter senden.</div>
+        </div>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.voice.textTitle}</span></h3>
+        <div class="docs-table docs-table-compact">
+          <div class="docs-table-header docs-table-2col"><div>Sage</div><div>Bewirkt</div></div>
+          {content.voice.textCommands.map((c, i) => (
+            <div class:list={["docs-table-row", "docs-table-2col", { "docs-table-row-first": i === 0 }]}>
+              <div class="docs-table-label">{c.cmd}</div>
+              <div class="docs-table-desc">{c.desc}</div>
+            </div>
+          ))}
+        </div>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.voice.scrollTitle}</span></h3>
+        <div class="docs-table docs-table-compact">
+          <div class="docs-table-header docs-table-2col"><div>Sage</div><div>Bewirkt</div></div>
+          {content.voice.scrollCommands.map((c, i) => (
+            <div class:list={["docs-table-row", "docs-table-2col", { "docs-table-row-first": i === 0 }]}>
+              <div class="docs-table-label">{c.cmd}</div>
+              <div class="docs-table-desc">{c.desc}</div>
+            </div>
+          ))}
+        </div>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.voice.gridNavTitle}</span></h3>
+        <div class="docs-table docs-table-compact">
+          <div class="docs-table-header docs-table-2col"><div>Sage</div><div>Bewirkt</div></div>
+          {content.voice.gridNavCommands.map((c, i) => (
+            <div class:list={["docs-table-row", "docs-table-2col", { "docs-table-row-first": i === 0 }]}>
+              <div class="docs-table-label">{c.cmd}</div>
+              <div class="docs-table-desc">{c.desc}</div>
+            </div>
+          ))}
+        </div>
+        <p class="docs-p" set:html={content.voice.gridNavNote} />
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.voice.comTitle}</span></h3>
+        {content.voice.comParagraphs.map((p) => (
+          <p class="docs-p">{p}</p>
+        ))}
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.voice.pinTitle}</span></h3>
+        <p class="docs-p">{content.voice.pinDesc}</p>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.voice.ttsTitle}</span></h3>
+        <ul class="docs-list">
+          {content.voice.ttsItems.map((item) => (
+            <li><span class="docs-list-marker">&rsaquo;</span><span set:html={item} /></li>
+          ))}
+        </ul>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.voice.btTitle}</span></h3>
+        <ul class="docs-list">
+          {content.voice.btItems.map((item) => (
+            <li><span class="docs-list-marker">&rsaquo;</span><span set:html={item} /></li>
+          ))}
+        </ul>
+
+        <figure class="docs-screenshot">
+          <div class="docs-screenshot-placeholder">{content.voice.screenshot.placeholder}</div>
+          <figcaption>{content.voice.screenshot.caption}</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ═══ §06 · Notes ═══ -->
+    <section id="notes" class="docs-section">
+      <div class="docs-inner">
+        <div class="cm-section-header-meta">
+          <span class="cm-section-header-num">&sect; 06</span>
+          <span class="cm-section-header-line"></span>
+          <span>kapitel</span>
+        </div>
+        <h2>Notes</h2>
+        <p class="docs-lead">{content.notes.lead}</p>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.notes.createTitle}</span></h3>
+        <ul class="docs-list">
+          {content.notes.createItems.map((item) => (
+            <li><span class="docs-list-marker">&rsaquo;</span><span set:html={item} /></li>
+          ))}
+        </ul>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.notes.editorTitle}</span></h3>
+        <ul class="docs-list">
+          {content.notes.editorItems.map((item) => (
+            <li><span class="docs-list-marker">&rsaquo;</span><span set:html={item} /></li>
+          ))}
+        </ul>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.notes.saveTitle}</span></h3>
+        <ul class="docs-list">
+          {content.notes.saveItems.map((item) => (
+            <li><span class="docs-list-marker">&rsaquo;</span><span set:html={item} /></li>
+          ))}
+        </ul>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.notes.voiceTitle}</span></h3>
+        <p class="docs-p">{content.notes.voiceDesc}</p>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.notes.scopingTitle}</span></h3>
+        <p class="docs-p" set:html={content.notes.scopingDesc} />
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.notes.handoffTitle}</span></h3>
+        <p class="docs-p" set:html={content.notes.handoffDesc} />
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.notes.testcaseTitle}</span></h3>
+        <p class="docs-p" set:html={content.notes.testcaseDesc} />
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.notes.comparisonTitle}</span></h3>
+        <div class="docs-table">
+          <div class="docs-table-header docs-table-3col">
+            <div>Aspekt</div><div>Note</div><div>Memory</div>
+          </div>
+          {content.notes.comparisonRows.map((row, i) => (
+            <div class:list={["docs-table-row", "docs-table-3col", { "docs-table-row-first": i === 0 }]}>
+              <div class="docs-table-key">{row.aspect}</div>
+              <div class="docs-table-label-mid">{row.note}</div>
+              <div class="docs-table-desc">{row.mem}</div>
+            </div>
+          ))}
+        </div>
+
+        <div class="docs-screenshot-row">
+          <div class="docs-screenshot-sm">
+            <img src="/images/screenshots/detail-notes-editor.webp" alt="Notes-Editor mit Feature-Spec" loading="lazy" />
+            <span>Notes-Editor</span>
+          </div>
+          <div class="docs-screenshot-sm">
+            <img src="/images/screenshots/detail-testcase-view.webp" alt="Testcase-View" loading="lazy" />
+            <span>Testcase-View</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ §07 · Projekte und Hub ═══ -->
+    <section id="projects" class="docs-section">
+      <div class="docs-inner">
+        <div class="cm-section-header-meta">
+          <span class="cm-section-header-num">&sect; 07</span>
+          <span class="cm-section-header-line"></span>
+          <span>kapitel</span>
+        </div>
+        <h2>Projekte und Hub</h2>
+        <p class="docs-lead">{content.projects.lead}</p>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.projects.structureTitle}</span></h3>
+        <pre class="docs-terminal">projekt-name/
+  .claude/              <span class="dim">Claude Code Config</span>
+  .cyber-factory/       <span class="dim">Run-Konfiguration</span>
+  docs/specs/           <span class="dim">Detail-Specs mit REQ-IDs</span>
+  docs/decisions/       <span class="dim">ADRs (Architektur-Entscheidungen)</span>
+  docs/research/        <span class="dim">Recherche aus Ideation Partner</span>
+  docs/audit/           <span class="dim">Audit-Berichte</span>
+  src/                  <span class="dim">Quellcode</span>
+  tests/                <span class="dim">Tests</span>
+  .project-meta.json    <span class="dim">Phase, Workspace, Tags, Verwendungszweck</span></pre>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.projects.adoptionTitle}</span></h3>
+        <div class="docs-table">
+          <div class="docs-table-header docs-table-2col"><div>Modus</div><div>Was passiert</div></div>
+          {content.projects.adoptionModes.map((m, i) => (
+            <div class:list={["docs-table-row", "docs-table-2col", { "docs-table-row-first": i === 0 }]}>
+              <div class="docs-table-label">{m.label}</div>
+              <div class="docs-table-desc">{m.desc}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ §08 · Einstellungen ═══ -->
+    <section id="settings" class="docs-section">
+      <div class="docs-inner">
+        <div class="cm-section-header-meta">
+          <span class="cm-section-header-num">&sect; 08</span>
+          <span class="cm-section-header-line"></span>
+          <span>kapitel</span>
+        </div>
+        <h2>Einstellungen</h2>
+        <p class="docs-lead">{content.settings.lead}</p>
+
+        <div class="docs-tab-strip">
+          {content.settings.tabs.map((tab, i) => (
+            <div class:list={["docs-tab", { "docs-tab-active": i === 0 }]}>{tab}</div>
+          ))}
+        </div>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.settings.generalTitle}</span></h3>
+        <div class="docs-table">
+          <div class="docs-table-header docs-table-2col"><div>Option</div><div>Beschreibung</div></div>
+          {content.settings.generalRows.map((r, i) => (
+            <div class:list={["docs-table-row", "docs-table-2col", { "docs-table-row-first": i === 0 }]}>
+              <div class="docs-table-label">{r.label}</div>
+              <div class="docs-table-desc">{r.desc}</div>
+            </div>
+          ))}
+        </div>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.settings.languageTitle}</span></h3>
+        <div class="docs-table">
+          <div class="docs-table-header docs-table-2col"><div>Bereich</div><div>Optionen</div></div>
+          {content.settings.languageRows.map((r, i) => (
+            <div class:list={["docs-table-row", "docs-table-2col", { "docs-table-row-first": i === 0 }]}>
+              <div class="docs-table-label">{r.label}</div>
+              <div class="docs-table-desc">{r.desc}</div>
+            </div>
+          ))}
+        </div>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.settings.themesTitle}</span></h3>
+        <p class="docs-p">{content.settings.themesIntro}</p>
+
+        {content.settings.themeCategories.map((cat) => (
+          <div class="docs-theme-category">
+            <p class="docs-p"><strong>{cat.category}</strong></p>
+            <div class="docs-table docs-table-compact">
+              <div class="docs-table-header docs-table-2col"><div>Theme</div><div>Charakter</div></div>
+              {cat.themes.map((t, i) => (
+                <div class:list={["docs-table-row", "docs-table-2col", { "docs-table-row-first": i === 0 }]}>
+                  <div class="docs-table-label">{t.label}</div>
+                  <div class="docs-table-desc">{t.desc}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.settings.editorTitle}</span></h3>
+        <div class="docs-table docs-table-compact">
+          <div class="docs-table-header docs-table-2col"><div>Aktion</div><div>Was passiert</div></div>
+          {content.settings.editorRows.map((r, i) => (
+            <div class:list={["docs-table-row", "docs-table-2col", { "docs-table-row-first": i === 0 }]}>
+              <div class="docs-table-label">{r.label}</div>
+              <div class="docs-table-desc">{r.desc}</div>
+            </div>
+          ))}
+        </div>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.settings.shortcutsTitle}</span></h3>
+        <p class="docs-p">{content.settings.shortcutsDesc}</p>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.settings.a11yTitle}</span></h3>
+        <p class="docs-p">{content.settings.a11yDesc}</p>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.settings.aboutTitle}</span></h3>
+        <p class="docs-p">{content.settings.aboutDesc}</p>
+
+        <div class="docs-screenshot-row docs-screenshot-row--4">
+          <div class="docs-screenshot-sm">
+            <img src="/images/screenshots/detail-settings-general.webp" alt="Allgemein" loading="lazy" />
+            <span>Allgemein</span>
+          </div>
+          <div class="docs-screenshot-sm">
+            <img src="/images/screenshots/detail-settings-themes.webp" alt="Themes" loading="lazy" />
+            <span>Themes</span>
+          </div>
+          <div class="docs-screenshot-sm">
+            <img src="/images/screenshots/detail-settings-a11y.webp" alt="A11y" loading="lazy" />
+            <span>Barrierefreiheit</span>
+          </div>
+          <div class="docs-screenshot-sm">
+            <img src="/images/screenshots/detail-settings-models.webp" alt="Models" loading="lazy" />
+            <span>LLM-Provider</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ §09 · Bugreport-Dialog ═══ -->
+    <section id="bugreport" class="docs-section">
+      <div class="docs-inner">
+        <div class="cm-section-header-meta">
+          <span class="cm-section-header-num">&sect; 09</span>
+          <span class="cm-section-header-line"></span>
+          <span>kapitel</span>
+        </div>
+        <h2>Bugreport-Dialog</h2>
+        <p class="docs-lead">{content.bugreport.lead}</p>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.bugreport.workflowTitle}</span></h3>
+        <div class="docs-table">
+          <div class="docs-table-header docs-table-2col"><div>Schritt</div><div>Was passiert</div></div>
+          {content.bugreport.workflowSteps.map((s, i) => (
+            <div class:list={["docs-table-row", "docs-table-2col", { "docs-table-row-first": i === 0 }]}>
+              <div class="docs-table-label">{s.step}</div>
+              <div class="docs-table-desc">{s.desc}</div>
+            </div>
+          ))}
+        </div>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.bugreport.githubTitle}</span></h3>
+        <ul class="docs-list">
+          {content.bugreport.githubItems.map((item) => (
+            <li><span class="docs-list-marker">&rsaquo;</span><span set:html={item} /></li>
+          ))}
+        </ul>
+
+        <figure class="docs-screenshot">
+          <div class="docs-screenshot-placeholder">{content.bugreport.screenshot.placeholder}</div>
+          <figcaption>{content.bugreport.screenshot.caption}</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ═══ §10 · Tastenkuerzel ═══ -->
+    <section id="shortcuts" class="docs-section">
+      <div class="docs-inner">
+        <div class="cm-section-header-meta">
+          <span class="cm-section-header-num">&sect; 10</span>
+          <span class="cm-section-header-line"></span>
+          <span>kapitel</span>
+        </div>
+        <h2>Tastenkuerzel</h2>
+        <p class="docs-lead">{content.shortcuts.lead}</p>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.shortcuts.navigation.title}</span></h3>
+        <div class="docs-table docs-table-compact">
+          <div class="docs-table-header docs-table-2col"><div>Kuerzel</div><div>Aktion</div></div>
+          {content.shortcuts.navigation.items.map((s, i) => (
+            <div class:list={["docs-table-row", "docs-table-2col", { "docs-table-row-first": i === 0 }]}>
+              <div class="docs-table-label">{s.key}</div>
+              <div class="docs-table-desc">{s.action}</div>
+            </div>
+          ))}
+        </div>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.shortcuts.layout.title}</span></h3>
+        <div class="docs-table docs-table-compact">
+          <div class="docs-table-header docs-table-2col"><div>Kuerzel</div><div>Aktion</div></div>
+          {content.shortcuts.layout.items.map((s, i) => (
+            <div class:list={["docs-table-row", "docs-table-2col", { "docs-table-row-first": i === 0 }]}>
+              <div class="docs-table-label">{s.key}</div>
+              <div class="docs-table-desc">{s.action}</div>
+            </div>
+          ))}
+        </div>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.shortcuts.actions.title}</span></h3>
+        <div class="docs-table docs-table-compact">
+          <div class="docs-table-header docs-table-2col"><div>Kuerzel</div><div>Aktion</div></div>
+          {content.shortcuts.actions.items.map((s, i) => (
+            <div class:list={["docs-table-row", "docs-table-2col", { "docs-table-row-first": i === 0 }]}>
+              <div class="docs-table-label">{s.key}</div>
+              <div class="docs-table-desc">{s.action}</div>
+            </div>
+          ))}
+        </div>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.shortcuts.terminal.title}</span></h3>
+        <div class="docs-table docs-table-compact">
+          <div class="docs-table-header docs-table-2col"><div>Kuerzel</div><div>Aktion</div></div>
+          {content.shortcuts.terminal.items.map((s, i) => (
+            <div class:list={["docs-table-row", "docs-table-2col", { "docs-table-row-first": i === 0 }]}>
+              <div class="docs-table-label">{s.key}</div>
+              <div class="docs-table-desc">{s.action}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ Bottom CTA ═══ -->
+    <section class="docs-bottom">
+      <div class="docs-inner">
+        <h2>{content.bottom.title} <span class="accent">{content.bottom.titleAccent}</span></h2>
+        <p class="docs-bottom-body">{content.bottom.body}</p>
+        <div class="docs-bottom-actions">
+          <a href={`/${lang}/start`} class="cm-btn cm-btn--primary">&darr; {content.bottom.downloadLabel}</a>
+          <a href={content.bottom.conceptsHref} class="docs-bottom-link">&larr; {content.bottom.conceptsLabel}</a>
+          <a
+            href="https://github.com/cmarkus42-rgb/cipher-mux-electron"
+            class="docs-bottom-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >{content.bottom.githubLabel} &nearr;</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const sections = document.querySelectorAll('.docs-section');
+      const navItems = document.querySelectorAll('.cm-anchor-nav-item');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            navItems.forEach(item => item.classList.remove('active'));
+            const id = entry.target.id;
+            const activeItem = document.querySelector(`.cm-anchor-nav-item[href="#${id}"]`);
+            if (activeItem) activeItem.classList.add('active');
+          }
+        });
+      }, { rootMargin: '-20% 0px -70% 0px' });
+      sections.forEach(s => observer.observe(s));
+    });
+  </script>
+</Layout>
+
+<style>
+  /* ─── Page Layout ─── */
+  .docs-page {
+    position: relative;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 64px;
+  }
+
+  .docs-inner {
+    max-width: 920px;
+  }
+
+  /* ─── Hero ─── */
+  .docs-hero {
+    padding: 120px 0 48px;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .cm-tag {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .docs-hero h1 {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: clamp(38px, 5vw, 64px);
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+    margin: 0 0 24px;
+  }
+
+  .accent { color: var(--color-accent); }
+
+  .docs-body {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 19px;
+    line-height: 1.5;
+    color: var(--color-text-secondary);
+    max-width: 720px;
+  }
+
+  /* ─── Anchor Nav ─── */
+  .cm-anchor-nav {
+    position: fixed;
+    top: 140px;
+    right: 32px;
+    width: 180px;
+    font-family: 'Fira Code', monospace;
+    font-size: 10px;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    z-index: 10;
+  }
+
+  .cm-anchor-nav-label {
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text-dim);
+    font-size: 9px;
+  }
+
+  .cm-anchor-nav-item {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    padding: 2px 4px;
+    color: var(--color-text-dim);
+    text-decoration: none;
+    border-left: 2px solid transparent;
+    transition: color 0.15s, border-color 0.15s;
+    line-height: 1.4;
+  }
+
+  .cm-anchor-nav-item:hover,
+  .cm-anchor-nav-item.active {
+    color: var(--color-text);
+    border-left-color: var(--color-accent);
+  }
+
+  .cm-anchor-nav-num {
+    color: var(--color-accent);
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 1200px) {
+    .cm-anchor-nav { display: none; }
+  }
+
+  /* ─── Section Shell ─── */
+  .docs-section {
+    padding: 64px 0;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .cm-section-header-meta {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    font-family: 'Fira Code', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--color-text-dim);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .cm-section-header-num { color: var(--color-accent); }
+
+  .cm-section-header-line {
+    flex: 0 0 14px;
+    height: 1px;
+    background: var(--color-border);
+    align-self: center;
+  }
+
+  .docs-section h2 {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: clamp(22px, 2.5vw, 28px);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin: 0 0 20px;
+  }
+
+  .docs-lead {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--color-text-secondary);
+    max-width: 720px;
+    margin: 0 0 28px;
+  }
+
+  /* ─── Subhead ─── */
+  .docs-subhead {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 1.15;
+    letter-spacing: -0.005em;
+    margin: 28px 0 12px;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+
+  .docs-subhead-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background: var(--color-accent);
+    flex-shrink: 0;
+    transform: translateY(1px);
+    clip-path: polygon(3px 0, 100% 0, 100% calc(100% - 3px), calc(100% - 3px) 100%, 0 100%, 0 3px);
+  }
+
+  /* ─── Body Paragraph ─── */
+  .docs-p {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--color-text-secondary);
+    max-width: 760px;
+    margin: 0 0 12px;
+  }
+
+  .docs-p :global(strong) { color: var(--color-text); font-weight: 600; }
+
+  /* ─── Inline Mono ─── */
+  :global(.docs-mono) {
+    font-family: 'Fira Code', monospace;
+    font-size: 12.5px;
+    background: var(--color-bg-elevated);
+    color: var(--color-text);
+    padding: 1px 6px;
+    border: 1px solid var(--color-border);
+    clip-path: polygon(3px 0, 100% 0, 100% calc(100% - 3px), calc(100% - 3px) 100%, 0 100%, 0 3px);
+  }
+
+  .dim { color: var(--color-text-dim); }
+
+  /* ─── Inline Link ─── */
+  .docs-inline-link {
+    color: var(--color-accent);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--color-accent);
+    padding-bottom: 1px;
+  }
+
+  .docs-inline-link:hover {
+    color: var(--color-text);
+    border-bottom-color: var(--color-text);
+  }
+
+  /* ─── Table ─── */
+  .docs-table {
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-elevated);
+    margin: 8px 0 18px;
+    clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+    overflow: hidden;
+    overflow-x: auto;
+  }
+
+  .docs-table-header {
+    background: var(--color-border-strong);
+    border-bottom: 1px solid var(--color-border);
+    padding: 10px 16px;
+    font-family: 'Fira Code', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-bg-elevated);
+  }
+
+  .docs-table-compact .docs-table-header { padding: 7px 14px; }
+  .docs-table-compact .docs-table-row { padding: 8px 14px; }
+
+  .docs-table-2col {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+  }
+
+  .docs-table-3col {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr 2fr;
+  }
+
+  .docs-table-row {
+    padding: 12px 16px;
+    gap: 16px;
+    align-items: baseline;
+  }
+
+  .docs-table-row:not(.docs-table-row-first) {
+    border-top: 1px dotted var(--color-border);
+  }
+
+  .docs-table-label {
+    font-family: 'Fira Code', monospace;
+    font-size: 12px;
+    color: var(--color-accent);
+    letter-spacing: 0.04em;
+  }
+
+  .docs-table-key {
+    font-family: 'Fira Code', monospace;
+    font-size: 12px;
+    color: var(--color-accent);
+    letter-spacing: 0.04em;
+  }
+
+  .docs-table-label-mid {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--color-text);
+  }
+
+  .docs-table-desc {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 14.5px;
+    color: var(--color-text-secondary);
+    line-height: 1.45;
+  }
+
+  /* ─── List ─── */
+  .docs-list {
+    margin: 8px 0 16px;
+    padding: 0;
+    list-style: none;
+  }
+
+  .docs-list li {
+    display: flex;
+    gap: 12px;
+    padding: 5px 0;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 16px;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+  }
+
+  .docs-list li :global(strong) { color: var(--color-text); font-weight: 600; }
+
+  .docs-list-marker {
+    color: var(--color-accent);
+    font-family: 'Fira Code', monospace;
+    font-size: 12px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* ─── Callout ─── */
+  .docs-callout {
+    margin: 14px 0 18px;
+    padding: 14px 18px 14px 16px;
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    max-width: 760px;
+  }
+
+  .docs-callout-tip { border-left: 3px solid var(--color-accent); }
+  .docs-callout-warn { border-left: 3px solid var(--color-warn); }
+  .docs-callout-rule { border-left: 3px solid var(--color-text); }
+
+  .docs-callout-label {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .docs-callout-tip .docs-callout-label { color: var(--color-accent); }
+  .docs-callout-warn .docs-callout-label { color: var(--color-warn); }
+  .docs-callout-rule .docs-callout-label { color: var(--color-text); }
+
+  .docs-callout-body {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 15px;
+    color: var(--color-text);
+    line-height: 1.5;
+  }
+
+  .docs-callout-body :global(strong) { font-weight: 600; }
+
+  /* ─── LED Row ─── */
+  .docs-led-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin: 8px 0 16px;
+  }
+
+  .docs-led-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 14px;
+    background: var(--color-bg-sunken);
+    border: 1px solid var(--color-border);
+    clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px);
+  }
+
+  .docs-led-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+  }
+
+  .docs-led-off { background: var(--color-text-dim); }
+  .docs-led-green { background: #A3BE8C; box-shadow: 0 0 4px #A3BE8C; }
+  .docs-led-red { background: #BF616A; box-shadow: 0 0 4px #BF616A; }
+  .docs-led-yellow { background: #EBCB8B; box-shadow: 0 0 4px #EBCB8B; }
+
+  .docs-led-label {
+    font-family: 'Fira Code', monospace;
+    font-size: 11px;
+    color: var(--color-text);
+    letter-spacing: 0.06em;
+  }
+
+  .docs-led-desc {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 13px;
+    color: var(--color-text-dim);
+  }
+
+  /* ─── Screenshot Placeholder ─── */
+  .docs-screenshot { margin: 1.5rem 0; }
+  .docs-screenshot-placeholder {
+    background: var(--color-bg-sunken);
+    border: 2px dashed var(--color-border);
+    padding: 3rem 2rem;
+    text-align: center;
+    color: var(--color-text-dim);
+    font-family: 'Fira Code', monospace;
+    font-size: 12px;
+    font-style: italic;
+    clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+  }
+  .docs-screenshot figcaption {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 13px;
+    color: var(--color-text-dim);
+    margin-top: 6px;
+  }
+
+  /* ─── Terminal Block ─── */
+  .docs-terminal {
+    background: var(--color-terminal-bg);
+    color: var(--color-terminal-text);
+    font-family: 'Fira Code', monospace;
+    font-size: 13px;
+    line-height: 1.7;
+    padding: 18px 22px;
+    margin: 8px 0 18px;
+    border: 1px solid var(--color-border);
+    clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+    white-space: pre;
+    overflow-x: auto;
+  }
+
+  /* ─── Tab Strip Mock ─── */
+  .docs-tab-strip {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid var(--color-border);
+    margin: 8px 0 18px;
+    flex-wrap: wrap;
+  }
+
+  .docs-tab {
+    padding: 10px 18px;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--color-text-dim);
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    letter-spacing: 0.04em;
+  }
+
+  .docs-tab-active {
+    color: var(--color-text);
+    border-bottom-color: var(--color-accent);
+  }
+
+  /* ─── Docs Screenshot Rows ─── */
+  .docs-screenshot-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 20px;
+  }
+  .docs-screenshot-row--4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .docs-screenshot-sm {
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    overflow: hidden;
+    background: var(--color-bg-elevated);
+  }
+  .docs-screenshot-sm img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .docs-screenshot-sm span {
+    display: block;
+    padding: 6px 8px;
+    font-family: 'Fira Code', monospace;
+    font-size: 9px;
+    letter-spacing: 0.5px;
+    color: var(--color-text-dim);
+    border-top: 1px solid var(--color-border);
+  }
+
+  /* ─── Theme Category ─── */
+  .docs-theme-category {
+    margin-bottom: 8px;
+  }
+
+  .docs-theme-category .docs-p {
+    margin-bottom: 4px;
+  }
+
+  /* ─── Bottom CTA ─── */
+  .docs-bottom {
+    padding: 64px 64px;
+    background: var(--color-bg-elevated);
+    border-top: 1px solid var(--color-border);
+    margin: 0 -64px;
+  }
+
+  .docs-bottom h2 {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin: 0 0 14px;
+  }
+
+  .docs-bottom-body {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 17px;
+    color: var(--color-text-secondary);
+    max-width: 640px;
+    line-height: 1.5;
+    margin: 0 0 22px;
+  }
+
+  .docs-bottom-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .docs-bottom-link {
+    font-family: 'Fira Code', monospace;
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--color-text-dim);
+    padding-bottom: 2px;
+  }
+
+  .docs-bottom-link:hover { color: var(--color-text); }
+
+  /* ─── Buttons ─── */
+  .cm-btn {
+    display: inline-block;
+    padding: 12px 20px;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+  }
+
+  .cm-btn--primary {
+    background: var(--color-accent);
+    color: var(--color-bg);
+  }
+
+  .cm-btn--primary:hover { opacity: 0.88; }
+
+  /* ─── Responsive ─── */
+  @media (max-width: 768px) {
+    .docs-page { padding: 0 20px; }
+    .docs-hero { padding: 80px 0 40px; }
+    .docs-section { padding: 48px 0; }
+    .docs-bottom { padding: 32px 20px; margin: 0 -20px; }
+    .docs-table-2col { grid-template-columns: 1fr; gap: 4px; }
+    .docs-table-3col { grid-template-columns: 1fr; gap: 4px; }
+    .docs-table-label, .docs-table-desc, .docs-table-key, .docs-table-label-mid { word-break: break-word; }
+    .docs-led-row { flex-direction: column; }
+    .docs-screenshot-row { grid-template-columns: 1fr; }
+    .docs-screenshot-row--4 { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
