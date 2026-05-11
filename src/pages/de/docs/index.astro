@@ -1,0 +1,283 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import DocsNav from '../../../components/DocsNav.astro';
+import content from '../../../i18n/de/docs-hub';
+
+const lang = 'de';
+---
+
+<Layout
+  title="Dokumentation — CIPHER-MUX"
+  description={content.hero.body}
+  lang={lang}
+  active="docs"
+>
+  <div class="docs-page">
+
+    <DocsNav lang={lang} />
+
+    <!-- Hero -->
+    <section class="docs-hero">
+      <div class="cm-tag">{content.hero.kicker}</div>
+      <h1>{content.hero.title}<br /><span class="accent">{content.hero.titleAccent}</span> {content.hero.titleEnd}</h1>
+      <p class="docs-body">{content.hero.body}</p>
+    </section>
+
+    <!-- Companion Hint -->
+    <section class="docs-companion-intro">
+      <div class="docs-inner">
+        <div class="cm-tag">{content.companionHint.kicker}</div>
+        <h2>{content.companionHint.title}</h2>
+        <p class="docs-p" set:html={content.companionHint.body} />
+      </div>
+    </section>
+
+    <!-- Three Cards -->
+    <section class="docs-hub-cards-section">
+      <div class="docs-hub-cards">
+        {content.cards.map((card) => (
+          <a href={card.href} class="docs-hub-card">
+            <div class="docs-hub-card-num">{card.num}</div>
+            <h3>{card.title}</h3>
+            <p>{card.body}</p>
+            <div class="docs-hub-card-arrow">&rarr;</div>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Bottom CTA -->
+    <section class="docs-bottom">
+      <h2>{content.bottom.title} <span class="accent">{content.bottom.titleAccent}</span></h2>
+      <p class="docs-bottom-body">{content.bottom.body}</p>
+      <div class="docs-bottom-actions">
+        <a href="/de/start" class="cm-btn cm-btn--primary">{content.bottom.downloadLabel}</a>
+        <a
+          href="https://github.com/cmarkus42-rgb/cipher-mux-electron"
+          class="docs-bottom-link"
+          target="_blank"
+          rel="noopener noreferrer"
+        >{content.bottom.githubLabel}</a>
+      </div>
+    </section>
+
+  </div>
+</Layout>
+
+<style>
+  /* ─── Page Layout ─── */
+  .docs-page {
+    position: relative;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 64px;
+  }
+
+  .docs-inner {
+    max-width: 920px;
+  }
+
+  /* ─── Hero ─── */
+  .docs-hero {
+    padding: 120px 0 48px;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .cm-tag {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .docs-hero h1 {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: clamp(38px, 5vw, 64px);
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+    margin: 0 0 24px;
+  }
+
+  .accent { color: var(--color-accent); }
+
+  .docs-body {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 19px;
+    line-height: 1.5;
+    color: var(--color-text-secondary);
+    max-width: 720px;
+  }
+
+  /* ─── Companion Intro ─── */
+  .docs-companion-intro {
+    padding: 64px 64px;
+    background: var(--color-bg-elevated);
+    border-bottom: 1px solid var(--color-border);
+    margin: 0 -64px;
+  }
+
+  .docs-companion-intro h2 {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 38px;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin: 0 0 16px;
+  }
+
+  /* ─── Body Paragraph ─── */
+  .docs-p {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--color-text-secondary);
+    max-width: 760px;
+    margin: 0 0 12px;
+  }
+
+  .docs-p :global(strong) { color: var(--color-text); font-weight: 600; }
+
+  /* ─── Hub Cards ─── */
+  .docs-hub-cards-section {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .docs-hub-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 64px 0;
+  }
+
+  .docs-hub-card {
+    display: flex;
+    flex-direction: column;
+    padding: 28px 24px;
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    text-decoration: none;
+    color: inherit;
+    clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
+    transition: border-color 0.15s, background 0.15s;
+  }
+
+  .docs-hub-card:hover {
+    border-color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  .docs-hub-card-num {
+    font-family: 'Fira Code', monospace;
+    font-size: 11px;
+    color: var(--color-accent);
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+  }
+
+  .docs-hub-card h3 {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 1.15;
+    margin: 0 0 8px;
+  }
+
+  .docs-hub-card p {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 15px;
+    color: var(--color-text-secondary);
+    line-height: 1.45;
+    flex: 1;
+    margin: 0;
+  }
+
+  .docs-hub-card-arrow {
+    font-family: 'Fira Code', monospace;
+    font-size: 16px;
+    color: var(--color-accent);
+    margin-top: 16px;
+    align-self: flex-end;
+    opacity: 0;
+    transition: opacity 0.15s;
+  }
+
+  .docs-hub-card:hover .docs-hub-card-arrow { opacity: 1; }
+
+  /* ─── Bottom CTA ─── */
+  .docs-bottom {
+    padding: 64px 64px;
+    background: var(--color-bg-elevated);
+    border-top: 1px solid var(--color-border);
+    margin: 0 -64px;
+  }
+
+  .docs-bottom h2 {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin: 0 0 14px;
+  }
+
+  .docs-bottom-body {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 17px;
+    color: var(--color-text-secondary);
+    max-width: 640px;
+    line-height: 1.5;
+    margin: 0 0 22px;
+  }
+
+  .docs-bottom-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .docs-bottom-link {
+    font-family: 'Fira Code', monospace;
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--color-text-dim);
+    padding-bottom: 2px;
+  }
+
+  .docs-bottom-link:hover { color: var(--color-text); }
+
+  /* ─── Buttons ─── */
+  .cm-btn {
+    display: inline-block;
+    padding: 12px 20px;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+  }
+
+  .cm-btn--primary {
+    background: var(--color-accent);
+    color: var(--color-bg);
+  }
+
+  .cm-btn--primary:hover { opacity: 0.88; }
+
+  /* ─── Responsive ─── */
+  @media (max-width: 768px) {
+    .docs-page { padding: 0 20px; }
+    .docs-hero { padding: 80px 0 40px; }
+    .docs-companion-intro { padding: 32px 20px; margin: 0 -20px; }
+    .docs-hub-cards { grid-template-columns: 1fr; padding: 40px 0; }
+    .docs-bottom { padding: 32px 20px; margin: 0 -20px; }
+  }
+</style>
