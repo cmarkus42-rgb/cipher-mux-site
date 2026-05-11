@@ -1,0 +1,898 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import DocsNav from '../../../components/DocsNav.astro';
+import content from '../../../i18n/de/docs-konzepte';
+
+const lang = 'de';
+---
+
+<Layout
+  title="Prozess & Konzepte — CIPHER-MUX"
+  description={content.hero.body}
+  lang={lang}
+  active="docs"
+>
+  <div class="docs-page">
+
+    <DocsNav lang={lang} activePage="concepts" />
+
+    <!-- Anchor Nav -->
+    <nav class="cm-anchor-nav">
+      <div class="cm-anchor-nav-label">Inhalt</div>
+      {content.sections.map((section) => (
+        <a href={`#${section.id}`} class="cm-anchor-nav-item">
+          <span class="cm-anchor-nav-num">{section.num}</span>
+          <span>{section.navLabel}</span>
+        </a>
+      ))}
+    </nav>
+
+    <!-- Hero -->
+    <section class="docs-hero">
+      <div class="cm-tag">{content.hero.kicker}</div>
+      <h1>{content.hero.title}<br /><span class="accent">{content.hero.titleAccent}</span></h1>
+      <p class="docs-body">{content.hero.body}</p>
+    </section>
+
+    <!-- ═══ §01 · Die Idee ═══ -->
+    <section id="idea" class="docs-section">
+      <div class="docs-inner">
+        <div class="cm-section-header-meta">
+          <span class="cm-section-header-num">&sect; 01</span>
+          <span class="cm-section-header-line"></span>
+          <span>kapitel</span>
+        </div>
+        <h2>Die Idee</h2>
+        <p class="docs-lead">{content.idea.lead}</p>
+
+        {content.idea.paragraphs.map((p) => (
+          <p class="docs-p">{p}</p>
+        ))}
+
+        <div class="docs-callout docs-callout-rule">
+          <div class="docs-callout-label">Faustregel</div>
+          <div class="docs-callout-body">{content.idea.callout}</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ §02 · Der Lebenszyklus ═══ -->
+    <section id="lifecycle" class="docs-section">
+      <div class="docs-inner">
+        <div class="cm-section-header-meta">
+          <span class="cm-section-header-num">&sect; 02</span>
+          <span class="cm-section-header-line"></span>
+          <span>kapitel</span>
+        </div>
+        <h2>Der Lebenszyklus</h2>
+        <p class="docs-lead">{content.lifecycle.lead}</p>
+
+        <div class="docs-pipeline">
+          <div class="docs-pipeline-step">Ideation Partner</div>
+          <div class="docs-pipeline-arrow">&rarr;</div>
+          <div class="docs-pipeline-step">Refinement</div>
+          <div class="docs-pipeline-arrow">&rarr;</div>
+          <div class="docs-pipeline-step">Cyber Factory</div>
+          <div class="docs-pipeline-arrow">&rarr;</div>
+          <div class="docs-pipeline-step">Testing</div>
+          <div class="docs-pipeline-arrow">&rarr;</div>
+          <div class="docs-pipeline-step">Debugger</div>
+          <div class="docs-pipeline-arrow">&rarr;</div>
+          <div class="docs-pipeline-step">Audit</div>
+        </div>
+
+        <p class="docs-p">{content.lifecycle.crossCutting}</p>
+
+        {content.lifecycle.phases.map((phase) => (
+          <div class="docs-phase-block">
+            <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{phase.label}</span></h3>
+            <div class="docs-phase-flow">
+              <div class="docs-phase-io">
+                <span class="docs-phase-io-label">Eingang:</span>
+                <span>{phase.input}</span>
+              </div>
+              <p class="docs-p">{phase.process}</p>
+              <div class="docs-phase-io">
+                <span class="docs-phase-io-label">Ausgang:</span>
+                <span>{phase.output}</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- ═══ §03 · Die Entities im Detail ═══ -->
+    <section id="entities" class="docs-section">
+      <div class="docs-inner">
+        <div class="cm-section-header-meta">
+          <span class="cm-section-header-num">&sect; 03</span>
+          <span class="cm-section-header-line"></span>
+          <span>kapitel</span>
+        </div>
+        <h2>Die Entities im Detail</h2>
+        <p class="docs-lead">{content.entities.lead}</p>
+
+        <div class="docs-table">
+          <div class="docs-table-header docs-table-2col">
+            <div>Entity</div><div>Rolle</div>
+          </div>
+          {content.entities.items.map((item, i) => (
+            <div class:list={["docs-table-row", "docs-table-2col", { "docs-table-row-first": i === 0 }]}>
+              <div class="docs-table-label">{item.label}</div>
+              <div class="docs-table-desc">{item.desc}</div>
+            </div>
+          ))}
+        </div>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.entities.decisionTitle}</span></h3>
+        <div class="docs-table">
+          <div class="docs-table-header docs-table-2col">
+            <div>Situation</div><div>Entity</div>
+          </div>
+          {content.entities.decisionRows.map((row, i) => (
+            <div class:list={["docs-table-row", "docs-table-2col", { "docs-table-row-first": i === 0 }]}>
+              <div class="docs-table-desc">{row.situation}</div>
+              <div class="docs-table-label">{row.entity}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ §04 · Presets verstehen ═══ -->
+    <section id="presets" class="docs-section">
+      <div class="docs-inner">
+        <div class="cm-section-header-meta">
+          <span class="cm-section-header-num">&sect; 04</span>
+          <span class="cm-section-header-line"></span>
+          <span>kapitel</span>
+        </div>
+        <h2>Presets verstehen</h2>
+        <p class="docs-lead">{content.presets.lead}</p>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>Die vier Schichten</span></h3>
+        <p class="docs-p">{content.presets.layersIntro}</p>
+
+        <div class="docs-ladder">
+          {content.presets.layers.map((layer, i) => (
+            <div class:list={["docs-ladder-rung", { "docs-ladder-rung-top": i === 0 }]}>
+              <div class="docs-ladder-num">{layer.num}</div>
+              <div class="docs-ladder-meta">
+                <div class="docs-ladder-label">{layer.label}</div>
+                <div class="docs-ladder-prio">{layer.prio}</div>
+              </div>
+              <div class="docs-ladder-desc">{layer.desc}</div>
+            </div>
+          ))}
+        </div>
+
+        <div class="docs-callout docs-callout-tip">
+          <div class="docs-callout-label">Variabilitaet</div>
+          <div class="docs-callout-body">{content.presets.variability}</div>
+        </div>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.presets.folderTitle}</span></h3>
+        <p class="docs-p" set:html={content.presets.folderDesc} />
+        <ul class="docs-list">
+          {content.presets.folderItems.map((item) => (
+            <li><span class="docs-list-marker">&rsaquo;</span><span set:html={item} /></li>
+          ))}
+        </ul>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.presets.builtinTitle}</span></h3>
+        <p class="docs-p">{content.presets.builtinDesc}</p>
+
+        <figure class="docs-screenshot">
+          <div class="docs-screenshot-placeholder">{content.presets.screenshot.placeholder}</div>
+          <figcaption>{content.presets.screenshot.caption}</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ═══ §05 · Personas ═══ -->
+    <section id="personas" class="docs-section">
+      <div class="docs-inner">
+        <div class="cm-section-header-meta">
+          <span class="cm-section-header-num">&sect; 05</span>
+          <span class="cm-section-header-line"></span>
+          <span>kapitel</span>
+        </div>
+        <h2>Personas (Characters)</h2>
+        <p class="docs-lead">{content.personas.lead}</p>
+
+        <div class="docs-table">
+          <div class="docs-table-header docs-table-2col">
+            <div>Persona</div><div>Charakter</div>
+          </div>
+          {content.personas.items.map((item, i) => (
+            <div class:list={["docs-table-row", "docs-table-2col", { "docs-table-row-first": i === 0 }]}>
+              <div class="docs-table-label">{item.label}</div>
+              <div class="docs-table-desc">{item.desc}</div>
+            </div>
+          ))}
+        </div>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.personas.globalTitle}</span></h3>
+        <p class="docs-p">{content.personas.globalDesc}</p>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.personas.customTitle}</span></h3>
+        <p class="docs-p">{content.personas.customDesc}</p>
+
+        <figure class="docs-screenshot">
+          <div class="docs-screenshot-placeholder">{content.personas.screenshot.placeholder}</div>
+          <figcaption>{content.personas.screenshot.caption}</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ═══ §06 · Memory, Tags & Scoping ═══ -->
+    <section id="memory" class="docs-section">
+      <div class="docs-inner">
+        <div class="cm-section-header-meta">
+          <span class="cm-section-header-num">&sect; 06</span>
+          <span class="cm-section-header-line"></span>
+          <span>kapitel</span>
+        </div>
+        <h2>Memory, Tags &amp; Workspace-Scoping</h2>
+        <p class="docs-lead">{content.memory.lead}</p>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.memory.memoryTitle}</span></h3>
+        <p class="docs-p">{content.memory.memoryDesc}</p>
+        <div class="docs-table">
+          <div class="docs-table-header docs-table-2col">
+            <div>Scope</div><div>Geltungsbereich</div>
+          </div>
+          {content.memory.memoryScopes.map((scope, i) => (
+            <div class:list={["docs-table-row", "docs-table-2col", { "docs-table-row-first": i === 0 }]}>
+              <div class="docs-table-label">{scope.label}</div>
+              <div class="docs-table-desc">{scope.desc}</div>
+            </div>
+          ))}
+        </div>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.memory.notesTitle}</span></h3>
+        <p class="docs-p">{content.memory.notesDesc}</p>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.memory.tagsTitle}</span></h3>
+        <p class="docs-p" set:html={content.memory.tagsDesc} />
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.memory.scopingTitle}</span></h3>
+        <p class="docs-p" set:html={content.memory.scopingDesc} />
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.memory.comparisonTitle}</span></h3>
+        <div class="docs-table">
+          <div class="docs-table-header docs-table-3col">
+            <div>Aspekt</div><div>Note</div><div>Memory</div>
+          </div>
+          {content.memory.comparisonRows.map((row, i) => (
+            <div class:list={["docs-table-row", "docs-table-3col", { "docs-table-row-first": i === 0 }]}>
+              <div class="docs-table-key">{row.aspect}</div>
+              <div class="docs-table-label-mid">{row.note}</div>
+              <div class="docs-table-desc">{row.mem}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ §07 · Ehrlichkeit ═══ -->
+    <section id="honesty" class="docs-section">
+      <div class="docs-inner">
+        <div class="cm-section-header-meta">
+          <span class="cm-section-header-num">&sect; 07</span>
+          <span class="cm-section-header-line"></span>
+          <span>kapitel</span>
+        </div>
+        <h2>Ehrlichkeit</h2>
+        <p class="docs-lead">{content.honesty.lead}</p>
+
+        {content.honesty.items.map((item) => (
+          <div class="docs-honesty-item">
+            <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{item.label}</span></h3>
+            <p class="docs-p">{item.text}</p>
+          </div>
+        ))}
+
+        <div class="docs-callout docs-callout-rule">
+          <div class="docs-callout-label">Empfehlung</div>
+          <div class="docs-callout-body">{content.honesty.closing}</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ Bottom CTA ═══ -->
+    <section class="docs-bottom">
+      <div class="docs-inner">
+        <h2>{content.bottom.title} <span class="accent">{content.bottom.titleAccent}</span></h2>
+        <p class="docs-bottom-body">{content.bottom.body}</p>
+        <div class="docs-bottom-actions">
+          <a href={content.bottom.usageHref} class="cm-btn cm-btn--primary">&rarr; {content.bottom.usageLabel}</a>
+          <a href={`/${lang}/start`} class="docs-bottom-link">&darr; {content.bottom.downloadLabel}</a>
+          <a
+            href="https://github.com/cmarkus42-rgb/cipher-mux-electron"
+            class="docs-bottom-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >{content.bottom.githubLabel} &nearr;</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const sections = document.querySelectorAll('.docs-section');
+      const navItems = document.querySelectorAll('.cm-anchor-nav-item');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            navItems.forEach(item => item.classList.remove('active'));
+            const id = entry.target.id;
+            const activeItem = document.querySelector(`.cm-anchor-nav-item[href="#${id}"]`);
+            if (activeItem) activeItem.classList.add('active');
+          }
+        });
+      }, { rootMargin: '-20% 0px -70% 0px' });
+      sections.forEach(s => observer.observe(s));
+    });
+  </script>
+</Layout>
+
+<style>
+  /* ─── Page Layout ─── */
+  .docs-page {
+    position: relative;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 64px;
+  }
+
+  .docs-inner {
+    max-width: 920px;
+  }
+
+  /* ─── Hero ─── */
+  .docs-hero {
+    padding: 120px 0 48px;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .cm-tag {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .docs-hero h1 {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: clamp(38px, 5vw, 64px);
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+    margin: 0 0 24px;
+  }
+
+  .accent { color: var(--color-accent); }
+
+  .docs-body {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 19px;
+    line-height: 1.5;
+    color: var(--color-text-secondary);
+    max-width: 720px;
+  }
+
+  /* ─── Anchor Nav ─── */
+  .cm-anchor-nav {
+    position: fixed;
+    top: 140px;
+    right: 32px;
+    width: 180px;
+    font-family: 'Fira Code', monospace;
+    font-size: 10px;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    z-index: 10;
+  }
+
+  .cm-anchor-nav-label {
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text-dim);
+    font-size: 9px;
+  }
+
+  .cm-anchor-nav-item {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    padding: 2px 4px;
+    color: var(--color-text-dim);
+    text-decoration: none;
+    border-left: 2px solid transparent;
+    transition: color 0.15s, border-color 0.15s;
+    line-height: 1.4;
+  }
+
+  .cm-anchor-nav-item:hover,
+  .cm-anchor-nav-item.active {
+    color: var(--color-text);
+    border-left-color: var(--color-accent);
+  }
+
+  .cm-anchor-nav-num {
+    color: var(--color-accent);
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 1200px) {
+    .cm-anchor-nav { display: none; }
+  }
+
+  /* ─── Section Shell ─── */
+  .docs-section {
+    padding: 64px 0;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .cm-section-header-meta {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    font-family: 'Fira Code', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--color-text-dim);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .cm-section-header-num { color: var(--color-accent); }
+
+  .cm-section-header-line {
+    flex: 0 0 14px;
+    height: 1px;
+    background: var(--color-border);
+    align-self: center;
+  }
+
+  .docs-section h2 {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: clamp(22px, 2.5vw, 28px);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin: 0 0 20px;
+  }
+
+  .docs-lead {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--color-text-secondary);
+    max-width: 720px;
+    margin: 0 0 28px;
+  }
+
+  /* ─── Subhead ─── */
+  .docs-subhead {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 1.15;
+    letter-spacing: -0.005em;
+    margin: 28px 0 12px;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+
+  .docs-subhead-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background: var(--color-accent);
+    flex-shrink: 0;
+    transform: translateY(1px);
+    clip-path: polygon(3px 0, 100% 0, 100% calc(100% - 3px), calc(100% - 3px) 100%, 0 100%, 0 3px);
+  }
+
+  /* ─── Body Paragraph ─── */
+  .docs-p {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--color-text-secondary);
+    max-width: 760px;
+    margin: 0 0 12px;
+  }
+
+  .docs-p :global(strong) { color: var(--color-text); font-weight: 600; }
+
+  /* ─── Inline Mono ─── */
+  :global(.docs-mono) {
+    font-family: 'Fira Code', monospace;
+    font-size: 12.5px;
+    background: var(--color-bg-elevated);
+    color: var(--color-text);
+    padding: 1px 6px;
+    border: 1px solid var(--color-border);
+    clip-path: polygon(3px 0, 100% 0, 100% calc(100% - 3px), calc(100% - 3px) 100%, 0 100%, 0 3px);
+  }
+
+  /* ─── Inline Link ─── */
+  .docs-inline-link {
+    color: var(--color-accent);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--color-accent);
+    padding-bottom: 1px;
+  }
+
+  .docs-inline-link:hover {
+    color: var(--color-text);
+    border-bottom-color: var(--color-text);
+  }
+
+  /* ─── Table ─── */
+  .docs-table {
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-elevated);
+    margin: 8px 0 18px;
+    clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+    overflow: hidden;
+    overflow-x: auto;
+  }
+
+  .docs-table-header {
+    background: var(--color-border-strong);
+    border-bottom: 1px solid var(--color-border);
+    padding: 10px 16px;
+    font-family: 'Fira Code', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-bg-elevated);
+  }
+
+  .docs-table-2col {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+  }
+
+  .docs-table-3col {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr 2fr;
+  }
+
+  .docs-table-row {
+    padding: 12px 16px;
+    gap: 16px;
+    align-items: baseline;
+  }
+
+  .docs-table-row:not(.docs-table-row-first) {
+    border-top: 1px dotted var(--color-border);
+  }
+
+  .docs-table-label {
+    font-family: 'Fira Code', monospace;
+    font-size: 12px;
+    color: var(--color-accent);
+    letter-spacing: 0.04em;
+  }
+
+  .docs-table-key {
+    font-family: 'Fira Code', monospace;
+    font-size: 12px;
+    color: var(--color-accent);
+    letter-spacing: 0.04em;
+  }
+
+  .docs-table-label-mid {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--color-text);
+  }
+
+  .docs-table-desc {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 14.5px;
+    color: var(--color-text-secondary);
+    line-height: 1.45;
+  }
+
+  /* ─── List ─── */
+  .docs-list {
+    margin: 8px 0 16px;
+    padding: 0;
+    list-style: none;
+  }
+
+  .docs-list li {
+    display: flex;
+    gap: 12px;
+    padding: 5px 0;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 16px;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+  }
+
+  .docs-list li :global(strong) { color: var(--color-text); font-weight: 600; }
+
+  .docs-list-marker {
+    color: var(--color-accent);
+    font-family: 'Fira Code', monospace;
+    font-size: 12px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* ─── Callout ─── */
+  .docs-callout {
+    margin: 14px 0 18px;
+    padding: 14px 18px 14px 16px;
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    max-width: 760px;
+  }
+
+  .docs-callout-tip { border-left: 3px solid var(--color-accent); }
+  .docs-callout-warn { border-left: 3px solid var(--color-warn); }
+  .docs-callout-rule { border-left: 3px solid var(--color-text); }
+
+  .docs-callout-label {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .docs-callout-tip .docs-callout-label { color: var(--color-accent); }
+  .docs-callout-warn .docs-callout-label { color: var(--color-warn); }
+  .docs-callout-rule .docs-callout-label { color: var(--color-text); }
+
+  .docs-callout-body {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 15px;
+    color: var(--color-text);
+    line-height: 1.5;
+  }
+
+  .docs-callout-body :global(strong) { font-weight: 600; }
+
+  /* ─── Screenshot Placeholder ─── */
+  .docs-screenshot { margin: 1.5rem 0; }
+  .docs-screenshot-placeholder {
+    background: var(--color-bg-sunken);
+    border: 2px dashed var(--color-border);
+    padding: 3rem 2rem;
+    text-align: center;
+    color: var(--color-text-dim);
+    font-family: 'Fira Code', monospace;
+    font-size: 12px;
+    font-style: italic;
+    clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+  }
+  .docs-screenshot figcaption {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 13px;
+    color: var(--color-text-dim);
+    margin-top: 6px;
+  }
+
+  /* ─── Pipeline ─── */
+  .docs-pipeline {
+    display: flex;
+    gap: 0;
+    align-items: stretch;
+    margin: 12px 0 24px;
+    flex-wrap: wrap;
+  }
+
+  .docs-pipeline-step {
+    padding: 10px 16px;
+    background: var(--color-bg-sunken);
+    border: 1px solid var(--color-border);
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--color-text);
+    clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+    text-align: center;
+  }
+
+  .docs-pipeline-arrow {
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    color: var(--color-accent);
+    font-family: 'Fira Code', monospace;
+    font-size: 14px;
+  }
+
+  /* ─── Ladder ─── */
+  .docs-ladder {
+    margin: 12px 0 20px;
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-sunken);
+    clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+    overflow: hidden;
+  }
+
+  .docs-ladder-rung {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    padding: 12px 18px;
+  }
+
+  .docs-ladder-rung:not(:first-child) {
+    border-top: 1px dotted var(--color-border);
+  }
+
+  .docs-ladder-rung-top {
+    background: var(--color-bg-elevated);
+  }
+
+  .docs-ladder-num {
+    flex: 0 0 32px;
+    font-family: 'Fira Code', monospace;
+    font-size: 11px;
+    color: var(--color-accent);
+    letter-spacing: 0.1em;
+  }
+
+  .docs-ladder-meta { flex: 0 0 200px; }
+
+  .docs-ladder-label {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--color-text);
+  }
+
+  .docs-ladder-prio {
+    font-family: 'Fira Code', monospace;
+    font-size: 10px;
+    color: var(--color-text-dim);
+    letter-spacing: 0.1em;
+    margin-top: 2px;
+  }
+
+  .docs-ladder-desc {
+    flex: 1;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 14.5px;
+    color: var(--color-text-secondary);
+    line-height: 1.45;
+  }
+
+  /* ─── Phase Block (Lifecycle) ─── */
+  .docs-phase-block {
+    margin-bottom: 8px;
+  }
+
+  .docs-phase-flow {
+    padding-left: 20px;
+    border-left: 2px solid var(--color-border);
+    margin-bottom: 12px;
+  }
+
+  .docs-phase-io {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 14px;
+    color: var(--color-text-dim);
+    line-height: 1.5;
+    padding: 4px 0;
+  }
+
+  .docs-phase-io-label {
+    font-family: 'Fira Code', monospace;
+    font-size: 11px;
+    color: var(--color-accent);
+    letter-spacing: 0.08em;
+    margin-right: 8px;
+  }
+
+  /* ─── Honesty Items ─── */
+  .docs-honesty-item {
+    margin-bottom: 4px;
+  }
+
+  .docs-honesty-item .docs-subhead {
+    margin-top: 18px;
+    margin-bottom: 6px;
+  }
+
+  /* ─── Bottom CTA ─── */
+  .docs-bottom {
+    padding: 64px 64px;
+    background: var(--color-bg-elevated);
+    border-top: 1px solid var(--color-border);
+    margin: 0 -64px;
+  }
+
+  .docs-bottom h2 {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin: 0 0 14px;
+  }
+
+  .docs-bottom-body {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 17px;
+    color: var(--color-text-secondary);
+    max-width: 640px;
+    line-height: 1.5;
+    margin: 0 0 22px;
+  }
+
+  .docs-bottom-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .docs-bottom-link {
+    font-family: 'Fira Code', monospace;
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--color-text-dim);
+    padding-bottom: 2px;
+  }
+
+  .docs-bottom-link:hover { color: var(--color-text); }
+
+  /* ─── Buttons ─── */
+  .cm-btn {
+    display: inline-block;
+    padding: 12px 20px;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+  }
+
+  .cm-btn--primary {
+    background: var(--color-accent);
+    color: var(--color-bg);
+  }
+
+  .cm-btn--primary:hover { opacity: 0.88; }
+
+  /* ─── Responsive ─── */
+  @media (max-width: 768px) {
+    .docs-page { padding: 0 20px; }
+    .docs-hero { padding: 80px 0 40px; }
+    .docs-section { padding: 48px 0; }
+    .docs-bottom { padding: 32px 20px; margin: 0 -20px; }
+    .docs-table-2col { grid-template-columns: 1fr; gap: 4px; }
+    .docs-table-3col { grid-template-columns: 1fr; gap: 4px; }
+    .docs-table-label, .docs-table-desc, .docs-table-key, .docs-table-label-mid { word-break: break-word; }
+    .docs-pipeline { flex-wrap: wrap; }
+    .docs-ladder-rung { flex-direction: column; gap: 6px; }
+    .docs-ladder-meta { flex: none; }
+  }
+</style>
