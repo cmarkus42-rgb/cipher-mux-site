@@ -34,7 +34,7 @@ const docsKonzepte = {
      ═══════════════════════════════════════════ */
   lifecycle: {
     lead: 'Sechs Phasen, jede mit eigenem Preset. Die Pipeline laeuft sequentiell — jede Phase uebergibt ein definiertes Artefakt an die naechste. Workshop und Companion laufen quer dazu.',
-    crossCutting: 'Workshop uebernimmt Kleinaufgaben, Bug-Triage und Koordination — er steht ausserhalb der Pipeline. Der Companion begleitet den gesamten Zyklus als Berater und Erklaerer.',
+    crossCutting: 'Workshop ist die Schaltzentrale nach dem Testing: er empfaengt Findings und verteilt sie an die passende Entity — Debugger fuer Bugs, Cyber Factory fuer groessere Umbauten, Ideation fuer Feature-Ideen. Der Companion begleitet den gesamten Zyklus als Berater und Erklaerer.',
     phases: [
       {
         label: 'Ideation Partner',
@@ -103,15 +103,15 @@ const docsKonzepte = {
       },
       {
         label: 'Workshop',
-        desc: 'Quick Fixes, kleine Aufgaben, Bug-Triage-Koordination. Die "einfach machen"-Entity. Kein Lifecycle, kein Overhead — direkte Ausfuehrung.',
+        desc: 'Der Orchestrator fuer alles was nicht in die Pipeline passt. Bekommt Findings vom Testing Assistant, Bug-Reports, Feature-Requests — und verteilt sie sinnig: Triviales erledigt er selbst, Bugs gehen an den Debugger, groessere Themen an die Cyber Factory, Feature-Ideen an Ideation. Die Schaltzentrale nach dem Testing.',
       },
       {
         label: 'Testing Assistant',
-        desc: 'Systematisches Testen, adversariales Probing, Sicherheits-Audit. Fixt nichts — dokumentiert Findings. Die Trennung zwischen Finden und Fixen ist bewusst.',
+        desc: 'Systematisches Testen, adversariales Probing, Sicherheits-Audit. Fixt nichts — dokumentiert Findings und uebergibt sie an den Workshop zur Triage. Die Trennung zwischen Finden und Verteilen ist bewusst.',
       },
       {
         label: 'Debugger',
-        desc: 'Bekommt Findings, analysiert Root Causes, fixt, verifiziert. Eskaliert wenn nach 2 Versuchen keine Loesung steht. Kein "ewig weiter probieren".',
+        desc: 'Bekommt einzelne Bugs vom Workshop zugewiesen, analysiert Root Causes, fixt, verifiziert. Eskaliert wenn nach 2 Versuchen keine Loesung steht — zurueck an den Workshop, der entscheidet ob Cyber Factory oder User-Eskalation.',
       },
       {
         label: 'Audit',
@@ -124,14 +124,14 @@ const docsKonzepte = {
     ],
     decisionTitle: 'Welche Entity wann?',
     decisionRows: [
-      { situation: 'Schneller Bugfix, eine Datei',           entity: 'Workshop' },
+      { situation: 'Test-Findings verteilen und triagen',     entity: 'Workshop' },
       { situation: 'Neue Idee durchdenken',                  entity: 'Ideation Partner' },
       { situation: 'Feature mit >3 Dateien implementieren',  entity: 'Cyber Factory' },
       { situation: '"Was macht die Cyber Factory?"',          entity: 'Companion' },
       { situation: 'Spec hat Luecken',                       entity: 'Refinement' },
       { situation: 'Code reviewen vor Release',              entity: 'Audit' },
       { situation: 'Tests laufen lassen',                    entity: 'Testing Assistant' },
-      { situation: 'Test-Findings fixen',                    entity: 'Debugger' },
+      { situation: 'Einzelnen Bug fixen (via Workshop)',      entity: 'Debugger' },
     ],
   },
 
