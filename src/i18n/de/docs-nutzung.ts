@@ -448,17 +448,18 @@ const docsNutzung = {
     navigation: {
       title: 'Navigation',
       items: [
-        { key: 'Cmd+1 … Cmd+5',   action: 'Session in Zelle 1–5 fokussieren.' },
-        { key: 'Escape',           action: 'Aktiven Dialog schliessen.' },
+        { key: 'Cmd+Shift+W',   action: 'Zelle oben fokussieren.' },
+        { key: 'Cmd+Shift+A',   action: 'Zelle links fokussieren.' },
+        { key: 'Cmd+Shift+S',   action: 'Zelle unten fokussieren.' },
+        { key: 'Cmd+Shift+D',   action: 'Zelle rechts fokussieren.' },
+        { key: 'Escape',        action: 'Aktiven Dialog schliessen.' },
       ],
     },
 
     layout: {
       title: 'Layout',
       items: [
-        { key: 'Cmd+→ / Cmd+←',        action: 'Grid-Spalten hinzufuegen / entfernen.' },
-        { key: 'Cmd+↓ / Cmd+↑',        action: 'Grid-Zeilen hinzufuegen / entfernen.' },
-        { key: 'Cmd+Shift+F',           action: 'Focus Mode ein/aus.' },
+        { key: 'Cmd+Shift+F',   action: 'Focus Mode ein/aus.' },
       ],
     },
 
@@ -470,6 +471,7 @@ const docsNutzung = {
         { key: 'Cmd+S',              action: 'Notiz speichern + Auto-Tagging.' },
         { key: 'Cmd+Enter',          action: 'Senden in Dialogen (z.B. Input Requests in der Sidebar).' },
         { key: 'Ctrl+Shift+Space',   action: 'Sprachsteuerung ein/aus.' },
+        { key: 'Cmd+Shift+?',        action: 'Shortcuts-Dialog oeffnen.' },
       ],
     },
 
