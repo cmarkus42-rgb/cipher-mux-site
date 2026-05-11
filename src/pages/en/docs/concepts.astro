@@ -1,0 +1,134 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import DocsNav from '../../../components/DocsNav.astro';
+import content from '../../../i18n/en/docs-concepts';
+
+const lang = 'en';
+---
+
+<Layout title="Process & Concepts — CIPHER-MUX" description={content.hero.body} lang={lang} active="docs">
+  <div class="docs-page">
+    <DocsNav lang={lang} activePage="concepts" />
+
+    <section class="docs-hero">
+      <div class="cm-tag">{content.hero.kicker}</div>
+      <h1>{content.hero.title}<br /><span class="accent">{content.hero.titleAccent}</span></h1>
+      <p class="docs-body">{content.hero.body}</p>
+    </section>
+
+    <section class="docs-section">
+      <div class="docs-inner">
+        <div class="docs-callout docs-callout-tip">
+          <div class="docs-callout-label">Translation in Progress</div>
+          <div class="docs-callout-body">
+            {content.translationNote}
+            <br /><br />
+            <a href={content.germanLink} class="docs-translation-link">{content.germanLabel} &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  /* ─── Page Layout ─── */
+  .docs-page {
+    position: relative;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 64px;
+  }
+
+  .docs-inner {
+    max-width: 920px;
+  }
+
+  /* ─── Hero ─── */
+  .docs-hero {
+    padding: 120px 0 48px;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .cm-tag {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .docs-hero h1 {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: clamp(38px, 5vw, 64px);
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+    margin: 0 0 24px;
+  }
+
+  .accent { color: var(--color-accent); }
+
+  .docs-body {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 19px;
+    line-height: 1.5;
+    color: var(--color-text-secondary);
+    max-width: 720px;
+  }
+
+  /* ─── Section Shell ─── */
+  .docs-section {
+    padding: 64px 0;
+    border-top: 1px solid var(--color-border);
+  }
+
+  /* ─── Callout ─── */
+  .docs-callout {
+    margin: 14px 0 18px;
+    padding: 14px 18px 14px 16px;
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    max-width: 760px;
+  }
+
+  .docs-callout-tip { border-left: 3px solid var(--color-accent); }
+
+  .docs-callout-label {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .docs-callout-tip .docs-callout-label { color: var(--color-accent); }
+
+  .docs-callout-body {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 15px;
+    color: var(--color-text);
+    line-height: 1.5;
+  }
+
+  /* ─── Translation Link ─── */
+  .docs-translation-link {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  .docs-translation-link:hover {
+    text-decoration: underline;
+  }
+
+  /* ─── Responsive ─── */
+  @media (max-width: 768px) {
+    .docs-page { padding: 0 20px; }
+    .docs-hero { padding: 80px 0 40px; }
+    .docs-section { padding: 48px 0; }
+  }
+</style>
