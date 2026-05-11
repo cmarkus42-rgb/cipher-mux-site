@@ -1,0 +1,81 @@
+---
+import { t, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: string;
+  activePage?: 'start' | 'concepts' | 'usage' | null;
+}
+
+const { lang, activePage = null } = Astro.props;
+const l = lang as Lang;
+
+const items = [
+  { key: 'start',    label: t(l, 'docs.nav.start'),    href: `/${lang}/docs/start` },
+  { key: 'concepts', label: t(l, 'docs.nav.concepts'), href: `/${lang}/docs/concepts` },
+  { key: 'usage',    label: t(l, 'docs.nav.usage'),    href: `/${lang}/docs/usage` },
+];
+---
+
+<nav class="docs-nav" aria-label={t(l, 'docs.nav.label')}>
+  <div class="docs-nav-label">{t(l, 'docs.nav.label')}</div>
+  <div class="docs-nav-tabs">
+    {items.map(item => (
+      <a
+        href={item.href}
+        class:list={['docs-nav-tab', { 'docs-nav-tab--active': activePage === item.key }]}
+      >
+        {item.label}
+      </a>
+    ))}
+  </div>
+</nav>
+
+<style>
+  .docs-nav {
+    padding: 0 0 0;
+    margin: 0 0 8px;
+  }
+
+  .docs-nav-label {
+    font-family: 'Fira Code', monospace;
+    font-size: 9px;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--color-text-dim);
+    margin-bottom: 10px;
+  }
+
+  .docs-nav-tabs {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .docs-nav-tab {
+    padding: 10px 18px;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--color-text-dim);
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    letter-spacing: 0.04em;
+    transition: color 0.15s, border-color 0.15s;
+  }
+
+  .docs-nav-tab:hover {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+  }
+
+  .docs-nav-tab--active {
+    color: var(--color-text);
+    border-bottom-color: var(--color-accent);
+  }
+
+  @media (max-width: 768px) {
+    .docs-nav-tabs { flex-wrap: wrap; }
+    .docs-nav-tab { padding: 8px 12px; font-size: 13px; }
+  }
+</style>

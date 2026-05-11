@@ -17,6 +17,10 @@ export const ui: Record<Lang, Record<string, string>> = {
     'footer.imprint': 'Impressum',
     'footer.domain': 'cipher-mux.dev',
     'scroll.label': '// auf dieser seite',
+    'docs.nav.label': '// dokumentation',
+    'docs.nav.start': 'Schnelleinstieg',
+    'docs.nav.concepts': 'Prozess & Konzepte',
+    'docs.nav.usage': 'Nutzung der App',
   },
   en: {
     'nav.home': 'Home',
@@ -32,6 +36,10 @@ export const ui: Record<Lang, Record<string, string>> = {
     'footer.imprint': 'Imprint',
     'footer.domain': 'cipher-mux.dev',
     'scroll.label': '// on this page',
+    'docs.nav.label': '// documentation',
+    'docs.nav.start': 'Quick Start',
+    'docs.nav.concepts': 'Process & Concepts',
+    'docs.nav.usage': 'Using the App',
   },
 };
 
