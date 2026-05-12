@@ -421,8 +421,7 @@ const docsNutzung = {
       { step: '1. Typ waehlen',    desc: 'Bug oder Feature Request.' },
       { step: '2. Beschreiben',    desc: 'Text eingeben oder per Voice diktieren (STT funktioniert im Dialog).' },
       { step: '3. Screenshot',     desc: 'Optional — Screenshot der relevanten Stelle anhaengen.' },
-      { step: '4. Enrichment',     desc: 'Eine Claude-Session reichert den Report automatisch an — strukturiertes Format, Reproduktionsschritte, Kontext.' },
-      { step: '5. Absenden',       desc: 'Report wird als Note gespeichert (mit passenden Tags).' },
+      { step: '4. Absenden',       desc: 'Erstellt einen Issue-Entwurf als Note (mit passenden Tags).' },
     ],
 
     githubTitle: 'GitHub Delivery',
@@ -434,8 +433,8 @@ const docsNutzung = {
     ],
 
     screenshot: {
-      placeholder: 'Screenshot: Bugreport-Dialog mit Enrichment-Preview',
-      caption: 'Bugreport-Dialog — Enrichment',
+      placeholder: 'Screenshot: Bugreport-Dialog',
+      caption: 'Bugreport-Dialog',
     },
   },
 
