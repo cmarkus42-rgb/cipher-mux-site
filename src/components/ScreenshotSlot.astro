@@ -2,18 +2,49 @@
 interface Props {
   caption: string;
   placeholder: string;
+  src?: string;
 }
-const { caption, placeholder } = Astro.props;
+const { caption, placeholder, src } = Astro.props;
 ---
 <figure class="screenshot-slot">
-  <div class="screenshot-slot__box">
-    <div class="screenshot-slot__caption">{caption}</div>
-    <div class="screenshot-slot__placeholder">{placeholder}</div>
-  </div>
+  {src ? (
+    <img
+      class="screenshot-slot__img screenshot-light"
+      src={`${src}-light.png`}
+      alt={caption}
+      loading="lazy"
+    />
+    <img
+      class="screenshot-slot__img screenshot-dark"
+      src={`${src}-dark.png`}
+      alt={caption}
+      loading="lazy"
+    />
+  ) : (
+    <div class="screenshot-slot__box">
+      <div class="screenshot-slot__caption">{caption}</div>
+      <div class="screenshot-slot__placeholder">{placeholder}</div>
+    </div>
+  )}
+  <figcaption class="screenshot-slot__figcaption">{caption}</figcaption>
 </figure>
 
 <style>
   .screenshot-slot { margin: 20px 0 14px; }
+  .screenshot-slot__img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid var(--color-border);
+    border-radius: 2px;
+  }
+  .screenshot-slot__figcaption {
+    font-family: 'Fira Code', monospace;
+    font-size: 11px;
+    color: var(--color-text-dim);
+    letter-spacing: 0.5px;
+    margin-top: 8px;
+    text-align: center;
+  }
   .screenshot-slot__box {
     padding: 40px 28px;
     border: 1px dashed var(--color-border);

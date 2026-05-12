@@ -418,15 +418,11 @@ const presetScreenshotMap: Record<string, string> = {
             </div>
           )}
 
-          {/* 12 New Features */}
-          {s.newFeatures && (
-            <div class="new-features-grid">
-              {s.newFeatures.map((feat) => (
-                <div class="new-feature-card">
-                  <div class="new-feature-name">{feat.name}</div>
-                  <p class="new-feature-desc">{feat.description}</p>
-                </div>
-              ))}
+          {/* 12 Focus Mode — screenshot */}
+          {section.num === '12' && (
+            <div class="focus-screenshot">
+              <img class="screenshot-light" src="/images/screenshots/focus-mode-light.png" alt="Focus Mode — expandierte Session" loading="lazy" />
+              <img class="screenshot-dark" src="/images/screenshots/focus-mode-dark.png" alt="Focus Mode — expandierte Session" loading="lazy" />
             </div>
           )}
         </section>

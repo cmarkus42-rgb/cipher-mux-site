@@ -117,10 +117,6 @@ const docsKonzepte = {
         label: 'Audit',
         desc: 'Reviewed Code, Sicherheit, ADR-Konsistenz. Gibt eine Release-Empfehlung: Release, Release nach Fix, oder Blockiert. Implementiert nichts.',
       },
-      {
-        label: 'Launcher',
-        desc: 'Kickoff-Workflow. Scannt Projekte, startet die Orchestrierung. Kein eigenes Arbeitsergebnis — nur der Startschuss.',
-      },
     ],
     decisionTitle: 'Welche Entity wann?',
     decisionRows: [

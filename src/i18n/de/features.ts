@@ -56,7 +56,7 @@ const features = {
         { name: 'Relay', tagline: 'The Dry', color: 'var(--color-persona-relay)', vibe: 'Wissenschaftsjournalistisch. Sachlich, auf Augenh\u00f6he.', keys: ['fakten belastbar', 'keine lobhudelei', 'unsicherheit deklarieren'] },
         { name: 'Wayne', tagline: 'The Pragmatic Enthusiast', color: 'var(--color-persona-wayne)', vibe: '\u201eDas kriegen wir hin\u201c-Attitude. Motivation in z\u00e4hen Sessions.', keys: ['leichter nerd-humor', 'option a vs b', 'fehler = puzzle'] },
         { name: 'Der Kyniker', tagline: 'Radikal Reduziert', color: 'var(--color-persona-kyniker)', vibe: 'Maximal komprimiert, telegrafisch. Nur Fakten und Code.', keys: ['stichpunkte statt fliesstext', 'bin\u00e4re antworten'] },
-        { name: 'Sokratischer Tutor', tagline: 'Diskursiv', color: 'var(--color-persona-sokrates)', vibe: 'Gegenfragen, logische L\u00fccken aufdecken, Reflexion erzwingen.', keys: ['keine fertigen antworten', 'edge-cases aufdecken'] },
+        { name: 'Theaitetos', tagline: 'Diskursiv', color: 'var(--color-persona-sokrates)', vibe: 'Gegenfragen, logische L\u00fccken aufdecken, Reflexion erzwingen.', keys: ['keine fertigen antworten', 'edge-cases aufdecken'] },
         { name: 'Der Glitch', tagline: 'Weird \u00b7 Quirky', color: 'var(--color-persona-glitch)', vibe: 'Bricht KI-Antwortmuster. F\u00fcr festgefahrene Situationen.', keys: ['chaostheorie-analogien', 'pr\u00e4misse hinterfragen'] },
       ],
     },
@@ -90,10 +90,10 @@ const features = {
       title: 'Zug\u00e4nglich f\u00fcr alle',
       lead: 'cipher-mux nimmt Barrierefreiheit ernst. Neben 10 w\u00e4hlbaren Farbthemes (siehe oben) gibt es dedizierte Profile f\u00fcr Farbfehlsichtigkeit \u2014 damit alle Statusinformationen auch ohne Farbunterscheidung lesbar bleiben. Der Focus Mode blendet alle Zellen au\u00dfer der aktiven ab \u2014 weniger visuelles Rauschen, mehr Konzentration.',
       a11yProfiles: [
-        { name: 'High Contrast', type: 'Sehschw\u00e4che', affected: 'variabel', strategy: 'WCAG AAA \u00b7 Schwarz/Wei\u00df/Gelb \u00b7 Maximaler Kontrast', colors: ['#000000', '#FFFFFF', '#FFFF00', '#00FFFF'], screenshot: '/images/screenshots/high-contrast-2x2.webp' },
-        { name: 'Deuteranopie', type: 'Rot-Gr\u00fcn-Schw\u00e4che', affected: '~7 % der M\u00e4nner', strategy: 'Rot/Gr\u00fcn \u2192 Blau/Orange \u00b7 Okabe-Ito-Palette', colors: ['#0072B2', '#E69F00', '#56B4E9', '#D55E00'], screenshot: '/images/screenshots/cvd-deuteranopia-2x2.webp' },
-        { name: 'Tritanopie', type: 'Blau-Gelb-Schw\u00e4che', affected: '<0,01 %', strategy: 'Blau/Gelb \u2192 Magenta/Gr\u00fcn', colors: ['#CC79A7', '#009E73', '#F0E442', '#D55E00'], screenshot: '/images/screenshots/cvd-tritanopia-2x2.webp' },
-        { name: 'Achromatopsie', type: 'Komplett farbenblind', affected: '~0,003 %', strategy: 'Reine Graustufen \u00b7 Formen und Text als Informationstr\u00e4ger', colors: ['#000000', '#555555', '#AAAAAA', '#FFFFFF'], screenshot: '/images/screenshots/cvd-achromatopsia-2x2.webp' },
+        { name: 'High Contrast', type: 'Sehschw\u00e4che', affected: 'variabel', strategy: 'WCAG AAA \u00b7 Schwarz/Wei\u00df/Gelb \u00b7 Maximaler Kontrast', colors: ['#000000', '#FFFFFF', '#FFFF00', '#00FFFF'], screenshot: '/images/screenshots/high-contrast-2x2.png' },
+        { name: 'Deuteranopie', type: 'Rot-Gr\u00fcn-Schw\u00e4che', affected: '~7 % der M\u00e4nner', strategy: 'Rot/Gr\u00fcn \u2192 Blau/Orange \u00b7 Okabe-Ito-Palette', colors: ['#0072B2', '#E69F00', '#56B4E9', '#D55E00'], screenshot: '/images/screenshots/cvd-deuteranopia-2x2.png' },
+        { name: 'Tritanopie', type: 'Blau-Gelb-Schw\u00e4che', affected: '<0,01 %', strategy: 'Blau/Gelb \u2192 Magenta/Gr\u00fcn', colors: ['#CC79A7', '#009E73', '#F0E442', '#D55E00'], screenshot: '/images/screenshots/cvd-tritanopia-2x2.png' },
+        { name: 'Achromatopsie', type: 'Komplett farbenblind', affected: '~0,003 %', strategy: 'Reine Graustufen \u00b7 Formen und Text als Informationstr\u00e4ger', colors: ['#000000', '#555555', '#AAAAAA', '#FFFFFF'], screenshot: '/images/screenshots/cvd-achromatopsia-2x2.png' },
       ],
     },
     {

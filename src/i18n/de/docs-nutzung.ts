@@ -95,7 +95,6 @@ const docsNutzung = {
       { label: 'Cyber Factory',      color: 'Violett' },
       { label: 'Companion',          color: 'Orange' },
       { label: 'Refinement',         color: 'Rot' },
-      { label: 'Launcher',           color: 'Gruen' },
       { label: 'Voice Relay',        color: 'Violet' },
       { label: 'Audit',              color: 'Dunkelrot' },
       { label: 'Ideation Partner',   color: 'Tuerkis' },

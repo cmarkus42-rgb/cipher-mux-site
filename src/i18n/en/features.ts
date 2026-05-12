@@ -56,7 +56,7 @@ const features = {
         { name: 'Relay', tagline: 'The Dry', color: 'var(--color-persona-relay)', vibe: 'Science-journalistic. Factual, eye-level.', keys: ['fact-driven', 'no flattery', 'declare uncertainty'] },
         { name: 'Wayne', tagline: 'The Pragmatic Enthusiast', color: 'var(--color-persona-wayne)', vibe: '"We\'ll figure it out" attitude. Motivation in tough sessions.', keys: ['light nerd humor', 'option a vs b', 'errors = puzzles'] },
         { name: 'Der Kyniker', tagline: 'Radically Reduced', color: 'var(--color-persona-kyniker)', vibe: 'Maximally compressed, telegraphic. Facts and code only.', keys: ['bullets over prose', 'binary answers'] },
-        { name: 'Socratic Tutor', tagline: 'Discursive', color: 'var(--color-persona-sokrates)', vibe: 'Counter-questions, expose logical gaps, force reflection.', keys: ['no ready answers', 'expose edge-cases'] },
+        { name: 'Theaitetos', tagline: 'Discursive', color: 'var(--color-persona-sokrates)', vibe: 'Counter-questions, expose logical gaps, force reflection.', keys: ['no ready answers', 'expose edge-cases'] },
         { name: 'The Glitch', tagline: 'Weird \u00b7 Quirky', color: 'var(--color-persona-glitch)', vibe: 'Breaks AI response patterns. For stuck situations.', keys: ['chaos-theory analogies', 'question premises'] },
       ],
     },
@@ -90,10 +90,10 @@ const features = {
       title: 'Accessible for everyone',
       lead: 'cipher-mux takes accessibility seriously. Beyond 10 selectable color themes (see above), dedicated profiles for color vision deficiency ensure all status information remains readable without relying on color alone. Focus Mode dims all cells except the one you\u2019re working in \u2014 less visual noise, more concentration.',
       a11yProfiles: [
-        { name: 'High Contrast', type: 'Low vision', affected: 'variable', strategy: 'WCAG AAA \u00b7 Black/White/Yellow \u00b7 Maximum contrast', colors: ['#000000', '#FFFFFF', '#FFFF00', '#00FFFF'], screenshot: '/images/screenshots/high-contrast-2x2.webp' },
-        { name: 'Deuteranopia', type: 'Red-green deficiency', affected: '~7% of men', strategy: 'Red/Green \u2192 Blue/Orange \u00b7 Okabe-Ito palette', colors: ['#0072B2', '#E69F00', '#56B4E9', '#D55E00'], screenshot: '/images/screenshots/cvd-deuteranopia-2x2.webp' },
-        { name: 'Tritanopia', type: 'Blue-yellow deficiency', affected: '<0.01%', strategy: 'Blue/Yellow \u2192 Magenta/Green', colors: ['#CC79A7', '#009E73', '#F0E442', '#D55E00'], screenshot: '/images/screenshots/cvd-tritanopia-2x2.webp' },
-        { name: 'Achromatopsia', type: 'Complete color blindness', affected: '~0.003%', strategy: 'Pure grayscale \u00b7 Shapes and text as information carriers', colors: ['#000000', '#555555', '#AAAAAA', '#FFFFFF'], screenshot: '/images/screenshots/cvd-achromatopsia-2x2.webp' },
+        { name: 'High Contrast', type: 'Low vision', affected: 'variable', strategy: 'WCAG AAA \u00b7 Black/White/Yellow \u00b7 Maximum contrast', colors: ['#000000', '#FFFFFF', '#FFFF00', '#00FFFF'], screenshot: '/images/screenshots/high-contrast-2x2.png' },
+        { name: 'Deuteranopia', type: 'Red-green deficiency', affected: '~7% of men', strategy: 'Red/Green \u2192 Blue/Orange \u00b7 Okabe-Ito palette', colors: ['#0072B2', '#E69F00', '#56B4E9', '#D55E00'], screenshot: '/images/screenshots/cvd-deuteranopia-2x2.png' },
+        { name: 'Tritanopia', type: 'Blue-yellow deficiency', affected: '<0.01%', strategy: 'Blue/Yellow \u2192 Magenta/Green', colors: ['#CC79A7', '#009E73', '#F0E442', '#D55E00'], screenshot: '/images/screenshots/cvd-tritanopia-2x2.png' },
+        { name: 'Achromatopsia', type: 'Complete color blindness', affected: '~0.003%', strategy: 'Pure grayscale \u00b7 Shapes and text as information carriers', colors: ['#000000', '#555555', '#AAAAAA', '#FFFFFF'], screenshot: '/images/screenshots/cvd-achromatopsia-2x2.png' },
       ],
     },
     {
