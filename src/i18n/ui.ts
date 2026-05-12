@@ -21,6 +21,9 @@ export const ui: Record<Lang, Record<string, string>> = {
     'docs.nav.start': 'Schnelleinstieg',
     'docs.nav.concepts': 'Prozess & Konzepte',
     'docs.nav.usage': 'Nutzung der App',
+    'docs-nav.start.sub': '01 · Vom Start zum Projekt',
+    'docs-nav.concepts.sub': '02 · Warum spezialisierte Sessions',
+    'docs-nav.usage.sub': '03 · Volle Referenz',
   },
   en: {
     'nav.home': 'Home',
@@ -40,6 +43,9 @@ export const ui: Record<Lang, Record<string, string>> = {
     'docs.nav.start': 'Quick Start',
     'docs.nav.concepts': 'Process & Concepts',
     'docs.nav.usage': 'Using the App',
+    'docs-nav.start.sub': '01 · From start to project',
+    'docs-nav.concepts.sub': '02 · Why specialized sessions',
+    'docs-nav.usage.sub': '03 · Full reference',
   },
 };
 
