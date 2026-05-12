@@ -34,98 +34,90 @@ const lang = 'de';
       <p class="docs-body">{content.hero.body}</p>
     </section>
 
-    <!-- ═══ §01 · Erster Start ═══ -->
-    <section id="first-launch" class="docs-section">
+    <!-- ═══ §01 · Orientierung ═══ -->
+    <section id="orientation" class="docs-section">
       <div class="docs-inner">
         <div class="cm-section-header-meta">
           <span class="cm-section-header-num">§ 01</span>
           <span class="cm-section-header-line"></span>
           <span>schritt</span>
         </div>
-        <h2>Erster Start</h2>
-        <p class="docs-lead">{content.firstLaunch.lead}</p>
+        <h2>Orientierung</h2>
+        <p class="docs-lead">{content.orientation.lead}</p>
 
         <ul class="docs-list">
-          {content.firstLaunch.items.map((item) => (
+          {content.orientation.items.map((item) => (
             <li><span class="docs-list-marker">&rsaquo;</span><span set:html={item} /></li>
           ))}
         </ul>
 
         <figure class="docs-screenshot">
-          <div class="docs-screenshot-placeholder">{content.firstLaunch.screenshot.placeholder}</div>
-          <figcaption>{content.firstLaunch.screenshot.caption}</figcaption>
+          <div class="docs-screenshot-placeholder">{content.orientation.screenshot.placeholder}</div>
+          <figcaption>{content.orientation.screenshot.caption}</figcaption>
         </figure>
       </div>
     </section>
 
-    <!-- ═══ §02 · Companion starten ═══ -->
-    <section id="companion" class="docs-section">
+    <!-- ═══ §02 · Workspace anlegen ═══ -->
+    <section id="workspace" class="docs-section">
       <div class="docs-inner">
         <div class="cm-section-header-meta">
           <span class="cm-section-header-num">§ 02</span>
           <span class="cm-section-header-line"></span>
           <span>schritt</span>
         </div>
-        <h2>Companion starten</h2>
-        <p class="docs-lead">{content.companion.lead}</p>
+        <h2>Workspace anlegen</h2>
+        <p class="docs-lead">{content.workspace.lead}</p>
 
-        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.companion.startHow}</span></h3>
         <ul class="docs-list">
-          {content.companion.startSteps.map((step) => (
-            <li><span class="docs-list-marker">&rsaquo;</span><span set:html={step} /></li>
+          {content.workspace.flow.map((item) => (
+            <li><span class="docs-list-marker">&rsaquo;</span><span set:html={item} /></li>
           ))}
         </ul>
 
-        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.companion.modesTitle}</span></h3>
-        <div class="docs-table">
-          <div class="docs-table-header docs-table-3col">
-            <div>Modus</div><div>Erkennungssatz</div><div>Was passiert</div>
-          </div>
-          {content.companion.modes.map((m, i) => (
-            <div class:list={["docs-table-row", "docs-table-3col", { "docs-table-row-first": i === 0 }]}>
-              <div class="docs-table-key">{m.label}</div>
-              <div class="docs-table-label-mid">{m.trigger}</div>
-              <div class="docs-table-desc">{m.desc}</div>
-            </div>
-          ))}
-        </div>
-
-        <div class="docs-callout docs-callout-tip">
-          <div class="docs-callout-label">Tipp</div>
-          <div class="docs-callout-body">{content.companion.note}</div>
+        <div class="docs-callout docs-callout-rule">
+          <div class="docs-callout-label">Kernkonzept</div>
+          <div class="docs-callout-body">{content.workspace.callout}</div>
         </div>
 
         <figure class="docs-screenshot">
-          <div class="docs-screenshot-placeholder">{content.companion.screenshot.placeholder}</div>
-          <figcaption>{content.companion.screenshot.caption}</figcaption>
+          <div class="docs-screenshot-placeholder">{content.workspace.screenshot.placeholder}</div>
+          <figcaption>{content.workspace.screenshot.caption}</figcaption>
         </figure>
       </div>
     </section>
 
-    <!-- ═══ §03 · Erste eigene Session ═══ -->
-    <section id="own-session" class="docs-section">
+    <!-- ═══ §03 · Sessions starten ═══ -->
+    <section id="sessions" class="docs-section">
       <div class="docs-inner">
         <div class="cm-section-header-meta">
           <span class="cm-section-header-num">§ 03</span>
           <span class="cm-section-header-line"></span>
           <span>schritt</span>
         </div>
-        <h2>Erste eigene Session</h2>
-        <p class="docs-lead">{content.ownSession.lead}</p>
+        <h2>Sessions starten</h2>
+        <p class="docs-lead">{content.sessions.lead}</p>
 
-        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.ownSession.startHow}</span></h3>
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.sessions.presetTitle}</span></h3>
         <ul class="docs-list">
-          {content.ownSession.startSteps.map((step) => (
+          {content.sessions.presetSteps.map((step) => (
             <li><span class="docs-list-marker">&rsaquo;</span><span set:html={step} /></li>
           ))}
         </ul>
 
-        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.ownSession.optionsTitle}</span></h3>
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.sessions.pathTitle}</span></h3>
+        <ul class="docs-list">
+          {content.sessions.pathSteps.map((step) => (
+            <li><span class="docs-list-marker">&rsaquo;</span><span set:html={step} /></li>
+          ))}
+        </ul>
+
+        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.sessions.optionsTitle}</span></h3>
         <div class="docs-table">
           <div class="docs-table-header docs-table-2col">
             <div>Option</div><div>Bedeutung</div>
           </div>
-          {content.ownSession.options.map((opt, i) => (
+          {content.sessions.options.map((opt, i) => (
             <div class:list={["docs-table-row", "docs-table-2col", { "docs-table-row-first": i === 0 }]}>
               <div class="docs-table-label">{opt.label}</div>
               <div class="docs-table-desc">{opt.desc}</div>
@@ -134,33 +126,39 @@ const lang = 'de';
         </div>
 
         <figure class="docs-screenshot">
-          <div class="docs-screenshot-placeholder">{content.ownSession.screenshot.placeholder}</div>
-          <figcaption>{content.ownSession.screenshot.caption}</figcaption>
+          <div class="docs-screenshot-placeholder">{content.sessions.screenshot.placeholder}</div>
+          <figcaption>{content.sessions.screenshot.caption}</figcaption>
         </figure>
       </div>
     </section>
 
-    <!-- ═══ §04 · Workspace einrichten ═══ -->
-    <section id="workspace" class="docs-section">
+    <!-- ═══ §04 · Die App im Ueberblick ═══ -->
+    <section id="overview" class="docs-section">
       <div class="docs-inner">
         <div class="cm-section-header-meta">
           <span class="cm-section-header-num">§ 04</span>
           <span class="cm-section-header-line"></span>
           <span>schritt</span>
         </div>
-        <h2>Workspace einrichten</h2>
-        <p class="docs-lead">{content.workspace.lead}</p>
+        <h2>Die App im Ueberblick</h2>
+        <p class="docs-lead">{content.overview.lead}</p>
 
-        <ul class="docs-list">
-          {content.workspace.items.map((item) => (
-            <li><span class="docs-list-marker">&rsaquo;</span><span set:html={item} /></li>
+        <div class="docs-table">
+          <div class="docs-table-header docs-table-2col">
+            <div>Bereich</div><div>Was du dort findest</div>
+          </div>
+          {content.overview.areas.map((area, i) => (
+            <div class:list={["docs-table-row", "docs-table-2col", { "docs-table-row-first": i === 0 }]}>
+              <div class="docs-table-label">{area.label}</div>
+              <div class="docs-table-desc">{area.desc}</div>
+            </div>
           ))}
-        </ul>
+        </div>
 
-        <figure class="docs-screenshot">
-          <div class="docs-screenshot-placeholder">{content.workspace.screenshot.placeholder}</div>
-          <figcaption>{content.workspace.screenshot.caption}</figcaption>
-        </figure>
+        <div class="docs-callout docs-callout-tip">
+          <div class="docs-callout-label">Details</div>
+          <div class="docs-callout-body" set:html={content.overview.callout} />
+        </div>
       </div>
     </section>
 

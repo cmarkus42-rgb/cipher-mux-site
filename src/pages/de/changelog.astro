@@ -15,131 +15,15 @@ const lang = 'de';
     <section class="changelog-hero">
       <div class="changelog-kicker">Release Notes</div>
       <h1>Was ist neu in<br/><span class="accent">CIPHER-MUX</span></h1>
-      <p class="changelog-hero-body">Alle nennenswerten &Auml;nderungen, von den neuesten Feature-Wellen bis zu Bugfixes. Diese Seite spiegelt die CHANGELOG.md des Projekts wider.</p>
+      <p class="changelog-hero-body">Der vollst&auml;ndige Changelog lebt im Repository. Kein Double-Content — eine Quelle der Wahrheit.</p>
     </section>
 
-    <!-- v0.9.99 Wave F1-F5 -->
-    <section class="changelog-release">
-      <div class="release-header">
-        <div class="release-version">v0.9.99</div>
-        <div class="release-date">2026-05-08</div>
-        <div class="release-tag release-tag--latest">aktuell</div>
+    <section class="changelog-redirect">
+      <div class="changelog-redirect-inner">
+        <p>Alle Release Notes, Feature-Wellen und Bugfixes findest du direkt auf GitHub — immer aktuell, immer vollst&auml;ndig.</p>
+        <a href="https://github.com/cmarkus42-rgb/cipher-mux-electron/blob/main/CHANGELOG.md" class="changelog-redirect-btn" target="_blank" rel="noopener noreferrer">CHANGELOG.md auf GitHub &nearr;</a>
+        <a href="https://github.com/cmarkus42-rgb/cipher-mux-electron/releases" class="changelog-redirect-link" target="_blank" rel="noopener noreferrer">GitHub Releases &nearr;</a>
       </div>
-      <h2>Welle F1&ndash;F5 &mdash; Feature Sprint</h2>
-      <p class="release-summary">Sechs neue Features runden das Pre-Release-Erlebnis ab: Tag-Management, Focus Mode, Session-Screenshots, Persona-Avatare, ein dediziertes Voice-Bundle und ein automatischer Update-Checker.</p>
-
-      <h3 class="changelog-category"><span class="cat-dot cat-dot--added"></span> Hinzugef&uuml;gt</h3>
-      <ul class="changelog-list">
-        <li><strong>Tag-Management-System (F2):</strong> Tags zusammenf&uuml;hren, umbenennen und durchrotieren. Exklusive Tags f&uuml;r eindeutige Kategorisierung. Notes File Watching f&uuml;r externe &Auml;nderungen.</li>
-        <li><strong>Focus Mode (F3):</strong> Vollbild-Fokus blendet alle Grid-Zellen au&szlig;er der aktiven ab. Weniger visuelles Rauschen bei Tiefenarbeit.</li>
-        <li><strong>Update Checker (F1):</strong> Automatische Versionspr&uuml;fung beim Start. Dezente Benachrichtigung wenn ein Update verf&uuml;gbar ist.</li>
-        <li><strong>Cipher Adult Voice Bundle (F1):</strong> Dedizierte deutsche Erwachsenenstimme f&uuml;r nat&uuml;rlich klingende Sprachausgabe.</li>
-        <li><strong>Session-Screenshots (F5):</strong> Aktuellen Zustand jeder Session als Screenshot festhalten. Lokal gespeichert f&uuml;r Dokumentation und Bug-Reports.</li>
-        <li><strong>Persona-Avatare (F5):</strong> Jede Persona hat jetzt einen visuellen Avatar im Session-Header und Workspace-Editor.</li>
-        <li><strong>Workspace Notes Cells (F4):</strong> Notizen k&ouml;nnen direkt in Grid-Zellen als Workspace-gebundene Editor-Tabs ge&ouml;ffnet werden.</li>
-        <li><strong>Note Editor Font Size (F3):</strong> Konfigurierbare Schriftgr&ouml;&szlig;e f&uuml;r den CodeMirror-Notes-Editor.</li>
-        <li><strong>Preset-Sortierung (F3):</strong> Presets alphabetisch sortiert im Launcher-Popup.</li>
-        <li><strong>Onboarding-Flow (F4):</strong> Verbessertes Companion-Onboarding beim ersten Start mit Workspace-Erstellungs-Guide.</li>
-        <li><strong>Legacy-Archiv (F5):</strong> Alte Session-Daten sauber archiviert beim Migrieren auf neue Formate.</li>
-      </ul>
-    </section>
-
-    <!-- v0.9.99 Core -->
-    <section class="changelog-release">
-      <div class="release-header">
-        <div class="release-version">v0.9.99</div>
-        <div class="release-date">2026-05-06</div>
-      </div>
-      <h2>Workspace Scoping &amp; i18n</h2>
-      <p class="release-summary">Workspace-gebundene Notes und Memory, Internationalisierungs-Grundlage, Session Resume/Fork und der Persona Resolver.</p>
-
-      <h3 class="changelog-category"><span class="cat-dot cat-dot--added"></span> Hinzugef&uuml;gt</h3>
-      <ul class="changelog-list">
-        <li><strong>i18n-Grundlage:</strong> i18next + react-i18next mit EN/DE-Lokalisierungen. Sprachumschalter in den Einstellungen.</li>
-        <li><strong>Notes MCP Full CRUD:</strong> <code>mux_notes_read</code>, <code>mux_notes_update</code>, <code>mux_notes_search</code>, <code>mux_notes_delete</code>, <code>mux_notes_handoff_create</code>, <code>mux_notes_handoff_search</code>.</li>
-        <li><strong>Session Resume:</strong> <code>--resume</code> Unterst&uuml;tzung f&uuml;r Entity-Sessions. Manuelle Sessions mit Checkbox.</li>
-        <li><strong>Session Fork:</strong> Fork-Button in der SessionCell f&uuml;r Claude-Code-Sessions.</li>
-        <li><strong>Orphan-Erkennung:</strong> Periodischer Scan nach verwaisten tmux-Sessions mit Adopt/Terminate-UI.</li>
-        <li><strong>Workspace-gebundene Notes:</strong> Notes automatisch mit <code>workspace:&lt;name&gt;</code> getaggt. Sidebar-Filter nach Workspace.</li>
-        <li><strong>Workspace-gebundenes Memory:</strong> Companion Memory automatisch pro Workspace. Recall merged User- + Workspace-Memories.</li>
-        <li><strong>Workspace Context Injection:</strong> Workspace-Prompt + Context-Verzeichnisse in alle Entity-Sessions injiziert.</li>
-        <li><strong>Persona Resolver:</strong> Per-Preset Persona-Dropdown. Aufl&ouml;sung: global &gt; Preset-Override &gt; Matrix-Default &gt; Fallback.</li>
-      </ul>
-    </section>
-
-    <!-- v0.9.9 -->
-    <section class="changelog-release">
-      <div class="release-header">
-        <div class="release-version">v0.9.9</div>
-        <div class="release-date">2026-05-02</div>
-      </div>
-      <h2>Pre-Cyberfactory Plateau</h2>
-      <p class="release-summary">Der &bdquo;more-as-more&ldquo;-Meilenstein. Multi-Instance Presets, Voice &amp; TTS, universelle Persona-Injektion, dynamischer Entity-Scanner und 50+ Bugfixes.</p>
-
-      <h3 class="changelog-category"><span class="cat-dot cat-dot--added"></span> Hinzugef&uuml;gt</h3>
-      <ul class="changelog-list">
-        <li><strong>Multi-Instance Presets:</strong> Companion, Refinement, Voice, Audit k&ouml;nnen mehrere simultane Sessions laufen lassen.</li>
-        <li><strong>Voice &amp; TTS:</strong> Globale TTS-Wiedergabe, Conversation-Engine-Sprachbefehle, BT-Shutter-Integration.</li>
-        <li><strong>Dynamischer Entity Scanner:</strong> Scannt <code>~/.config/cipher-mux/entities/</code> nach eigenen Presets.</li>
-        <li><strong>Universelle Persona-Injektion:</strong> Aktiver Charakter wird beim Start in alle Entity-CLAUDE.md injiziert.</li>
-        <li><strong>Preset Editor:</strong> 4-Tab CLAUDE.md-Editor im Workspaces-Fenster.</li>
-        <li><strong>Tag-basiertes Notes Scoping:</strong> Flache Speicherung mit Tag-basierter Kategorisierung.</li>
-        <li><strong>Hierarchischer Tag-Baum:</strong> Aufklappbarer Tag-Baum mit Drei-Zustands-Filter.</li>
-        <li><strong>Context Usage Color Bar:</strong> Gr&uuml;n/Gelb/Rot-Fortschrittsbalken in Session-Headern.</li>
-        <li><strong>STT Pin-to-Session:</strong> Spracheingabe an eine bestimmte Session pinnen.</li>
-        <li><strong>STT im Notes Editor:</strong> Sprach-Diktat direkt in CodeMirror.</li>
-      </ul>
-
-      <h3 class="changelog-category"><span class="cat-dot cat-dot--fixed"></span> Behoben</h3>
-      <ul class="changelog-list">
-        <li>MCP HTTP Timeout, Drag-and-Drop-Race, veraltete Grid-Slots, verwaiste Entity-Session-IDs</li>
-        <li>Keep Working Restore 3-Layer-Bug (Race Condition + veraltete IDs + tmux malformed Lines)</li>
-        <li>&Uuml;ber 50 weitere Fixes in Voice, Sidebar, Workspace, Grid und Entity-Systemen</li>
-      </ul>
-    </section>
-
-    <!-- v0.9.5-beta -->
-    <section class="changelog-release">
-      <div class="release-header">
-        <div class="release-version">v0.9.5-beta</div>
-        <div class="release-date">2026-04-24</div>
-      </div>
-      <h2>Unified Sidebar</h2>
-      <p class="release-summary">Einheitliches Sidebar-Panel ersetzt Chatroom + Input Requests. Abl&ouml;sbare Sidebar, Hintergrund-Session-Karten, Grid-Placement-Popup.</p>
-    </section>
-
-    <!-- v0.8.9-beta -->
-    <section class="changelog-release">
-      <div class="release-header">
-        <div class="release-version">v0.8.9-beta</div>
-        <div class="release-date">2026-04-24</div>
-      </div>
-      <h2>Workspaces &amp; Personas</h2>
-      <p class="release-summary">Grid-basierter Workspace-Editor, 3-stufige Prompt-Aufl&ouml;sung, Merge-Handles, Persona-Skill-Sync, Shell-Sessions, README und CI-Setup.</p>
-    </section>
-
-    <!-- v0.8.8-beta -->
-    <section class="changelog-release">
-      <div class="release-header">
-        <div class="release-version">v0.8.8-beta</div>
-        <div class="release-date">2026-04-23</div>
-      </div>
-      <h2>Theme System</h2>
-      <p class="release-summary">10 Themes mit CSS Custom Properties und ANSI-Terminalfarben. Theme-Picker mit Live-Vorschau.</p>
-    </section>
-
-    <!-- Fr&uuml;here -->
-    <section class="changelog-release">
-      <div class="release-header">
-        <div class="release-version">v0.5.0 &ndash; v0.8.3</div>
-        <div class="release-date">2026-04-13 &ndash; 2026-04-22</div>
-      </div>
-      <h2>Foundation</h2>
-      <p class="release-summary">Initiales Scaffolding, Kernmodule, Voice-Pipeline, Task-System, Orchestrator, MCP-Server, Session-Grid, Bug-Reports und fr&uuml;he UI.</p>
-    </section>
-
-    <section class="changelog-bottom">
-      <p>Vollst&auml;ndiger Changelog auf <a href="https://github.com/cmarkus42-rgb/cipher-mux-electron/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer">GitHub &nearr;</a></p>
     </section>
 
   </div>
@@ -181,6 +65,44 @@ const lang = 'de';
     color: var(--color-text-secondary);
     max-width: 700px;
   }
+
+  .changelog-redirect {
+    padding: 64px 0;
+  }
+  .changelog-redirect-inner {
+    max-width: 600px;
+  }
+  .changelog-redirect-inner p {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 17px;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+    margin: 0 0 24px;
+  }
+  .changelog-redirect-btn {
+    display: inline-block;
+    padding: 14px 22px;
+    background: var(--color-accent);
+    color: var(--color-bg);
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+    margin-right: 16px;
+  }
+  .changelog-redirect-btn:hover { opacity: 0.9; text-decoration: none; }
+  .changelog-redirect-link {
+    font-family: 'Fira Code', monospace;
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--color-text-dim);
+    padding-bottom: 2px;
+  }
+  .changelog-redirect-link:hover { color: var(--color-accent); }
 
   .changelog-release {
     padding: 48px 0;

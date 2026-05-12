@@ -17,21 +17,29 @@ const landing = {
       title: 'Coding with AI, done right',
       description:
         'Got an idea? Build it. cipher-mux structures the path from idea to code — with specialized agents that build in quality and security you can\'t get from a single chat session.',
+      detail:
+        'The problem: a single Claude session that plans, codes, and tests simultaneously loses focus. Context fills up, earlier instructions get compressed, quality drops. cipher-mux separates these phases into dedicated sessions — Ideation, Refinement, Cyber Factory, Testing, Debugger, Audit — each with its own context and instructions. Clean handoffs between phases instead of context pollution.',
     },
     {
       title: 'Built for everyone',
       description:
         'No CS degree required. The Companion shows you everything — via chat, voice, or UI highlighting. If you can describe an idea, you can build here.',
+      detail:
+        'The Companion is your entry point: it explains concepts, helps with decisions, and executes actions on request. It remembers your skill level and adapts explanations accordingly. In Voice mode you speak with it directly — no typing needed. And if you prefer typing, it knows every chapter of the documentation and answers questions faster than you can scroll.',
     },
     {
       title: 'Transparent, not magic',
       description:
         'You see what the agents do. Prompts, context, decisions — everything is exposed. Learn how AI-powered development works by watching it happen.',
+      detail:
+        'Every entity session runs visibly in a grid cell. You see output in real time, can intervene in any session, and the CLAUDE.md layers (Global Rules → Preset → Persona → Workspace → Cell) are all plain text files on disk. No black box. If you want to understand why a session responds the way it does, read its instructions — they\'re text files.',
     },
     {
       title: 'Designed for access',
       description:
         'WCAG AAA themes, local speech recognition, Bluetooth remote control. Technology adapts to you — not the other way around.',
+      detail:
+        '13 themes, four specifically for color vision deficiencies (Deuteranopia, Tritanopia, Achromatopsia) plus a high-contrast WCAG AAA theme. Speech control runs entirely local via Whisper — no network, no cloud. Bluetooth remote for hands-free operation. And a theme editor that lets you customize every color.',
     },
   ],
   notSection: {

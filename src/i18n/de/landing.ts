@@ -17,21 +17,29 @@ const landing = {
       title: 'Coding mit KI, aber richtig',
       description:
         'Du hast eine Idee? Dann bau sie. cipher-mux strukturiert den Weg von der Idee zum Code — mit spezialisierten Agenten, die Qualität und Sicherheit einbauen, die man mit einer einzelnen Chat-Session nicht erreicht.',
+      detail:
+        'Das Problem: Eine einzelne Claude-Session, die gleichzeitig plant, codet und testet, verliert Fokus. Der Kontext füllt sich, frühere Anweisungen werden komprimiert, die Qualität sinkt. cipher-mux trennt diese Phasen in eigene Sessions — Ideation, Refinement, Cyber Factory, Testing, Debugger, Audit — jede mit eigenem Kontext und eigenen Anweisungen. Saubere Übergaben zwischen den Phasen statt Kontextvermischung.',
     },
     {
       title: 'Gebaut für alle',
       description:
         'Kein Informatikstudium nötig. Der Companion zeigt dir alles — per Chat, per Voice, per UI-Highlighting. Wer eine Idee beschreiben kann, kann hier bauen.',
+      detail:
+        'Der Companion ist dein Einstiegspunkt: er erklärt Konzepte, hilft bei Entscheidungen und führt auf Wunsch Aktionen aus. Er merkt sich dein Skill-Level und passt Erklärungen an. Per Voice-Modus sprichst du direkt mit ihm — ohne zu tippen. Und wenn du doch tippen willst, kennt er jedes Kapitel der Dokumentation und beantwortet Fragen schneller als du scrollst.',
     },
     {
       title: 'Transparent statt magisch',
       description:
         'Du siehst, was die Agenten tun. Prompts, Kontext, Entscheidungen — alles liegt offen. So lernst du nebenbei, wie KI-gestütztes Entwickeln funktioniert.',
+      detail:
+        'Jede Entity-Session läuft sichtbar in einer Grid-Zelle. Du siehst den Output in Echtzeit, kannst in jede Session eingreifen, und die CLAUDE.md-Schichten (Global Rules → Preset → Persona → Workspace → Cell) liegen alle offen im Dateisystem. Keine Black Box. Wenn du verstehen willst, warum eine Session so antwortet wie sie antwortet, liest du ihre Anweisungen — das sind Textdateien.',
     },
     {
       title: 'Zugänglich gestaltet',
       description:
         'WCAG-AAA-Themes, lokale Spracherkennung, Bluetooth-Fernbedienung. Technik passt sich an — nicht umgekehrt.',
+      detail:
+        '13 Themes, davon vier speziell für Farbenblindheit (Deuteranopie, Tritanopie, Achromatopsie) und ein High-Contrast-Theme nach WCAG AAA. Sprachsteuerung komplett lokal über Whisper — kein Netzwerk, keine Cloud. Bluetooth-Fernbedienung für freihändiges Arbeiten. Und ein Theme-Editor, mit dem du jede Farbe anpassen kannst.',
     },
   ],
   notSection: {

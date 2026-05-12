@@ -105,16 +105,8 @@ const features = {
     {
       num: '12',
       kicker: 'New in v0.9.101',
-      title: 'Latest Additions',
-      lead: 'The latest wave of features brings tag management, focus mode, session screenshots, persona avatars, a dedicated voice bundle, and an automatic update checker \u2014 all part of the continuous improvement cycle.',
-      newFeatures: [
-        { name: 'Tag Management', description: 'Merge, rename, and cycle tags. Exclusive tags ensure one-of-a-kind categorization. Full control over your note taxonomy.' },
-        { name: 'Focus Mode', description: 'Dims all grid cells except the focused one. Reduces visual noise during deep work. Toggle via status bar or keyboard shortcut.' },
-        { name: 'Update Checker', description: 'Automatic check for new versions on launch. Non-intrusive notification when an update is available \u2014 no auto-install, you decide.' },
-        { name: 'Cipher Adult Voice', description: 'Dedicated German adult TTS voice bundle. Natural-sounding speech output for summaries, milestones, and status updates.' },
-        { name: 'Session Screenshots', description: 'Capture the current state of any session as a screenshot. Stored locally, useful for documentation and bug reports.' },
-        { name: 'Persona Avatars', description: 'Each persona now has a visual avatar. Displayed in session headers and the workspace editor for instant recognition.' },
-      ],
+      title: 'Focus Mode',
+      lead: 'One session, full attention. Focus Mode expands a cell to 2\u00d72 and dims everything else. The Focus Bar shows context usage and font size \u2014 one click or Cmd+Shift+F toggles it. Great for long outputs, code reviews, and concentrated work.',
     },
   ],
   scrollNavItems: [

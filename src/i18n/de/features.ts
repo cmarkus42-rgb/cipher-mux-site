@@ -105,16 +105,8 @@ const features = {
     {
       num: '12',
       kicker: 'Neu in v0.9.101',
-      title: 'Die neuesten Erg\u00e4nzungen',
-      lead: 'Die j\u00fcngste Feature-Welle bringt Tag-Management, Focus Mode, Session-Screenshots, Persona-Avatare, ein dediziertes Voice-Bundle und einen automatischen Update-Checker \u2014 alles Teil des kontinuierlichen Verbesserungszyklus.',
-      newFeatures: [
-        { name: 'Tag-Management', description: 'Tags zusammenf\u00fchren, umbenennen und durchrotieren. Exklusive Tags stellen Eindeutigkeit sicher. Volle Kontrolle \u00fcber deine Notiz-Taxonomie.' },
-        { name: 'Focus Mode', description: 'Blendet alle Grid-Zellen au\u00dfer der fokussierten ab. Weniger visuelles Rauschen bei konzentrierter Arbeit. Umschaltbar \u00fcber Statusleiste oder Tastenkombination.' },
-        { name: 'Update Checker', description: 'Automatische Pr\u00fcfung auf neue Versionen beim Start. Dezente Benachrichtigung wenn ein Update verf\u00fcgbar ist \u2014 kein Auto-Install, du entscheidest.' },
-        { name: 'Cipher Adult Voice', description: 'Dediziertes deutsches Erwachsenen-TTS-Voice-Bundle. Nat\u00fcrlich klingende Sprachausgabe f\u00fcr Zusammenfassungen, Meilensteine und Status-Updates.' },
-        { name: 'Session-Screenshots', description: 'Den aktuellen Zustand jeder Session als Screenshot festhalten. Lokal gespeichert, n\u00fctzlich f\u00fcr Dokumentation und Bug-Reports.' },
-        { name: 'Persona-Avatare', description: 'Jede Persona hat jetzt einen visuellen Avatar. Wird im Session-Header und im Workspace-Editor angezeigt \u2014 sofortige Wiedererkennung.' },
-      ],
+      title: 'Focus Mode',
+      lead: 'Eine Session, volle Aufmerksamkeit. Focus Mode expandiert eine Zelle auf 2\u00d72 und blendet alles andere ab. Die Focus-Bar zeigt Context-Auslastung und Schriftgr\u00f6\u00dfe — ein Klick oder Cmd+Shift+F schaltet um. Gut f\u00fcr lange Ausgaben, Code-Reviews und konzentriertes Arbeiten.',
     },
   ],
   scrollNavItems: [

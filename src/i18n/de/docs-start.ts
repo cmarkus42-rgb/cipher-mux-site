@@ -1,87 +1,86 @@
 const docsStart = {
   hero: {
-    kicker: 'Schnelleinstieg · v0.9.101',
+    kicker: 'Schnelleinstieg \u00b7 v0.9.101',
     title: 'Vom Start',
-    titleAccent: 'zur ersten Session.',
-    body: 'Sechs Schritte, ein Ziel: du arbeitest produktiv mit cipher-mux. Kein Vorwissen noetig.',
+    titleAccent: 'zum ersten Projekt.',
+    body: 'Installation steht? Dann los. Hier richtest du deinen ersten Workspace ein und lernst die wichtigsten Bereiche der App kennen.',
   },
 
   sections: [
-    { id: 'first-launch', num: '01', title: 'Erster Start', navLabel: 'Erster Start' },
-    { id: 'companion', num: '02', title: 'Companion starten', navLabel: 'Companion' },
-    { id: 'own-session', num: '03', title: 'Erste eigene Session', navLabel: 'Eigene Session' },
-    { id: 'workspace', num: '04', title: 'Workspace einrichten', navLabel: 'Workspace' },
+    { id: 'orientation', num: '01', title: 'Orientierung', navLabel: 'Orientierung' },
+    { id: 'workspace', num: '02', title: 'Workspace anlegen', navLabel: 'Workspace' },
+    { id: 'sessions', num: '03', title: 'Sessions starten', navLabel: 'Sessions' },
+    { id: 'overview', num: '04', title: 'Die App im Ueberblick', navLabel: 'Ueberblick' },
     { id: 'voice', num: '05', title: 'Voice ausprobieren', navLabel: 'Voice' },
     { id: 'next', num: '06', title: 'Weiter', navLabel: 'Weiter' },
   ],
 
-  firstLaunch: {
-    lead: 'Wenn du cipher-mux zum ersten Mal oeffnest, siehst du ein leeres Grid mit leeren Zellen. Jede zeigt ein + in der Mitte. Das ist dein Startpunkt fuer alles.',
+  orientation: {
+    lead: 'Wenn du cipher-mux oeffnest, siehst du das Grid — der zentrale Arbeitsbereich. Leere Zellen zeigen ein +, die Statusleiste liegt am unteren Rand. Das ist alles.',
     items: [
-      'Das Grid ist der Hauptbereich — hier leben spaeter deine Sessions, jede in einer eigenen Zelle.',
-      'Am unteren Rand liegt die Statusleiste mit Buttons fuer Voice, Grid-Groesse, Workspaces und mehr.',
-      'Falls Sessions von einem vorherigen Lauf existieren, erscheint zuerst ein <strong>Recovery-Dialog</strong>: uebernehmen oder verwerfen. Beim allerersten Start passiert das nicht.',
+      'Installation und Ersteinrichtung beschreibt die <a href="/de/start" class="docs-inline-link">Download-Seite</a> im Detail.',
+      'Beim allerersten Start belegt der <strong>Companion</strong> die erste Zelle. Gib <span class="docs-mono">/startup</span> ein — er fragt nach deinem Hintergrund und erstellt ein Profil. Danach passen alle Entities ihren Detailgrad an dein Level an.',
+      'Der Companion kann dir auch alles erklaeren was auf diesen Seiten steht. Statt hier zu suchen, frag ihn.',
     ],
     screenshot: {
-      placeholder: 'Screenshot: Leeres Grid mit drei leeren Zellen (2x1 Layout), Dark Theme',
-      caption: 'Erster Start — leeres Grid',
-    },
-  },
-
-  companion: {
-    lead: 'Der Companion ist dein Einstiegspunkt. Er erklaert, beraet, fuehrt aus — und merkt sich deine Praeferenzen ueber Sessions hinweg.',
-    startHow: 'So startest du ihn:',
-    startSteps: [
-      'Klick auf <span class="docs-mono">+</span> in einer leeren Zelle',
-      'Tab <strong>Presets</strong> waehlen',
-      'Preset <strong>Companion</strong> anklicken',
-    ],
-    modesTitle: 'Drei Modi',
-    modes: [
-      { label: 'Tutor', trigger: '"Erklaer mir..."', desc: 'Konzepte verstehen. Ein Thema pro Antwort, mit Beispiel oder Analogie.' },
-      { label: 'Berater', trigger: '"Was waere besser..."', desc: 'Optionen mit Trade-offs. Du entscheidest, er liefert die Grundlage.' },
-      { label: 'Helfer', trigger: '"Mach mir..."', desc: 'Direkt ausfuehren. Geringste Reibung, schnellstes Ergebnis.' },
-    ],
-    note: 'Er kennt alles was auf diesen Seiten steht. Statt hier zu suchen, kannst du ihn fragen.',
-    screenshot: {
-      placeholder: 'Screenshot: Launcher-Popup, Tab Presets mit Companion hervorgehoben',
-      caption: 'Preset-Auswahl mit Companion',
-    },
-  },
-
-  ownSession: {
-    lead: 'Fuer eigene Projekte startest du eine Session mit Pfad — ohne Preset, ohne vordefiniertes Verhalten.',
-    startHow: 'So gehts:',
-    startSteps: [
-      'Klick auf <span class="docs-mono">+</span> in einer leeren Zelle',
-      'Tab <strong>Path</strong> waehlen',
-      'Projektordner auswaehlen oder eingeben',
-    ],
-    optionsTitle: 'Optionen beim Start',
-    options: [
-      { label: 'Shell Only', desc: 'Reines Terminal ohne Claude. Fuer git, npm, schnelle Kommandos.' },
-      { label: 'Skip Permissions', desc: 'Claude fuehrt Aktionen ohne Rueckfrage aus. Maechtig, aber das Sicherheitsnetz faellt weg. Nicht leichtfertig aktivieren.' },
-      { label: 'Resume', desc: 'Eine fruehere Session an gleicher Stelle fortsetzen. Context bleibt erhalten.' },
-    ],
-    screenshot: {
-      placeholder: 'Screenshot: Launcher-Popup, Tab Path mit Ordner-Picker',
-      caption: 'Session mit eigenem Projektpfad starten',
+      placeholder: 'Screenshot: Leeres Grid mit Companion in der ersten Zelle',
+      caption: 'Erster Start — Companion bereit',
     },
   },
 
   workspace: {
-    lead: 'Workspaces speichern dein Grid-Layout mitsamt Preset-Zuweisungen. Ein Klick, alles steht.',
-    items: [
+    lead: 'Ein Workspace buendelt alles fuer ein Projekt: Grid-Layout, Preset-Zuweisungen, Projektverzeichnis, Workspace-Prompt. Wenn du einen Workspace laeadst, wissen alle Sessions sofort, woran gearbeitet wird.',
+    flow: [
       'Klick auf <strong>workspaces</strong> in der Statusleiste — der Workspace-Editor oeffnet sich.',
-      'Grid-Groesse festlegen (Spalten x Zeilen).',
-      'Pro Zelle ein Preset und optional einen Projektpfad zuweisen.',
-      'Workspace speichern und benennen. Einen als Default markieren.',
-      'Zurueck im Hauptfenster: Workspace anwenden — das Grid fuellt sich automatisch.',
+      'Neuen Workspace anlegen und benennen (z.B. "Mein Projekt").',
+      'Einen <strong>Workspace-Prompt</strong> einfuegen — ein paar Saetze ueber dein Projekt reichen: was es ist, welche Sprache/Framework, was gerade ansteht.',
+      'Falls du schon einen Projektordner hast: als <strong>Context Directory</strong> hinzufuegen. Falls nicht, spaeter nachtragen sobald er existiert.',
+      'Grid-Groesse festlegen (z.B. 2x1 fuer den Anfang) und optional Presets zuweisen.',
+      'Speichern. Als Default markieren wenn du willst.',
+    ],
+    callout: 'Workspace wechseln = anderer Kontext. Alle Sessions, Notes und Tags werden automatisch auf den aktiven Workspace gefiltert. Das ist der zentrale Organisationsmechanismus in cipher-mux.',
+    screenshot: {
+      placeholder: 'Screenshot: Workspace-Editor mit Workspace-Prompt und Context Directory',
+      caption: 'Workspace-Editor — Projekt einrichten',
+    },
+  },
+
+  sessions: {
+    lead: 'Mit einem eingerichteten Workspace kannst du Sessions starten. Zwei Wege:',
+    presetTitle: 'Via Preset',
+    presetSteps: [
+      'Klick auf <span class="docs-mono">+</span> in einer leeren Zelle → Tab <strong>Presets</strong>',
+      'Preset waehlen (Companion, Refinement, Cyber Factory, ...)',
+      'Die Session startet mit dem Workspace-Kontext + den Preset-Anweisungen',
+    ],
+    pathTitle: 'Via Pfad',
+    pathSteps: [
+      'Klick auf <span class="docs-mono">+</span> → Tab <strong>Path</strong>',
+      'Projektordner waehlen — nackte Claude-Session ohne Preset',
+    ],
+    optionsTitle: 'Optionen',
+    options: [
+      { label: 'Shell Only', desc: 'Reines Terminal ohne Claude. Fuer git, npm, schnelle Kommandos.' },
+      { label: 'Skip Permissions', desc: 'Claude fuehrt Aktionen ohne Rueckfrage aus. Auch global aktivierbar unter Einstellungen → General.' },
+      { label: 'Resume', desc: 'Fruehere Session fortsetzen. Context bleibt erhalten.' },
     ],
     screenshot: {
-      placeholder: 'Screenshot: Workspace-Editor mit belegtem 2x2 Grid',
-      caption: 'Workspace-Editor — Grid-Layout konfigurieren',
+      placeholder: 'Screenshot: Launcher-Popup mit Preset-Tab',
+      caption: 'Session starten — Preset oder Pfad',
     },
+  },
+
+  overview: {
+    lead: 'Bevor du tiefer einsteigst — wo findest du was? Ein schneller Rundgang durch die Oberflaeche.',
+    areas: [
+      { label: 'Grid', desc: 'Der zentrale Bereich. Hier laufen deine Sessions — jede in einer eigenen Zelle. Drag & Drop tauscht Positionen. Spalten/Zeilen ueber die Statusleiste anpassen (1-7 x 1-3).', link: '/de/docs/usage#grid' },
+      { label: 'Session-Header', desc: 'Jede Zelle hat eine Kopfleiste mit Status-Punkt, Context-Balken und Buttons: Focus Mode, Fork, Screenshot, Pop-Out, Shell, Background, Close.', link: '/de/docs/usage#header' },
+      { label: 'Statusleiste', desc: 'Am unteren Rand: Voice-Steuerung, Grid-Groesse, Workspaces, Sidebar-Toggle, Theme, Einstellungen. Deine Kommandozentrale.', link: '/de/docs/usage#grid' },
+      { label: 'Sidebar', desc: 'Rechte Seitenleiste mit fuenf Sektionen: Notes, Background Sessions, Orphaned Sessions, Companion Memory, Messages. Oeffnen ueber "sidebar" in der Statusleiste.', link: '/de/docs/usage#sidebar' },
+      { label: 'Workspace-Editor', desc: 'Eigenes Fenster fuer Grid-Layouts, Personas, Preset-Konfiguration und Tags. Oeffnen ueber "workspaces" in der Statusleiste.', link: '/de/docs/usage#settings' },
+      { label: 'Einstellungen', desc: 'Sechs Tabs: General (Skip Permissions, Keep Working), Sprache, Themes (13 Stueck + eigene), Shortcuts, A11y, About.', link: '/de/docs/usage#settings' },
+    ],
+    callout: 'Alle Details zu jedem Bereich findest du in der <a href="/de/docs/usage" class="docs-inline-link">Nutzung der App</a>.',
   },
 
   voice: {
@@ -92,7 +91,7 @@ const docsStart = {
       'Sprechen. Am Ende <strong>"abschicken"</strong> sagen — der Text wird in die fokussierte Zelle eingefuegt.',
       'Der Text wird eingefuegt, aber <strong>nicht automatisch gesendet</strong>. Du kannst ihn pruefen und bearbeiten, bevor du Enter drueckst.',
     ],
-    linkNote: 'Alles weitere zur Sprachsteuerung — Voice Commands, BT-Clicker, TTS — findest du in der',
+    linkNote: 'Alles weitere zur Sprachsteuerung — Voice Commands, COM-Modus, BT-Clicker, TTS — findest du in der',
     linkLabel: 'Nutzung der App',
     linkHref: '/de/docs/usage#voice',
   },
