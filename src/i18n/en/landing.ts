@@ -42,6 +42,11 @@ const landing = {
         '13 themes, four specifically for color vision deficiencies (Deuteranopia, Tritanopia, Achromatopsia) plus a high-contrast WCAG AAA theme. Speech control runs entirely local via Whisper — no network, no cloud. Bluetooth remote for hands-free operation. And a theme editor that lets you customize every color.',
     },
   ],
+  pillarsKicker: 'FOUR PILLARS \u00b7 ONE MANIFEST',
+  pillarsNumLabel: '// pillar',
+  builtKicker: 'Self-Reference',
+  builtWaveHeader: '// test-suite growth across 8 waves',
+  notKicker: 'System Boundaries',
   notSection: {
     title: 'What CIPHER-MUX is not.',
     lead: 'For clear expectations:',
@@ -73,6 +78,16 @@ const landing = {
     ],
     detail: 'From Wave 5, the Testing Entity was wired into the process: it writes tests, hands findings to the Debugger, and the cycle runs without manual trigger. 668 of 1,509 tests were produced in the last three waves — by the process itself. 0 high-severity findings in the final audit.',
     closer: 'The developer\'s job was to design the process — and stay out of its way.',
+  },
+  bottomCta: {
+    kicker: '// Ready?',
+    title: 'Read the handbook.',
+    titleDim: 'Or download it.',
+    buttons: [
+      { label: 'Documentation', href: '/en/docs/', primary: true },
+      { label: 'Features', href: '/en/features' },
+      { label: 'GitHub \u2197', href: 'https://github.com/cmarkus42/cipher-mux-electron', external: true },
+    ],
   },
   footer: {
     mark: 'CIPHER-MUX',
