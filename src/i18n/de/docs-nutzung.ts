@@ -1,6 +1,6 @@
 const docsNutzung = {
   hero: {
-    kicker: 'Nutzung der App · v0.9.99',
+    kicker: 'Nutzung der App · v0.9.101',
     title: 'Jede Funktion.',
     titleAccent: 'Nachschlagen.',
     body: 'Die vollstaendige Referenz zu jedem Bereich der App — Grid, Sessions, Sidebar, Voice, Notes, Einstellungen. Zum Nachlesen, nicht zum Durchlesen.',

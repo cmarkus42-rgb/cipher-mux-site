@@ -1,6 +1,6 @@
 const docsStart = {
   hero: {
-    kicker: 'Schnelleinstieg · v0.9.99',
+    kicker: 'Schnelleinstieg · v0.9.101',
     title: 'Vom Start',
     titleAccent: 'zur ersten Session.',
     body: 'Sechs Schritte, ein Ziel: du arbeitest produktiv mit cipher-mux. Kein Vorwissen noetig.',

@@ -1,6 +1,6 @@
 const docsKonzepte = {
   hero: {
-    kicker: 'Prozess & Konzepte · v0.9.99',
+    kicker: 'Prozess & Konzepte · v0.9.101',
     title: 'Warum spezialisierte',
     titleAccent: 'Sessions?',
     body: 'cipher-mux trennt Phasen der Softwareentwicklung in eigene KI-Sessions — mit eigenem Kontext, eigenen Anweisungen, eigenen Grenzen. Hier steht, warum das manchmal funktioniert und wann nicht.',

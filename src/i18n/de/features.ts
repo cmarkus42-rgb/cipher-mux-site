@@ -14,8 +14,8 @@ const features = {
       stats: [
         { value: '21', label: 'Zellen max (7\u00d73)' },
         { value: '13', label: 'Entity-Typen' },
-        { value: '62', label: 'MCP-Tools in 10 Kategorien' },
-        { value: '15', label: 'UI-Themes inkl. WCAG AAA' },
+        { value: '62', label: 'MCP-Tools in 11 Kategorien' },
+        { value: '13', label: 'UI-Themes inkl. WCAG AAA' },
       ],
     },
     {
@@ -42,7 +42,7 @@ const features = {
         { name: 'Cyber Factory', id: 'cyber-factory', color: '#ab47bc', description: '\u00dcbernimmt die Subsystem-Zerlegung und koordiniert mehrere Worker-Sessions parallel.' },
         { name: 'Testing Assistant', id: 'testing-assistant', color: '#2ecc71', description: 'Testet den generierten Code kritisch. Schreibt und f\u00fchrt Tests aus.' },
         { name: 'Debugger', id: 'debugger', color: '#ff7043', description: 'Hilft bei der Fehleranalyse. Systematische Ursachensuche statt Trial-and-Error.' },
-        { name: 'Workshop', id: 'orchestrator', color: '#4fc3f7', description: '\u00dcberwacht den Gesamtprozess. Verteilt Aufgaben, pr\u00fcft Kontextverbrauch, rotiert Worker.' },
+        { name: 'Workshop', id: 'workshop', color: '#4fc3f7', description: 'Verteilt Findings und Aufgaben an die passenden Sessions. Koordiniert Bug-Triage, kleine Jobs und Eskalationen.' },
         { name: 'Audit', id: 'audit', color: '#c0392b', description: 'F\u00fchrt abschlie\u00dfende Code-Reviews durch. Pr\u00fcft auf Qualit\u00e4t, Sicherheit und Konsistenz.' },
       ],
     },
@@ -104,7 +104,7 @@ const features = {
     },
     {
       num: '12',
-      kicker: 'Neu in v0.9.99',
+      kicker: 'Neu in v0.9.101',
       title: 'Die neuesten Erg\u00e4nzungen',
       lead: 'Die j\u00fcngste Feature-Welle bringt Tag-Management, Focus Mode, Session-Screenshots, Persona-Avatare, ein dediziertes Voice-Bundle und einen automatischen Update-Checker \u2014 alles Teil des kontinuierlichen Verbesserungszyklus.',
       newFeatures: [

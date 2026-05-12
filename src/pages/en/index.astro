@@ -92,7 +92,7 @@ const schema = JSON.stringify([
     </div>
     <div class="cm-waves">
       {content.builtWithItself.waves.map((wave, i) => {
-        const max = 1207;
+        const max = Math.max(...content.builtWithItself.waves.map(w => w.tests));
         const pct = Math.round((wave.tests / max) * 100);
         const isPivot = i === 3;
         return (

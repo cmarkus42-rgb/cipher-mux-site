@@ -49,10 +49,10 @@ const landing = {
     title: 'Built with Itself',
     lead: 'cipher-mux wurde mit cipher-mux gebaut. Kein Testcase wurde von Hand geschrieben — jeder einzelne stammt von Claude Code. Erst in Einzel-Sessions, ab Welle 5 durch die verdrahtete Testing-Entity als Teil der Pipeline.',
     stats: [
-      { value: '1.207', label: 'Testcases' },
+      { value: '1.509', label: 'Testcases' },
       { value: '100 %', label: 'Pass Rate' },
-      { value: '~33', label: 'LOC pro Test' },
-      { value: '90s', label: 'Runtime' },
+      { value: '~32', label: 'LOC pro Test' },
+      { value: '~90s', label: 'Runtime' },
     ],
     waves: [
       { label: 'Welle 0', tests: 400, note: 'Baseline' },
@@ -61,13 +61,14 @@ const landing = {
       { label: 'Welle 5', tests: 841, note: 'Entity-Pipeline aktiv' },
       { label: 'Welle 6', tests: 1050, note: 'Handoff, Voice' },
       { label: 'Welle 7', tests: 1207, note: 'Audit, Pre-Release' },
+      { label: 'Welle 8', tests: 1509, note: 'Audit-Fixes, Detach, Tags, Test-Cleanup' },
     ],
-    detail: 'Ab Welle 5 war die Testing-Entity im Prozess verdrahtet: sie schreibt Tests, reicht Findings an den Debugger weiter, und der Zyklus läuft ohne manuellen Anstoß. 366 der 1.207 Tests entstanden in den letzten beiden Wellen — durch den Prozess selbst. 0 High-Severity Findings im finalen Audit.',
+    detail: 'Ab Welle 5 war die Testing-Entity im Prozess verdrahtet: sie schreibt Tests, reicht Findings an den Debugger weiter, und der Zyklus läuft ohne manuellen Anstoß. 668 der 1.509 Tests entstanden in den letzten drei Wellen — durch den Prozess selbst. 0 High-Severity Findings im finalen Audit.',
     closer: 'Die Aufgabe des Entwicklers war, den Prozess zu entwerfen — und ihm dann nicht im Weg zu stehen.',
   },
   footer: {
     mark: 'CIPHER-MUX',
-    version: 'v0.9.99 · macOS · MIT',
+    version: 'v0.9.101 · macOS · MIT',
     links: [
       { label: 'GitHub', href: 'https://github.com/cmarkus42-rgb/cipher-mux-electron' },
       { label: 'Issues', href: 'https://github.com/cmarkus42-rgb/cipher-mux-electron/issues' },

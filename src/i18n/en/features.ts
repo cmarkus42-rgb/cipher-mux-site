@@ -14,8 +14,8 @@ const features = {
       stats: [
         { value: '21', label: 'cells max (7\u00d73)' },
         { value: '13', label: 'entity types' },
-        { value: '62', label: 'MCP tools across 10 categories' },
-        { value: '15', label: 'UI themes incl. WCAG AAA' },
+        { value: '62', label: 'MCP tools across 11 categories' },
+        { value: '13', label: 'UI themes incl. WCAG AAA' },
       ],
     },
     {
@@ -42,7 +42,7 @@ const features = {
         { name: 'Cyber Factory', id: 'cyber-factory', color: '#ab47bc', description: 'Handles subsystem decomposition and coordinates multiple worker sessions in parallel.' },
         { name: 'Testing Assistant', id: 'testing-assistant', color: '#2ecc71', description: 'Critically evaluates generated code. Writes and executes tests.' },
         { name: 'Debugger', id: 'debugger', color: '#ff7043', description: 'Assists with error analysis. Systematic root-cause search instead of trial-and-error.' },
-        { name: 'Workshop', id: 'orchestrator', color: '#4fc3f7', description: 'Oversees the overall process. Distributes tasks, monitors context usage, rotates workers.' },
+        { name: 'Workshop', id: 'workshop', color: '#4fc3f7', description: 'Distributes findings and tasks to the right sessions. Coordinates bug triage, small jobs and escalations.' },
         { name: 'Audit', id: 'audit', color: '#c0392b', description: 'Conducts final code reviews. Checks for quality, security, and consistency.' },
       ],
     },
@@ -104,7 +104,7 @@ const features = {
     },
     {
       num: '12',
-      kicker: 'New in v0.9.99',
+      kicker: 'New in v0.9.101',
       title: 'Latest Additions',
       lead: 'The latest wave of features brings tag management, focus mode, session screenshots, persona avatars, a dedicated voice bundle, and an automatic update checker \u2014 all part of the continuous improvement cycle.',
       newFeatures: [

@@ -49,10 +49,10 @@ const landing = {
     title: 'Built with Itself',
     lead: 'cipher-mux was built with cipher-mux. Not a single test was written by hand — every one was produced by Claude Code. First in individual sessions, then from Wave 5 onward by the Testing Entity as part of the pipeline.',
     stats: [
-      { value: '1,207', label: 'Test Cases' },
+      { value: '1,509', label: 'Test Cases' },
       { value: '100%', label: 'Pass Rate' },
-      { value: '~33', label: 'LOC per Test' },
-      { value: '90s', label: 'Runtime' },
+      { value: '~32', label: 'LOC per Test' },
+      { value: '~90s', label: 'Runtime' },
     ],
     waves: [
       { label: 'Wave 0', tests: 400, note: 'Baseline' },
@@ -61,13 +61,14 @@ const landing = {
       { label: 'Wave 5', tests: 841, note: 'Entity pipeline active' },
       { label: 'Wave 6', tests: 1050, note: 'Handoff, Voice' },
       { label: 'Wave 7', tests: 1207, note: 'Audit, Pre-Release' },
+      { label: 'Wave 8', tests: 1509, note: 'Audit fixes, Detach, Tags, Test cleanup' },
     ],
-    detail: 'From Wave 5, the Testing Entity was wired into the process: it writes tests, hands findings to the Debugger, and the cycle runs without manual trigger. 366 of 1,207 tests were produced in the last two waves — by the process itself. 0 high-severity findings in the final audit.',
+    detail: 'From Wave 5, the Testing Entity was wired into the process: it writes tests, hands findings to the Debugger, and the cycle runs without manual trigger. 668 of 1,509 tests were produced in the last three waves — by the process itself. 0 high-severity findings in the final audit.',
     closer: 'The developer\'s job was to design the process — and stay out of its way.',
   },
   footer: {
     mark: 'CIPHER-MUX',
-    version: 'v0.9.99 · macOS · MIT',
+    version: 'v0.9.101 · macOS · MIT',
     links: [
       { label: 'GitHub', href: 'https://github.com/cmarkus42-rgb/cipher-mux-electron' },
       { label: 'Issues', href: 'https://github.com/cmarkus42-rgb/cipher-mux-electron/issues' },

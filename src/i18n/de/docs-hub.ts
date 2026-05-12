@@ -1,6 +1,6 @@
 const docsHub = {
   hero: {
-    kicker: 'Handbuch · v0.9.99',
+    kicker: 'Handbuch · v0.9.101',
     title: 'Das Handbuch.',
     titleAccent: 'Drei Kapitel.',
     titleEnd: 'Ein Companion.',
