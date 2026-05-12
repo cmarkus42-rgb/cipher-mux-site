@@ -208,30 +208,21 @@ const lang = 'de';
         <div class="companion-mock">
           <div class="companion-mock-header">
             <span><span class="accent">●</span> companion &middot; cell 1/1</span>
-            <span>relay</span>
           </div>
           <div class="companion-mock-body">
-            <div class="companion-name">relay &#9656;</div>
-            <div class="companion-msg">Hey! Ich bin dein Guide. Kurz drei Fragen, dann legen wir los.</div>
+            <div class="companion-name">companion &#9656;</div>
+            <div class="companion-msg">Hey! Gib <strong>/startup</strong> ein &mdash; dann richten wir alles zusammen ein.</div>
 
-            <div class="companion-q"># Frage 1</div>
-            <div class="companion-qlabel">Coding-Hintergrund?</div>
-            <div class="companion-opts">
-              <span>Keiner</span>
-              <span class="companion-opt--active">Etwas &#10003;</span>
-              <span>Viel</span>
-            </div>
+            <div class="companion-q">&gt; /startup</div>
+            <div class="companion-msg">Alles klar. Ein paar kurze Fragen, dann passt sich alles an.</div>
 
-            <div class="companion-q"># Frage 2</div>
-            <div class="companion-qlabel">KI-Erfahrung?</div>
-            <div class="companion-opts">
-              <span>Nie</span>
-              <span>ChatGPT etc.</span>
-              <span class="companion-opt--active">Claude Code &#10003;</span>
-            </div>
+            <div class="companion-qlabel">Wie viel Coding-Erfahrung hast du?</div>
+            <div class="companion-input">Etwas &mdash; ich kann Skripte lesen und anpassen_</div>
 
-            <div class="companion-q"># Frage 3</div>
-            <div class="companion-qlabel">Was willst du bauen?</div>
+            <div class="companion-qlabel">Hast du schon mit KI-Coding-Tools gearbeitet?</div>
+            <div class="companion-input">Ja, Claude Code seit ein paar Wochen_</div>
+
+            <div class="companion-qlabel">Was willst du als erstes bauen?</div>
             <div class="companion-input">Erstmal gucken &mdash; vielleicht ein paar Notizen-Tools_</div>
 
             <div class="companion-confirm">&#10003; user-profile.json erstellt</div>
@@ -242,11 +233,10 @@ const lang = 'de';
         <div class="companion-narrative">
           <div class="companion-narrative-title">So l&auml;uft&apos;s ab</div>
           <ol class="companion-steps">
-            <li><span class="companion-step-n">1</span><div><strong>App &ouml;ffnet &rarr; leeres Grid</strong><br/>Ein 1&times;1 Layout zur Begr&uuml;&szlig;ung. Keine Reiz&uuml;berflutung.</div></li>
-            <li><span class="companion-step-n">2</span><div><strong>Companion-Cell vorbelegt</strong><br/>Der Companion &mdash; standardm&auml;ssig Relay &mdash; &uuml;bernimmt die erste Cell.</div></li>
-            <li><span class="companion-step-n">3</span><div><strong>Drei kurze Fragen</strong><br/>Coding-Erfahrung, KI-Vorwissen, Vorhaben. Speichert ein Profil.</div></li>
-            <li><span class="companion-step-n">4</span><div><strong>Sprache passt sich an</strong><br/>Companion redet jetzt auf deinem Level. Kein Tech-Jargon ohne Grund.</div></li>
-            <li><span class="companion-step-n">5</span><div><strong>Workspace anlegen</strong><br/>Name vergeben, Projektordner hinterlegen &mdash; fertig. Alle Sessions im Workspace wissen ab jetzt, woran gearbeitet wird.</div></li>
+            <li><span class="companion-step-n">1</span><div><strong>App &ouml;ffnet &rarr; leeres Grid</strong><br/>Ein 1&times;1 Layout zur Begr&uuml;&szlig;ung. Der Companion belegt die erste Zelle.</div></li>
+            <li><span class="companion-step-n">2</span><div><strong>/startup eingeben</strong><br/>Der Companion fragt nach deinem Hintergrund, deiner KI-Erfahrung und deinem Vorhaben. Kein Multiple-Choice &mdash; einfach antworten.</div></li>
+            <li><span class="companion-step-n">3</span><div><strong>Profil wird erstellt</strong><br/>Deine Antworten werden als user-profile.json gespeichert. Alle Entities passen ihren Detailgrad ab jetzt an dein Level an.</div></li>
+            <li><span class="companion-step-n">4</span><div><strong>Workspace anlegen</strong><br/>Name vergeben, Projektordner hinterlegen &mdash; fertig. Alle Sessions im Workspace wissen ab jetzt, woran gearbeitet wird.</div></li>
           </ol>
         </div>
       </div>
@@ -324,8 +314,8 @@ const lang = 'de';
         <div class="nextstep-card">
           <span class="nextstep-guide">Guide 03 + 05</span>
           <div class="nextstep-tag">Power-User</div>
-          <h4>MPO + Prompting</h4>
-          <p>Du wei&szlig;t was du tust. Orchestrierung und Prompt-Design wenn du tiefer rein willst.</p>
+          <h4>Cyber Factory + Presets</h4>
+          <p>Du wei&szlig;t was du tust. Parallele Worker-Sessions und eigene Preset-Konfiguration wenn du tiefer rein willst.</p>
         </div>
       </div>
     </section>
@@ -333,10 +323,9 @@ const lang = 'de';
     <!-- Bottom CTA -->
     <section class="install-bottom">
       <h2>Bereit? <span class="accent">Lad&apos;s runter.</span></h2>
-      <p>Apple Silicon empfohlen. Intel-Macs funktionieren &mdash; ohne Ollama-Integration. Linux &amp; Windows: kommt.</p>
+      <p>macOS 12+ &middot; Apple Silicon oder Intel. Linux &amp; Windows: kommt.</p>
       <div class="install-bottom-actions">
-        <a href="https://github.com/cmarkus42-rgb/cipher-mux-electron/releases/latest" class="dmg-btn" target="_blank" rel="noopener noreferrer">&darr; DMG &middot; Apple Silicon</a>
-        <a href="https://github.com/cmarkus42-rgb/cipher-mux-electron/releases/latest" class="dmg-btn dmg-btn--outline" target="_blank" rel="noopener noreferrer">&darr; DMG &middot; Intel (no Ollama)</a>
+        <a href="https://github.com/cmarkus42-rgb/cipher-mux-electron/releases/latest" class="dmg-btn" target="_blank" rel="noopener noreferrer">&darr; DMG herunterladen</a>
         <a href="https://github.com/cmarkus42-rgb/cipher-mux-electron" class="install-link">github / cipher-mux &#8599;</a>
         <a href={`/${lang}/docs`} class="install-link">docs &#8599;</a>
       </div>

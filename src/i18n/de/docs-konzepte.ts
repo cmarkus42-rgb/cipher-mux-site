@@ -140,7 +140,7 @@ const docsKonzepte = {
      ═══════════════════════════════════════════ */
   presets: {
     lead: 'Ein Preset ist eine vorkonfigurierte Rolle mit eigenen CLAUDE.md-Anweisungen. Die Schichtung dieser Anweisungen ist das Kernkonzept — sie bestimmt, wie sich eine Session verhaelt.',
-    layersIntro: 'Jede Session erhaelt ihre Anweisungen aus vier Schichten, die aufeinander aufbauen:',
+    layersIntro: 'Jede Session erhaelt ihre Anweisungen aus fuenf Schichten, die aufeinander aufbauen:',
     layers: [
       {
         num: '1.',
@@ -156,18 +156,24 @@ const docsKonzepte = {
       },
       {
         num: '3.',
+        label: 'Persona (Character)',
+        prio: 'stil',
+        desc: 'Tonalitaet und Kommunikationsstil. Jedes Preset hat einen zugewiesenen Character — Relay fuer den Companion, Cipher fuer die Factory, etc. Definiert WIE die Session kommuniziert.',
+      },
+      {
+        num: '4.',
         label: 'Workspace Prompt',
         prio: 'kontext',
         desc: 'Wird in alle Sessions dieses Workspaces injiziert. Projektspezifischer Kontext, Konventionen, Verzeichnisse.',
       },
       {
-        num: '4.',
+        num: '5.',
         label: 'Cell Prompt',
         prio: 'individuell',
         desc: 'Nur fuer diese spezifische Zelle. Einmalige Anweisungen, Overrides, Sonderregeln.',
       },
     ],
-    variability: 'Gleiches Preset + anderer Workspace + andere Persona = anderes Verhalten. Ein Refinement-Preset im Workspace "cipher-mux" arbeitet anders als im Workspace "Kunden-Website" — weil der Workspace-Prompt anderen Kontext liefert.',
+    variability: 'Gleiches Preset + anderer Workspace + andere Persona = anderes Verhalten. Ein Refinement-Preset im Workspace "cipher-mux" arbeitet anders als im Workspace "Kunden-Website" — weil der Workspace-Prompt anderen Kontext liefert und die Persona einen anderen Ton setzt.',
     folderTitle: 'Ordnerstruktur',
     folderDesc: 'Jede Entity hat ihr eigenes Verzeichnis unter <span class="docs-mono">~/.config/cipher-mux/entities/</span>:',
     folderItems: [
@@ -176,7 +182,7 @@ const docsKonzepte = {
       '<span class="docs-mono">ref/</span> — Referenzmaterial, Beispiele, Templates',
     ],
     builtinTitle: 'Builtin vs. Custom',
-    builtinDesc: 'Eingebaute Presets sind schreibgeschuetzt — du kannst sie nutzen, aber nicht veraendern. "Copy as Custom" erstellt eine editierbare Kopie, die du frei anpassen kannst. Deine Aenderungen ueberleben Updates.',
+    builtinDesc: 'Eingebaute Presets sind feststehend — du kannst sie nutzen, aber nicht veraendern. Eigene Presets legst du im Workspace-Editor an: Name, Prompt-Text, fertig. Wer tiefer einsteigen will, kann sich mit Hilfe von Claude Code einen vollstaendigen Preset-Ordner aufbauen — mit Guides, Referenzmaterial und spezialisierten Slash-Commands. Denn nicht nur der Prompt macht ein Preset besonders.',
     screenshot: {
       placeholder: 'Screenshot: Preset-Editor im Workspace-Fenster, Global Rules sichtbar',
       caption: 'Preset-Editor — Layer-Schichtung sichtbar',
@@ -190,8 +196,8 @@ const docsKonzepte = {
     lead: 'Personas definieren WIE cipher-mux kommuniziert — Tonalitaet und Stil, nicht Funktion. Sechs sind eingebaut. Eigene legst du im Workspace-Editor an.',
     items: [
       {
-        label: 'Relay (Default)',
-        desc: 'Ruhig, praezise, wissenschaftsjournalistisch. Kein Lob ohne Pruefung. Der sachliche Standard.',
+        label: 'Relay',
+        desc: 'Ruhig, praezise, wissenschaftsjournalistisch. Kein Lob ohne Pruefung. Startcharakter fuer Companion und allgemeine Sessions.',
       },
       {
         label: 'Cipher',

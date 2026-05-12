@@ -76,6 +76,8 @@ const lang = 'de';
           <div class="docs-pipeline-arrow">&rarr;</div>
           <div class="docs-pipeline-step">Testing</div>
           <div class="docs-pipeline-arrow">&rarr;</div>
+          <div class="docs-pipeline-step docs-pipeline-step--hub">Workshop</div>
+          <div class="docs-pipeline-arrow">&rarr;</div>
           <div class="docs-pipeline-step">Debugger</div>
           <div class="docs-pipeline-arrow">&rarr;</div>
           <div class="docs-pipeline-step">Audit</div>
@@ -713,6 +715,11 @@ const lang = 'de';
     color: var(--color-text);
     clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
     text-align: center;
+  }
+  .docs-pipeline-step--hub {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    font-weight: 700;
   }
 
   .docs-pipeline-arrow {
