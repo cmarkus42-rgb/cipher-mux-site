@@ -1,6 +1,12 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 import DocsNav from '../../../components/DocsNav.astro';
+import DocsHero from '../../../components/DocsHero.astro';
+import DocsSection from '../../../components/DocsSection.astro';
+import CMBox from '../../../components/CMBox.astro';
+import Callout from '../../../components/Callout.astro';
+import ScreenshotSlot from '../../../components/ScreenshotSlot.astro';
+import LedRow from '../../../components/LedRow.astro';
 import content from '../../../i18n/de/docs-nutzung';
 
 const lang = 'de';
@@ -28,364 +34,299 @@ const lang = 'de';
     </nav>
 
     <!-- Hero -->
-    <section class="docs-hero">
-      <div class="cm-tag">{content.hero.kicker}</div>
-      <h1>{content.hero.title}<br /><span class="accent">{content.hero.titleAccent}</span></h1>
-      <p class="docs-body">{content.hero.body}</p>
-    </section>
+    <DocsHero
+      kicker={content.hero.kicker}
+      title={content.hero.title}
+      titleAccent={content.hero.titleAccent}
+      body={content.hero.body}
+    />
 
     <!-- ═══ §01 · Das Grid ═══ -->
-    <section id="grid" class="docs-section">
-      <div class="docs-inner">
-        <div class="cm-section-header-meta">
-          <span class="cm-section-header-num">&sect; 01</span>
-          <span class="cm-section-header-line"></span>
-          <span>kapitel</span>
-        </div>
-        <h2>Das Grid</h2>
-        <p class="docs-lead">{content.grid.lead}</p>
+    <DocsSection id="grid" num="01" title="Das Grid" lead={content.grid.lead}>
+      {content.grid.mainParagraphs.map((p) => (
+        <p class="docs-p" set:html={p} />
+      ))}
 
-        {content.grid.mainParagraphs.map((p) => (
-          <p class="docs-p" set:html={p} />
+      <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.grid.dragTitle}</span></h3>
+      <ul class="docs-list">
+        {content.grid.dragItems.map((item) => (
+          <li><span class="docs-list-marker">&rsaquo;</span><span set:html={item} /></li>
         ))}
+      </ul>
 
-        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.grid.dragTitle}</span></h3>
-        <ul class="docs-list">
-          {content.grid.dragItems.map((item) => (
-            <li><span class="docs-list-marker">&rsaquo;</span><span set:html={item} /></li>
-          ))}
-        </ul>
+      <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.grid.sizeTitle}</span></h3>
+      <ul class="docs-list">
+        {content.grid.sizeItems.map((item) => (
+          <li><span class="docs-list-marker">&rsaquo;</span><span set:html={item} /></li>
+        ))}
+      </ul>
 
-        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.grid.sizeTitle}</span></h3>
-        <ul class="docs-list">
-          {content.grid.sizeItems.map((item) => (
-            <li><span class="docs-list-marker">&rsaquo;</span><span set:html={item} /></li>
-          ))}
-        </ul>
-
-        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.grid.layoutsTitle}</span></h3>
-        <div class="docs-table">
-          <div class="docs-table-header docs-table-2col"><div>Layout</div><div>Wofuer</div></div>
-          {content.grid.layouts.map((l, i) => (
-            <div class:list={["docs-table-row", "docs-table-2col", { "docs-table-row-first": i === 0 }]}>
-              <div class="docs-table-label">{l.label}</div>
-              <div class="docs-table-desc">{l.desc}</div>
-            </div>
-          ))}
-        </div>
-
-        <figure class="docs-screenshot">
-          <div class="docs-screenshot-placeholder">{content.grid.screenshot.placeholder}</div>
-          <figcaption>{content.grid.screenshot.caption}</figcaption>
-        </figure>
+      <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.grid.layoutsTitle}</span></h3>
+      <div class="docs-table">
+        <div class="docs-table-header docs-table-2col"><div>Layout</div><div>Wofuer</div></div>
+        {content.grid.layouts.map((l, i) => (
+          <div class:list={["docs-table-row", "docs-table-2col", { "docs-table-row-first": i === 0 }]}>
+            <div class="docs-table-label">{l.label}</div>
+            <div class="docs-table-desc">{l.desc}</div>
+          </div>
+        ))}
       </div>
-    </section>
+
+      <ScreenshotSlot
+        caption={content.grid.screenshot.caption}
+        placeholder={content.grid.screenshot.placeholder}
+      />
+    </DocsSection>
 
     <!-- ═══ §02 · Session-Zell-Header ═══ -->
-    <section id="header" class="docs-section">
-      <div class="docs-inner">
-        <div class="cm-section-header-meta">
-          <span class="cm-section-header-num">&sect; 02</span>
-          <span class="cm-section-header-line"></span>
-          <span>kapitel</span>
-        </div>
-        <h2>Session-Zell-Header</h2>
-        <p class="docs-lead">{content.header.lead}</p>
+    <DocsSection id="header" num="02" title="Session-Zell-Header" lead={content.header.lead}>
+      <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.header.leftTitle}</span></h3>
+      <ul class="docs-list">
+        {content.header.leftItems.map((item) => (
+          <li><span class="docs-list-marker">&rsaquo;</span><span set:html={item} /></li>
+        ))}
+      </ul>
 
-        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.header.leftTitle}</span></h3>
-        <ul class="docs-list">
-          {content.header.leftItems.map((item) => (
-            <li><span class="docs-list-marker">&rsaquo;</span><span set:html={item} /></li>
-          ))}
-        </ul>
+      <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.header.contextTitle}</span></h3>
+      <Callout kind="tip" title="Context-Farben">
+        {content.header.contextDesc}
+      </Callout>
 
-        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.header.contextTitle}</span></h3>
-        <p class="docs-p">{content.header.contextDesc}</p>
-
-        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.header.buttonsTitle}</span></h3>
-        <div class="docs-table">
-          <div class="docs-table-header docs-table-3col"><div>Icon</div><div>Aktion</div><div>Beschreibung</div></div>
-          {content.header.buttons.map((b, i) => (
-            <div class:list={["docs-table-row", "docs-table-3col", { "docs-table-row-first": i === 0 }]}>
-              <div class="docs-table-key">{b.icon}{b.shortcut ? ` / ${b.shortcut}` : ''}</div>
-              <div class="docs-table-label-mid">{b.label}</div>
-              <div class="docs-table-desc">{b.desc}</div>
-            </div>
-          ))}
-        </div>
-
-        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.header.entityTitle}</span></h3>
-        <div class="docs-table docs-table-compact">
-          <div class="docs-table-header docs-table-2col"><div>Entity</div><div>Farbe</div></div>
-          {content.header.entities.map((e, i) => (
-            <div class:list={["docs-table-row", "docs-table-2col", { "docs-table-row-first": i === 0 }]}>
-              <div class="docs-table-label">{e.label}</div>
-              <div class="docs-table-desc">{e.color}</div>
-            </div>
-          ))}
-        </div>
-
-        <figure class="docs-screenshot">
-          <div class="docs-screenshot-placeholder">{content.header.screenshot.placeholder}</div>
-          <figcaption>{content.header.screenshot.caption}</figcaption>
-        </figure>
+      <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.header.buttonsTitle}</span></h3>
+      <div class="docs-table">
+        <div class="docs-table-header docs-table-3col"><div>Icon</div><div>Aktion</div><div>Beschreibung</div></div>
+        {content.header.buttons.map((b, i) => (
+          <div class:list={["docs-table-row", "docs-table-3col", { "docs-table-row-first": i === 0 }]}>
+            <div class="docs-table-key">{b.icon}{b.shortcut ? ` / ${b.shortcut}` : ''}</div>
+            <div class="docs-table-label-mid">{b.label}</div>
+            <div class="docs-table-desc">{b.desc}</div>
+          </div>
+        ))}
       </div>
-    </section>
+
+      <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.header.entityTitle}</span></h3>
+      <div class="docs-table docs-table-compact">
+        <div class="docs-table-header docs-table-2col"><div>Entity</div><div>Farbe</div></div>
+        {content.header.entities.map((e, i) => (
+          <div class:list={["docs-table-row", "docs-table-2col", { "docs-table-row-first": i === 0 }]}>
+            <div class="docs-table-label">{e.label}</div>
+            <div class="docs-table-desc">{e.color}</div>
+          </div>
+        ))}
+      </div>
+
+      <ScreenshotSlot
+        caption={content.header.screenshot.caption}
+        placeholder={content.header.screenshot.placeholder}
+      />
+    </DocsSection>
 
     <!-- ═══ §03 · Focus Mode und Pop-Out ═══ -->
-    <section id="focus" class="docs-section">
-      <div class="docs-inner">
-        <div class="cm-section-header-meta">
-          <span class="cm-section-header-num">&sect; 03</span>
-          <span class="cm-section-header-line"></span>
-          <span>kapitel</span>
-        </div>
-        <h2>Focus Mode &amp; Pop-Out</h2>
-        <p class="docs-lead">{content.focus.lead}</p>
-
-        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.focus.focusTitle}</span></h3>
-        <ul class="docs-list">
-          {content.focus.focusItems.map((item) => (
-            <li><span class="docs-list-marker">&rsaquo;</span><span set:html={item} /></li>
-          ))}
-        </ul>
-
-        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.focus.popoutTitle}</span></h3>
-        <ul class="docs-list">
-          {content.focus.popoutItems.map((item) => (
-            <li><span class="docs-list-marker">&rsaquo;</span><span set:html={item} /></li>
-          ))}
-        </ul>
-
-        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.focus.sidebarTitle}</span></h3>
-        <p class="docs-p">{content.focus.sidebarDesc}</p>
-
-        <figure class="docs-screenshot">
-          <div class="docs-screenshot-placeholder">{content.focus.screenshot.placeholder}</div>
-          <figcaption>{content.focus.screenshot.caption}</figcaption>
-        </figure>
+    <DocsSection id="focus" num="03" title="Focus Mode & Pop-Out" lead={content.focus.lead}>
+      <div class="focus-grid">
+        <CMBox elevated>
+          <div class="cm-tag-inline">// focus mode</div>
+          <h4 class="focus-card-title">{content.focus.focusTitle}</h4>
+          <ul class="docs-list docs-list--tight">
+            {content.focus.focusItems.map((item) => (
+              <li><span class="docs-list-marker">&rsaquo;</span><span set:html={item} /></li>
+            ))}
+          </ul>
+        </CMBox>
+        <CMBox elevated>
+          <div class="cm-tag-inline">// pop-out</div>
+          <h4 class="focus-card-title">{content.focus.popoutTitle}</h4>
+          <ul class="docs-list docs-list--tight">
+            {content.focus.popoutItems.map((item) => (
+              <li><span class="docs-list-marker">&rsaquo;</span><span set:html={item} /></li>
+            ))}
+          </ul>
+        </CMBox>
       </div>
-    </section>
+
+      <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.focus.sidebarTitle}</span></h3>
+      <p class="docs-p">{content.focus.sidebarDesc}</p>
+
+      <ScreenshotSlot
+        caption={content.focus.screenshot.caption}
+        placeholder={content.focus.screenshot.placeholder}
+      />
+    </DocsSection>
 
     <!-- ═══ §04 · Die Sidebar ═══ -->
-    <section id="sidebar" class="docs-section">
-      <div class="docs-inner">
-        <div class="cm-section-header-meta">
-          <span class="cm-section-header-num">&sect; 04</span>
-          <span class="cm-section-header-line"></span>
-          <span>kapitel</span>
-        </div>
-        <h2>Die Sidebar</h2>
-        <p class="docs-lead">{content.sidebar.lead}</p>
-
-        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.sidebar.sectionsTitle}</span></h3>
-        <div class="docs-table">
-          <div class="docs-table-header docs-table-2col"><div>Sektion</div><div>Inhalt</div></div>
-          {content.sidebar.sections.map((s, i) => (
-            <div class:list={["docs-table-row", "docs-table-2col", { "docs-table-row-first": i === 0 }]}>
-              <div class="docs-table-label">{s.label}</div>
-              <div class="docs-table-desc">{s.desc}</div>
-            </div>
-          ))}
-        </div>
-
-        <div class="docs-callout docs-callout-tip">
-          <div class="docs-callout-label">Tipp</div>
-          <div class="docs-callout-body">{content.sidebar.detachTip}</div>
-        </div>
-
-        <figure class="docs-screenshot">
-          <div class="docs-screenshot-placeholder">{content.sidebar.screenshot.placeholder}</div>
-          <figcaption>{content.sidebar.screenshot.caption}</figcaption>
-        </figure>
+    <DocsSection id="sidebar" num="04" title="Die Sidebar" lead={content.sidebar.lead}>
+      <div class="docs-table">
+        <div class="docs-table-header docs-table-2col"><div>Sektion</div><div>Inhalt</div></div>
+        {content.sidebar.sections.map((s, i) => (
+          <div class:list={["docs-table-row", "docs-table-2col", { "docs-table-row-first": i === 0 }]}>
+            <div class="docs-table-label">{s.label}</div>
+            <div class="docs-table-desc">{s.desc}</div>
+          </div>
+        ))}
       </div>
-    </section>
+
+      <Callout kind="tip" title="Detach">
+        {content.sidebar.detachTip}
+      </Callout>
+
+      <ScreenshotSlot
+        caption={content.sidebar.screenshot.caption}
+        placeholder={content.sidebar.screenshot.placeholder}
+      />
+    </DocsSection>
 
     <!-- ═══ §05 · Sprachsteuerung ═══ -->
-    <section id="voice" class="docs-section">
-      <div class="docs-inner">
-        <div class="cm-section-header-meta">
-          <span class="cm-section-header-num">&sect; 05</span>
-          <span class="cm-section-header-line"></span>
-          <span>kapitel</span>
-        </div>
-        <h2>Sprachsteuerung</h2>
-        <p class="docs-lead">{content.voice.lead}</p>
+    <DocsSection id="voice" num="05" title="Sprachsteuerung" lead={content.voice.lead}>
+      <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.voice.ledTitle}</span></h3>
+      <LedRow states={[
+        { color: 'var(--color-text-dim)', label: 'aus', desc: 'Voice deaktiviert' },
+        { color: '#A3BE8C', label: 'gruen', desc: 'bereit, hoert nicht zu' },
+        { color: '#BF616A', label: 'rot', desc: 'nimmt gerade auf' },
+        { color: '#EBCB8B', label: 'gelb', desc: 'verarbeitet — bitte warten' },
+      ]} />
 
-        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.voice.modesTitle}</span></h3>
-        <div class="docs-table">
-          <div class="docs-table-header docs-table-2col"><div>Modus</div><div>Beschreibung</div></div>
-          {content.voice.modes.map((m, i) => (
-            <div class:list={["docs-table-row", "docs-table-2col", { "docs-table-row-first": i === 0 }]}>
-              <div class="docs-table-label">{m.label}</div>
-              <div class="docs-table-desc">{m.desc}</div>
-            </div>
-          ))}
-        </div>
-
-        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.voice.ledTitle}</span></h3>
-        <div class="docs-led-row">
-          {content.voice.leds.map((led) => (
-            <div class="docs-led-item">
-              <span class={`docs-led-dot docs-led-${led.css}`}></span>
-              <span class="docs-led-label">{led.label}</span>
-              <span class="docs-led-desc">{led.desc}</span>
-            </div>
-          ))}
-        </div>
-
-        <div class="docs-callout docs-callout-rule">
-          <div class="docs-callout-label">Faustregel &middot; Wichtig</div>
-          <div class="docs-callout-body">Gesprochener Text wird eingefuegt aber <em>nicht automatisch gesendet</em>. Du kannst lesen, korrigieren, dann per <span class="docs-mono">"abschicken"</span> oder Enter senden.</div>
-        </div>
-
-        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.voice.textTitle}</span></h3>
-        <div class="docs-table docs-table-compact">
-          <div class="docs-table-header docs-table-2col"><div>Sage</div><div>Bewirkt</div></div>
-          {content.voice.textCommands.map((c, i) => (
-            <div class:list={["docs-table-row", "docs-table-2col", { "docs-table-row-first": i === 0 }]}>
-              <div class="docs-table-label">{c.cmd}</div>
-              <div class="docs-table-desc">{c.desc}</div>
-            </div>
-          ))}
-        </div>
-
-        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.voice.scrollTitle}</span></h3>
-        <div class="docs-table docs-table-compact">
-          <div class="docs-table-header docs-table-2col"><div>Sage</div><div>Bewirkt</div></div>
-          {content.voice.scrollCommands.map((c, i) => (
-            <div class:list={["docs-table-row", "docs-table-2col", { "docs-table-row-first": i === 0 }]}>
-              <div class="docs-table-label">{c.cmd}</div>
-              <div class="docs-table-desc">{c.desc}</div>
-            </div>
-          ))}
-        </div>
-
-        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.voice.gridNavTitle}</span></h3>
-        <div class="docs-table docs-table-compact">
-          <div class="docs-table-header docs-table-2col"><div>Sage</div><div>Bewirkt</div></div>
-          {content.voice.gridNavCommands.map((c, i) => (
-            <div class:list={["docs-table-row", "docs-table-2col", { "docs-table-row-first": i === 0 }]}>
-              <div class="docs-table-label">{c.cmd}</div>
-              <div class="docs-table-desc">{c.desc}</div>
-            </div>
-          ))}
-        </div>
-        <p class="docs-p" set:html={content.voice.gridNavNote} />
-
-        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.voice.comTitle}</span></h3>
-        {content.voice.comParagraphs.map((p) => (
-          <p class="docs-p">{p}</p>
+      <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.voice.modesTitle}</span></h3>
+      <div class="docs-table">
+        <div class="docs-table-header docs-table-2col"><div>Modus</div><div>Beschreibung</div></div>
+        {content.voice.modes.map((m, i) => (
+          <div class:list={["docs-table-row", "docs-table-2col", { "docs-table-row-first": i === 0 }]}>
+            <div class="docs-table-label">{m.label}</div>
+            <div class="docs-table-desc">{m.desc}</div>
+          </div>
         ))}
-
-        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.voice.pinTitle}</span></h3>
-        <p class="docs-p">{content.voice.pinDesc}</p>
-
-        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.voice.ttsTitle}</span></h3>
-        <ul class="docs-list">
-          {content.voice.ttsItems.map((item) => (
-            <li><span class="docs-list-marker">&rsaquo;</span><span set:html={item} /></li>
-          ))}
-        </ul>
-
-        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.voice.btTitle}</span></h3>
-        <ul class="docs-list">
-          {content.voice.btItems.map((item) => (
-            <li><span class="docs-list-marker">&rsaquo;</span><span set:html={item} /></li>
-          ))}
-        </ul>
-
-        <figure class="docs-screenshot">
-          <div class="docs-screenshot-placeholder">{content.voice.screenshot.placeholder}</div>
-          <figcaption>{content.voice.screenshot.caption}</figcaption>
-        </figure>
       </div>
-    </section>
+
+      <Callout kind="rule" title="Nicht auto-sent">
+        Gesprochener Text wird eingefuegt aber <em>nicht automatisch gesendet</em>. Du kannst lesen, korrigieren, dann per <span class="docs-mono">"abschicken"</span> oder Enter senden.
+      </Callout>
+
+      <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.voice.textTitle}</span></h3>
+      <div class="docs-table docs-table-compact">
+        <div class="docs-table-header docs-table-2col"><div>Sage</div><div>Bewirkt</div></div>
+        {content.voice.textCommands.map((c, i) => (
+          <div class:list={["docs-table-row", "docs-table-2col", { "docs-table-row-first": i === 0 }]}>
+            <div class="docs-table-label">{c.cmd}</div>
+            <div class="docs-table-desc">{c.desc}</div>
+          </div>
+        ))}
+      </div>
+
+      <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.voice.scrollTitle}</span></h3>
+      <div class="docs-table docs-table-compact">
+        <div class="docs-table-header docs-table-2col"><div>Sage</div><div>Bewirkt</div></div>
+        {content.voice.scrollCommands.map((c, i) => (
+          <div class:list={["docs-table-row", "docs-table-2col", { "docs-table-row-first": i === 0 }]}>
+            <div class="docs-table-label">{c.cmd}</div>
+            <div class="docs-table-desc">{c.desc}</div>
+          </div>
+        ))}
+      </div>
+
+      <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.voice.gridNavTitle}</span></h3>
+      <div class="docs-table docs-table-compact">
+        <div class="docs-table-header docs-table-2col"><div>Sage</div><div>Bewirkt</div></div>
+        {content.voice.gridNavCommands.map((c, i) => (
+          <div class:list={["docs-table-row", "docs-table-2col", { "docs-table-row-first": i === 0 }]}>
+            <div class="docs-table-label">{c.cmd}</div>
+            <div class="docs-table-desc">{c.desc}</div>
+          </div>
+        ))}
+      </div>
+      <p class="docs-p" set:html={content.voice.gridNavNote} />
+
+      <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.voice.comTitle}</span></h3>
+      {content.voice.comParagraphs.map((p) => (
+        <p class="docs-p">{p}</p>
+      ))}
+
+      <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.voice.pinTitle}</span></h3>
+      <p class="docs-p">{content.voice.pinDesc}</p>
+
+      <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.voice.ttsTitle}</span></h3>
+      <ul class="docs-list">
+        {content.voice.ttsItems.map((item) => (
+          <li><span class="docs-list-marker">&rsaquo;</span><span set:html={item} /></li>
+        ))}
+      </ul>
+
+      <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.voice.btTitle}</span></h3>
+      <ul class="docs-list">
+        {content.voice.btItems.map((item) => (
+          <li><span class="docs-list-marker">&rsaquo;</span><span set:html={item} /></li>
+        ))}
+      </ul>
+
+      <ScreenshotSlot
+        caption={content.voice.screenshot.caption}
+        placeholder={content.voice.screenshot.placeholder}
+      />
+    </DocsSection>
 
     <!-- ═══ §06 · Notes ═══ -->
-    <section id="notes" class="docs-section">
-      <div class="docs-inner">
-        <div class="cm-section-header-meta">
-          <span class="cm-section-header-num">&sect; 06</span>
-          <span class="cm-section-header-line"></span>
-          <span>kapitel</span>
+    <DocsSection id="notes" num="06" title="Notes" lead={content.notes.lead}>
+      <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.notes.createTitle}</span></h3>
+      <ul class="docs-list">
+        {content.notes.createItems.map((item) => (
+          <li><span class="docs-list-marker">&rsaquo;</span><span set:html={item} /></li>
+        ))}
+      </ul>
+
+      <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.notes.editorTitle}</span></h3>
+      <ul class="docs-list">
+        {content.notes.editorItems.map((item) => (
+          <li><span class="docs-list-marker">&rsaquo;</span><span set:html={item} /></li>
+        ))}
+      </ul>
+
+      <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.notes.saveTitle}</span></h3>
+      <ul class="docs-list">
+        {content.notes.saveItems.map((item) => (
+          <li><span class="docs-list-marker">&rsaquo;</span><span set:html={item} /></li>
+        ))}
+      </ul>
+
+      <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.notes.voiceTitle}</span></h3>
+      <p class="docs-p">{content.notes.voiceDesc}</p>
+
+      <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.notes.scopingTitle}</span></h3>
+      <p class="docs-p" set:html={content.notes.scopingDesc} />
+
+      <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.notes.handoffTitle}</span></h3>
+      <p class="docs-p" set:html={content.notes.handoffDesc} />
+
+      <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.notes.testcaseTitle}</span></h3>
+      <p class="docs-p" set:html={content.notes.testcaseDesc} />
+
+      <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.notes.comparisonTitle}</span></h3>
+      <div class="docs-table">
+        <div class="docs-table-header docs-table-3col">
+          <div>Aspekt</div><div>Note</div><div>Memory</div>
         </div>
-        <h2>Notes</h2>
-        <p class="docs-lead">{content.notes.lead}</p>
-
-        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.notes.createTitle}</span></h3>
-        <ul class="docs-list">
-          {content.notes.createItems.map((item) => (
-            <li><span class="docs-list-marker">&rsaquo;</span><span set:html={item} /></li>
-          ))}
-        </ul>
-
-        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.notes.editorTitle}</span></h3>
-        <ul class="docs-list">
-          {content.notes.editorItems.map((item) => (
-            <li><span class="docs-list-marker">&rsaquo;</span><span set:html={item} /></li>
-          ))}
-        </ul>
-
-        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.notes.saveTitle}</span></h3>
-        <ul class="docs-list">
-          {content.notes.saveItems.map((item) => (
-            <li><span class="docs-list-marker">&rsaquo;</span><span set:html={item} /></li>
-          ))}
-        </ul>
-
-        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.notes.voiceTitle}</span></h3>
-        <p class="docs-p">{content.notes.voiceDesc}</p>
-
-        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.notes.scopingTitle}</span></h3>
-        <p class="docs-p" set:html={content.notes.scopingDesc} />
-
-        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.notes.handoffTitle}</span></h3>
-        <p class="docs-p" set:html={content.notes.handoffDesc} />
-
-        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.notes.testcaseTitle}</span></h3>
-        <p class="docs-p" set:html={content.notes.testcaseDesc} />
-
-        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.notes.comparisonTitle}</span></h3>
-        <div class="docs-table">
-          <div class="docs-table-header docs-table-3col">
-            <div>Aspekt</div><div>Note</div><div>Memory</div>
+        {content.notes.comparisonRows.map((row, i) => (
+          <div class:list={["docs-table-row", "docs-table-3col", { "docs-table-row-first": i === 0 }]}>
+            <div class="docs-table-key">{row.aspect}</div>
+            <div class="docs-table-label-mid">{row.note}</div>
+            <div class="docs-table-desc">{row.mem}</div>
           </div>
-          {content.notes.comparisonRows.map((row, i) => (
-            <div class:list={["docs-table-row", "docs-table-3col", { "docs-table-row-first": i === 0 }]}>
-              <div class="docs-table-key">{row.aspect}</div>
-              <div class="docs-table-label-mid">{row.note}</div>
-              <div class="docs-table-desc">{row.mem}</div>
-            </div>
-          ))}
+        ))}
+      </div>
+
+      <div class="docs-screenshot-row">
+        <div class="docs-screenshot-sm">
+          <img src="/images/screenshots/detail-notes-editor.webp" alt="Notes-Editor mit Feature-Spec" loading="lazy" />
+          <span>Notes-Editor</span>
         </div>
-
-        <div class="docs-screenshot-row">
-          <div class="docs-screenshot-sm">
-            <img src="/images/screenshots/detail-notes-editor.webp" alt="Notes-Editor mit Feature-Spec" loading="lazy" />
-            <span>Notes-Editor</span>
-          </div>
-          <div class="docs-screenshot-sm">
-            <img src="/images/screenshots/detail-testcase-view.webp" alt="Testcase-View" loading="lazy" />
-            <span>Testcase-View</span>
-          </div>
+        <div class="docs-screenshot-sm">
+          <img src="/images/screenshots/detail-testcase-view.webp" alt="Testcase-View" loading="lazy" />
+          <span>Testcase-View</span>
         </div>
       </div>
-    </section>
+    </DocsSection>
 
     <!-- ═══ §07 · Projekte und Hub ═══ -->
-    <section id="projects" class="docs-section">
-      <div class="docs-inner">
-        <div class="cm-section-header-meta">
-          <span class="cm-section-header-num">&sect; 07</span>
-          <span class="cm-section-header-line"></span>
-          <span>kapitel</span>
-        </div>
-        <h2>Projekte und Hub</h2>
-        <p class="docs-lead">{content.projects.lead}</p>
-
-        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.projects.structureTitle}</span></h3>
-        <pre class="docs-terminal">projekt-name/
+    <DocsSection id="projects" num="07" title="Projekte und Hub" lead={content.projects.lead}>
+      <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.projects.structureTitle}</span></h3>
+      <pre class="docs-terminal">projekt-name/
   .claude/              <span class="dim">Claude Code Config</span>
   .cyber-factory/       <span class="dim">Run-Konfiguration</span>
   docs/specs/           <span class="dim">Detail-Specs mit REQ-IDs</span>
@@ -396,209 +337,178 @@ const lang = 'de';
   tests/                <span class="dim">Tests</span>
   .project-meta.json    <span class="dim">Phase, Workspace, Tags, Verwendungszweck</span></pre>
 
-        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.projects.adoptionTitle}</span></h3>
-        <div class="docs-table">
-          <div class="docs-table-header docs-table-2col"><div>Modus</div><div>Was passiert</div></div>
-          {content.projects.adoptionModes.map((m, i) => (
-            <div class:list={["docs-table-row", "docs-table-2col", { "docs-table-row-first": i === 0 }]}>
-              <div class="docs-table-label">{m.label}</div>
-              <div class="docs-table-desc">{m.desc}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══ §08 · Einstellungen ═══ -->
-    <section id="settings" class="docs-section">
-      <div class="docs-inner">
-        <div class="cm-section-header-meta">
-          <span class="cm-section-header-num">&sect; 08</span>
-          <span class="cm-section-header-line"></span>
-          <span>kapitel</span>
-        </div>
-        <h2>Einstellungen</h2>
-        <p class="docs-lead">{content.settings.lead}</p>
-
-        <div class="docs-tab-strip">
-          {content.settings.tabs.map((tab, i) => (
-            <div class:list={["docs-tab", { "docs-tab-active": i === 0 }]}>{tab}</div>
-          ))}
-        </div>
-
-        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.settings.generalTitle}</span></h3>
-        <div class="docs-table">
-          <div class="docs-table-header docs-table-2col"><div>Option</div><div>Beschreibung</div></div>
-          {content.settings.generalRows.map((r, i) => (
-            <div class:list={["docs-table-row", "docs-table-2col", { "docs-table-row-first": i === 0 }]}>
-              <div class="docs-table-label">{r.label}</div>
-              <div class="docs-table-desc">{r.desc}</div>
-            </div>
-          ))}
-        </div>
-
-        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.settings.languageTitle}</span></h3>
-        <div class="docs-table">
-          <div class="docs-table-header docs-table-2col"><div>Bereich</div><div>Optionen</div></div>
-          {content.settings.languageRows.map((r, i) => (
-            <div class:list={["docs-table-row", "docs-table-2col", { "docs-table-row-first": i === 0 }]}>
-              <div class="docs-table-label">{r.label}</div>
-              <div class="docs-table-desc">{r.desc}</div>
-            </div>
-          ))}
-        </div>
-
-        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.settings.themesTitle}</span></h3>
-        <p class="docs-p">{content.settings.themesIntro}</p>
-
-        {content.settings.themeCategories.map((cat) => (
-          <div class="docs-theme-category">
-            <p class="docs-p"><strong>{cat.category}</strong></p>
-            <div class="docs-table docs-table-compact">
-              <div class="docs-table-header docs-table-2col"><div>Theme</div><div>Charakter</div></div>
-              {cat.themes.map((t, i) => (
-                <div class:list={["docs-table-row", "docs-table-2col", { "docs-table-row-first": i === 0 }]}>
-                  <div class="docs-table-label">{t.label}</div>
-                  <div class="docs-table-desc">{t.desc}</div>
-                </div>
-              ))}
-            </div>
+      <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.projects.adoptionTitle}</span></h3>
+      <div class="docs-table">
+        <div class="docs-table-header docs-table-2col"><div>Modus</div><div>Was passiert</div></div>
+        {content.projects.adoptionModes.map((m, i) => (
+          <div class:list={["docs-table-row", "docs-table-2col", { "docs-table-row-first": i === 0 }]}>
+            <div class="docs-table-label">{m.label}</div>
+            <div class="docs-table-desc">{m.desc}</div>
           </div>
         ))}
+      </div>
+    </DocsSection>
 
-        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.settings.editorTitle}</span></h3>
-        <div class="docs-table docs-table-compact">
-          <div class="docs-table-header docs-table-2col"><div>Aktion</div><div>Was passiert</div></div>
-          {content.settings.editorRows.map((r, i) => (
-            <div class:list={["docs-table-row", "docs-table-2col", { "docs-table-row-first": i === 0 }]}>
-              <div class="docs-table-label">{r.label}</div>
-              <div class="docs-table-desc">{r.desc}</div>
-            </div>
-          ))}
+    <!-- ═══ §08 · Einstellungen ═══ -->
+    <DocsSection id="settings" num="08" title="Einstellungen" lead={content.settings.lead}>
+      <div class="docs-tab-strip">
+        {content.settings.tabs.map((tab, i) => (
+          <div class:list={["docs-tab", { "docs-tab-active": i === 0 }]}>{tab}</div>
+        ))}
+      </div>
+
+      <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.settings.generalTitle}</span></h3>
+      <div class="docs-table">
+        <div class="docs-table-header docs-table-2col"><div>Option</div><div>Beschreibung</div></div>
+        {content.settings.generalRows.map((r, i) => (
+          <div class:list={["docs-table-row", "docs-table-2col", { "docs-table-row-first": i === 0 }]}>
+            <div class="docs-table-label">{r.label}</div>
+            <div class="docs-table-desc">{r.desc}</div>
+          </div>
+        ))}
+      </div>
+
+      <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.settings.languageTitle}</span></h3>
+      <div class="docs-table">
+        <div class="docs-table-header docs-table-2col"><div>Bereich</div><div>Optionen</div></div>
+        {content.settings.languageRows.map((r, i) => (
+          <div class:list={["docs-table-row", "docs-table-2col", { "docs-table-row-first": i === 0 }]}>
+            <div class="docs-table-label">{r.label}</div>
+            <div class="docs-table-desc">{r.desc}</div>
+          </div>
+        ))}
+      </div>
+
+      <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.settings.themesTitle}</span></h3>
+      <p class="docs-p">{content.settings.themesIntro}</p>
+
+      {content.settings.themeCategories.map((cat) => (
+        <div class="docs-theme-category">
+          <p class="docs-p"><strong>{cat.category}</strong></p>
+          <div class="docs-table docs-table-compact">
+            <div class="docs-table-header docs-table-2col"><div>Theme</div><div>Charakter</div></div>
+            {cat.themes.map((t, i) => (
+              <div class:list={["docs-table-row", "docs-table-2col", { "docs-table-row-first": i === 0 }]}>
+                <div class="docs-table-label">{t.label}</div>
+                <div class="docs-table-desc">{t.desc}</div>
+              </div>
+            ))}
+          </div>
         </div>
+      ))}
 
-        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.settings.shortcutsTitle}</span></h3>
-        <p class="docs-p">{content.settings.shortcutsDesc}</p>
+      <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.settings.editorTitle}</span></h3>
+      <div class="docs-table docs-table-compact">
+        <div class="docs-table-header docs-table-2col"><div>Aktion</div><div>Was passiert</div></div>
+        {content.settings.editorRows.map((r, i) => (
+          <div class:list={["docs-table-row", "docs-table-2col", { "docs-table-row-first": i === 0 }]}>
+            <div class="docs-table-label">{r.label}</div>
+            <div class="docs-table-desc">{r.desc}</div>
+          </div>
+        ))}
+      </div>
 
-        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.settings.a11yTitle}</span></h3>
-        <p class="docs-p">{content.settings.a11yDesc}</p>
+      <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.settings.shortcutsTitle}</span></h3>
+      <p class="docs-p">{content.settings.shortcutsDesc}</p>
 
-        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.settings.aboutTitle}</span></h3>
-        <p class="docs-p">{content.settings.aboutDesc}</p>
+      <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.settings.a11yTitle}</span></h3>
+      <p class="docs-p">{content.settings.a11yDesc}</p>
 
-        <div class="docs-screenshot-row docs-screenshot-row--4">
-          <div class="docs-screenshot-sm">
-            <img src="/images/screenshots/detail-settings-general.webp" alt="Allgemein" loading="lazy" />
-            <span>Allgemein</span>
-          </div>
-          <div class="docs-screenshot-sm">
-            <img src="/images/screenshots/detail-settings-themes.webp" alt="Themes" loading="lazy" />
-            <span>Themes</span>
-          </div>
-          <div class="docs-screenshot-sm">
-            <img src="/images/screenshots/detail-settings-a11y.webp" alt="A11y" loading="lazy" />
-            <span>Barrierefreiheit</span>
-          </div>
-          <div class="docs-screenshot-sm">
-            <img src="/images/screenshots/detail-settings-models.webp" alt="Models" loading="lazy" />
-            <span>LLM-Provider</span>
-          </div>
+      <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.settings.aboutTitle}</span></h3>
+      <p class="docs-p">{content.settings.aboutDesc}</p>
+
+      <div class="docs-screenshot-row docs-screenshot-row--4">
+        <div class="docs-screenshot-sm">
+          <img src="/images/screenshots/detail-settings-general.webp" alt="Allgemein" loading="lazy" />
+          <span>Allgemein</span>
+        </div>
+        <div class="docs-screenshot-sm">
+          <img src="/images/screenshots/detail-settings-themes.webp" alt="Themes" loading="lazy" />
+          <span>Themes</span>
+        </div>
+        <div class="docs-screenshot-sm">
+          <img src="/images/screenshots/detail-settings-a11y.webp" alt="A11y" loading="lazy" />
+          <span>Barrierefreiheit</span>
+        </div>
+        <div class="docs-screenshot-sm">
+          <img src="/images/screenshots/detail-settings-models.webp" alt="Models" loading="lazy" />
+          <span>LLM-Provider</span>
         </div>
       </div>
-    </section>
+    </DocsSection>
 
     <!-- ═══ §09 · Bugreport-Dialog ═══ -->
-    <section id="bugreport" class="docs-section">
-      <div class="docs-inner">
-        <div class="cm-section-header-meta">
-          <span class="cm-section-header-num">&sect; 09</span>
-          <span class="cm-section-header-line"></span>
-          <span>kapitel</span>
-        </div>
-        <h2>Bugreport-Dialog</h2>
-        <p class="docs-lead">{content.bugreport.lead}</p>
-
-        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.bugreport.workflowTitle}</span></h3>
-        <div class="docs-table">
-          <div class="docs-table-header docs-table-2col"><div>Schritt</div><div>Was passiert</div></div>
-          {content.bugreport.workflowSteps.map((s, i) => (
-            <div class:list={["docs-table-row", "docs-table-2col", { "docs-table-row-first": i === 0 }]}>
-              <div class="docs-table-label">{s.step}</div>
-              <div class="docs-table-desc">{s.desc}</div>
-            </div>
-          ))}
-        </div>
-
-        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.bugreport.githubTitle}</span></h3>
-        <ul class="docs-list">
-          {content.bugreport.githubItems.map((item) => (
-            <li><span class="docs-list-marker">&rsaquo;</span><span set:html={item} /></li>
-          ))}
-        </ul>
-
-        <figure class="docs-screenshot">
-          <div class="docs-screenshot-placeholder">{content.bugreport.screenshot.placeholder}</div>
-          <figcaption>{content.bugreport.screenshot.caption}</figcaption>
-        </figure>
+    <DocsSection id="bugreport" num="09" title="Bugreport-Dialog" lead={content.bugreport.lead}>
+      <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.bugreport.workflowTitle}</span></h3>
+      <div class="docs-table">
+        <div class="docs-table-header docs-table-2col"><div>Schritt</div><div>Was passiert</div></div>
+        {content.bugreport.workflowSteps.map((s, i) => (
+          <div class:list={["docs-table-row", "docs-table-2col", { "docs-table-row-first": i === 0 }]}>
+            <div class="docs-table-label">{s.step}</div>
+            <div class="docs-table-desc">{s.desc}</div>
+          </div>
+        ))}
       </div>
-    </section>
+
+      <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.bugreport.githubTitle}</span></h3>
+      <ul class="docs-list">
+        {content.bugreport.githubItems.map((item) => (
+          <li><span class="docs-list-marker">&rsaquo;</span><span set:html={item} /></li>
+        ))}
+      </ul>
+
+      <ScreenshotSlot
+        caption={content.bugreport.screenshot.caption}
+        placeholder={content.bugreport.screenshot.placeholder}
+      />
+    </DocsSection>
 
     <!-- ═══ §10 · Tastenkuerzel ═══ -->
-    <section id="shortcuts" class="docs-section">
-      <div class="docs-inner">
-        <div class="cm-section-header-meta">
-          <span class="cm-section-header-num">&sect; 10</span>
-          <span class="cm-section-header-line"></span>
-          <span>kapitel</span>
-        </div>
-        <h2>Tastenkuerzel</h2>
-        <p class="docs-lead">{content.shortcuts.lead}</p>
-
-        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.shortcuts.navigation.title}</span></h3>
-        <div class="docs-table docs-table-compact">
-          <div class="docs-table-header docs-table-2col"><div>Kuerzel</div><div>Aktion</div></div>
-          {content.shortcuts.navigation.items.map((s, i) => (
-            <div class:list={["docs-table-row", "docs-table-2col", { "docs-table-row-first": i === 0 }]}>
-              <div class="docs-table-label">{s.key}</div>
-              <div class="docs-table-desc">{s.action}</div>
-            </div>
-          ))}
-        </div>
-
-        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.shortcuts.layout.title}</span></h3>
-        <div class="docs-table docs-table-compact">
-          <div class="docs-table-header docs-table-2col"><div>Kuerzel</div><div>Aktion</div></div>
-          {content.shortcuts.layout.items.map((s, i) => (
-            <div class:list={["docs-table-row", "docs-table-2col", { "docs-table-row-first": i === 0 }]}>
-              <div class="docs-table-label">{s.key}</div>
-              <div class="docs-table-desc">{s.action}</div>
-            </div>
-          ))}
-        </div>
-
-        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.shortcuts.actions.title}</span></h3>
-        <div class="docs-table docs-table-compact">
-          <div class="docs-table-header docs-table-2col"><div>Kuerzel</div><div>Aktion</div></div>
-          {content.shortcuts.actions.items.map((s, i) => (
-            <div class:list={["docs-table-row", "docs-table-2col", { "docs-table-row-first": i === 0 }]}>
-              <div class="docs-table-label">{s.key}</div>
-              <div class="docs-table-desc">{s.action}</div>
-            </div>
-          ))}
-        </div>
-
-        <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.shortcuts.terminal.title}</span></h3>
-        <div class="docs-table docs-table-compact">
-          <div class="docs-table-header docs-table-2col"><div>Kuerzel</div><div>Aktion</div></div>
-          {content.shortcuts.terminal.items.map((s, i) => (
-            <div class:list={["docs-table-row", "docs-table-2col", { "docs-table-row-first": i === 0 }]}>
-              <div class="docs-table-label">{s.key}</div>
-              <div class="docs-table-desc">{s.action}</div>
-            </div>
-          ))}
-        </div>
+    <DocsSection id="shortcuts" num="10" title="Tastenkuerzel" lead={content.shortcuts.lead}>
+      <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.shortcuts.navigation.title}</span></h3>
+      <div class="docs-table docs-table-compact">
+        <div class="docs-table-header docs-table-2col"><div>Kuerzel</div><div>Aktion</div></div>
+        {content.shortcuts.navigation.items.map((s, i) => (
+          <div class:list={["docs-table-row", "docs-table-2col", { "docs-table-row-first": i === 0 }]}>
+            <div class="docs-table-label">{s.key}</div>
+            <div class="docs-table-desc">{s.action}</div>
+          </div>
+        ))}
       </div>
-    </section>
+
+      <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.shortcuts.layout.title}</span></h3>
+      <div class="docs-table docs-table-compact">
+        <div class="docs-table-header docs-table-2col"><div>Kuerzel</div><div>Aktion</div></div>
+        {content.shortcuts.layout.items.map((s, i) => (
+          <div class:list={["docs-table-row", "docs-table-2col", { "docs-table-row-first": i === 0 }]}>
+            <div class="docs-table-label">{s.key}</div>
+            <div class="docs-table-desc">{s.action}</div>
+          </div>
+        ))}
+      </div>
+
+      <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.shortcuts.actions.title}</span></h3>
+      <div class="docs-table docs-table-compact">
+        <div class="docs-table-header docs-table-2col"><div>Kuerzel</div><div>Aktion</div></div>
+        {content.shortcuts.actions.items.map((s, i) => (
+          <div class:list={["docs-table-row", "docs-table-2col", { "docs-table-row-first": i === 0 }]}>
+            <div class="docs-table-label">{s.key}</div>
+            <div class="docs-table-desc">{s.action}</div>
+          </div>
+        ))}
+      </div>
+
+      <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.shortcuts.terminal.title}</span></h3>
+      <div class="docs-table docs-table-compact">
+        <div class="docs-table-header docs-table-2col"><div>Kuerzel</div><div>Aktion</div></div>
+        {content.shortcuts.terminal.items.map((s, i) => (
+          <div class:list={["docs-table-row", "docs-table-2col", { "docs-table-row-first": i === 0 }]}>
+            <div class="docs-table-label">{s.key}</div>
+            <div class="docs-table-desc">{s.action}</div>
+          </div>
+        ))}
+      </div>
+    </DocsSection>
 
     <!-- ═══ Bottom CTA ═══ -->
     <section class="docs-bottom">
@@ -622,8 +532,11 @@ const lang = 'de';
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const sections = document.querySelectorAll('.docs-section');
+      const sections = document.querySelectorAll('[id]');
       const navItems = document.querySelectorAll('.cm-anchor-nav-item');
+      const sectionIds = new Set(Array.from(navItems).map(a => a.getAttribute('href')?.slice(1)));
+      const observed = Array.from(sections).filter(s => sectionIds.has(s.id));
+
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -634,61 +547,21 @@ const lang = 'de';
           }
         });
       }, { rootMargin: '-20% 0px -70% 0px' });
-      sections.forEach(s => observer.observe(s));
+      observed.forEach(s => observer.observe(s));
     });
   </script>
 </Layout>
 
 <style>
-  /* ─── Page Layout ─── */
+  /* --- Page Layout --- */
   .docs-page {
     position: relative;
     max-width: var(--max-width);
     margin: 0 auto;
-    padding: 0 64px;
+    padding: 0 var(--section-pad-x);
   }
 
-  .docs-inner {
-    max-width: 920px;
-  }
-
-  /* ─── Hero ─── */
-  .docs-hero {
-    padding: 120px 0 48px;
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  .cm-tag {
-    font-family: 'Rajdhani', sans-serif;
-    font-weight: 700;
-    font-size: 13px;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--color-accent);
-    display: block;
-    margin-bottom: 16px;
-  }
-
-  .docs-hero h1 {
-    font-family: 'Rajdhani', sans-serif;
-    font-weight: 700;
-    font-size: clamp(38px, 5vw, 64px);
-    line-height: 0.98;
-    letter-spacing: -0.02em;
-    margin: 0 0 24px;
-  }
-
-  .accent { color: var(--color-accent); }
-
-  .docs-body {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 19px;
-    line-height: 1.5;
-    color: var(--color-text-secondary);
-    max-width: 720px;
-  }
-
-  /* ─── Anchor Nav ─── */
+  /* --- Anchor Nav --- */
   .cm-anchor-nav {
     position: fixed;
     top: 140px;
@@ -738,52 +611,32 @@ const lang = 'de';
     .cm-anchor-nav { display: none; }
   }
 
-  /* ─── Section Shell ─── */
-  .docs-section {
-    padding: 64px 0;
-    border-top: 1px solid var(--color-border);
-  }
-
-  .cm-section-header-meta {
-    display: flex;
-    align-items: baseline;
-    gap: 14px;
-    font-family: 'Fira Code', monospace;
-    font-size: 11px;
-    letter-spacing: 0.18em;
-    color: var(--color-text-dim);
-    text-transform: uppercase;
-    margin-bottom: 8px;
-  }
-
-  .cm-section-header-num { color: var(--color-accent); }
-
-  .cm-section-header-line {
-    flex: 0 0 14px;
-    height: 1px;
-    background: var(--color-border);
-    align-self: center;
-  }
-
-  .docs-section h2 {
+  /* --- Body Paragraph --- */
+  .docs-p {
     font-family: 'Rajdhani', sans-serif;
-    font-weight: 700;
-    font-size: clamp(22px, 2.5vw, 28px);
-    line-height: 1.15;
-    letter-spacing: -0.01em;
-    margin: 0 0 20px;
-  }
-
-  .docs-lead {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 18px;
-    line-height: 1.5;
+    font-size: 15.5px;
+    line-height: 1.55;
     color: var(--color-text-secondary);
-    max-width: 720px;
-    margin: 0 0 28px;
+    max-width: 760px;
+    margin: 0 0 12px;
   }
 
-  /* ─── Subhead ─── */
+  .docs-p :global(strong) { color: var(--color-text); font-weight: 600; }
+
+  /* --- Inline Mono --- */
+  :global(.docs-mono) {
+    font-family: 'Fira Code', monospace;
+    font-size: 12.5px;
+    background: var(--color-bg-elevated);
+    color: var(--color-text);
+    padding: 1px 6px;
+    border: 1px solid var(--color-border);
+    clip-path: polygon(3px 0, 100% 0, 100% calc(100% - 3px), calc(100% - 3px) 100%, 0 100%, 0 3px);
+  }
+
+  .dim { color: var(--color-text-dim); }
+
+  /* --- Subhead --- */
   .docs-subhead {
     font-family: 'Rajdhani', sans-serif;
     font-weight: 700;
@@ -806,45 +659,36 @@ const lang = 'de';
     clip-path: polygon(3px 0, 100% 0, 100% calc(100% - 3px), calc(100% - 3px) 100%, 0 100%, 0 3px);
   }
 
-  /* ─── Body Paragraph ─── */
-  .docs-p {
+  /* --- List --- */
+  .docs-list {
+    margin: 8px 0 16px;
+    padding: 0;
+    list-style: none;
+  }
+
+  .docs-list li {
+    display: flex;
+    gap: 12px;
+    padding: 5px 0;
     font-family: 'Rajdhani', sans-serif;
     font-size: 16px;
-    line-height: 1.55;
     color: var(--color-text-secondary);
-    max-width: 760px;
-    margin: 0 0 12px;
+    line-height: 1.5;
   }
 
-  .docs-p :global(strong) { color: var(--color-text); font-weight: 600; }
+  .docs-list li :global(strong) { color: var(--color-text); font-weight: 600; }
 
-  /* ─── Inline Mono ─── */
-  :global(.docs-mono) {
-    font-family: 'Fira Code', monospace;
-    font-size: 12.5px;
-    background: var(--color-bg-elevated);
-    color: var(--color-text);
-    padding: 1px 6px;
-    border: 1px solid var(--color-border);
-    clip-path: polygon(3px 0, 100% 0, 100% calc(100% - 3px), calc(100% - 3px) 100%, 0 100%, 0 3px);
-  }
+  .docs-list--tight li { padding: 3px 0; font-size: 14.5px; }
 
-  .dim { color: var(--color-text-dim); }
-
-  /* ─── Inline Link ─── */
-  .docs-inline-link {
+  .docs-list-marker {
     color: var(--color-accent);
-    text-decoration: none;
-    border-bottom: 1px dotted var(--color-accent);
-    padding-bottom: 1px;
+    font-family: 'Fira Code', monospace;
+    font-size: 12px;
+    flex-shrink: 0;
+    margin-top: 2px;
   }
 
-  .docs-inline-link:hover {
-    color: var(--color-text);
-    border-bottom-color: var(--color-text);
-  }
-
-  /* ─── Table ─── */
+  /* --- Table --- */
   .docs-table {
     border: 1px solid var(--color-border);
     background: var(--color-bg-elevated);
@@ -916,146 +760,32 @@ const lang = 'de';
     line-height: 1.45;
   }
 
-  /* ─── List ─── */
-  .docs-list {
-    margin: 8px 0 16px;
-    padding: 0;
-    list-style: none;
-  }
-
-  .docs-list li {
-    display: flex;
-    gap: 12px;
-    padding: 5px 0;
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 16px;
-    color: var(--color-text-secondary);
-    line-height: 1.5;
-  }
-
-  .docs-list li :global(strong) { color: var(--color-text); font-weight: 600; }
-
-  .docs-list-marker {
-    color: var(--color-accent);
-    font-family: 'Fira Code', monospace;
-    font-size: 12px;
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-
-  /* ─── Callout ─── */
-  .docs-callout {
-    margin: 14px 0 18px;
-    padding: 14px 18px 14px 16px;
-    background: var(--color-bg-elevated);
-    border: 1px solid var(--color-border);
+  /* --- Focus Grid (§03) --- */
+  .focus-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 8px 0 24px;
     max-width: 760px;
   }
 
-  .docs-callout-tip { border-left: 3px solid var(--color-accent); }
-  .docs-callout-warn { border-left: 3px solid var(--color-warn); }
-  .docs-callout-rule { border-left: 3px solid var(--color-text); }
-
-  .docs-callout-label {
-    font-family: 'Rajdhani', sans-serif;
-    font-weight: 700;
-    font-size: 12px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    margin-bottom: 6px;
-  }
-
-  .docs-callout-tip .docs-callout-label { color: var(--color-accent); }
-  .docs-callout-warn .docs-callout-label { color: var(--color-warn); }
-  .docs-callout-rule .docs-callout-label { color: var(--color-text); }
-
-  .docs-callout-body {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 15px;
-    color: var(--color-text);
-    line-height: 1.5;
-  }
-
-  .docs-callout-body :global(strong) { font-weight: 600; }
-
-  /* ─── LED Row ─── */
-  .docs-led-row {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    margin: 8px 0 16px;
-  }
-
-  .docs-led-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 8px 14px;
-    background: var(--color-bg-sunken);
-    border: 1px solid var(--color-border);
-    clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px);
-  }
-
-  .docs-led-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 5px;
-  }
-
-  .docs-led-off { background: var(--color-text-dim); }
-  .docs-led-green { background: #A3BE8C; box-shadow: 0 0 4px #A3BE8C; }
-  .docs-led-red { background: #BF616A; box-shadow: 0 0 4px #BF616A; }
-  .docs-led-yellow { background: #EBCB8B; box-shadow: 0 0 4px #EBCB8B; }
-
-  .docs-led-label {
+  .cm-tag-inline {
     font-family: 'Fira Code', monospace;
     font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--color-text-dim);
+    margin-bottom: 8px;
+  }
+
+  .focus-card-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    margin: 0 0 8px;
     color: var(--color-text);
-    letter-spacing: 0.06em;
   }
 
-  .docs-led-desc {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 13px;
-    color: var(--color-text-dim);
-  }
-
-  /* ─── Screenshot Placeholder ─── */
-  .docs-screenshot { margin: 1.5rem 0; }
-  .docs-screenshot-placeholder {
-    background: var(--color-bg-sunken);
-    border: 2px dashed var(--color-border);
-    padding: 3rem 2rem;
-    text-align: center;
-    color: var(--color-text-dim);
-    font-family: 'Fira Code', monospace;
-    font-size: 12px;
-    font-style: italic;
-    clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
-  }
-  .docs-screenshot figcaption {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 13px;
-    color: var(--color-text-dim);
-    margin-top: 6px;
-  }
-
-  /* ─── Terminal Block ─── */
-  .docs-terminal {
-    background: var(--color-terminal-bg);
-    color: var(--color-terminal-text);
-    font-family: 'Fira Code', monospace;
-    font-size: 13px;
-    line-height: 1.7;
-    padding: 18px 22px;
-    margin: 8px 0 18px;
-    border: 1px solid var(--color-border);
-    clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
-    white-space: pre;
-    overflow-x: auto;
-  }
-
-  /* ─── Tab Strip Mock ─── */
+  /* --- Tab Strip (§08) --- */
   .docs-tab-strip {
     display: flex;
     gap: 0;
@@ -1080,7 +810,26 @@ const lang = 'de';
     border-bottom-color: var(--color-accent);
   }
 
-  /* ─── Docs Screenshot Rows ─── */
+  /* --- Theme Category --- */
+  .docs-theme-category { margin-bottom: 8px; }
+  .docs-theme-category .docs-p { margin-bottom: 4px; }
+
+  /* --- Terminal Block --- */
+  .docs-terminal {
+    background: var(--color-terminal-bg);
+    color: var(--color-terminal-text);
+    font-family: 'Fira Code', monospace;
+    font-size: 13px;
+    line-height: 1.7;
+    padding: 18px 22px;
+    margin: 8px 0 18px;
+    border: 1px solid var(--color-border);
+    clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+    white-space: pre;
+    overflow-x: auto;
+  }
+
+  /* --- Screenshot Rows --- */
   .docs-screenshot-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -1111,22 +860,27 @@ const lang = 'de';
     border-top: 1px solid var(--color-border);
   }
 
-  /* ─── Theme Category ─── */
-  .docs-theme-category {
-    margin-bottom: 8px;
+  /* --- Inline Link --- */
+  .docs-inline-link {
+    color: var(--color-accent);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--color-accent);
+    padding-bottom: 1px;
+  }
+  .docs-inline-link:hover {
+    color: var(--color-text);
+    border-bottom-color: var(--color-text);
   }
 
-  .docs-theme-category .docs-p {
-    margin-bottom: 4px;
-  }
-
-  /* ─── Bottom CTA ─── */
+  /* --- Bottom CTA --- */
   .docs-bottom {
-    padding: 64px 64px;
+    padding: var(--section-pad-y) var(--section-pad-x);
     background: var(--color-bg-elevated);
     border-top: 1px solid var(--color-border);
-    margin: 0 -64px;
+    margin: 0 calc(-1 * var(--section-pad-x));
   }
+
+  .docs-inner { max-width: 920px; }
 
   .docs-bottom h2 {
     font-family: 'Rajdhani', sans-serif;
@@ -1136,6 +890,8 @@ const lang = 'de';
     letter-spacing: -0.01em;
     margin: 0 0 14px;
   }
+
+  .accent { color: var(--color-accent); }
 
   .docs-bottom-body {
     font-family: 'Rajdhani', sans-serif;
@@ -1161,10 +917,9 @@ const lang = 'de';
     border-bottom: 1px dotted var(--color-text-dim);
     padding-bottom: 2px;
   }
-
   .docs-bottom-link:hover { color: var(--color-text); }
 
-  /* ─── Buttons ─── */
+  /* --- Buttons --- */
   .cm-btn {
     display: inline-block;
     padding: 12px 20px;
@@ -1181,20 +936,17 @@ const lang = 'de';
     background: var(--color-accent);
     color: var(--color-bg);
   }
-
   .cm-btn--primary:hover { opacity: 0.88; }
 
-  /* ─── Responsive ─── */
+  /* --- Responsive --- */
   @media (max-width: 768px) {
-    .docs-page { padding: 0 20px; }
-    .docs-hero { padding: 80px 0 40px; }
-    .docs-section { padding: 48px 0; }
-    .docs-bottom { padding: 32px 20px; margin: 0 -20px; }
+    .docs-page { padding: 0 var(--space-lg); }
+    .focus-grid { grid-template-columns: 1fr; }
     .docs-table-2col { grid-template-columns: 1fr; gap: 4px; }
     .docs-table-3col { grid-template-columns: 1fr; gap: 4px; }
     .docs-table-label, .docs-table-desc, .docs-table-key, .docs-table-label-mid { word-break: break-word; }
-    .docs-led-row { flex-direction: column; }
     .docs-screenshot-row { grid-template-columns: 1fr; }
     .docs-screenshot-row--4 { grid-template-columns: repeat(2, 1fr); }
+    .docs-bottom { padding: var(--space-2xl) var(--space-lg); margin: 0 calc(-1 * var(--space-lg)); }
   }
 </style>
