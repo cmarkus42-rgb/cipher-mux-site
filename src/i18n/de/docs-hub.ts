@@ -1,4 +1,9 @@
 const docsHub = {
+  pageHeading: {
+    kicker: '// Handbuch',
+    title: 'Dokumentation',
+    version: 'v0.9.101',
+  },
   hero: {
     kicker: 'Handbuch · v0.9.101',
     title: 'Das Handbuch.',
@@ -35,8 +40,8 @@ const docsHub = {
     title: 'Fragen offen?',
     titleAccent: 'Frag den Companion.',
     body: 'Das Handbuch ist lang. Der Companion ist im Cockpit. Er kennt jeden Abschnitt davon — und antwortet schneller als du scrollst.',
-    downloadLabel: 'App herunterladen',
-    githubLabel: 'github / cipher-mux',
+    cta: 'App herunterladen',
+    github: 'github / cipher-mux',
   },
 } as const;
 

@@ -14,16 +14,18 @@ const lang = 'de';
 >
   <div class="docs-page">
 
+    <!-- Page Heading -->
+    <div class="docs-page-heading">
+      <div class="docs-page-heading-left">
+        <span class="docs-page-kicker">{content.pageHeading.kicker}</span>
+        <h1 class="docs-page-title">{content.pageHeading.title}</h1>
+      </div>
+      <span class="docs-page-version">{content.pageHeading.version}</span>
+    </div>
+
     <DocsNav lang={lang} />
 
-    <!-- Hero -->
-    <section class="docs-hero">
-      <div class="cm-tag">{content.hero.kicker}</div>
-      <h1>{content.hero.title}<br /><span class="accent">{content.hero.titleAccent}</span> {content.hero.titleEnd}</h1>
-      <p class="docs-body">{content.hero.body}</p>
-    </section>
-
-    <!-- Companion Hint -->
+    <!-- Companion Intro -->
     <section class="docs-companion-intro">
       <div class="docs-inner">
         <div class="cm-tag">{content.companionHint.kicker}</div>
@@ -51,13 +53,13 @@ const lang = 'de';
       <h2>{content.bottom.title} <span class="accent">{content.bottom.titleAccent}</span></h2>
       <p class="docs-bottom-body">{content.bottom.body}</p>
       <div class="docs-bottom-actions">
-        <a href="/de/start" class="cm-btn cm-btn--primary">{content.bottom.downloadLabel}</a>
+        <a href={`/${lang}/start`} class="cm-btn cm-btn--primary">&darr; {content.bottom.cta}</a>
         <a
           href="https://github.com/cmarkus42-rgb/cipher-mux-electron"
           class="docs-bottom-link"
           target="_blank"
           rel="noopener noreferrer"
-        >{content.bottom.githubLabel}</a>
+        >{content.bottom.github} &nearr;</a>
       </div>
     </section>
 
@@ -65,7 +67,7 @@ const lang = 'de';
 </Layout>
 
 <style>
-  /* ─── Page Layout ─── */
+  /* --- Page Layout --- */
   .docs-page {
     position: relative;
     max-width: var(--max-width);
@@ -77,43 +79,50 @@ const lang = 'de';
     max-width: 920px;
   }
 
-  /* ─── Hero ─── */
-  .docs-hero {
-    padding: 120px 0 48px;
+  /* --- Page Heading --- */
+  .docs-page-heading {
+    display: flex;
+    align-items: flex-end;
+    gap: 18px;
+    flex-wrap: wrap;
+    padding: 28px 56px 20px;
+    margin: 0 -64px;
     border-bottom: 1px solid var(--color-border);
+    background: var(--color-bg);
   }
 
-  .cm-tag {
-    font-family: 'Rajdhani', sans-serif;
-    font-weight: 700;
-    font-size: 13px;
-    letter-spacing: 0.22em;
+  .docs-page-heading-left {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .docs-page-kicker {
+    font-family: 'Fira Code', monospace;
+    font-size: 10px;
+    letter-spacing: 0.28em;
     text-transform: uppercase;
     color: var(--color-accent);
-    display: block;
-    margin-bottom: 16px;
   }
 
-  .docs-hero h1 {
+  .docs-page-title {
     font-family: 'Rajdhani', sans-serif;
     font-weight: 700;
-    font-size: clamp(38px, 5vw, 64px);
-    line-height: 0.98;
-    letter-spacing: -0.02em;
-    margin: 0 0 24px;
+    font-size: 42px;
+    line-height: 1;
+    letter-spacing: -0.8px;
+    margin: 0;
   }
 
-  .accent { color: var(--color-accent); }
-
-  .docs-body {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 19px;
-    line-height: 1.5;
-    color: var(--color-text-secondary);
-    max-width: 720px;
+  .docs-page-version {
+    margin-left: auto;
+    font-family: 'Fira Code', monospace;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: var(--color-text-dim);
   }
 
-  /* ─── Companion Intro ─── */
+  /* --- Companion Intro --- */
   .docs-companion-intro {
     padding: 64px 64px;
     background: var(--color-bg-elevated);
@@ -130,7 +139,20 @@ const lang = 'de';
     margin: 0 0 16px;
   }
 
-  /* ─── Body Paragraph ─── */
+  .cm-tag {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .accent { color: var(--color-accent); }
+
+  /* --- Body Paragraph --- */
   .docs-p {
     font-family: 'Rajdhani', sans-serif;
     font-size: 16px;
@@ -142,7 +164,7 @@ const lang = 'de';
 
   .docs-p :global(strong) { color: var(--color-text); font-weight: 600; }
 
-  /* ─── Hub Cards ─── */
+  /* --- Hub Cards --- */
   .docs-hub-cards-section {
     border-bottom: 1px solid var(--color-border);
   }
@@ -208,10 +230,10 @@ const lang = 'de';
 
   .docs-hub-card:hover .docs-hub-card-arrow { opacity: 1; }
 
-  /* ─── Bottom CTA ─── */
+  /* --- Bottom CTA --- */
   .docs-bottom {
     padding: 64px 64px;
-    background: var(--color-bg-elevated);
+    background: var(--color-bg-sunken, var(--color-bg-elevated));
     border-top: 1px solid var(--color-border);
     margin: 0 -64px;
   }
@@ -252,7 +274,7 @@ const lang = 'de';
 
   .docs-bottom-link:hover { color: var(--color-text); }
 
-  /* ─── Buttons ─── */
+  /* --- Buttons --- */
   .cm-btn {
     display: inline-block;
     padding: 12px 20px;
@@ -272,10 +294,10 @@ const lang = 'de';
 
   .cm-btn--primary:hover { opacity: 0.88; }
 
-  /* ─── Responsive ─── */
+  /* --- Responsive --- */
   @media (max-width: 768px) {
     .docs-page { padding: 0 20px; }
-    .docs-hero { padding: 80px 0 40px; }
+    .docs-page-heading { padding: 20px 20px 16px; margin: 0 -20px; }
     .docs-companion-intro { padding: 32px 20px; margin: 0 -20px; }
     .docs-hub-cards { grid-template-columns: 1fr; padding: 40px 0; }
     .docs-bottom { padding: 32px 20px; margin: 0 -20px; }

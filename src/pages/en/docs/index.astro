@@ -14,59 +14,60 @@ const lang = 'en';
 >
   <div class="docs-page">
 
-    <!-- Hero -->
-    <section class="docs-hero">
-      <DocsNav lang={lang} />
-      <div class="cm-tag">{content.hero.kicker}</div>
-      <h1>{content.hero.title}<br /><span class="accent">{content.hero.titleAccent}</span> {content.hero.titleEnd}</h1>
-      <p class="docs-body">{content.hero.body}</p>
-    </section>
+    <!-- Page Heading -->
+    <div class="docs-page-heading">
+      <div class="docs-page-heading-left">
+        <span class="docs-page-kicker">{content.pageHeading.kicker}</span>
+        <h1 class="docs-page-title">{content.pageHeading.title}</h1>
+      </div>
+      <span class="docs-page-version">{content.pageHeading.version}</span>
+    </div>
 
-    <!-- Companion Hint -->
+    <DocsNav lang={lang} />
+
+    <!-- Companion Intro -->
     <section class="docs-companion-intro">
       <div class="docs-inner">
         <div class="cm-tag">{content.companionHint.kicker}</div>
         <h2>{content.companionHint.title}</h2>
         <p class="docs-p" set:html={content.companionHint.body} />
-
-        <div class="docs-callout docs-callout-rule">
-          <div class="docs-callout-label">Rule of thumb</div>
-          <div class="docs-callout-body">The Companion knows this handbook. Ask it instead of searching.</div>
-        </div>
       </div>
     </section>
 
-    <!-- Hub Cards -->
-    <section class="docs-hub-cards">
-      {content.cards.map((card) => (
-        <a href={card.href} class="docs-hub-card">
-          <div class="docs-hub-card-num">{card.num}</div>
-          <div class="docs-hub-card-body">
-            <div class="docs-hub-card-title">{card.title}</div>
-            <div class="docs-hub-card-desc">{card.body}</div>
-          </div>
-          <div class="docs-hub-card-arrow">&rarr;</div>
-        </a>
-      ))}
+    <!-- Three Cards -->
+    <section class="docs-hub-cards-section">
+      <div class="docs-hub-cards">
+        {content.cards.map((card) => (
+          <a href={card.href} class="docs-hub-card">
+            <div class="docs-hub-card-num">{card.num}</div>
+            <h3>{card.title}</h3>
+            <p>{card.body}</p>
+            <div class="docs-hub-card-arrow">&rarr;</div>
+          </a>
+        ))}
+      </div>
     </section>
 
     <!-- Bottom CTA -->
-    <div class="docs-bottom">
-      <div class="docs-inner">
-        <h2>{content.bottom.title} <span class="accent">{content.bottom.titleAccent}</span></h2>
-        <p class="docs-bottom-body">{content.bottom.body}</p>
-        <div class="docs-bottom-actions">
-          <a href={`/${lang}/start`} class="cm-btn cm-btn--primary">&darr; {content.bottom.downloadLabel}</a>
-          <a href="https://github.com/cmarkus42-rgb/cipher-mux-electron" class="docs-bottom-link">{content.bottom.githubLabel} &nearr;</a>
-        </div>
+    <section class="docs-bottom">
+      <h2>{content.bottom.title} <span class="accent">{content.bottom.titleAccent}</span></h2>
+      <p class="docs-bottom-body">{content.bottom.body}</p>
+      <div class="docs-bottom-actions">
+        <a href={`/${lang}/start`} class="cm-btn cm-btn--primary">&darr; {content.bottom.cta}</a>
+        <a
+          href="https://github.com/cmarkus42-rgb/cipher-mux-electron"
+          class="docs-bottom-link"
+          target="_blank"
+          rel="noopener noreferrer"
+        >{content.bottom.github} &nearr;</a>
       </div>
-    </div>
+    </section>
 
   </div>
 </Layout>
 
 <style>
-  /* ─── Page Layout ─── */
+  /* --- Page Layout --- */
   .docs-page {
     position: relative;
     max-width: var(--max-width);
@@ -78,43 +79,50 @@ const lang = 'en';
     max-width: 920px;
   }
 
-  /* ─── Hero ─── */
-  .docs-hero {
-    padding: 120px 0 48px;
+  /* --- Page Heading --- */
+  .docs-page-heading {
+    display: flex;
+    align-items: flex-end;
+    gap: 18px;
+    flex-wrap: wrap;
+    padding: 28px 56px 20px;
+    margin: 0 -64px;
     border-bottom: 1px solid var(--color-border);
+    background: var(--color-bg);
   }
 
-  .cm-tag {
-    font-family: 'Rajdhani', sans-serif;
-    font-weight: 700;
-    font-size: 13px;
-    letter-spacing: 0.22em;
+  .docs-page-heading-left {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .docs-page-kicker {
+    font-family: 'Fira Code', monospace;
+    font-size: 10px;
+    letter-spacing: 0.28em;
     text-transform: uppercase;
     color: var(--color-accent);
-    display: block;
-    margin-bottom: 16px;
   }
 
-  .docs-hero h1 {
+  .docs-page-title {
     font-family: 'Rajdhani', sans-serif;
     font-weight: 700;
-    font-size: clamp(38px, 5vw, 64px);
-    line-height: 0.98;
-    letter-spacing: -0.02em;
-    margin: 0 0 24px;
+    font-size: 42px;
+    line-height: 1;
+    letter-spacing: -0.8px;
+    margin: 0;
   }
 
-  .accent { color: var(--color-accent); }
-
-  .docs-body {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 19px;
-    line-height: 1.5;
-    color: var(--color-text-secondary);
-    max-width: 720px;
+  .docs-page-version {
+    margin-left: auto;
+    font-family: 'Fira Code', monospace;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: var(--color-text-dim);
   }
 
-  /* ─── Companion Intro ─── */
+  /* --- Companion Intro --- */
   .docs-companion-intro {
     padding: 64px 64px;
     background: var(--color-bg-elevated);
@@ -131,7 +139,20 @@ const lang = 'en';
     margin: 0 0 16px;
   }
 
-  /* ─── Body Paragraph ─── */
+  .cm-tag {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .accent { color: var(--color-accent); }
+
+  /* --- Body Paragraph --- */
   .docs-p {
     font-family: 'Rajdhani', sans-serif;
     font-size: 16px;
@@ -143,107 +164,76 @@ const lang = 'en';
 
   .docs-p :global(strong) { color: var(--color-text); font-weight: 600; }
 
-  /* ─── Callout ─── */
-  .docs-callout {
-    margin: 14px 0 18px;
-    padding: 14px 18px 14px 16px;
-    background: var(--color-bg-elevated);
-    border: 1px solid var(--color-border);
-    max-width: 760px;
-  }
-
-  .docs-callout-rule { border-left: 3px solid var(--color-text); }
-
-  .docs-callout-label {
-    font-family: 'Rajdhani', sans-serif;
-    font-weight: 700;
-    font-size: 12px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    margin-bottom: 6px;
-  }
-
-  .docs-callout-rule .docs-callout-label { color: var(--color-text); }
-
-  .docs-callout-body {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 15px;
-    color: var(--color-text);
-    line-height: 1.5;
-  }
-
-  .docs-callout-body :global(strong) { font-weight: 600; }
-
-  /* ─── Hub Cards ─── */
-  .docs-hub-cards {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
+  /* --- Hub Cards --- */
+  .docs-hub-cards-section {
     border-bottom: 1px solid var(--color-border);
+  }
+
+  .docs-hub-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 64px 0;
   }
 
   .docs-hub-card {
     display: flex;
-    align-items: center;
-    gap: 24px;
-    padding: 28px 0;
+    flex-direction: column;
+    padding: 28px 24px;
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
     text-decoration: none;
-    border-top: 1px solid var(--color-border);
-    transition: background 0.15s;
+    color: inherit;
+    clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
+    transition: border-color 0.15s, background 0.15s;
   }
 
   .docs-hub-card:hover {
-    background: var(--color-bg-elevated);
-    margin: 0 -64px;
-    padding: 28px 64px;
+    border-color: var(--color-accent);
+    text-decoration: none;
   }
 
   .docs-hub-card-num {
     font-family: 'Fira Code', monospace;
-    font-size: 13px;
+    font-size: 11px;
     color: var(--color-accent);
     letter-spacing: 0.1em;
-    flex-shrink: 0;
-    width: 32px;
+    margin-bottom: 12px;
   }
 
-  .docs-hub-card-body {
-    flex: 1;
-  }
-
-  .docs-hub-card-title {
+  .docs-hub-card h3 {
     font-family: 'Rajdhani', sans-serif;
     font-weight: 700;
     font-size: 22px;
-    color: var(--color-text);
-    line-height: 1.1;
-    margin-bottom: 4px;
+    line-height: 1.15;
+    margin: 0 0 8px;
   }
 
-  .docs-hub-card-desc {
+  .docs-hub-card p {
     font-family: 'Rajdhani', sans-serif;
     font-size: 15px;
     color: var(--color-text-secondary);
-    line-height: 1.4;
+    line-height: 1.45;
+    flex: 1;
+    margin: 0;
   }
 
   .docs-hub-card-arrow {
     font-family: 'Fira Code', monospace;
     font-size: 16px;
-    color: var(--color-text-dim);
-    flex-shrink: 0;
-    transition: color 0.15s, transform 0.15s;
-  }
-
-  .docs-hub-card:hover .docs-hub-card-arrow {
     color: var(--color-accent);
-    transform: translateX(4px);
+    margin-top: 16px;
+    align-self: flex-end;
+    opacity: 0;
+    transition: opacity 0.15s;
   }
 
-  /* ─── Bottom CTA ─── */
+  .docs-hub-card:hover .docs-hub-card-arrow { opacity: 1; }
+
+  /* --- Bottom CTA --- */
   .docs-bottom {
     padding: 64px 64px;
-    background: var(--color-bg-elevated);
+    background: var(--color-bg-sunken, var(--color-bg-elevated));
     border-top: 1px solid var(--color-border);
     margin: 0 -64px;
   }
@@ -284,7 +274,7 @@ const lang = 'en';
 
   .docs-bottom-link:hover { color: var(--color-text); }
 
-  /* ─── Buttons ─── */
+  /* --- Buttons --- */
   .cm-btn {
     display: inline-block;
     padding: 12px 20px;
@@ -304,12 +294,12 @@ const lang = 'en';
 
   .cm-btn--primary:hover { opacity: 0.88; }
 
-  /* ─── Responsive ─── */
+  /* --- Responsive --- */
   @media (max-width: 768px) {
     .docs-page { padding: 0 20px; }
-    .docs-hero { padding: 80px 0 40px; }
+    .docs-page-heading { padding: 20px 20px 16px; margin: 0 -20px; }
     .docs-companion-intro { padding: 32px 20px; margin: 0 -20px; }
+    .docs-hub-cards { grid-template-columns: 1fr; padding: 40px 0; }
     .docs-bottom { padding: 32px 20px; margin: 0 -20px; }
-    .docs-hub-card:hover { margin: 0 -20px; padding: 28px 20px; }
   }
 </style>
