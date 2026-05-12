@@ -1,0 +1,44 @@
+---
+interface Props {
+  states: Array<{ color: string; label: string; desc: string }>;
+}
+const { states } = Astro.props;
+---
+<div class="led-row">
+  {states.map((s) => (
+    <div class="led-row__item">
+      <span class="led-row__dot" style={`background:${s.color};box-shadow:0 0 8px ${s.color};`}></span>
+      <span class="led-row__label">{s.label}</span>
+      <span class="led-row__desc">{s.desc}</span>
+    </div>
+  ))}
+</div>
+
+<style>
+  .led-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin: 16px 0;
+  }
+  .led-row__item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Fira Code', monospace;
+    font-size: 12px;
+  }
+  .led-row__dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .led-row__label {
+    color: var(--color-text);
+    font-weight: 500;
+  }
+  .led-row__desc {
+    color: var(--color-text-dim);
+  }
+</style>

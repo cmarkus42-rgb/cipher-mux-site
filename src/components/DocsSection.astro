@@ -1,0 +1,41 @@
+---
+interface Props {
+  id: string;
+  num: string;
+  title: string;
+  lead?: string;
+}
+const { id, num, title, lead } = Astro.props;
+---
+<section id={id} class="docs-section-v2">
+  <div class="cm-kicker">
+    <span class="cm-kicker__num">$ {num}</span>
+    <span class="cm-kicker__line"></span>
+    <span>{title}</span>
+  </div>
+  <h2 class="docs-section-v2__title">{title}</h2>
+  {lead && <p class="docs-section-v2__lead">{lead}</p>}
+  <slot />
+</section>
+
+<style>
+  .docs-section-v2 {
+    padding: var(--section-pad-y) var(--section-pad-x);
+    border-top: 1px solid var(--color-border);
+    max-width: var(--max-width);
+    margin: 0 auto;
+  }
+  .docs-section-v2__title {
+    font-size: clamp(28px, 3.5vw, 38px);
+    letter-spacing: -0.5px;
+    margin: 0 0 14px;
+  }
+  .docs-section-v2__lead {
+    font-family: 'Fira Code', monospace;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+    max-width: 760px;
+    margin: 0 0 28px;
+  }
+</style>

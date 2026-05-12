@@ -1,0 +1,50 @@
+---
+interface Props {
+  kicker: string;
+  title: string;
+  titleAccent: string;
+  body: string;
+}
+const { kicker, title, titleAccent, body } = Astro.props;
+---
+<section class="docs-hero-v2">
+  <div class="docs-hero-v2__inner">
+    <div class="docs-hero-v2__kicker">{kicker}</div>
+    <h1 class="docs-hero-v2__title">
+      {title} <span class="accent">{titleAccent}</span>
+    </h1>
+    <p class="docs-hero-v2__body">{body}</p>
+  </div>
+</section>
+
+<style>
+  .docs-hero-v2 {
+    padding: var(--section-pad-y) var(--section-pad-x) calc(var(--section-pad-y) * 0.6);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .docs-hero-v2__inner { max-width: 920px; }
+  .docs-hero-v2__kicker {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 14px;
+  }
+  .docs-hero-v2__title {
+    font-size: clamp(40px, 5.4vw, 64px);
+    letter-spacing: -0.02em;
+    line-height: 1.0;
+    margin: 0 0 18px;
+  }
+  .docs-hero-v2__title .accent { color: var(--color-accent); }
+  .docs-hero-v2__body {
+    font-family: 'Fira Code', monospace;
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    margin: 0;
+    max-width: 680px;
+    line-height: 1.7;
+  }
+</style>

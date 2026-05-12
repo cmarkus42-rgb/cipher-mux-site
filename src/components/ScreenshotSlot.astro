@@ -1,0 +1,36 @@
+---
+interface Props {
+  caption: string;
+  placeholder: string;
+}
+const { caption, placeholder } = Astro.props;
+---
+<figure class="screenshot-slot">
+  <div class="screenshot-slot__box">
+    <div class="screenshot-slot__caption">{caption}</div>
+    <div class="screenshot-slot__placeholder">{placeholder}</div>
+  </div>
+</figure>
+
+<style>
+  .screenshot-slot { margin: 20px 0 14px; }
+  .screenshot-slot__box {
+    padding: 40px 28px;
+    border: 1px dashed var(--color-border);
+    background: var(--color-bg-sunken);
+    font-family: 'Fira Code', monospace;
+    font-size: 11px;
+    color: var(--color-text-dim);
+    text-align: center;
+    letter-spacing: 0.5px;
+  }
+  .screenshot-slot__caption {
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 6px;
+  }
+  .screenshot-slot__placeholder {
+    font-style: italic;
+    opacity: 0.7;
+  }
+</style>

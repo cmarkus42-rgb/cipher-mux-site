@@ -1,0 +1,24 @@
+---
+interface Props {
+  elevated?: boolean;
+  accent?: boolean;
+  padding?: number;
+}
+const { elevated = false, accent = false, padding = 24 } = Astro.props;
+---
+<div
+  class:list={['cm-box', { 'cm-box--elevated': elevated, 'cm-box--accent': accent }]}
+  style={`padding: ${padding}px;`}
+>
+  <slot />
+</div>
+
+<style>
+  .cm-box {
+    border: 1px solid var(--color-border);
+    background: var(--color-bg);
+    clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+  }
+  .cm-box--elevated { background: var(--color-bg-elevated); }
+  .cm-box--accent { border-color: var(--color-accent); }
+</style>

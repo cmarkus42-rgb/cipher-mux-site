@@ -1,0 +1,67 @@
+---
+interface Props {
+  rungs: Array<{ label: string; priority: string; desc: string }>;
+}
+const { rungs } = Astro.props;
+---
+<div class="ladder">
+  {rungs.map((r, i) => (
+    <div class="ladder__rung">
+      <div class="ladder__header">
+        <span class="ladder__num">{i + 1}.</span>
+        <span class="ladder__label">{r.label}</span>
+        <span class="ladder__priority">{r.priority}</span>
+      </div>
+      <p class="ladder__desc">{r.desc}</p>
+    </div>
+  ))}
+</div>
+
+<style>
+  .ladder {
+    border-left: 2px solid var(--color-accent);
+    padding-left: 18px;
+    margin: 16px 0;
+  }
+  .ladder__rung {
+    padding: 10px 0;
+    border-bottom: 1px dotted var(--color-border);
+  }
+  .ladder__rung:last-child { border-bottom: none; }
+  .ladder__header {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 4px;
+  }
+  .ladder__num {
+    font-family: 'Fira Code', monospace;
+    font-size: 12px;
+    color: var(--color-accent);
+    flex-shrink: 0;
+  }
+  .ladder__label {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--color-text);
+  }
+  .ladder__priority {
+    font-family: 'Fira Code', monospace;
+    font-size: 10px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--color-text-dim);
+    padding: 2px 8px;
+    border: 1px solid var(--color-border);
+    clip-path: polygon(4px 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%, 0 4px);
+  }
+  .ladder__desc {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    margin: 0;
+    max-width: 720px;
+  }
+</style>
