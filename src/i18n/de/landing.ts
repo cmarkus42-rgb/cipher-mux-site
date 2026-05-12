@@ -43,8 +43,8 @@ const landing = {
     },
   ],
   notSection: {
-    title: 'Systemabgrenzung',
-    lead: 'Zur transparenten Einordnung – was CIPHER-MUX nicht ist:',
+    title: 'Was CIPHER-MUX nicht ist.',
+    lead: 'Zur transparenten Einordnung:',
     items: [
       'Kein kommerzielles Produkt, sondern ein generiertes Open-Source-Projekt, das aus dem eigenen Bedarf heraus entstanden ist.',
       'Kein Ersatz für die Claude Code CLI, sondern eine grafische Orchestrierungsschicht, die darauf aufsetzt.',

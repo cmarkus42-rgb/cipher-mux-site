@@ -43,8 +43,8 @@ const landing = {
     },
   ],
   notSection: {
-    title: 'System Boundaries',
-    lead: 'For clear expectations – what CIPHER-MUX is not:',
+    title: 'What CIPHER-MUX is not.',
+    lead: 'For clear expectations:',
     items: [
       'Not a commercial product, but a generated open-source project born out of personal necessity.',
       'Not a replacement for the Claude Code CLI, but a graphical orchestration layer built on top of it.',
