@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<title>CIPHER-MUX — Docs / Handbuch (Design)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+
+<style>
+  html, body { margin: 0; padding: 0; background: #1a1a1d; }
+  body { font-family: 'Fira Code', monospace; color: #ECEFF4; }
+</style>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+<template id="__bundler_thumbnail" data-bg-color="#F4F3ED">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#F4F3ED"/>
+    <!-- header -->
+    <text x="120" y="120" font-family="'Rajdhani', system-ui, sans-serif" font-weight="700" font-size="28" letter-spacing="6" fill="#1A1A1D">CIPHER-MUX</text>
+    <text x="1080" y="120" font-family="'Fira Code', monospace" font-size="14" letter-spacing="2" fill="#8A8A82" text-anchor="end">DOCS · HANDBUCH</text>
+    <!-- left: TOC sidebar mock -->
+    <g>
+      <rect x="120" y="200" width="240" height="500" fill="#FEFEFB" stroke="#C8C5B8" stroke-width="2"/>
+      <text x="140" y="232" font-family="'Fira Code', monospace" font-size="11" letter-spacing="2" fill="#8A8A82">INHALT</text>
+      <g font-family="'Rajdhani', system-ui, sans-serif" font-size="14" fill="#4A4A52">
+        <text x="140" y="270">01 · Einführung</text>
+        <text x="140" y="300">02 · Erste Schritte</text>
+        <text x="140" y="330">03 · Workspace</text>
+        <text x="140" y="360">04 · Personas</text>
+        <text x="140" y="390">05 · Cockpit</text>
+        <text x="140" y="420">06 · Cyber Factory</text>
+        <text x="140" y="450">07 · Grid</text>
+        <text x="140" y="480">08 · Presets</text>
+        <text x="140" y="510">09 · Shortcuts</text>
+        <text x="140" y="540">10 · Troubleshoot</text>
+      </g>
+      <!-- active highlight -->
+      <rect x="120" y="350" width="3" height="20" fill="#006B7A"/>
+    </g>
+    <!-- right: page content mock -->
+    <g>
+      <rect x="400" y="200" width="680" height="500" fill="#FEFEFB" stroke="#C8C5B8" stroke-width="2"/>
+      <!-- chapter tag -->
+      <text x="420" y="235" font-family="'Fira Code', monospace" font-size="11" letter-spacing="3" fill="#006B7A">KAPITEL 05</text>
+      <!-- big heading -->
+      <text x="420" y="285" font-family="'Rajdhani', system-ui, sans-serif" font-weight="700" font-size="36" fill="#1A1A1D">Das Cockpit</text>
+      <!-- body lines -->
+      <g fill="#C8C5B8">
+        <rect x="420" y="320" width="600" height="6"/>
+        <rect x="420" y="338" width="540" height="6"/>
+        <rect x="420" y="356" width="580" height="6"/>
+      </g>
+      <!-- code block -->
+      <rect x="420" y="395" width="600" height="80" fill="#F4F3ED" stroke="#C8C5B8" stroke-width="1"/>
+      <g font-family="'Fira Code', monospace" font-size="12" fill="#4A4A52">
+        <text x="436" y="420">$ cipher-mux --workspace ~/Desktop/cmx</text>
+        <text x="436" y="440">→ booting cockpit ...</text>
+        <text x="436" y="460">→ ready · http://localhost:7331</text>
+      </g>
+      <!-- callout -->
+      <rect x="420" y="500" width="600" height="60" fill="none" stroke="#006B7A" stroke-width="2"/>
+      <text x="436" y="525" font-family="'Fira Code', monospace" font-size="11" letter-spacing="2" fill="#006B7A">HINWEIS</text>
+      <g fill="#C8C5B8">
+        <rect x="436" y="538" width="540" height="5"/>
+        <rect x="436" y="550" width="480" height="5"/>
+      </g>
+      <!-- more body lines -->
+      <g fill="#C8C5B8">
+        <rect x="420" y="595" width="600" height="6"/>
+        <rect x="420" y="613" width="520" height="6"/>
+        <rect x="420" y="631" width="560" height="6"/>
+        <rect x="420" y="649" width="440" height="6"/>
+      </g>
+    </g>
+    <!-- footer rule -->
+    <rect x="120" y="740" width="960" height="2" fill="#006B7A"/>
+  </svg>
+</template>
+
+<div id="root"></div>
+
+<script type="text/babel" src="design-canvas.jsx"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="features-shared.jsx?v=3"></script>
+<script type="text/babel" src="docs-shared.jsx?v=1"></script>
+<script type="text/babel" src="docs-sections-1.jsx?v=1"></script>
+<script type="text/babel" src="docs-sections-2.jsx?v=1"></script>
+<script type="text/babel" src="docs-page.jsx?v=1"></script>
+
+<script type="text/babel" data-presets="env,react">
+  const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+    "theme": "light",
+    "density": "luftig",
+    "accent": "#4e9d3f",
+    "showAnchorNav": true
+  }/*EDITMODE-END*/;
+
+  const App = () => {
+    const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+    return (
+      <>
+        <DesignCanvas title="CIPHER-MUX — Docs / Handbuch">
+          <DCSection id="full" title="Docs Page — Handbuch v0.9.9">
+            <DCArtboard id="docs" label={`Docs · ${t.theme} · ${t.density}`} width={1200} height={7600}>
+              <DocsPage theme={t.theme} density={t.density} accent={t.accent} showAnchorNav={t.showAnchorNav} />
+            </DCArtboard>
+          </DCSection>
+        </DesignCanvas>
+
+        <TweaksPanel>
+          <TweakSection label="Theme">
+            <TweakRadio label="Mode"
+              value={t.theme}
+              onChange={v => setTweak('theme', v)}
+              options={[{label:'Light', value:'light'},{label:'Dark', value:'dark'}]} />
+          </TweakSection>
+          <TweakSection label="Layout">
+            <TweakRadio label="Density"
+              value={t.density}
+              onChange={v => setTweak('density', v)}
+              options={[{label:'Luftig', value:'luftig'},{label:'Dicht', value:'dicht'}]} />
+            <TweakToggle label="Anchor-Nav rechts"
+              value={t.showAnchorNav}
+              onChange={v => setTweak('showAnchorNav', v)} />
+          </TweakSection>
+          <TweakSection label="Brand">
+            <TweakColor label="Accent"
+              value={t.accent}
+              onChange={v => setTweak('accent', v)} />
+          </TweakSection>
+        </TweaksPanel>
+      </>
+    );
+  };
+
+  ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<h2>Seitenstruktur — wie viele Seiten?</h2>
+<p class="subtitle">Die Texte liefern 10 thematische Seiten. Wie bauen wir die auf?</p>
+
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>10 eigenstaendige Seiten</h3>
+      <p>Jede Seite hat ihre eigene URL und eigene Navigation. Klassische Multi-Page-Site.<br>
+      <strong>/</strong> Landing · <strong>/bauen</strong> · <strong>/prozess</strong> · <strong>/transparent</strong> · <strong>/zugaenglich</strong> · <strong>/orchestrierung</strong> · <strong>/lokal</strong> · <strong>/community</strong> · <strong>/start</strong> · <strong>/roadmap</strong></p>
+      <div class="pros-cons">
+        <div class="pros"><h4>Pro</h4><ul><li>Jede Seite eigenstaendig teilbar</li><li>Gute SEO/AEO pro Thema</li><li>Texte 1:1 umsetzbar</li></ul></div>
+        <div class="cons"><h4>Contra</h4><ul><li>10 Seiten fuer ein Pre-Release OSS-Projekt ist ungewoehnlich viel</li><li>Navigation wird komplex</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Hybrid: Landing + Long-Scroll Deep-Dive + Download + Community</h3>
+      <p>4 echte Seiten. Die Claim-Seiten (Bauen, Prozess, Transparent, Zugaenglich, Orchestrierung, Lokal) werden zu EINEM langen scrollbaren Deep-Dive mit Anker-Navigation zusammengefasst. Download und Community bleiben eigene Seiten.</p>
+      <p><strong>/</strong> Landing · <strong>/features</strong> Deep-Dive (6 Sektionen mit Scroll-Nav) · <strong>/start</strong> Download · <strong>/community</strong> Mitmachen + Roadmap</p>
+      <div class="pros-cons">
+        <div class="pros"><h4>Pro</h4><ul><li>Kompakt, uebersichtlich</li><li>Scroll-Flow passt zu Story-Erzaehlung</li><li>4 Seiten = realistisch fuer Solo-Projekt</li></ul></div>
+        <div class="cons"><h4>Contra</h4><ul><li>Deep-Dive wird sehr lang</li><li>Einzelne Themen weniger gut teilbar</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>One-Pager + Download</h3>
+      <p>Alles auf einer Seite mit Scroll-Sektionen. Nur Download/Install als eigene Seite weil technisch anders strukturiert.</p>
+      <p><strong>/</strong> Alles (Hero → Features → Prozess → Transparenz → Privacy → Community → Roadmap) · <strong>/start</strong> Download</p>
+      <div class="pros-cons">
+        <div class="pros"><h4>Pro</h4><ul><li>Maximale Einfachheit</li><li>Starker Scroll-Flow</li><li>Wenig Wartung</li></ul></div>
+        <div class="cons"><h4>Contra</h4><ul><li>Texte muessen stark gekuerzt werden</li><li>AEO-Potential geringer</li><li>Wird sehr lang wenn alles rein soll</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p class="subtitle" style="margin-top: 2rem;">Meine Empfehlung: <strong>B</strong> — kompakt genug fuer ein Solo-OSS-Projekt, aber genug Raum fuer die guten Texte.</p>

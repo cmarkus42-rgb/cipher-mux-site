@@ -1,0 +1,154 @@
+// CIPHER-MUX Docs v2 — Composer mit Tab-Routing.
+// Top sticky tab bar + Anchor-Nav rechts (eigen pro Tab).
+
+const TABS = [
+{ id: 'start', label: 'Schnelleinstieg', sub: '01 · Vom Start zum Projekt' },
+{ id: 'konzepte', label: 'Prozess & Konzepte', sub: '02 · Warum spezialisierte Sessions' },
+{ id: 'nutzung', label: 'Nutzung der App', sub: '03 · Volle Referenz' }];
+
+
+const TabBar = ({ active, onChange, palette }) =>
+<div style={{
+  position: 'sticky', top: 64, zIndex: 10,
+  background: palette.bg, borderBottom: `1px solid ${palette.border}`,
+  display: 'flex', alignItems: 'stretch',
+  padding: '0 56px'
+}}>
+    {TABS.map((tab) => {
+    const isActive = active === tab.id;
+    return (
+      <button key={tab.id} onClick={() => onChange(tab.id)} style={{
+        all: 'unset', cursor: 'pointer',
+        padding: '14px 22px',
+        borderBottom: isActive ? `2px solid ${palette.accent}` : '2px solid transparent',
+        marginBottom: -1,
+        display: 'flex', flexDirection: 'column', gap: 2,
+        whiteSpace: 'nowrap'
+      }}>
+          <span style={{
+          fontFamily: "'Rajdhani', sans-serif", fontWeight: 700, fontSize: 16,
+          color: isActive ? palette.text : palette.textDim, letterSpacing: -0.1
+        }}>{tab.label}</span>
+          <span style={{ ...{
+            fontFamily: "'Fira Code', monospace", fontSize: 10,
+            color: isActive ? palette.accent : palette.textDim, letterSpacing: 1.2
+          }, color: "rgb(0, 190, 217)" }}>{tab.sub}</span>
+        </button>);
+
+  })}
+  </div>;
+
+
+const ANCHORS = {
+  start: [
+  { id: 'orientation', label: '01 · Orientierung' },
+  { id: 'workspace', label: '02 · Workspace' },
+  { id: 'sessions', label: '03 · Sessions' },
+  { id: 'overview', label: '04 · Überblick' },
+  { id: 'voice', label: '05 · Voice' },
+  { id: 'next', label: '06 · Weiter' }],
+
+  konzepte: [
+  { id: 'idea', label: '01 · Die Idee' },
+  { id: 'lifecycle', label: '02 · Lebenszyklus' },
+  { id: 'entities', label: '03 · Entities' },
+  { id: 'presets', label: '04 · Presets' },
+  { id: 'personas', label: '05 · Personas' },
+  { id: 'memory', label: '06 · Memory & Tags' },
+  { id: 'honesty', label: '07 · Ehrlichkeit' }],
+
+  nutzung: [
+  { id: 'grid', label: '01 · Grid' },
+  { id: 'header', label: '02 · Zell-Header' },
+  { id: 'focus', label: '03 · Focus & Pop-Out' },
+  { id: 'sidebar', label: '04 · Sidebar' },
+  { id: 'voice', label: '05 · Voice' },
+  { id: 'notes', label: '06 · Notes' },
+  { id: 'projects', label: '07 · Projekte' },
+  { id: 'settings', label: '08 · Einstellungen' },
+  { id: 'bugreport', label: '09 · Bugreport' },
+  { id: 'shortcuts', label: '10 · Shortcuts' }]
+
+};
+
+const DocsPageHeading = ({ palette, sp }) =>
+<div style={{
+  padding: '28px 56px 20px', background: palette.bg,
+  borderBottom: `1px solid ${palette.border}`,
+  display: 'flex', alignItems: 'flex-end', gap: 18, flexWrap: 'wrap'
+}}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+      <span style={{ ...{
+        fontFamily: "'Fira Code', monospace", fontSize: 10,
+        letterSpacing: '0.28em', textTransform: 'uppercase',
+        color: palette.accent
+      }, color: "rgb(0, 185, 211)" }}>// Handbuch</span>
+      <h1 style={{
+      fontFamily: "'Rajdhani', sans-serif", fontWeight: 700,
+      fontSize: 42, lineHeight: 1, margin: 0, color: palette.text,
+      letterSpacing: -0.8
+    }}>Dokumentation</h1>
+    </div>
+    <span style={{
+    marginLeft: 'auto', fontFamily: "'Fira Code', monospace", fontSize: 11,
+    letterSpacing: 1.5, color: palette.textDim
+  }}>v0.9.101</span>
+  </div>;
+
+
+const DocsV2 = ({ theme = 'light', accent, density = 'luftig', tab = 'start' }) => {
+  const palette = cmPalette(theme, accent);
+  const sp = cmSpacing(density);
+  const [active, setActive] = React.useState(tab);
+
+  const ActivePage = active === 'konzepte' ? DocsKonzeptePage :
+  active === 'nutzung' ? DocsNutzungPage :
+  DocsStartPage;
+
+  return (
+    <div style={{
+      width: '100%', minHeight: '100%', background: palette.bg, color: palette.text,
+      fontFamily: "'Fira Code', monospace", position: 'relative'
+    }}>
+      <CMPageHeader palette={palette} active="docs" />
+      <DocsPageHeading palette={palette} sp={sp} />
+      <TabBar active={active} onChange={setActive} palette={palette} />
+      <CMAnchorNav items={ANCHORS[active]} active={0} palette={palette} />
+      <ActivePage palette={palette} sp={sp} />
+      <DocsBottomV2 palette={palette} sp={sp} />
+      <CMPageFooter palette={palette} />
+    </div>);
+
+};
+
+const DocsBottomV2 = ({ palette, sp }) =>
+<section style={{
+  padding: `${sp.sectionPadY * 0.7}px ${sp.sectionPadX}px`,
+  background: palette.bgSunken, borderTop: `1px solid ${palette.border}`
+}}>
+    <div style={{ maxWidth: 920 }}>
+      <h2 style={{
+      fontFamily: "'Rajdhani', sans-serif", fontWeight: 700, fontSize: 36,
+      margin: '0 0 14px', color: palette.text, letterSpacing: -0.5, lineHeight: 1.05
+    }}>Fragen offen? <span style={{ color: palette.accent }}>Frag den Companion.</span></h2>
+      <p style={{ margin: '0 0 22px', fontFamily: "'Rajdhani', sans-serif", fontSize: 17,
+      color: palette.textSecondary, maxWidth: 640, lineHeight: 1.5 }}>
+        Das Handbuch ist lang. Der Companion ist im Cockpit. Er kennt jeden Abschnitt davon —
+        und antwortet schneller als du scrollst.
+      </p>
+      <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'center' }}>
+        <span style={{ padding: '12px 24px', background: palette.accent, color: palette.bg,
+        fontFamily: "'Fira Code', monospace", fontSize: 12, letterSpacing: 1.5,
+        textTransform: 'uppercase',
+        clipPath: 'polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px)'
+      }}>↓ App herunterladen</span>
+        <span style={{ fontFamily: "'Fira Code', monospace", fontSize: 12,
+        color: palette.textSecondary, borderBottom: `1px dotted ${palette.textDim}` }}>
+          github / cipher-mux ↗
+        </span>
+      </div>
+    </div>
+  </section>;
+
+
+window.DocsV2 = DocsV2;

@@ -1,0 +1,49 @@
+<h2>Theme-System der Website</h2>
+<p class="subtitle">CIPHER-MUX hat 10 Themes. Wie viel davon zeigen wir auf der Website?</p>
+
+<div class="section">
+  <h3>Kontext: Die cipher-mux Themes</h3>
+  <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin: 1rem 0;">
+    <div style="background: #1a1a2e; color: #e0e0e0; padding: 12px 8px; border-radius: 6px; text-align: center; font-size: 0.85rem; border: 1px solid #333;">cipher-dark</div>
+    <div style="background: #faf8f0; color: #2a2a2a; padding: 12px 8px; border-radius: 6px; text-align: center; font-size: 0.85rem; border: 1px solid #ddd;">cipher-ivory</div>
+    <div style="background: #0d1b2a; color: #a8c4d4; padding: 12px 8px; border-radius: 6px; text-align: center; font-size: 0.85rem; border: 1px solid #1b3a4b;">blueprint</div>
+    <div style="background: #282828; color: #ebdbb2; padding: 12px 8px; border-radius: 6px; text-align: center; font-size: 0.85rem; border: 1px solid #504945;">gruvbox</div>
+    <div style="background: #2e3440; color: #d8dee9; padding: 12px 8px; border-radius: 6px; text-align: center; font-size: 0.85rem; border: 1px solid #4c566a;">nord</div>
+    <div style="background: #1a1a2e; color: #ff6ec7; padding: 12px 8px; border-radius: 6px; text-align: center; font-size: 0.85rem; border: 1px solid #ff6ec7;">synthwave</div>
+    <div style="background: #0d0d0d; color: #00ff41; padding: 12px 8px; border-radius: 6px; text-align: center; font-size: 0.85rem; border: 1px solid #003b00;">matrix</div>
+    <div style="background: #f5f0e8; color: #3a3530; padding: 12px 8px; border-radius: 6px; text-align: center; font-size: 0.85rem; border: 1px solid #d4c9b8;">warm-paper</div>
+    <div style="background: #ffffff; color: #000000; padding: 12px 8px; border-radius: 6px; text-align: center; font-size: 0.85rem; border: 3px solid #000;">brutalist</div>
+    <div style="background: #000000; color: #ffffff; padding: 12px 8px; border-radius: 6px; text-align: center; font-size: 0.85rem; border: 2px solid #ffff00;">high-contrast</div>
+  </div>
+</div>
+
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>2 Themes: Dark + Light Toggle</h3>
+      <p>cipher-dark als Default, cipher-ivory als Light-Modus. Klassischer Toggle in der Navigation. Sauber, erwartbar, wenig Aufwand.</p>
+      <p style="color: #888; font-size: 0.9rem;">Die anderen Themes werden auf der Deep-Dive-Seite als Feature erwaehnt, aber nicht live demonstriert.</p>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>2+Spielerei: Dark/Light Toggle + Theme-Showcase</h3>
+      <p>Dark/Light als Haupt-Toggle. Zusaetzlich ein kleines Theme-Karussell auf der Deep-Dive-Seite (oder im Footer), wo man die anderen Themes auf die Website anwenden kann. Easter-Egg-Charakter — "Schau mal, so fuehlt sich das an."</p>
+      <p style="color: #888; font-size: 0.9rem;">Mehr Aufwand, aber zeigt die Themes live statt sie nur zu beschreiben. Passt zum "glaesernes Cockpit"-Prinzip.</p>
+    </div>
+  </div>
+
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Alle 10 Themes als vollwertiger Switcher</h3>
+      <p>Jedes Theme ist vollstaendig implementiert. Dropdown oder Palette in der Statusbar, wie in der App selbst. Die Website wird zur Live-Demo des Theme-Systems.</p>
+      <p style="color: #888; font-size: 0.9rem;">Hoechster Aufwand. Alle 10 Farbschemata muessen als CSS-Variablen definiert werden. Aber maximaler "wow, das kann die App"-Effekt.</p>
+    </div>
+  </div>
+</div>
+
+<p class="subtitle" style="margin-top: 2rem;">Meine Empfehlung: <strong>B</strong> — Dark/Light als solide Basis, Theme-Showcase als Spielerei die das Feature greifbar macht ohne den Kern-Aufwand zu sprengen.</p>

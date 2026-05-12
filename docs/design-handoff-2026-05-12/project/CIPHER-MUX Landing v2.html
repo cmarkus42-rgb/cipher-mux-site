@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<title>CIPHER-MUX — Landing v2 (Design Refresh)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  html, body { margin: 0; padding: 0; background: #f0eee9; }
+</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel" src="design-canvas.jsx"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="features-shared.jsx?v=4"></script>
+<script type="text/babel" src="landing-v2-sections.jsx?v=1"></script>
+<script type="text/babel" src="landing-v2-heroes.jsx?v=1"></script>
+<script type="text/babel" src="landing-v2-pillar-alts.jsx?v=1"></script>
+<script type="text/babel" src="landing-v2-page.jsx?v=1"></script>
+
+<script type="text/babel" data-presets="env,react">
+  const TWEAKS = /*EDITMODE-BEGIN*/{
+    "hero": "A",
+    "theme": "light",
+    "accent": "#006B7A",
+    "density": "luftig"
+  }/*EDITMODE-END*/;
+
+  const App = () => {
+    const [t, setTweak] = useTweaks(TWEAKS);
+    return (
+      <>
+        <DesignCanvas>
+          <DCSection id="pillar-variants" title="Pfeiler — 5 Alternativen"
+            subtitle="Aktuell auf der Landing: Toggle-Cards (Original). Plus 4 neue Richtungen: Story-Stack · Tabs · Vorher/Nachher · System-Diagram.">
+            <DCArtboard id="pil-toggle" label="0 · Toggle-Cards (aktuell)" width={1200} height={780}>
+              <div style={{ width: '100%', height: '100%', background: '#F4F3ED' }}>
+                <SecPillarsV2 palette={cmPalette('light')} sp={cmSpacing('luftig')} />
+              </div>
+            </DCArtboard>
+            <DCArtboard id="pil-story" label="A · Story-Stack (Manifest)" width={1200} height={1400}>
+              <div style={{ width: '100%', height: '100%', background: '#F4F3ED' }}>
+                <PillarsStory palette={cmPalette('light')} sp={cmSpacing('luftig')} />
+              </div>
+            </DCArtboard>
+            <DCArtboard id="pil-tabs" label="B · Tabs (eine groß)" width={1200} height={780}>
+              <div style={{ width: '100%', height: '100%', background: '#F4F3ED' }}>
+                <PillarsTabs palette={cmPalette('light')} sp={cmSpacing('luftig')} />
+              </div>
+            </DCArtboard>
+            <DCArtboard id="pil-compare" label="C · Vorher / Nachher" width={1200} height={1500}>
+              <div style={{ width: '100%', height: '100%', background: '#F4F3ED' }}>
+                <PillarsCompare palette={cmPalette('light')} sp={cmSpacing('luftig')} />
+              </div>
+            </DCArtboard>
+            <DCArtboard id="pil-diagram" label="D · System-Diagram" width={1200} height={900}>
+              <div style={{ width: '100%', height: '100%', background: '#F4F3ED' }}>
+                <PillarsDiagram palette={cmPalette('light')} sp={cmSpacing('luftig')} />
+              </div>
+            </DCArtboard>
+          </DCSection>
+
+          <DCSection id="full" title={`Full Landing — Hero ${'{tweak}'} · Light + Dark`}
+            subtitle="Full-page mit aktueller Pillar-Section. Hero über Tweaks links unten.">
+            <DCArtboard id="full-light" label={`Light · Hero A · Toggle-Pillars`} width={1200} height={3400}>
+              <LandingV2 heroVariant="A" theme="light" density="luftig" />
+            </DCArtboard>
+            <DCArtboard id="full-dark" label={`Dark · Hero A · Toggle-Pillars`} width={1200} height={3400}>
+              <LandingV2 heroVariant="A" theme="dark" density="luftig" />
+            </DCArtboard>
+          </DCSection>
+        </DesignCanvas>
+
+        <TweaksPanel>
+          <TweakSection label="Brand">
+            <TweakColor label="Accent"
+              value={t.accent}
+              onChange={v => setTweak('accent', v)} />
+          </TweakSection>
+        </TweaksPanel>
+      </>
+    );
+  };
+
+  ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>
