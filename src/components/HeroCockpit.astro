@@ -10,19 +10,75 @@ interface Props {
 }
 
 const { label, tagline, taglineSub, taglineEnd, subtext, buttons, lang } = Astro.props;
+
+/* Parse subtext: replace {text} with <strong>text</strong> */
+const subtextHtml = subtext.replace(
+  /\{([^}]+)\}/g,
+  '<strong>$1</strong>'
+);
+
+/* Session data for the cockpit mock */
+const sessions = [
+  {
+    name: 'ideation-partner',
+    color: '#26a69a',
+    lines: [
+      '\u25CF Idee analysieren \u2026',
+      'Recherche \u00B7 3 Quellen',
+      'Konzept v0.2 \u2192 notes/',
+    ],
+  },
+  {
+    name: 'refinement',
+    color: '#9b86c4',
+    lines: [
+      '\u25CF Anforderungen sch\u00E4rfen',
+      '\u2713 REQ-01 \u00B7 REQ-02',
+      '\u25B8 \u00DCbergabe an Factory',
+    ],
+  },
+  {
+    name: 'cyber-factory',
+    color: '#5E81AC',
+    lines: [
+      '\u25CF Welle 5 l\u00E4uft',
+      'worker-1 \u00B7 scaffolding',
+      'worker-2 \u00B7 refinement',
+    ],
+  },
+  {
+    name: 'coding-companion',
+    color: '#ffb74d',
+    lines: [
+      '\u25CF Bereit',
+      '"Was bedeutet REQ-01?"',
+      'Memory: 14 entries',
+    ],
+  },
+];
 ---
 
-<section class="cm-cockpit-hero">
+<section class="hero-v2">
   <div class="cm-grid-bg"></div>
 
-  <!-- LEFT — copy block -->
-  <div class="cm-cockpit-hero__copy">
+  <!-- LEFT: copy block -->
+  <div class="hero-v2__copy">
     <span class="cm-label-tag" style="align-self: flex-start;">{label}</span>
-    <h1 class="cm-tagline cm-cockpit-hero__tagline">
-      {tagline}<br /><span style="color: var(--color-accent);">{taglineSub}</span>{taglineEnd && <><br /><span class="cm-cockpit-hero__tagline-end">{taglineEnd}</span></>}
+
+    <h1 class="hero-v2__h1">
+      {tagline}<br />
+      <span class="hero-v2__accent">{taglineSub}</span>
+      {taglineEnd && (
+        <>
+          <br />
+          <span class="hero-v2__dim">{taglineEnd}</span>
+        </>
+      )}
     </h1>
-    <p class="cm-hero-sub cm-cockpit-hero__sub" set:html={subtext.replace('CIPHER-MUX', '<strong>CIPHER-MUX</strong>')} />
-    <div style="display: flex; gap: 12px; margin-top: 8px; flex-wrap: wrap;">
+
+    <p class="hero-v2__sub" set:html={subtextHtml} />
+
+    <div class="hero-v2__buttons">
       {buttons.map((btn) => (
         <a
           href={btn.href}
@@ -35,9 +91,301 @@ const { label, tagline, taglineSub, taglineEnd, subtext, buttons, lang } = Astro
     </div>
   </div>
 
-  <!-- RIGHT — real app screenshot -->
-  <div class="cm-cockpit-screenshot">
-    <img class="screenshot-light" src="/images/screenshots/cipher-ivory-2x2.webp" alt="CIPHER-MUX — 2×2 Grid im cipher-ivory Theme" loading="eager" />
-    <img class="screenshot-dark" src="/images/screenshots/cipher-dark-2x2.webp" alt="CIPHER-MUX — 2×2 Grid im cipher-dark Theme" loading="eager" />
+  <!-- RIGHT: cockpit mock -->
+  <div class="hero-v2__mock">
+    <div class="mock-window">
+      <!-- macOS chrome bar -->
+      <div class="mock-chrome">
+        <div class="mock-chrome__dots">
+          <span class="mock-dot mock-dot--red"></span>
+          <span class="mock-dot mock-dot--yellow"></span>
+          <span class="mock-dot mock-dot--green"></span>
+        </div>
+        <span class="mock-chrome__title">
+          <span class="mock-chrome__indicator">&bull;</span> cipher-mux v0.9.101
+        </span>
+      </div>
+
+      <!-- 2x2 session grid -->
+      <div class="mock-grid">
+        {sessions.map((session) => (
+          <div class="mock-cell" style={`--cell-color: ${session.color};`}>
+            <div class="mock-cell__header">
+              <span class="mock-cell__dot" />
+              <span class="mock-cell__name">{session.name}</span>
+            </div>
+            <div class="mock-cell__body">
+              {session.lines.map((line) => (
+                <div class="mock-cell__line">{line}</div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Status bar -->
+      <div class="mock-status">
+        <span><span class="mock-status__dot">&bull;</span> STT &middot; COM</span>
+        <span>workspace &middot; 2&times;2</span>
+        <span>nord</span>
+        <span>v0.9.101</span>
+      </div>
+    </div>
   </div>
 </section>
+
+<style>
+  /* ============================================================
+     HERO V2: Two-column grid with cockpit mock
+     ============================================================ */
+  .hero-v2 {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 540px;
+    gap: 56px;
+    align-items: center;
+    padding: 88px 56px 96px;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
+  /* --- LEFT: Copy --- */
+  .hero-v2__copy {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .hero-v2__h1 {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 0.96;
+    letter-spacing: -1px;
+    margin: 0;
+    color: var(--color-text);
+  }
+
+  .hero-v2__accent {
+    color: var(--color-accent);
+  }
+
+  .hero-v2__dim {
+    font-size: 0.62em;
+    color: var(--color-text-dim);
+  }
+
+  .hero-v2__sub {
+    font-family: 'Fira Code', monospace;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+    max-width: 500px;
+    margin: 0;
+  }
+
+  .hero-v2__sub :global(strong) {
+    color: var(--color-text);
+    font-weight: 500;
+  }
+
+  .hero-v2__buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+    flex-wrap: wrap;
+  }
+
+  /* --- RIGHT: Cockpit Mock --- */
+  .hero-v2__mock {
+    width: 540px;
+    flex-shrink: 0;
+  }
+
+  .mock-window {
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-sunken);
+    clip-path: polygon(
+      10px 0, 100% 0,
+      100% calc(100% - 10px),
+      calc(100% - 10px) 100%,
+      0 100%, 0 10px
+    );
+    overflow: hidden;
+  }
+
+  /* Chrome bar */
+  .mock-chrome {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    background: var(--color-terminal-chrome);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .mock-chrome__dots {
+    display: flex;
+    gap: 6px;
+  }
+
+  .mock-dot {
+    width: 9px;
+    height: 9px;
+    display: block;
+  }
+
+  .mock-dot--red   { background: #FF5F57; }
+  .mock-dot--yellow { background: #FEBC2E; }
+  .mock-dot--green  { background: #28C840; }
+
+  .mock-chrome__title {
+    font-family: 'Fira Code', monospace;
+    font-size: 10px;
+    color: var(--color-text-dim);
+    letter-spacing: 0.5px;
+  }
+
+  .mock-chrome__indicator {
+    color: var(--color-neon-green);
+    font-size: 14px;
+    vertical-align: -1px;
+  }
+
+  /* 2x2 session grid */
+  .mock-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 130px 130px;
+    gap: 6px;
+    padding: 6px;
+    background: var(--color-terminal-bg);
+  }
+
+  .mock-cell {
+    background: var(--color-terminal-bg);
+    border: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .mock-cell__header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 8px;
+    background: var(--color-bg-sunken);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .mock-cell__dot {
+    width: 6px;
+    height: 6px;
+    background: var(--cell-color);
+    display: block;
+    flex-shrink: 0;
+  }
+
+  .mock-cell__name {
+    font-family: 'Fira Code', monospace;
+    font-size: 9px;
+    color: var(--color-text-dim);
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .mock-cell__body {
+    padding: 8px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+  }
+
+  .mock-cell__line {
+    font-family: 'Fira Code', monospace;
+    font-size: 9.5px;
+    line-height: 1.5;
+    color: var(--color-terminal-text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    opacity: 0.8;
+  }
+
+  .mock-cell__line:first-child {
+    opacity: 1;
+    color: var(--cell-color);
+  }
+
+  /* Status bar */
+  .mock-status {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px;
+    height: 26px;
+    background: var(--color-terminal-chrome);
+    border-top: 1px solid var(--color-border);
+    font-family: 'Fira Code', monospace;
+    font-size: 9px;
+    color: var(--color-text-dim);
+    letter-spacing: 0.3px;
+  }
+
+  .mock-status__dot {
+    color: var(--color-neon-green);
+    font-size: 13px;
+    vertical-align: -1px;
+  }
+
+  /* ============================================================
+     RESPONSIVE: single column below 900px
+     ============================================================ */
+  @media (max-width: 900px) {
+    .hero-v2 {
+      grid-template-columns: 1fr;
+      padding: 56px 24px 64px;
+      gap: 40px;
+    }
+
+    .hero-v2__h1 {
+      font-size: 48px;
+    }
+
+    .hero-v2__mock {
+      width: 100%;
+      max-width: 540px;
+    }
+
+    .mock-grid {
+      grid-template-rows: 110px 110px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero-v2__h1 {
+      font-size: 38px;
+    }
+
+    .hero-v2__sub {
+      font-size: 12.5px;
+    }
+
+    .mock-cell__line {
+      font-size: 8.5px;
+    }
+
+    .mock-cell__name {
+      font-size: 8px;
+    }
+
+    .mock-status {
+      font-size: 8px;
+    }
+  }
+</style>

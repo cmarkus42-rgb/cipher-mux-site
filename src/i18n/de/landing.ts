@@ -5,11 +5,11 @@ const landing = {
     taglineSub: 'for Makers.',
     taglineEnd: 'And everyone else.',
     subtext:
-      'Orchestriert Claude Code zu einem echten Entwicklungsprozess — mit Rollen, Gedächtnis und Stimme.',
+      'Orchestriert {Claude Code} zu einem echten Entwicklungsprozess — mit Rollen, Gedächtnis und Stimme.',
     buttons: [
-      { label: 'Dokumentation', href: '/de/docs', primary: true },
+      { label: 'Dokumentation', href: '/de/docs/', primary: true },
       { label: 'Features', href: '/de/features' },
-      { label: 'GitHub', href: 'https://github.com/cmarkus42-rgb/cipher-mux-electron' },
+      { label: 'GitHub \u2197', href: 'https://github.com/cmarkus42/cipher-mux-electron' },
     ],
   },
   pillars: [
