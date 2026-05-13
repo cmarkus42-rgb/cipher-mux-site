@@ -25,8 +25,8 @@ const install = {
       num: '01' as const,
       headerLabel: '01 \u00b7 Installation',
       headerTime: '~5 min \u00b7 one-time',
-      title: 'Download DMG, run the wizard, log in.',
-      lead: 'Three steps: install the app, run the setup wizard, log in to Claude Code. The wizard detects what\u0027s missing.',
+      title: 'Setup. Step by step.',
+      lead: 'Install the app, run the setup wizard, log in to Claude Code. The wizard detects what\u0027s missing.',
     },
     {
       num: '02' as const,
