@@ -42,6 +42,11 @@ const landing = {
         '13 Themes, davon vier speziell für Farbenblindheit (Deuteranopie, Tritanopie, Achromatopsie) und ein High-Contrast-Theme nach WCAG AAA. Sprachsteuerung komplett lokal über Whisper — kein Netzwerk, keine Cloud. Bluetooth-Fernbedienung für freihändiges Arbeiten. Und ein Theme-Editor, mit dem du jede Farbe anpassen kannst.',
     },
   ],
+  pillarsKicker: 'VIER PFEILER \u00b7 EIN MANIFEST',
+  pillarsNumLabel: '// pfeiler',
+  builtKicker: 'Selbstreferenz',
+  builtWaveHeader: '// wachstum der test-suite \u00fcber 8 wellen',
+  notKicker: 'Systemabgrenzung',
   notSection: {
     title: 'Was CIPHER-MUX nicht ist.',
     lead: 'Zur transparenten Einordnung:',
@@ -73,6 +78,16 @@ const landing = {
     ],
     detail: 'Ab Welle 5 war die Testing-Entity im Prozess verdrahtet: sie schreibt Tests, reicht Findings an den Debugger weiter, und der Zyklus läuft ohne manuellen Anstoß. 668 der 1.509 Tests entstanden in den letzten drei Wellen — durch den Prozess selbst. 0 High-Severity Findings im finalen Audit.',
     closer: 'Die Aufgabe des Entwicklers war, den Prozess zu entwerfen — und ihm dann nicht im Weg zu stehen.',
+  },
+  bottomCta: {
+    kicker: '// Bereit?',
+    title: 'Lies das Handbuch.',
+    titleDim: 'Oder frag den Companion.',
+    buttons: [
+      { label: 'Dokumentation', href: '/de/docs/', primary: true },
+      { label: 'Features', href: '/de/features' },
+      { label: 'GitHub \u2197', href: 'https://github.com/cmarkus42/cipher-mux-electron', external: true },
+    ],
   },
   footer: {
     mark: 'CIPHER-MUX',
