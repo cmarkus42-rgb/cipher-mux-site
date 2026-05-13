@@ -124,7 +124,9 @@ const install = {
       title: 'Etwas tippen',
       body: 'Gib Claude einen einfachen Auftrag in der ersten Cell. Du siehst: er arbeitet, Output erscheint im Terminal.',
       terminal: 'Erkl\u00e4r mir was in diesem Projekt passiert',
-      layout: '1x1' as const,
+      screenshotLight: '/images/screenshots/cipher-ivory-1x1.webp',
+      screenshotDark: '/images/screenshots/cipher-dark-1x1.webp',
+      screenshotAlt: 'CIPHER-MUX \u2014 1\u00d71 Grid, erste Session',
     },
     {
       num: 'AKTION 02',
@@ -132,7 +134,9 @@ const install = {
       body: 'Spalte hinzuf\u00fcgen, neue Session \u00f6ffnen. Zwei parallele Claude-Cells. Das Kernfeature.',
       terminal: '\u2318 + \u2192 f\u00fcgt Spalte rechts hinzu',
       terminalComment: '# Shortcut',
-      layout: '2x1' as const,
+      screenshotLight: '/images/screenshots/cipher-ivory-2x1.webp',
+      screenshotDark: '/images/screenshots/cipher-dark-2x1.webp',
+      screenshotAlt: 'CIPHER-MUX \u2014 2\u00d71 Grid, zwei Sessions',
     },
     {
       num: 'AKTION 03',
@@ -140,7 +144,9 @@ const install = {
       body: 'Sidebar \u00f6ffnen, Notes-Tab \u00f6ffnen, erste Notiz schreiben. Memory ist hier zuhause.',
       terminal: '\u2318 + B schaltet Sidebar um',
       terminalComment: '# Shortcut',
-      layout: 'sidebar' as const,
+      screenshotLight: '/images/screenshots/sidebar-notes-light.png',
+      screenshotDark: '/images/screenshots/sidebar-notes-dark.png',
+      screenshotAlt: 'CIPHER-MUX \u2014 Sidebar mit Notes',
     },
   ] as const,
   outcome: {
@@ -153,12 +159,15 @@ const install = {
     ] as const,
   },
   nextSteps: {
-    title: 'Der Companion schl\u00e4gt vor \u2014 du w\u00e4hlst',
-    lead: 'Je nach Skill-Level hat die Companion verschiedene n\u00e4chste Schritte. Kein Druck \u2014 du kannst auch einfach machen.',
+    headerLabel: '04 \u00b7 Weiter',
+    headerTime: 'wann du willst',
+    title: 'Weiter geht\u2019s wie du willst.',
+    titleDim: 'Der Companion begleitet dich.',
+    lead: 'Drei Guides zum gezielten Vertiefen \u2014 vom Erstkontakt bis zu LLM-Grundlagen.',
     cards: [
-      { guide: 'Guide 02', tag: 'Einsteiger', title: 'Voice + Notes', body: 'Morgen zeig ich dir Voice Input und wie du Notes als zweites Ged\u00e4chtnis nutzt.' },
-      { guide: 'Guide 03', tag: 'Fortgeschritten', title: 'Workshop', body: 'Wenn du magst, zeig ich dir den Workshop \u2014 wie mehrere Sessions zusammenarbeiten.' },
-      { guide: 'Guide 03 + 05', tag: 'Power-User', title: 'Cyber Factory + Presets', body: 'Du wei\u00dft was du tust. Parallele Worker-Sessions und eigene Preset-Konfiguration wenn du tiefer rein willst.' },
+      { guide: 'Guide 01', tag: 'Erstkontakt', title: 'First Steps', body: 'Was ist cipher-mux, wie startest du, erste Session. Der Einstieg.' },
+      { guide: 'Guide 02', tag: 'T\u00e4glicher Umgang', title: 'Daily Workflow', body: 'Sessions anlegen, Tasks verteilen, Notes nutzen, Grid konfigurieren.' },
+      { guide: 'Guide 04', tag: 'LLM-Grundlagen', title: 'Prompting Fundamentals', body: 'Kontext verstehen, Prompts schreiben, typische Fehler vermeiden.' },
     ] as const,
   },
   bottom: {

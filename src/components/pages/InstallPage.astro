@@ -239,14 +239,10 @@ const ghRepo = 'https://github.com/cmarkus42-rgb/cipher-mux-electron';
             <div class="action-num">{action.num}</div>
             <h3>{action.title}</h3>
             <p>{action.body}</p>
-            {action.layout === '1x1' ? (
-              <div class="action-mini-grid"><div class="action-mini-cell action-mini-cell--active">CC &#9656;</div></div>
-            ) : action.layout === '2x1' ? (
-              <div class="action-mini-grid" style="grid-template-columns:1fr 1fr"><div class="action-mini-cell action-mini-cell--active">CC &#9656;</div><div class="action-mini-cell action-mini-cell--active">CC &#9656;</div></div>
-            ) : action.layout === 'sidebar' ? (
-              <div class="action-sidebar-mock">
-                <div class="action-sidebar-left">NOTES</div>
-                <div class="action-sidebar-right">CC &#9656;</div>
+            {'screenshotLight' in action && action.screenshotLight ? (
+              <div class="action-screenshot">
+                <img class="screenshot-light" src={action.screenshotLight} alt={('screenshotAlt' in action && action.screenshotAlt) || ''} loading="lazy" />
+                <img class="screenshot-dark" src={('screenshotDark' in action && action.screenshotDark) || ''} alt={('screenshotAlt' in action && action.screenshotAlt) || ''} loading="lazy" />
               </div>
             ) : null}
             <div class="action-terminal">
@@ -272,10 +268,10 @@ const ghRepo = 'https://github.com/cmarkus42-rgb/cipher-mux-electron';
     <!-- Phase 04 -->
     <section id="phase4" class="install-phase">
       <div class="phase-header">
-        <span class="phase-header-num">04 &middot; Weiter</span>
-        <span class="phase-time">wann du willst</span>
+        <span class="phase-header-num">{content.nextSteps.headerLabel}</span>
+        <span class="phase-time">{content.nextSteps.headerTime}</span>
       </div>
-      <h2>{content.nextSteps.title}</h2>
+      <h2>{content.nextSteps.title} <span class="dim">{content.nextSteps.titleDim}</span></h2>
       <p class="install-lead">{content.nextSteps.lead}</p>
 
       <div class="nextstep-grid">
@@ -888,28 +884,14 @@ const ghRepo = 'https://github.com/cmarkus42-rgb/cipher-mux-electron';
     margin: 0 0 14px;
     line-height: 1.5;
   }
-  .action-mini-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 4px;
-    background: var(--color-bg-sunken);
+  .action-screenshot {
     border: 1px solid var(--color-border);
-    padding: 4px;
-    aspect-ratio: 3 / 1;
+    overflow: hidden;
   }
-  .action-mini-cell {
-    background: var(--color-bg-elevated);
-    border: 1px solid var(--color-border);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Fira Code', monospace;
-    font-size: 9px;
-    color: var(--color-text-dim);
-  }
-  .action-mini-cell--active {
-    background: var(--color-accent);
-    color: var(--color-bg);
+  .action-screenshot img {
+    width: 100%;
+    height: auto;
+    display: block;
   }
   .action-terminal {
     margin-top: 12px;
@@ -920,34 +902,6 @@ const ghRepo = 'https://github.com/cmarkus42-rgb/cipher-mux-electron';
     color: var(--color-terminal-text);
     line-height: 1.5;
     border: 1px solid var(--color-border);
-  }
-  .action-sidebar-mock {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 4px;
-    aspect-ratio: 2 / 1;
-    background: var(--color-bg-sunken);
-    border: 1px solid var(--color-border);
-    padding: 4px;
-  }
-  .action-sidebar-left {
-    background: var(--color-accent);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Fira Code', monospace;
-    font-size: 9px;
-    color: var(--color-bg);
-  }
-  .action-sidebar-right {
-    background: var(--color-bg-elevated);
-    border: 1px solid var(--color-border);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Fira Code', monospace;
-    font-size: 9px;
-    color: var(--color-text-dim);
   }
 
   /* Outcome strip */

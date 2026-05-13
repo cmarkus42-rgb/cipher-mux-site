@@ -124,7 +124,9 @@ const install = {
       title: 'Type something',
       body: 'Give Claude a simple task in the first cell. You\u0027ll see it work, output appears in the terminal.',
       terminal: 'Explain what\u0027s happening in this project',
-      layout: '1x1' as const,
+      screenshotLight: '/images/screenshots/cipher-ivory-1x1.webp',
+      screenshotDark: '/images/screenshots/cipher-dark-1x1.webp',
+      screenshotAlt: 'CIPHER-MUX \u2014 1\u00d71 grid, first session',
     },
     {
       num: 'ACTION 02',
@@ -132,7 +134,9 @@ const install = {
       body: 'Add column, open new session. Two parallel Claude cells. The core feature.',
       terminal: '\u2318 + \u2192 adds column to the right',
       terminalComment: '# Shortcut',
-      layout: '2x1' as const,
+      screenshotLight: '/images/screenshots/cipher-ivory-2x1.webp',
+      screenshotDark: '/images/screenshots/cipher-dark-2x1.webp',
+      screenshotAlt: 'CIPHER-MUX \u2014 2\u00d71 grid, two sessions',
     },
     {
       num: 'ACTION 03',
@@ -140,7 +144,9 @@ const install = {
       body: 'Open sidebar, notes tab, write first note. Memory lives here.',
       terminal: '\u2318 + B toggles sidebar',
       terminalComment: '# Shortcut',
-      layout: 'sidebar' as const,
+      screenshotLight: '/images/screenshots/sidebar-notes-light.png',
+      screenshotDark: '/images/screenshots/sidebar-notes-dark.png',
+      screenshotAlt: 'CIPHER-MUX \u2014 Sidebar with Notes',
     },
   ] as const,
   outcome: {
@@ -153,12 +159,15 @@ const install = {
     ] as const,
   },
   nextSteps: {
-    title: 'The Companion suggests \u2014 you choose',
-    lead: 'Depending on your skill level, the Companion has different next steps. No pressure \u2014 you can also just go for it.',
+    headerLabel: '04 \u00b7 Next Steps',
+    headerTime: 'whenever',
+    title: 'Continue at your own pace.',
+    titleDim: 'The Companion has your back.',
+    lead: 'Three guides for targeted deep-dives \u2014 from first contact to LLM fundamentals.',
     cards: [
-      { guide: 'Guide 02', tag: 'Beginner', title: 'Voice + Notes', body: 'Tomorrow I\u0027ll show you Voice Input and how to use Notes as a second brain.' },
-      { guide: 'Guide 03', tag: 'Intermediate', title: 'Workshop', body: 'If you want, I\u0027ll show you the Workshop \u2014 how multiple sessions work together.' },
-      { guide: 'Guide 03 + 05', tag: 'Power User', title: 'Cyber Factory + Presets', body: 'You know what you\u0027re doing. Parallel worker sessions and custom preset configuration if you want to go deeper.' },
+      { guide: 'Guide 01', tag: 'First Contact', title: 'First Steps', body: 'What is cipher-mux, how do you start, first session. The entry point.' },
+      { guide: 'Guide 02', tag: 'Daily Use', title: 'Daily Workflow', body: 'Create sessions, distribute tasks, use notes, configure the grid.' },
+      { guide: 'Guide 04', tag: 'LLM Basics', title: 'Prompting Fundamentals', body: 'Understand context, write prompts, avoid common mistakes.' },
     ] as const,
   },
   bottom: {
