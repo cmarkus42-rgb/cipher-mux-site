@@ -372,6 +372,10 @@ const lang = 'de';
         ))}
       </div>
 
+      <div class="docs-screenshot-single">
+        <img src="/images/screenshots/detail-settings-general.webp" alt="Settings — General" loading="lazy" />
+      </div>
+
       <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.settings.languageTitle}</span></h3>
       <div class="docs-table">
         <div class="docs-table-header docs-table-2col"><div>Bereich</div><div>Optionen</div></div>
@@ -401,6 +405,14 @@ const lang = 'de';
         </div>
       ))}
 
+      <div class="docs-screenshot-row">
+        <div class="docs-screenshot-sm">
+          <img class="screenshot-light" src="/images/screenshots/detail-settings-themes-light.png" alt="Settings — Themes" loading="lazy" />
+          <img class="screenshot-dark" src="/images/screenshots/detail-settings-themes-dark.png" alt="Settings — Themes" loading="lazy" />
+          <span>Themes</span>
+        </div>
+      </div>
+
       <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.settings.editorTitle}</span></h3>
       <div class="docs-table docs-table-compact">
         <div class="docs-table-header docs-table-2col"><div>Aktion</div><div>Was passiert</div></div>
@@ -412,27 +424,29 @@ const lang = 'de';
         ))}
       </div>
 
-      <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.settings.shortcutsTitle}</span></h3>
-      <p class="docs-p">{content.settings.shortcutsDesc}</p>
-
-      <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.settings.a11yTitle}</span></h3>
-      <p class="docs-p">{content.settings.a11yDesc}</p>
-
-      <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.settings.aboutTitle}</span></h3>
-      <p class="docs-p">{content.settings.aboutDesc}</p>
-
       <div class="docs-screenshot-row">
-        <div class="docs-screenshot-sm">
-          <img class="screenshot-light" src="/images/screenshots/detail-settings-themes-light.png" alt="Themes" loading="lazy" />
-          <img class="screenshot-dark" src="/images/screenshots/detail-settings-themes-dark.png" alt="Themes" loading="lazy" />
-          <span>Themes</span>
-        </div>
         <div class="docs-screenshot-sm">
           <img class="screenshot-light" src="/images/screenshots/detail-theme-editor-light.png" alt="Theme Editor" loading="lazy" />
           <img class="screenshot-dark" src="/images/screenshots/detail-theme-editor-dark.png" alt="Theme Editor" loading="lazy" />
           <span>Theme Editor</span>
         </div>
       </div>
+
+      <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.settings.shortcutsTitle}</span></h3>
+      <p class="docs-p">{content.settings.shortcutsDesc}</p>
+
+      <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.settings.a11yTitle}</span></h3>
+      <p class="docs-p">{content.settings.a11yDesc}</p>
+      <div class="docs-screenshot-single">
+        <img src="/images/screenshots/detail-settings-a11y.webp" alt="Settings — A11y" loading="lazy" />
+      </div>
+
+      <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.settings.aboutTitle}</span></h3>
+      <p class="docs-p">{content.settings.aboutDesc}</p>
+      <div class="docs-screenshot-single">
+        <img src="/images/screenshots/detail-settings-about.webp" alt="Settings — About" loading="lazy" />
+      </div>
+
     </DocsSection>
 
     <!-- ═══ §09 · Bugreport-Dialog ═══ -->
@@ -829,6 +843,17 @@ const lang = 'de';
   }
 
   /* --- Screenshot Rows --- */
+  .docs-screenshot-single {
+    margin-top: 20px;
+    max-width: 520px;
+  }
+  .docs-screenshot-single img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+  }
   .docs-screenshot-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
