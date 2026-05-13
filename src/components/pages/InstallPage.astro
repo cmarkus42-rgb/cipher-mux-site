@@ -227,47 +227,6 @@ const ghRepo = 'https://github.com/cmarkus42-rgb/cipher-mux-electron';
     <!-- Phase 03 -->
     <section id="phase3" class="install-phase">
       <div class="phase-header">
-        <span class="phase-header-num">{content.phases[2].headerLabel}</span>
-        <span class="phase-time">{content.phases[2].headerTime}</span>
-      </div>
-      <h2>{content.phases[2].title}</h2>
-      <p class="install-lead">{content.phases[2].lead}</p>
-
-      <div class="actions-grid">
-        {content.actions.map((action) => (
-          <div class="action-card">
-            <div class="action-num">{action.num}</div>
-            <h3>{action.title}</h3>
-            <p>{action.body}</p>
-            {'screenshotLight' in action && action.screenshotLight ? (
-              <div class="action-screenshot">
-                <img class="screenshot-light" src={action.screenshotLight} alt={('screenshotAlt' in action && action.screenshotAlt) || ''} loading="lazy" />
-                <img class="screenshot-dark" src={('screenshotDark' in action && action.screenshotDark) || ''} alt={('screenshotAlt' in action && action.screenshotAlt) || ''} loading="lazy" />
-              </div>
-            ) : null}
-            <div class="action-terminal">
-              {'terminalComment' in action && action.terminalComment ? (
-                <Fragment><span class="dim">{action.terminalComment}</span><br/></Fragment>
-              ) : null}
-              <span class="accent">&#8250;</span> {action.terminal}
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <div class="outcome-strip">
-        <div class="outcome-label">{content.outcome.label}</div>
-        <div class="outcome-items">
-          {content.outcome.items.map((item) => (
-            <span>{item}</span>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <!-- Phase 04 -->
-    <section id="phase4" class="install-phase">
-      <div class="phase-header">
         <span class="phase-header-num">{content.nextSteps.headerLabel}</span>
         <span class="phase-time">{content.nextSteps.headerTime}</span>
       </div>

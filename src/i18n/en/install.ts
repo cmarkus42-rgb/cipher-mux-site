@@ -9,8 +9,7 @@ const install = {
   phaseStrip: [
     { n: '01', label: 'Installation', time: '~10 min' },
     { n: '02', label: 'First Launch', time: '~5 min' },
-    { n: '03', label: 'First Result', time: '~5\u201310 min' },
-    { n: '04', label: 'Next Steps', time: 'whenever' },
+    { n: '03', label: 'Next Steps', time: 'whenever' },
   ] as const,
   dmg: {
     buttonLabel: '\u2193 cipher-mux-0.9.99.dmg',
@@ -34,13 +33,6 @@ const install = {
       headerTime: '~5 min',
       title: 'The Companion gets to know you.',
       lead: 'On first launch, the Companion asks about your background. Three quick questions, then the system adapts to your level.',
-    },
-    {
-      num: '03' as const,
-      headerLabel: '03 \u00b7 First Result',
-      headerTime: '~5\u201310 min',
-      title: 'Grid, Cells, Sidebar \u2014 try once, get it.',
-      lead: 'Three actions: send a prompt, open a second session, discover the sidebar. After that you know the basics.',
     },
   ] as const,
   stepA: {
@@ -118,48 +110,8 @@ const install = {
       { strong: 'Create a workspace', detail: 'Pick a name, assign your project folder \u2014 done. Every session in the workspace now knows what you\u0027re working on.' },
     ] as const,
   },
-  actions: [
-    {
-      num: 'ACTION 01',
-      title: 'Type something',
-      body: 'Give Claude a simple task in the first cell. You\u0027ll see it work, output appears in the terminal.',
-      terminal: 'Explain what\u0027s happening in this project',
-      screenshotLight: '/images/screenshots/cipher-ivory-1x1.webp',
-      screenshotDark: '/images/screenshots/cipher-dark-1x1.webp',
-      screenshotAlt: 'CIPHER-MUX \u2014 1\u00d71 grid, first session',
-    },
-    {
-      num: 'ACTION 02',
-      title: 'Second session',
-      body: 'Add column, open new session. Two parallel Claude cells. The core feature.',
-      terminal: '\u2318 + \u2192 adds column to the right',
-      terminalComment: '# Shortcut',
-      screenshotLight: '/images/screenshots/cipher-ivory-2x1.webp',
-      screenshotDark: '/images/screenshots/cipher-dark-2x1.webp',
-      screenshotAlt: 'CIPHER-MUX \u2014 2\u00d71 grid, two sessions',
-    },
-    {
-      num: 'ACTION 03',
-      title: 'Discover sidebar',
-      body: 'Open sidebar, notes tab, write first note. Memory lives here.',
-      terminal: '\u2318 + B toggles sidebar',
-      terminalComment: '# Shortcut',
-      screenshotLight: '/images/screenshots/sidebar-notes-light.png',
-      screenshotDark: '/images/screenshots/sidebar-notes-dark.png',
-      screenshotAlt: 'CIPHER-MUX \u2014 Sidebar with Notes',
-    },
-  ] as const,
-  outcome: {
-    label: 'After these three actions you have',
-    items: [
-      '\u2713 Claude Code running',
-      '\u2713 Two parallel sessions',
-      '\u2713 Grid \u00b7 Cells \u00b7 Focus understood',
-      '\u2713 Sidebar + Notes found',
-    ] as const,
-  },
   nextSteps: {
-    headerLabel: '04 \u00b7 Next Steps',
+    headerLabel: '03 \u00b7 Next Steps',
     headerTime: 'whenever',
     title: 'Continue at your own pace.',
     titleDim: 'The Companion has your back.',
