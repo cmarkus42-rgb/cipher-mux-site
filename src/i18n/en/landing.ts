@@ -82,7 +82,7 @@ const landing = {
   bottomCta: {
     kicker: '// Ready?',
     title: 'Read the handbook.',
-    titleDim: 'Or download it.',
+    titleDim: 'Or ask the Companion.',
     buttons: [
       { label: 'Documentation', href: '/en/docs/', primary: true },
       { label: 'Features', href: '/en/features' },
