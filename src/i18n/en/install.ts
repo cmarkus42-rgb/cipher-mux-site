@@ -12,8 +12,8 @@ const install = {
     { n: '03', label: 'Next Steps', time: 'whenever' },
   ] as const,
   dmg: {
-    buttonLabel: '\u2193 cipher-mux-0.9.99.dmg',
-    meta: 'macOS \u00b7 Apple Silicon \u00b7 142 MB \u00b7 SHA-256 verified',
+    buttonLabel: '\u2193 Download DMG',
+    meta: 'macOS \u00b7 Apple Silicon \u00b7 SHA-256 verified',
   },
   requirements: {
     label: 'Requirements',
@@ -39,7 +39,7 @@ const install = {
     title: 'Install the App',
     desc: 'Standard DMG flow \u2014 download, open, drag to Applications.',
     items: [
-      { strong: 'Download DMG', detail: '', linkLabel: 'GitHub Releases', code: 'cipher-mux-0.9.99-arm64.dmg' },
+      { strong: 'Download DMG', detail: 'Latest release from', linkLabel: 'GitHub Releases' },
       { strong: 'Open DMG', detail: 'Double-click \u2192 drag cipher-mux.app to Applications' },
       { strong: 'Remove macOS quarantine', detail: 'One-time in Terminal:', code: 'xattr -cr /Applications/cipher-mux.app' },
       { strong: 'Launch', detail: 'Spotlight \u2192 cipher-mux \u2192 Enter' },

@@ -12,8 +12,8 @@ const install = {
     { n: '03', label: 'Weiter', time: 'wann du willst' },
   ] as const,
   dmg: {
-    buttonLabel: '\u2193 cipher-mux-0.9.99.dmg',
-    meta: 'macOS \u00b7 Apple Silicon \u00b7 142 MB \u00b7 SHA-256 verifiziert',
+    buttonLabel: '\u2193 DMG herunterladen',
+    meta: 'macOS \u00b7 Apple Silicon \u00b7 SHA-256 verifiziert',
   },
   requirements: {
     label: 'Was du brauchst',
@@ -39,7 +39,7 @@ const install = {
     title: 'App installieren',
     desc: 'Standard-DMG-Flow \u2014 herunterladen, \u00f6ffnen, in Applications ziehen.',
     items: [
-      { strong: 'DMG herunterladen', detail: '', linkLabel: 'GitHub Releases', code: 'cipher-mux-0.9.99-arm64.dmg' },
+      { strong: 'DMG herunterladen', detail: 'Aktuelles Release von', linkLabel: 'GitHub Releases' },
       { strong: 'DMG \u00f6ffnen', detail: 'Doppelklick \u2192 cipher-mux.app in Applications ziehen' },
       { strong: 'macOS-Sperre aufheben', detail: 'Einmalig im Terminal:', code: 'xattr -cr /Applications/cipher-mux.app' },
       { strong: 'Starten', detail: 'Spotlight \u2192 cipher-mux \u2192 Enter' },
