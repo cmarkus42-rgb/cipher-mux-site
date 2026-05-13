@@ -156,7 +156,7 @@ const a11yAltPrefix = (name: string) =>
           {/* 01 Cockpit — Real app screenshot with theme switching */}
           {section.num === '01' && (
             <div class="grid-schematic">
-              <div class="app-screenshot-wrap">
+              <div class="app-screenshot-wrap" data-lightbox>
                 <img
                   class="app-screenshot screenshot-light"
                   src="/images/screenshots/cipher-ivory-2x2.webp"
@@ -209,8 +209,8 @@ const a11yAltPrefix = (name: string) =>
                 {'layouts' in s && s.layouts ? s.layouts.map((layout, i) => (
                   <div class="layout-screenshot-item" style={`flex: ${layoutScreenshots[i]?.flex ?? i + 1}`}>
                     <div class="layout-screenshot-label"><span>{layout.label}</span><span>{layout.dim}</span></div>
-                    <img class="screenshot-light" src={layoutScreenshots[i]?.lightSrc} alt={`${layout.dim} Grid`} loading="lazy" />
-                    <img class="screenshot-dark" src={layoutScreenshots[i]?.darkSrc} alt={`${layout.dim} Grid`} loading="lazy" />
+                    <img class="screenshot-light" src={layoutScreenshots[i]?.lightSrc} alt={`${layout.dim} Grid`} loading="lazy" data-lightbox />
+                    <img class="screenshot-dark" src={layoutScreenshots[i]?.darkSrc} alt={`${layout.dim} Grid`} loading="lazy" data-lightbox />
                   </div>
                 )) : null}
               </div>
@@ -254,7 +254,7 @@ const a11yAltPrefix = (name: string) =>
             <div class="entity-gallery">
               <span class="cm-tag-inline">{'entityTag' in s ? s.entityTag : ''}</span>
               <div class="entity-gallery-preview">
-                <img id="entity-preview-img" src="/images/screenshots/detail-coding-companion.webp" alt="Coding Companion — Entity-Session" loading="lazy" />
+                <img id="entity-preview-img" src="/images/screenshots/detail-coding-companion.webp" alt="Coding Companion — Entity-Session" loading="lazy" data-lightbox />
               </div>
             </div>
           )}
@@ -411,7 +411,7 @@ const a11yAltPrefix = (name: string) =>
             <div class="a11y-grid">
               {s.a11yProfiles.map((profile) => (
                 <div class="a11y-card">
-                  <img class="a11y-card-screenshot" src={profile.screenshot} alt={a11yAltPrefix(profile.name)} loading="lazy" />
+                  <img class="a11y-card-screenshot" src={profile.screenshot} alt={a11yAltPrefix(profile.name)} loading="lazy" data-lightbox />
                   <div class="a11y-card-body">
                     <div class="a11y-card-colors">
                       {profile.colors.map((c) => (
@@ -897,7 +897,6 @@ const a11yAltPrefix = (name: string) =>
     width: 100%;
     height: auto;
     display: block;
-    border: 1px solid var(--color-border);
   }
 
   /* Layout gallery (screenshots) */

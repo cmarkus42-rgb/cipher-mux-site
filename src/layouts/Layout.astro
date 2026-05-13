@@ -59,5 +59,71 @@ const ogUrl = `https://cipher-mux.dev${Astro.url.pathname}`;
       <slot />
     </main>
     <Footer lang={lang} />
+
+    <!-- Lightbox overlay -->
+    <div id="lightbox" aria-hidden="true">
+      <img id="lightbox-img" alt="" />
+    </div>
+    <style>
+      #lightbox {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        background: rgba(0, 0, 0, 0.85);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: zoom-out;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.2s, visibility 0.2s;
+      }
+      #lightbox[aria-hidden="false"] {
+        opacity: 1;
+        visibility: visible;
+      }
+      #lightbox-img {
+        max-width: 92vw;
+        max-height: 92vh;
+        object-fit: contain;
+        border-radius: 4px;
+        box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+      }
+    </style>
+    <script is:inline>
+      (function () {
+        var lb = document.getElementById('lightbox');
+        var lbImg = document.getElementById('lightbox-img');
+        document.addEventListener('click', function (e) {
+          var img = e.target.closest('[data-lightbox]');
+          if (img) {
+            var src = img.tagName === 'IMG' ? img.src : img.querySelector('img:not([style*="display: none"]),.screenshot-light:not([style*="display: none"]),.screenshot-dark:not([style*="display: none"])')?.src;
+            if (!src) {
+              // Find visible img
+              var imgs = img.querySelectorAll('img');
+              for (var i = 0; i < imgs.length; i++) {
+                if (imgs[i].offsetParent !== null) { src = imgs[i].src; break; }
+              }
+            }
+            if (src) {
+              lbImg.src = src;
+              lbImg.alt = img.alt || img.querySelector('img')?.alt || '';
+              lb.setAttribute('aria-hidden', 'false');
+              document.body.style.overflow = 'hidden';
+            }
+          }
+        });
+        lb.addEventListener('click', function () {
+          lb.setAttribute('aria-hidden', 'true');
+          document.body.style.overflow = '';
+        });
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && lb.getAttribute('aria-hidden') === 'false') {
+            lb.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+          }
+        });
+      })();
+    </script>
   </body>
 </html>

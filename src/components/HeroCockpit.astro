@@ -52,7 +52,7 @@ const subtextHtml = subtext.replace(
   </div>
 
   <!-- RIGHT: app screenshot -->
-  <div class="hero-v2__screenshot">
+  <div class="hero-v2__screenshot" data-lightbox>
     <img
       class="screenshot-light"
       src="/images/screenshots/grid-empty-companion-light.png"
@@ -135,6 +135,8 @@ const subtextHtml = subtext.replace(
   .hero-v2__screenshot {
     max-width: 540px;
     flex-shrink: 0;
+    position: relative;
+    z-index: 1;
   }
 
   .hero-v2__screenshot img {

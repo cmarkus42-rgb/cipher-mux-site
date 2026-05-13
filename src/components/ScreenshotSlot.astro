@@ -13,12 +13,14 @@ const { caption, placeholder, src } = Astro.props;
       src={`${src}-light.png`}
       alt={caption}
       loading="lazy"
+      data-lightbox
     />
     <img
       class="screenshot-slot__img screenshot-dark"
       src={`${src}-dark.png`}
       alt={caption}
       loading="lazy"
+      data-lightbox
     />
   ) : (
     <div class="screenshot-slot__box">
