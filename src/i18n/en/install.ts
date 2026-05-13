@@ -1,9 +1,9 @@
 const install = {
   hero: {
     kicker: 'Get started',
-    title: 'From Mac to Cockpit.',
-    titleAccent: '~20 minutes.',
-    titleSuffix: 'One-time.',
+    title: 'Download DMG, run wizard,',
+    titleAccent: 'start prompting.',
+    titleSuffix: '',
     body: 'You need macOS, an Anthropic account, and a few terminal commands. This guide walks you through it.',
   },
   phaseStrip: [
