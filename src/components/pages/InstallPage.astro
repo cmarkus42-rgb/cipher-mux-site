@@ -150,10 +150,56 @@ const ghRepo = 'https://github.com/cmarkus42-rgb/cipher-mux-electron';
         </div>
       </div>
 
-      <!-- Step C: Claude Code einloggen -->
+      <!-- Step C: Hub einrichten -->
       <div class="step-block">
         <div class="step-badge-row">
           <div class="step-badge">C</div>
+          <div>
+            <h3>{content.hubSetup.title}</h3>
+            <p class="step-desc">{content.hubSetup.desc}</p>
+          </div>
+        </div>
+
+        <div class="hub-dialog-mock">
+          <div class="hub-dialog-inner">
+            <div class="hub-dialog-title">{content.hubSetup.dialogMock.title}</div>
+            <div class="hub-dialog-desc">{content.hubSetup.dialogMock.desc}</div>
+            <div class="hub-dialog-field">
+              <span class="hub-dialog-path">{content.hubSetup.dialogMock.path}</span>
+              <span class="hub-dialog-browse">{content.hubSetup.dialogMock.browse}</span>
+            </div>
+            <div class="hub-dialog-action">{content.hubSetup.dialogMock.action}</div>
+          </div>
+        </div>
+
+        <div class="hub-steps-box">
+          <ol class="dmg-steps">
+            {content.hubSetup.steps.map((step, i) => (
+              <li>
+                <span class="dmg-step-num">{i + 1}</span>
+                <div>
+                  <strong>{step.strong}</strong><br/>
+                  {step.detail}
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+
+        <div class="pitfall-card">
+          <div class="pitfall-label">{content.hubSetup.note.label}</div>
+          <ul>
+            {content.hubSetup.note.items.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <!-- Step D: Claude Code einloggen -->
+      <div class="step-block">
+        <div class="step-badge-row">
+          <div class="step-badge">D</div>
           <div>
             <h3>{content.stepC.title}</h3>
             <p class="step-desc">{content.stepC.desc}</p>
@@ -640,6 +686,90 @@ const ghRepo = 'https://github.com/cmarkus42-rgb/cipher-mux-electron';
     font-size: 14px;
     color: var(--color-text-secondary);
     line-height: 1.4;
+  }
+
+  /* Hub dialog mock */
+  .hub-dialog-mock {
+    background: rgba(0, 0, 0, 0.55);
+    border: 1px solid var(--color-border);
+    padding: 48px 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 18px;
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+  }
+  .hub-dialog-inner {
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    padding: 28px 32px;
+    max-width: 420px;
+    width: 100%;
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+  }
+  .hub-dialog-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--color-text);
+    margin-bottom: 6px;
+  }
+  .hub-dialog-desc {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    margin-bottom: 16px;
+    line-height: 1.4;
+  }
+  .hub-dialog-field {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .hub-dialog-path {
+    flex: 1;
+    padding: 8px 12px;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    font-family: 'Fira Code', monospace;
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .hub-dialog-browse {
+    padding: 8px 14px;
+    background: var(--color-bg-sunken);
+    border: 1px solid var(--color-border);
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px);
+    white-space: nowrap;
+  }
+  .hub-dialog-action {
+    background: var(--color-accent);
+    color: var(--color-bg);
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 10px 0;
+    clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+  }
+
+  /* Hub steps */
+  .hub-steps-box {
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    padding: 18px 20px;
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+    max-width: 620px;
   }
 
   /* DMG mock */

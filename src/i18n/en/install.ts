@@ -87,6 +87,30 @@ const install = {
       ] as const,
     },
   },
+  hubSetup: {
+    title: 'Set up your Hub',
+    desc: 'On the very first launch, an overlay appears: cipher-mux needs a project folder. One click, then you\u0027re in.',
+    dialogMock: {
+      title: 'Set up Hub',
+      desc: 'cipher-mux needs a folder for your projects.',
+      path: '/Users/max/cipher-mux/',
+      browse: 'Browse\u2026',
+      action: 'Create',
+    },
+    steps: [
+      { strong: 'App starts \u2192 overlay appears', detail: 'The normal grid is blocked \u2014 choose a Hub first, then continue.' },
+      { strong: 'Confirm or change the path', detail: 'Default: ~/cipher-mux/. Use \u201cBrowse\u2026\u201d to pick any location.' },
+      { strong: 'Click \u201cCreate\u201d', detail: 'cipher-mux creates the folder (incl. projects/ subfolder), saves the path, overlay disappears.' },
+    ] as const,
+    note: {
+      label: '\u2139 Good to know',
+      items: [
+        'The Hub is a regular folder \u2014 no Git repo, no hidden files. Projects inside can be independent Git repos.',
+        'The old Project Scanner has been removed. Instead of scanning directories automatically, you now pick projects directly via a folder picker.',
+        'Existing users: On first launch after the update, the dialog appears once. Choose your existing project folder \u2014 the prompt won\u0027t come back.',
+      ] as const,
+    },
+  },
   companion: {
     mockHeader: 'companion \u00b7 cell 1/1',
     mockLines: [

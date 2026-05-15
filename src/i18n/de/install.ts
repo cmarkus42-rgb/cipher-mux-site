@@ -87,6 +87,30 @@ const install = {
       ] as const,
     },
   },
+  hubSetup: {
+    title: 'Hub einrichten',
+    desc: 'Beim allerersten Start erscheint ein Overlay: cipher-mux braucht einen Projektordner. Ein Klick, dann geht\u2019s weiter.',
+    dialogMock: {
+      title: 'Hub einrichten',
+      desc: 'cipher-mux braucht einen Ordner f\u00fcr deine Projekte.',
+      path: '/Users/max/cipher-mux/',
+      browse: 'Durchsuchen\u2026',
+      action: 'Anlegen',
+    },
+    steps: [
+      { strong: 'App startet \u2192 Overlay erscheint', detail: 'Das normale Grid ist blockiert \u2014 erst Hub w\u00e4hlen, dann weiter.' },
+      { strong: 'Pfad best\u00e4tigen oder \u00e4ndern', detail: 'Vorschlag: ~/cipher-mux/. \u00dcber \u201eDurchsuchen\u2026\u201c kannst du jeden Ort w\u00e4hlen.' },
+      { strong: '\u201eAnlegen\u201c klicken', detail: 'cipher-mux erstellt den Ordner (inkl. projects/-Unterordner), merkt sich den Pfad, Dialog verschwindet.' },
+    ] as const,
+    note: {
+      label: '\u2139 Gut zu wissen',
+      items: [
+        'Der Hub ist ein normaler Ordner \u2014 kein Git-Repo, keine versteckten Dateien. Projekte darin k\u00f6nnen eigenst\u00e4ndige Git-Repos sein.',
+        'Der alte Project Scanner ist entfallen. Statt automatisch Verzeichnisse zu durchsuchen, w\u00e4hlst du Projekte jetzt direkt per Ordner-Picker.',
+        'Bestandsnutzer: Beim ersten Start nach dem Update erscheint der Dialog einmalig. W\u00e4hle deinen bestehenden Projektordner \u2014 danach kommt die Frage nicht wieder.',
+      ] as const,
+    },
+  },
   companion: {
     mockHeader: 'companion \u00b7 cell 1/1',
     mockLines: [
