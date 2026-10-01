@@ -3,17 +3,36 @@ import Layout from '../../../layouts/Layout.astro';
 import DocsNav from '../../../components/DocsNav.astro';
 import DocsHero from '../../../components/DocsHero.astro';
 import DocsSection from '../../../components/DocsSection.astro';
+import CMBox from '../../../components/CMBox.astro';
 import Callout from '../../../components/Callout.astro';
+import ScreenshotSlot from '../../../components/ScreenshotSlot.astro';
 import content from '../../../i18n/en/docs-start';
 
 const lang = 'en';
 ---
 
-<Layout title="Quick Start — CIPHER-MUX" description={content.hero.body} lang={lang} active="docs">
+<Layout
+  title="Quick Start — CIPHER-MUX"
+  description={content.hero.body}
+  lang={lang}
+  active="docs"
+>
   <div class="docs-page">
 
     <DocsNav lang={lang} activePage="start" />
 
+    <!-- Anchor Nav -->
+    <nav class="cm-anchor-nav">
+      <div class="cm-anchor-nav-label">Contents</div>
+      {content.sections.map((section) => (
+        <a href={`#${section.id}`} class="cm-anchor-nav-item">
+          <span class="cm-anchor-nav-num">{section.num}</span>
+          <span>{section.navLabel}</span>
+        </a>
+      ))}
+    </nav>
+
+    <!-- Hero -->
     <DocsHero
       kicker={content.hero.kicker}
       title={content.hero.title}
@@ -21,18 +40,173 @@ const lang = 'en';
       body={content.hero.body}
     />
 
-    <DocsSection id="translation" num="00" title="Translation in Progress">
-      <Callout kind="tip" title="Translation in Progress">
-        {content.translationNote}
-        <br /><br />
-        <a href={content.germanLink} class="docs-translation-link">{content.germanLabel} &rarr;</a>
+    <!-- Section 01: Orientation -->
+    <DocsSection id="orientation" num="01" title={content.sections[0].title} lead={content.orientation.lead}>
+      <ul class="docs-list">
+        {content.orientation.items.map((item) => (
+          <li><span class="docs-list-marker">&rsaquo;</span><span set:html={item} /></li>
+        ))}
+      </ul>
+      <ScreenshotSlot
+        src="/images/screenshots/grid-empty-companion"
+        caption={content.orientation.screenshot.caption}
+        placeholder={content.orientation.screenshot.placeholder}
+      />
+    </DocsSection>
+
+    <!-- Section 02: Workspace -->
+    <DocsSection id="workspace" num="02" title={content.sections[1].title} lead={content.workspace.lead}>
+      <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>Step by step</span></h3>
+      <ol class="docs-list docs-list--ordered">
+        {content.workspace.flow.map((item) => (
+          <li><span class="docs-list-marker">&triangleright;</span><span set:html={item} /></li>
+        ))}
+      </ol>
+      <Callout kind="rule" title="Workspace = Context">
+        {content.workspace.callout}
+      </Callout>
+      <ScreenshotSlot
+        src="/images/screenshots/workspace-editor"
+        caption={content.workspace.screenshot.caption}
+        placeholder={content.workspace.screenshot.placeholder}
+      />
+    </DocsSection>
+
+    <!-- Section 03: Sessions -->
+    <DocsSection id="sessions" num="03" title={content.sections[2].title} lead={content.sessions.lead}>
+      <div class="docs-two-col">
+        <CMBox elevated>
+          <div class="cm-box-label">// via preset</div>
+          <ol class="docs-list docs-list--ordered">
+            {content.sessions.presetSteps.map((step) => (
+              <li><span class="docs-list-marker">&triangleright;</span><span set:html={step} /></li>
+            ))}
+          </ol>
+        </CMBox>
+        <CMBox elevated>
+          <div class="cm-box-label">// via path</div>
+          <ol class="docs-list docs-list--ordered">
+            {content.sessions.pathSteps.map((step) => (
+              <li><span class="docs-list-marker">&triangleright;</span><span set:html={step} /></li>
+            ))}
+          </ol>
+        </CMBox>
+      </div>
+
+      <h3 class="docs-subhead"><span class="docs-subhead-dot"></span><span>{content.sessions.optionsTitle}</span></h3>
+      <div class="docs-table">
+        <div class="docs-table-header docs-table-2col">
+          <div>Option</div><div>Meaning</div>
+        </div>
+        {content.sessions.options.map((opt, i) => (
+          <div class:list={["docs-table-row", "docs-table-2col", { "docs-table-row-first": i === 0 }]}>
+            <div class="docs-table-label">{opt.label}</div>
+            <div class="docs-table-desc">{opt.desc}</div>
+          </div>
+        ))}
+      </div>
+
+      <ScreenshotSlot
+        src="/images/screenshots/launcher-popup"
+        caption={content.sessions.screenshot.caption}
+        placeholder={content.sessions.screenshot.placeholder}
+      />
+    </DocsSection>
+
+    <!-- Section 04: Overview -->
+    <DocsSection id="overview" num="04" title={content.sections[3].title} lead={content.overview.lead}>
+      <div class="docs-table">
+        <div class="docs-table-header docs-table-2col">
+          <div>Area</div><div>What you find there</div>
+        </div>
+        {content.overview.areas.map((area, i) => (
+          <div class:list={["docs-table-row", "docs-table-2col", { "docs-table-row-first": i === 0 }]}>
+            <div class="docs-table-label">{area.label}</div>
+            <div class="docs-table-desc">{area.desc}</div>
+          </div>
+        ))}
+      </div>
+
+      <Callout kind="tip">
+        <span set:html={content.overview.callout} />
       </Callout>
     </DocsSection>
 
+    <!-- Section 05: Voice -->
+    <DocsSection id="voice" num="05" title={content.sections[4].title} lead={content.voice.lead}>
+      <ol class="docs-list docs-list--ordered">
+        {content.voice.items.map((item) => (
+          <li><span class="docs-list-marker">&triangleright;</span><span set:html={item} /></li>
+        ))}
+      </ol>
+      <Callout kind="tip">
+        {content.voice.linkNote} <a href={content.voice.linkHref} class="docs-inline-link">{content.voice.linkLabel}</a>.
+      </Callout>
+    </DocsSection>
+
+    <!-- Section 06: Next -->
+    <DocsSection id="next" num="06" title={content.sections[5].title} lead={content.next.lead}>
+      <div class="docs-two-col">
+        <a href={content.next.concepts.href} class="docs-next-link">
+          <CMBox elevated accent>
+            <h3 class="docs-next-title">{content.next.concepts.title}</h3>
+            <p class="docs-next-body">{content.next.concepts.body}</p>
+            <div class="docs-next-arrow">&rarr;</div>
+          </CMBox>
+        </a>
+        <a href={content.next.usage.href} class="docs-next-link">
+          <CMBox elevated accent>
+            <h3 class="docs-next-title">{content.next.usage.title}</h3>
+            <p class="docs-next-body">{content.next.usage.body}</p>
+            <div class="docs-next-arrow">&rarr;</div>
+          </CMBox>
+        </a>
+      </div>
+    </DocsSection>
+
+    <!-- Bottom CTA -->
+    <section class="docs-bottom">
+      <div class="docs-inner">
+        <h2>{content.bottom.title} <span class="accent">{content.bottom.titleAccent}</span></h2>
+        <p class="docs-bottom-body">{content.bottom.body}</p>
+        <div class="docs-bottom-actions">
+          <a href={`/${lang}/start`} class="cm-btn cm-btn--primary">&darr; {content.bottom.downloadLabel}</a>
+          <a
+            href="https://github.com/cmarkus42-rgb/cipher-mux-electron"
+            class="docs-bottom-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >{content.bottom.githubLabel} &nearr;</a>
+        </div>
+      </div>
+    </section>
+
   </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const sections = document.querySelectorAll('[id]');
+      const navItems = document.querySelectorAll('.cm-anchor-nav-item');
+      const sectionIds = new Set(Array.from(navItems).map(a => a.getAttribute('href')?.slice(1)));
+      const observed = Array.from(sections).filter(s => sectionIds.has(s.id));
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            navItems.forEach(item => item.classList.remove('active'));
+            const id = entry.target.id;
+            const activeItem = document.querySelector(`.cm-anchor-nav-item[href="#${id}"]`);
+            if (activeItem) activeItem.classList.add('active');
+          }
+        });
+      }, { rootMargin: '-20% 0px -70% 0px' });
+      observed.forEach(s => observer.observe(s));
+    });
+  </script>
 </Layout>
 
 <style>
+  /* --- Page Layout --- */
   .docs-page {
     position: relative;
     max-width: var(--max-width);
@@ -40,16 +214,300 @@ const lang = 'en';
     padding: 0 var(--section-pad-x);
   }
 
-  .docs-translation-link {
+  /* --- Anchor Nav --- */
+  .cm-anchor-nav {
+    position: fixed;
+    top: 140px;
+    right: 32px;
+    width: 180px;
+    font-family: 'Fira Code', monospace;
+    font-size: 10px;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    z-index: 10;
+  }
+
+  .cm-anchor-nav-label {
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text-dim);
+    font-size: 9px;
+  }
+
+  .cm-anchor-nav-item {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    padding: 2px 4px;
+    color: var(--color-text-dim);
+    text-decoration: none;
+    border-left: 2px solid transparent;
+    transition: color 0.15s, border-color 0.15s;
+    line-height: 1.4;
+  }
+
+  .cm-anchor-nav-item:hover,
+  .cm-anchor-nav-item.active {
+    color: var(--color-text);
+    border-left-color: var(--color-accent);
+  }
+
+  .cm-anchor-nav-num {
+    color: var(--color-accent);
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 1200px) {
+    .cm-anchor-nav { display: none; }
+  }
+
+  /* --- Subhead --- */
+  .docs-subhead {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 1.15;
+    letter-spacing: -0.005em;
+    margin: 28px 0 12px;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+
+  .docs-subhead-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background: var(--color-accent);
+    flex-shrink: 0;
+    transform: translateY(1px);
+    clip-path: polygon(3px 0, 100% 0, 100% calc(100% - 3px), calc(100% - 3px) 100%, 0 100%, 0 3px);
+  }
+
+  /* --- List --- */
+  .docs-list {
+    margin: 8px 0 16px;
+    padding: 0;
+    list-style: none;
+  }
+
+  .docs-list li {
+    display: flex;
+    gap: 12px;
+    padding: 5px 0;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 16px;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+  }
+
+  .docs-list li :global(strong) { color: var(--color-text); font-weight: 600; }
+
+  .docs-list-marker {
+    color: var(--color-accent);
+    font-family: 'Fira Code', monospace;
+    font-size: 12px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* --- Two Column Grid --- */
+  .docs-two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin: 8px 0 18px;
+  }
+
+  /* --- CMBox Label --- */
+  .cm-box-label {
+    font-family: 'Fira Code', monospace;
+    font-size: 11px;
+    letter-spacing: 1.2px;
+    color: var(--color-accent);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+
+  /* --- Table --- */
+  .docs-table {
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-elevated);
+    margin: 8px 0 18px;
+    clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+    overflow: hidden;
+    overflow-x: auto;
+  }
+
+  .docs-table-header {
+    background: var(--color-border-strong);
+    border-bottom: 1px solid var(--color-border);
+    padding: 10px 16px;
+    font-family: 'Fira Code', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-bg-elevated);
+  }
+
+  .docs-table-2col {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+  }
+
+  .docs-table-3col {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr 2fr;
+  }
+
+  .docs-table-row {
+    padding: 12px 16px;
+    gap: 16px;
+    align-items: baseline;
+  }
+
+  .docs-table-row:not(.docs-table-row-first) {
+    border-top: 1px dotted var(--color-border);
+  }
+
+  .docs-table-label {
+    font-family: 'Fira Code', monospace;
+    font-size: 12px;
+    color: var(--color-accent);
+    letter-spacing: 0.04em;
+  }
+
+  .docs-table-label-mid {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--color-text);
+  }
+
+  .docs-table-desc {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 14.5px;
+    color: var(--color-text-secondary);
+    line-height: 1.45;
+  }
+
+  /* --- Inline Styles --- */
+  .accent { color: var(--color-accent); }
+
+  :global(.docs-mono) {
+    font-family: 'Fira Code', monospace;
+    font-size: 12.5px;
+    background: var(--color-bg-elevated);
+    color: var(--color-text);
+    padding: 1px 6px;
+    border: 1px solid var(--color-border);
+    clip-path: polygon(3px 0, 100% 0, 100% calc(100% - 3px), calc(100% - 3px) 100%, 0 100%, 0 3px);
+  }
+
+  .docs-inline-link {
     color: var(--color-accent);
     text-decoration: none;
+    border-bottom: 1px dotted var(--color-accent);
+    padding-bottom: 1px;
   }
 
-  .docs-translation-link:hover {
-    text-decoration: underline;
+  .docs-inline-link:hover {
+    color: var(--color-text);
+    border-bottom-color: var(--color-text);
   }
 
+  /* --- Next Cards --- */
+  .docs-next-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+  .docs-next-link:hover { text-decoration: none; }
+
+  .docs-next-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.15;
+    margin: 0 0 8px;
+  }
+
+  .docs-next-body {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 15px;
+    color: var(--color-text-secondary);
+    line-height: 1.45;
+    margin: 0;
+  }
+
+  .docs-next-arrow {
+    font-family: 'Fira Code', monospace;
+    font-size: 16px;
+    color: var(--color-accent);
+    margin-top: 14px;
+    text-align: right;
+    opacity: 0;
+    transition: opacity 0.15s;
+  }
+
+  .docs-next-link:hover .docs-next-arrow { opacity: 1; }
+
+  /* --- Bottom CTA --- */
+  .docs-bottom {
+    padding: var(--section-pad-y) var(--section-pad-x);
+    background: var(--color-bg-elevated);
+    border-top: 1px solid var(--color-border);
+    margin: 0 calc(-1 * var(--section-pad-x));
+  }
+
+  .docs-inner { max-width: 920px; }
+
+  .docs-bottom h2 {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin: 0 0 14px;
+  }
+
+  .docs-bottom-body {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 17px;
+    color: var(--color-text-secondary);
+    max-width: 640px;
+    line-height: 1.5;
+    margin: 0 0 22px;
+  }
+
+  .docs-bottom-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .docs-bottom-link {
+    font-family: 'Fira Code', monospace;
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--color-text-dim);
+    padding-bottom: 2px;
+  }
+
+  .docs-bottom-link:hover { color: var(--color-text); }
+
+  /* --- Responsive --- */
   @media (max-width: 768px) {
     .docs-page { padding: 0 var(--space-lg); }
+    .docs-two-col { grid-template-columns: 1fr; }
+    .docs-table-2col { grid-template-columns: 1fr; gap: 4px; }
+    .docs-table-3col { grid-template-columns: 1fr; gap: 4px; }
+    .docs-table-label, .docs-table-desc, .docs-table-label-mid { word-break: break-word; }
+    .docs-bottom { padding: var(--space-2xl) var(--space-lg); margin: 0 calc(-1 * var(--space-lg)); }
   }
 </style>
