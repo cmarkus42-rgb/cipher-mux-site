@@ -91,7 +91,7 @@ const landing = {
   },
   footer: {
     mark: 'CIPHER-MUX',
-    version: 'v0.10.0 · macOS · MIT',
+    version: 'v0.11.0 · macOS · MIT',
     links: [
       { label: 'GitHub', href: 'https://github.com/cmarkus42-rgb/cipher-mux-electron' },
       { label: 'Issues', href: 'https://github.com/cmarkus42-rgb/cipher-mux-electron/issues' },
