@@ -1,6 +1,6 @@
 const docsNutzung = {
   hero: {
-    kicker: 'Nutzung der App · v0.11.0',
+    kicker: 'Nutzung der App · v0.11.1',
     title: 'Jede Funktion.',
     titleAccent: 'Nachschlagen.',
     body: 'Die vollstaendige Referenz zu jedem Bereich der App — Grid, Sessions, Sidebar, Voice, Notes, Einstellungen. Zum Nachlesen, nicht zum Durchlesen.',
@@ -284,7 +284,7 @@ const docsNutzung = {
     voiceDesc: 'Wenn der Notes-Editor fokussiert ist und STT aktiv, wird transkribierter Text an der Cursor-Position eingefuegt.',
 
     scopingTitle: 'Workspace-Scoping',
-    scopingDesc: 'Im aktiven Workspace filtert die Notes-Ansicht automatisch auf Notes mit dem Tag <span class="docs-mono">workspace:<Name></span>.',
+    scopingDesc: 'Im aktiven Workspace filtert die Notes-Ansicht automatisch auf Notes mit dem Tag <span class="docs-mono">workspace:&lt;Name&gt;</span>.',
 
     handoffTitle: 'Handoff-Notes',
     handoffDesc: 'Spezielle Notes fuer Wissenstransfer zwischen Sessions. Werden automatisch von den Entity-Sessions erstellt — z.B. wenn Testing seine Findings an den Workshop uebergibt. Im Frontmatter stehen drei Felder: <span class="docs-mono">from_session</span> (wer hat geschrieben), <span class="docs-mono">to_entity</span> (fuer welche Entity), <span class="docs-mono">handoff_status</span> (pending oder consumed). Du musst diese Notes nicht manuell anlegen — die Entities machen das ueber ihre Handoff-Tools.',

@@ -2,10 +2,10 @@ const docsHub = {
   pageHeading: {
     kicker: '// Handbuch',
     title: 'Dokumentation',
-    version: 'v0.11.0',
+    version: 'v0.11.1',
   },
   hero: {
-    kicker: 'Handbuch · v0.11.0',
+    kicker: 'Handbuch · v0.11.1',
     title: 'Das Handbuch.',
     titleAccent: 'Drei Kapitel.',
     titleEnd: 'Ein Companion.',

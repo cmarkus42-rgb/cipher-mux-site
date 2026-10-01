@@ -1,6 +1,6 @@
 const docsStart = {
   hero: {
-    kicker: 'Schnelleinstieg \u00b7 v0.11.0',
+    kicker: 'Schnelleinstieg \u00b7 v0.11.1',
     title: 'Vom Start',
     titleAccent: 'zum ersten Projekt.',
     body: 'Installation steht? Dann los. Hier richtest du deinen ersten Workspace ein und lernst die wichtigsten Bereiche der App kennen.',
@@ -29,7 +29,7 @@ const docsStart = {
   },
 
   workspace: {
-    lead: 'Ein Workspace buendelt alles fuer ein Projekt: Grid-Layout, Preset-Zuweisungen, Projektverzeichnis, Workspace-Prompt. Wenn du einen Workspace laeadst, wissen alle Sessions sofort, woran gearbeitet wird.',
+    lead: 'Ein Workspace buendelt alles fuer ein Projekt: Grid-Layout, Preset-Zuweisungen, Projektverzeichnis, Workspace-Prompt. Wenn du einen Workspace laedst, wissen alle Sessions sofort, woran gearbeitet wird.',
     flow: [
       'Klick auf <strong>workspaces</strong> in der Statusleiste — der Workspace-Editor oeffnet sich.',
       'Neuen Workspace anlegen und benennen (z.B. "Mein Projekt").',

@@ -62,7 +62,7 @@ const landing = {
     title: 'Built with Itself',
     lead: 'cipher-mux was built with cipher-mux. Not a single test was written by hand — every one was produced by Claude Code. First in individual sessions, then from Wave 5 onward by the Testing Entity as part of the pipeline.',
     stats: [
-      { value: '2,205', label: 'Test Cases' },
+      { value: '2,235', label: 'Test Cases' },
       { value: '100%', label: 'Pass Rate' },
       { value: '~32', label: 'LOC per Test' },
       { value: '~90s', label: 'Runtime' },
@@ -91,7 +91,7 @@ const landing = {
   },
   footer: {
     mark: 'CIPHER-MUX',
-    version: 'v0.11.0 · macOS · MIT',
+    version: 'v0.11.1 · macOS · MIT',
     links: [
       { label: 'GitHub', href: 'https://github.com/cmarkus42-rgb/cipher-mux-electron' },
       { label: 'Issues', href: 'https://github.com/cmarkus42-rgb/cipher-mux-electron/issues' },

@@ -1,6 +1,6 @@
 const docsKonzepte = {
   hero: {
-    kicker: 'Prozess & Konzepte · v0.11.0',
+    kicker: 'Prozess & Konzepte · v0.11.1',
     title: 'Warum spezialisierte',
     titleAccent: 'Sessions?',
     body: 'cipher-mux trennt Phasen der Softwareentwicklung in eigene KI-Sessions — mit eigenem Kontext, eigenen Anweisungen, eigenen Grenzen. Hier steht, warum das manchmal funktioniert und wann nicht.',
@@ -79,7 +79,7 @@ const docsKonzepte = {
      §03 · Die Entities im Detail
      ═══════════════════════════════════════════ */
   entities: {
-    lead: 'Zehn vordefinierte Entities, jede mit eigenem Zweck. Keine davon ist ein Alleskoenner — das ist Absicht.',
+    lead: 'Neun vordefinierte Entities, jede mit eigenem Zweck. Keine davon ist ein Alleskoenner — das ist Absicht.',
     items: [
       {
         label: 'Companion',
