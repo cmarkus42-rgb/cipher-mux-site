@@ -10,11 +10,11 @@ const features = {
       num: '01',
       kicker: '\u00dcberblick',
       title: 'Die Applikation',
-      lead: 'CIPHER-MUX ist eine Electron-Umgebung. Das Herzst\u00fcck ist ein Grid mit bis zu 21 Zellen f\u00fcr Claude-Code-Sessions und Markdown-Editoren. Im Hintergrund sorgt tmux daf\u00fcr, dass deine Sitzungen auch bei einem Neustart oder Systemausfall sicher erhalten bleiben.',
+      lead: 'CIPHER-MUX ist eine Electron-Umgebung. Das Herzst\u00fcck ist ein Grid mit bis zu 21 Zellen f\u00fcr Agent-Sessions und Markdown-Editoren. Im Hintergrund sorgt tmux daf\u00fcr, dass deine Sitzungen auch bei einem Neustart oder Systemausfall sicher erhalten bleiben.',
       stats: [
         { value: '21', label: 'Zellen max (7\u00d73)' },
         { value: '13', label: 'Entity-Typen' },
-        { value: '62', label: 'MCP-Tools in 11 Kategorien' },
+        { value: '57', label: 'MCP-Tools in 10 Kategorien' },
         { value: '13', label: 'UI-Themes inkl. WCAG AAA' },
       ],
       statusbarTheme: 'cipher-ivory',
@@ -32,11 +32,11 @@ const features = {
       num: '03',
       kicker: 'Prozess-Management',
       title: 'Sitzungen und das tmux-Backend',
-      lead: 'Jede Zelle beherbergt einen isolierten Claude-Code-Prozess mit eigenem Kontextfenster. Da das tmux-Backend die Prozesse im Hintergrund aktiv h\u00e4lt, kannst du die App jederzeit schlie\u00dfen. Beim n\u00e4chsten Start hilft dir ein Recovery-Dialog dabei, bestehende Sitzungen nahtlos wiederaufzunehmen.',
+      lead: 'Jede Zelle beherbergt einen isolierten CLI-Prozess mit eigenem Kontextfenster \u2014 welche CLI, entscheidet die Rolle. Da das tmux-Backend die Prozesse im Hintergrund aktiv h\u00e4lt, kannst du die App jederzeit schlie\u00dfen. Beim n\u00e4chsten Start hilft dir ein Recovery-Dialog dabei, bestehende Sitzungen nahtlos wiederaufzunehmen.',
       anatomyTag: '// session anatomy',
       anatomyItems: [
-        'Eigener Claude-Code-Prozess pro Zelle',
-        'Eigener Kontext, eigene CLAUDE.md, eigene History',
+        'Eigener CLI-Prozess pro Zelle',
+        'Eigener Kontext, eigene Projektanweisung, eigene History',
         'Header-Controls: Expand, Projekt wechseln, Shell, Close',
         'Klick auf Header = Fokus, visuelle Hervorhebung',
         { bold: '$-Button:', text: 'direkt ins tmux-Terminal der Session' },
@@ -146,6 +146,17 @@ const features = {
       title: 'Focus Mode',
       lead: 'Eine Session, volle Aufmerksamkeit. Focus Mode expandiert eine Zelle auf 2\u00d72 und blendet alles andere ab. Die Focus-Bar zeigt Context-Auslastung und Schriftgr\u00f6\u00dfe \u2014 ein Klick oder Cmd+Shift+F schaltet um. Gut f\u00fcr lange Ausgaben, Code-Reviews und konzentriertes Arbeiten.',
     },
+    {
+      num: '13',
+      kicker: 'Neu in v0.10.0',
+      title: 'Drei Agent-CLIs, zwei Tiers',
+      lead: 'Eine Rolle ist nicht an eine CLI gebunden. Pro Rolle w\u00e4hlt das Feld \u201eCLI\u201c im Preset-Editor, welche CLI ihre Sessions startet; \u201eStandard-CLI\u201c in den Einstellungen setzt die Vorgabe f\u00fcr alle Rollen, die keine eigene nennen. Tier 2 hei\u00dft: nicht jede Mux-F\u00e4higkeit ist dort gemessen \u2014 was fehlt, zeigt der Preset-Editor beim Umschalten an, vor dem Sessionstart und nicht danach. Grid, Presets, Personas, Workspaces, Notes, Voice und der MCP-Server arbeiten unter allen drei.',
+      newFeatures: [
+        { name: 'Claude Code \u00b7 Tier 1', description: 'Die Voreinstellung \u2014 und zwar nicht aus Gewohnheit: die einzige CLI, f\u00fcr die jede Mux-F\u00e4higkeit gemessen ist. Projektanweisung: CLAUDE.md. Context-Anzeige, Sub-Agents, MCP-Werkzeuge, Companion-Memory, Rollengrenzen \u00fcber einen PreToolUse-Hook. Gemessen an Claude Code 2.1.284.' },
+        { name: 'Codex CLI \u00b7 Tier 2', description: 'Projektanweisung: AGENTS.md. Context-Anzeige, MCP-Werkzeuge, Companion-Memory und Rollengrenzen (PreToolUse-Hook) laufen. Was fehlt: Sub-Agents. Selbst installieren und anmelden \u2014 der Setup-Wizard kennt sie nicht. Gemessen an codex-cli 0.155.1.' },
+        { name: 'opencode \u00b7 Tier 2', description: 'Projektanweisung: AGENTS.md. Context-Anzeige und Rollengrenzen laufen \u00fcber Plugins statt \u00fcber Hook-Dateien, MCP-Werkzeuge und Companion-Memory wie gehabt. Was fehlt: Sub-Agents. Selbst installieren \u2014 und einen Anbieter anmelden, sonst steht die Session am Prompt und tut nichts. Gemessen an opencode 1.18.34.' },
+      ],
+    },
   ],
   scrollNavItems: [
     { id: 'cockpit', label: '01 \u00b7 Cockpit' },
@@ -160,6 +171,7 @@ const features = {
     { id: 'themes', label: '10 \u00b7 A11y' },
     { id: 'efficiency', label: '11 \u00b7 Effizienz' },
     { id: 'new-features', label: '12 \u00b7 Neu' },
+    { id: 'clis', label: '13 \u00b7 CLIs' },
   ],
 } as const;
 

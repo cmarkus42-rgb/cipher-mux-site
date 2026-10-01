@@ -4,7 +4,7 @@ const install = {
     title: 'DMG laden, Wizard starten,',
     titleAccent: 'losprompten.',
     titleSuffix: '',
-    body: 'Du brauchst macOS, einen Anthropic-Account und ein paar Terminal-Befehle. Diese Anleitung f\u00fchrt dich durch.',
+    body: 'Du brauchst macOS, mindestens eine unterst\u00fctzte Agent-CLI und ein paar Terminal-Befehle. Diese Anleitung f\u00fchrt dich durch.',
   },
   phaseStrip: [
     { n: '01', label: 'Installation', time: '~10 min' },
@@ -17,7 +17,7 @@ const install = {
   },
   requirements: {
     label: 'Was du brauchst',
-    body: 'macOS 12 Monterey oder neuer (Apple Silicon oder Intel) \u00b7 Anthropic-Account mit Claude Max oder API Key \u00b7 ca. 1 GB freier Speicher (App ~140 MB, Voice Models optional ~530 MB)',
+    body: 'macOS 12 Monterey oder neuer (Apple Silicon oder Intel) \u00b7 mindestens eine Agent-CLI: Claude Code (Voreinstellung, braucht einen Anthropic-Account mit Claude Max oder API Key), Codex CLI oder opencode \u00b7 ca. 1 GB freier Speicher (App ~140 MB, Voice Models optional ~530 MB)',
   },
   phases: [
     {
@@ -60,7 +60,7 @@ const install = {
       { name: 'Homebrew', tag: 'Pflicht \u00b7 ~200 MB', body: 'Der Standard-Paketmanager f\u00fcr macOS. Falls schon vorhanden, wird der Schritt \u00fcbersprungen. Ein Terminal-Fenster \u00f6ffnet sich automatisch \u2014 dort dein macOS-Passwort eingeben.' },
       { name: 'tmux', tag: 'Pflicht \u00b7 ~2 MB', body: 'Terminal-Multiplexer \u2014 die unsichtbare Infrastruktur, auf der cipher-mux aufbaut. Jede Claude-Session l\u00e4uft in einer eigenen tmux-Session. Ohne tmux startet keine einzige Session.' },
       { name: 'Node.js', tag: 'Empfohlen \u00b7 ~30 MB', body: 'JavaScript-Runtime f\u00fcr Claude Code CLI und die TTS-Engine. Falls \u00fcber NVM, Volta oder Homebrew schon da, wird es erkannt.' },
-      { name: 'Claude Code CLI', tag: 'Empfohlen \u00b7 ~50 MB', body: 'Anthropics KI-Coding-Assistant \u2014 die Kernfunktion von cipher-mux. Wird via npm installiert. Danach einmalig claude login im Terminal.' },
+      { name: 'Claude Code CLI', tag: 'Empfohlen \u00b7 ~50 MB', body: 'Anthropics KI-Coding-Assistant \u2014 die Voreinstellung in cipher-mux. Wird via npm installiert. Danach einmalig claude login im Terminal. Codex CLI und opencode kennt der Wizard nicht: wer eine Rolle darauf stellt, installiert und meldet sie selbst an. Bei opencode geh\u00f6rt ein angemeldeter Anbieter dazu, sonst steht die Session am Prompt und tut nichts.' },
       { name: 'Whisper Model', tag: 'Optional \u00b7 ~500 MB', body: 'Lokales Speech-to-Text. Sprache steuern, ohne Cloud. Komplett offline. Kann jederzeit sp\u00e4ter nachinstalliert werden.' },
       { name: 'Piper TTS', tag: 'Optional \u00b7 ~30 MB', body: 'Lokale Sprachausgabe f\u00fcr deutsch. Zusammenfassungen, Status-Updates, Meilensteine \u2014 gesprochen statt nur geschrieben.' },
     ] as const,

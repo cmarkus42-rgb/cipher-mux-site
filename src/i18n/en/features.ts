@@ -10,11 +10,11 @@ const features = {
       num: '01',
       kicker: 'Overview',
       title: 'The Application',
-      lead: 'CIPHER-MUX is an Electron environment. Its core is a grid with up to 21 cells for Claude Code sessions and Markdown editors. In the background, tmux ensures that your sessions are safely preserved, even during a system restart or crash.',
+      lead: 'CIPHER-MUX is an Electron environment. Its core is a grid with up to 21 cells for agent sessions and Markdown editors. In the background, tmux ensures that your sessions are safely preserved, even during a system restart or crash.',
       stats: [
         { value: '21', label: 'cells max (7\u00d73)' },
         { value: '13', label: 'entity types' },
-        { value: '62', label: 'MCP tools across 11 categories' },
+        { value: '57', label: 'MCP tools across 10 categories' },
         { value: '13', label: 'UI themes incl. WCAG AAA' },
       ],
       statusbarTheme: 'cipher-ivory',
@@ -37,11 +37,11 @@ const features = {
       num: '03',
       kicker: 'Process Management',
       title: 'Sessions and the tmux Backend',
-      lead: 'Each cell hosts an isolated Claude Code process with its own context window. Because the tmux backend keeps these processes active, you can close the app at any time. Upon your next launch, a recovery dialog will help you seamlessly resume existing sessions.',
+      lead: 'Each cell hosts an isolated CLI process with its own context window — which CLI is up to the role. Because the tmux backend keeps these processes active, you can close the app at any time. Upon your next launch, a recovery dialog will help you seamlessly resume existing sessions.',
       anatomyTag: '// session anatomy',
       anatomyItems: [
-        'Dedicated Claude Code process per cell',
-        'Own context, own CLAUDE.md, own history',
+        'Dedicated CLI process per cell',
+        'Own context, own project instructions, own history',
         'Header controls: Expand, switch project, Shell, Close',
         'Click header = focus, visual highlight',
         { bold: '$-Button:', text: 'direct access to the session\u2019s tmux terminal' },
@@ -203,6 +203,17 @@ const features = {
       title: 'Focus Mode',
       lead: 'One session, full attention. Focus Mode expands a cell to 2\u00d72 and dims everything else. The Focus Bar shows context usage and font size \u2014 one click or Cmd+Shift+F toggles it. Great for long outputs, code reviews, and concentrated work.',
     },
+    {
+      num: '13',
+      kicker: 'New in v0.10.0',
+      title: 'Three agent CLIs, two tiers',
+      lead: 'A role is not tied to a CLI. The field \u201cCLI\u201d in the preset editor decides which CLI starts that role\u2019s sessions; \u201cDefault CLI\u201d in Settings sets the fallback for every role that names none. Tier 2 means not every Mux capability has been measured there \u2014 the preset editor names what is missing when you switch, before the session starts rather than after. Grid, presets, personas, workspaces, notes, voice and the MCP server work under all three.',
+      newFeatures: [
+        { name: 'Claude Code \u00b7 Tier 1', description: 'The default \u2014 and not out of habit: the only CLI for which every Mux capability has been measured. Project instructions: CLAUDE.md. Context display, sub-agents, MCP tools, companion memory, role boundaries through a PreToolUse hook. Measured against Claude Code 2.1.284.' },
+        { name: 'Codex CLI \u00b7 Tier 2', description: 'Project instructions: AGENTS.md. Context display, MCP tools, companion memory and role boundaries (PreToolUse hook) all work. What is missing: sub-agents. Install and sign in yourself \u2014 the setup wizard does not know it. Measured against codex-cli 0.155.1.' },
+        { name: 'opencode \u00b7 Tier 2', description: 'Project instructions: AGENTS.md. Context display and role boundaries run through plugins instead of hook files, MCP tools and companion memory as usual. What is missing: sub-agents. Install it yourself \u2014 and sign in to a provider, or the session sits at its prompt and does nothing. Measured against opencode 1.18.34.' },
+      ],
+    },
   ],
   scrollNavItems: [
     { id: 'cockpit', label: '01 \u00b7 Cockpit' },
@@ -217,6 +228,7 @@ const features = {
     { id: 'themes', label: '10 \u00b7 A11y' },
     { id: 'efficiency', label: '11 \u00b7 Efficiency' },
     { id: 'new-features', label: '12 \u00b7 New' },
+    { id: 'clis', label: '13 \u00b7 CLIs' },
   ],
 } as const;
 

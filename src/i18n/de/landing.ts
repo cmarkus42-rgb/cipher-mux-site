@@ -5,7 +5,7 @@ const landing = {
     taglineSub: 'for Makers.',
     taglineEnd: 'And everyone else.',
     subtext:
-      'Orchestriert {Claude Code} zu einem echten Entwicklungsprozess — mit Rollen, Gedächtnis und Stimme.',
+      'Orchestriert {drei Agent-CLIs} zu einem echten Entwicklungsprozess — mit Rollen, Gedächtnis und Stimme. Claude Code ist die Voreinstellung, Codex CLI und opencode laufen daneben.',
     buttons: [
       { label: 'Dokumentation', href: '/de/docs/', primary: true },
       { label: 'Features', href: '/de/features' },
@@ -52,17 +52,17 @@ const landing = {
     lead: 'Zur transparenten Einordnung:',
     items: [
       'Kein kommerzielles Produkt, sondern ein generiertes Open-Source-Projekt, das aus dem eigenen Bedarf heraus entstanden ist.',
-      'Kein Ersatz für die Claude Code CLI, sondern eine grafische Orchestrierungsschicht, die darauf aufsetzt.',
+      'Kein Ersatz für die Agent-CLIs selbst — Claude Code, Codex CLI, opencode —, sondern eine grafische Orchestrierungsschicht, die darauf aufsetzt.',
       'Kein Werkzeug, das vage Ideen magisch umsetzt. Die Fähigkeit, technische Spezifikationen präzise zu formulieren, bleibt wichtig.',
       'Aktuell auf macOS beschränkt, da die Architektur stark mit dem Terminal-Multiplexer tmux verzahnt ist.',
-      'Setzt Claude Code voraus — welches Abo das einschließt, kann sich ändern. Aktuelle Infos: anthropic.com',
+      'Setzt mindestens eine unterstützte Agent-CLI voraus: Claude Code (Tier 1, Voreinstellung, braucht einen Anthropic-Account), Codex CLI oder opencode (beide Tier 2). Welches Abo Claude Code einschließt, kann sich ändern. Aktuelle Infos: anthropic.com',
     ],
   },
   builtWithItself: {
     title: 'Built with Itself',
     lead: 'cipher-mux wurde mit cipher-mux gebaut. Kein Testcase wurde von Hand geschrieben — jeder einzelne stammt von Claude Code. Erst in Einzel-Sessions, ab Welle 5 durch die verdrahtete Testing-Entity als Teil der Pipeline.',
     stats: [
-      { value: '1.509', label: 'Testcases' },
+      { value: '2.205', label: 'Testcases' },
       { value: '100 %', label: 'Pass Rate' },
       { value: '~32', label: 'LOC pro Test' },
       { value: '~90s', label: 'Runtime' },
@@ -76,7 +76,7 @@ const landing = {
       { label: 'Welle 7', tests: 1207, note: 'Audit, Pre-Release' },
       { label: 'Welle 8', tests: 1509, note: 'Audit-Fixes, Detach, Tags, Test-Cleanup' },
     ],
-    detail: 'Ab Welle 5 war die Testing-Entity im Prozess verdrahtet: sie schreibt Tests, reicht Findings an den Debugger weiter, und der Zyklus läuft ohne manuellen Anstoß. 668 der 1.509 Tests entstanden in den letzten drei Wellen — durch den Prozess selbst. 0 High-Severity Findings im finalen Audit.',
+    detail: 'Ab Welle 5 war die Testing-Entity im Prozess verdrahtet: sie schreibt Tests, reicht Findings an den Debugger weiter, und der Zyklus läuft ohne manuellen Anstoß. 668 der ersten 1.509 Tests entstanden in den Wellen 6 bis 8 — durch den Prozess selbst. Inzwischen sind es 2.205, alle grün. 0 High-Severity Findings im finalen Audit.',
     closer: 'Die Aufgabe des Entwicklers war, den Prozess zu entwerfen — und ihm dann nicht im Weg zu stehen.',
   },
   bottomCta: {
@@ -91,7 +91,7 @@ const landing = {
   },
   footer: {
     mark: 'CIPHER-MUX',
-    version: 'v0.9.101 · macOS · MIT',
+    version: 'v0.10.0 · macOS · MIT',
     links: [
       { label: 'GitHub', href: 'https://github.com/cmarkus42-rgb/cipher-mux-electron' },
       { label: 'Issues', href: 'https://github.com/cmarkus42-rgb/cipher-mux-electron/issues' },

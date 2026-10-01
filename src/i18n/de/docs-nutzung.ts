@@ -1,6 +1,6 @@
 const docsNutzung = {
   hero: {
-    kicker: 'Nutzung der App · v0.9.101',
+    kicker: 'Nutzung der App · v0.10.0',
     title: 'Jede Funktion.',
     titleAccent: 'Nachschlagen.',
     body: 'Die vollstaendige Referenz zu jedem Bereich der App — Grid, Sessions, Sidebar, Voice, Notes, Einstellungen. Zum Nachlesen, nicht zum Durchlesen.',
@@ -332,7 +332,8 @@ const docsNutzung = {
 
     generalTitle: 'Tab: General',
     generalRows: [
-      { label: 'Skip Permissions',  desc: 'Claude darf Aktionen ohne Rueckfrage ausfuehren. Achtung: deaktiviert die Sicherheits-Bestaetigung.' },
+      { label: 'Skip Permissions',  desc: 'Die CLI darf Aktionen ohne Rueckfrage ausfuehren. Achtung: deaktiviert die Sicherheits-Bestaetigung.' },
+      { label: 'Standard-CLI',      desc: 'Welche CLI neue Sessions starten, wenn die Rolle keine eigene nennt: Claude Code, Codex CLI oder opencode. Wirkt sofort. Pro Rolle einstellbar im Presets-Tab unter "CLI".' },
       { label: 'Keep Working',      desc: 'Beim Beenden alle Sessions speichern. Beim naechsten Start mit Resume fortsetzen.' },
       { label: 'Bugreport',         desc: 'Button zum direkten Oeffnen des Bugreport-Dialogs.' },
     ],
