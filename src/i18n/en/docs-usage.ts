@@ -41,7 +41,7 @@ const docsUsage = {
     sizeItems: [
       '<span class="docs-mono">columns +/-</span> and <span class="docs-mono">rows +/-</span> in the status bar',
       'Minimum 1×1 (one cell), maximum 7×3 (21 cells)',
-      'Keyboard: <span class="docs-mono">Cmd+→/←</span> for columns, <span class="docs-mono">Cmd+↓/↑</span> for rows',
+      'There is no keyboard shortcut for the grid size — the buttons in the status bar are the only way. <span class="docs-mono">Cmd+Shift+W/A/S/D</span> moves the <em>focus</em>, it does not resize.',
       'The window resizes itself automatically',
     ],
 
@@ -181,7 +181,7 @@ const docsUsage = {
      §05 · Voice Control
      ═══════════════════════════════════════════ */
   voice: {
-    lead: 'Local speech recognition — no network, no cloud. The voice pill in the status bar or Ctrl+Shift+Space. The fixed commands below are German, and transcription defaults to German — dictation itself follows whatever Whisper hears. An English command vocabulary does not exist yet.',
+    lead: 'Local speech recognition — no network, no cloud. Switch it on with the voice pill in the status bar; Ctrl+Shift+Space is push-to-talk and only works once voice is running. The fixed commands below are German, and transcription defaults to German — dictation itself follows whatever Whisper hears. An English command vocabulary does not exist yet.',
 
     modesTitle: 'Three Modes',
     modes: [
@@ -471,8 +471,8 @@ const docsUsage = {
         { key: 'Cmd+N',              action: 'New session — launcher popup in the next empty cell.' },
         { key: 'Cmd+B',              action: 'Open the bugreport dialog.' },
         { key: 'Cmd+S',              action: 'Save note + auto-tagging.' },
-        { key: 'Cmd+Enter',          action: 'Submit in dialogs (e.g. input requests in the sidebar).' },
-        { key: 'Ctrl+Shift+Space',   action: 'Voice control on/off.' },
+        { key: 'Ctrl+Shift+Space',   action: 'Push-to-talk — hold to speak. Only works while voice is already active; it does not switch voice on.' },
+        { key: 'Cmd+Alt+I',          action: 'DevTools.' },
         { key: 'Cmd+Shift+?',        action: 'Open the shortcuts dialog.' },
       ],
     },

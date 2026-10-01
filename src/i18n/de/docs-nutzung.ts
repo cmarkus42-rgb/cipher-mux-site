@@ -41,7 +41,7 @@ const docsNutzung = {
     sizeItems: [
       '<span class="docs-mono">spalten +/-</span> und <span class="docs-mono">zeilen +/-</span> in der Statusleiste',
       'Minimum 1×1 (eine Zelle), Maximum 7×3 (21 Zellen)',
-      'Tastatur: <span class="docs-mono">Cmd+→/←</span> fuer Spalten, <span class="docs-mono">Cmd+↓/↑</span> fuer Zeilen',
+      'Fuer die Gridgroesse gibt es kein Tastenkuerzel -- nur die Knoepfe in der Statusleiste. <span class="docs-mono">Cmd+Shift+W/A/S/D</span> verschiebt den <em>Fokus</em> und veraendert die Groesse nicht.',
       'Das Fenster passt seine Groesse automatisch an',
     ],
 
@@ -181,7 +181,7 @@ const docsNutzung = {
      §05 · Sprachsteuerung
      ═══════════════════════════════════════════ */
   voice: {
-    lead: 'Lokale Spracherkennung — kein Netzwerk, keine Cloud. Voice-Pill in der Statusleiste oder Ctrl+Shift+Space.',
+    lead: 'Lokale Spracherkennung — kein Netzwerk, keine Cloud. Eingeschaltet wird sie mit der Voice-Pill in der Statusleiste; Ctrl+Shift+Space ist Push-to-talk und wirkt erst, wenn Voice laeuft.',
 
     modesTitle: 'Drei Modi',
     modes: [
@@ -471,8 +471,8 @@ const docsNutzung = {
         { key: 'Cmd+N',              action: 'Neue Session — Launcher-Popup in der naechsten leeren Zelle.' },
         { key: 'Cmd+B',              action: 'Bugreport-Dialog oeffnen.' },
         { key: 'Cmd+S',              action: 'Notiz speichern + Auto-Tagging.' },
-        { key: 'Cmd+Enter',          action: 'Senden in Dialogen (z.B. Input Requests in der Sidebar).' },
-        { key: 'Ctrl+Shift+Space',   action: 'Sprachsteuerung ein/aus.' },
+        { key: 'Ctrl+Shift+Space',   action: 'Push-to-talk -- zum Sprechen halten. Wirkt nur, wenn Voice schon laeuft; es schaltet Voice nicht ein.' },
+        { key: 'Cmd+Alt+I',          action: 'DevTools.' },
         { key: 'Cmd+Shift+?',        action: 'Shortcuts-Dialog oeffnen.' },
       ],
     },
