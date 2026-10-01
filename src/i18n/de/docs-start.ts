@@ -1,6 +1,6 @@
 const docsStart = {
   hero: {
-    kicker: 'Schnelleinstieg \u00b7 v0.11.1',
+    kicker: 'Schnelleinstieg \u00b7 v0.11.2',
     title: 'Vom Start',
     titleAccent: 'zum ersten Projekt.',
     body: 'Installation steht? Dann los. Hier richtest du deinen ersten Workspace ein und lernst die wichtigsten Bereiche der App kennen.',
@@ -78,7 +78,7 @@ const docsStart = {
       { label: 'Statusleiste', desc: 'Am unteren Rand: Voice-Steuerung, Grid-Groesse, Workspaces, Sidebar-Toggle, Theme, Einstellungen. Deine Kommandozentrale.', link: '/de/docs/usage#grid' },
       { label: 'Sidebar', desc: 'Rechte Seitenleiste mit fuenf Sektionen: Notes, Background Sessions, Orphaned Sessions, Companion Memory, Messages. Oeffnen ueber "sidebar" in der Statusleiste.', link: '/de/docs/usage#sidebar' },
       { label: 'Workspace-Editor', desc: 'Eigenes Fenster fuer Grid-Layouts, Personas, Preset-Konfiguration und Tags. Oeffnen ueber "workspaces" in der Statusleiste.', link: '/de/docs/usage#settings' },
-      { label: 'Einstellungen', desc: 'Sechs Tabs: General (Skip Permissions, Keep Working), Sprache, Themes (13 Stueck + eigene), Shortcuts, A11y, About.', link: '/de/docs/usage#settings' },
+      { label: 'Einstellungen', desc: 'Sieben Tabs: General (Skip Permissions, Keep Working, Standard-CLI), Sprache, Themes (13 Stueck + eigene), Shortcuts, Remote, A11y, About.', link: '/de/docs/usage#settings' },
     ],
     callout: 'Alle Details zu jedem Bereich findest du in der <a href="/de/docs/usage" class="docs-inline-link">Nutzung der App</a>.',
   },

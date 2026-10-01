@@ -14,7 +14,7 @@ const features = {
       stats: [
         { value: '21', label: 'cells max (7\u00d73)' },
         { value: '13', label: 'entity types' },
-        { value: '57', label: 'MCP tools across 10 categories' },
+        { value: '67', label: 'MCP tools across 12 categories' },
         { value: '13', label: 'UI themes incl. WCAG AAA' },
       ],
       statusbarTheme: 'cipher-ivory',

@@ -1,6 +1,6 @@
 const docsStart = {
   hero: {
-    kicker: 'Quick Start · v0.11.1',
+    kicker: 'Quick Start · v0.11.2',
     title: 'From start',
     titleAccent: 'to your first project.',
     body: 'Installation done? Then start here. You set up your first Workspace and get to know the most important areas of the app.',
@@ -78,7 +78,7 @@ const docsStart = {
       { label: 'Status Bar', desc: 'Along the bottom edge: voice control, grid size, Workspaces, sidebar toggle, theme, settings. Your command center.', link: '/en/docs/usage#grid' },
       { label: 'Sidebar', desc: 'The right-hand panel with five sections: Notes, Background Sessions, Orphaned Sessions, Companion Memory, Messages. Open it via "sidebar" in the status bar.', link: '/en/docs/usage#sidebar' },
       { label: 'Workspace Editor', desc: 'Its own window for grid layouts, Personas, Preset configuration and tags. Open it via "workspaces" in the status bar.', link: '/en/docs/usage#settings' },
-      { label: 'Settings', desc: 'Six tabs: General (Skip Permissions, Keep Working), Language, Themes (13 of them + your own), Shortcuts, A11y, About.', link: '/en/docs/usage#settings' },
+      { label: 'Settings', desc: 'Seven tabs: General (Skip Permissions, Keep Working, Default CLI), Language, Themes (13 of them + your own), Shortcuts, Remote, A11y, About.', link: '/en/docs/usage#settings' },
     ],
     callout: 'All details on each area are in <a href="/en/docs/usage" class="docs-inline-link">Using the App</a>.',
   },

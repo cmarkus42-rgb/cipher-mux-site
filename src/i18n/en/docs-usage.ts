@@ -1,6 +1,6 @@
 const docsUsage = {
   hero: {
-    kicker: 'Using the App · v0.11.1',
+    kicker: 'Using the App · v0.11.2',
     title: 'Every function.',
     titleAccent: 'Look it up.',
     body: 'The complete reference to every area of the app — grid, sessions, sidebar, voice, notes, settings. Made to look things up in, not to read front to back.',
@@ -181,7 +181,7 @@ const docsUsage = {
      §05 · Voice Control
      ═══════════════════════════════════════════ */
   voice: {
-    lead: 'Local speech recognition — no network, no cloud. The voice pill in the status bar or Ctrl+Shift+Space.',
+    lead: 'Local speech recognition — no network, no cloud. The voice pill in the status bar or Ctrl+Shift+Space. The fixed commands below are German, and transcription defaults to German — dictation itself follows whatever Whisper hears. An English command vocabulary does not exist yet.',
 
     modesTitle: 'Three Modes',
     modes: [
@@ -326,9 +326,9 @@ const docsUsage = {
      §08 · Settings
      ═══════════════════════════════════════════ */
   settings: {
-    lead: 'Reachable via "info" in the status bar. Six tabs: General, Language, Themes, Shortcuts, A11y, About.',
+    lead: 'Reachable via "info" in the status bar. Seven tabs: General, Language, Themes, Shortcuts, Remote, A11y, About.',
 
-    tabs: ['General', 'Language', 'Themes', 'Shortcuts', 'A11y', 'About'],
+    tabs: ['General', 'Language', 'Themes', 'Shortcuts', 'Remote', 'A11y', 'About'],
 
     generalTitle: 'Tab: General',
     generalRows: [
@@ -397,6 +397,9 @@ const docsUsage = {
 
     shortcutsTitle: 'Tab: Shortcuts',
     shortcutsDesc: 'All keyboard shortcuts grouped by category. Full table in §10.',
+
+    remoteTitle: 'Tab: Remote',
+    remoteDesc: 'Bluetooth remotes: detected profiles, connection state per device, and one action per button — a registered shortcut, passthrough, or disabled. A device without a profile passes its keystrokes through unchanged. The tab has been permanently visible since v0.9.104; before that a stale config gate kept it hidden.',
 
     a11yTitle: 'Tab: A11y (Accessibility)',
     a11yDesc: 'Select CVD themes, adjust accessibility settings.',

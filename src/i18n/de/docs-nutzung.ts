@@ -1,6 +1,6 @@
 const docsNutzung = {
   hero: {
-    kicker: 'Nutzung der App · v0.11.1',
+    kicker: 'Nutzung der App · v0.11.2',
     title: 'Jede Funktion.',
     titleAccent: 'Nachschlagen.',
     body: 'Die vollstaendige Referenz zu jedem Bereich der App — Grid, Sessions, Sidebar, Voice, Notes, Einstellungen. Zum Nachlesen, nicht zum Durchlesen.',
@@ -326,9 +326,9 @@ const docsNutzung = {
      §08 · Einstellungen
      ═══════════════════════════════════════════ */
   settings: {
-    lead: 'Erreichbar ueber "info" in der Statusleiste. Sechs Tabs: General, Sprache, Themes, Shortcuts, A11y, About.',
+    lead: 'Erreichbar ueber "info" in der Statusleiste. Sieben Tabs: General, Sprache, Themes, Shortcuts, Remote, A11y, About.',
 
-    tabs: ['General', 'Sprache', 'Themes', 'Shortcuts', 'A11y', 'About'],
+    tabs: ['General', 'Sprache', 'Themes', 'Shortcuts', 'Remote', 'A11y', 'About'],
 
     generalTitle: 'Tab: General',
     generalRows: [
@@ -397,6 +397,9 @@ const docsNutzung = {
 
     shortcutsTitle: 'Tab: Shortcuts',
     shortcutsDesc: 'Alle Tastenkuerzel gruppiert nach Kategorie. Vollstaendige Tabelle siehe §10.',
+
+    remoteTitle: 'Tab: Remote',
+    remoteDesc: 'Bluetooth-Fernbedienungen: erkannte Profile, Verbindungsstatus pro Geraet, und pro Knopf eine Aktion — ein registriertes Tastenkuerzel, Passthrough oder abgeschaltet. Ohne hinterlegtes Profil gehen Tastendruecke unveraendert durch. Der Tab ist seit v0.9.104 immer sichtbar; vorher hielt ihn ein veralteter Config-Schalter verborgen.',
 
     a11yTitle: 'Tab: A11y (Barrierefreiheit)',
     a11yDesc: 'CVD-Themes auswaehlen, Barrierefreiheits-Einstellungen anpassen.',
