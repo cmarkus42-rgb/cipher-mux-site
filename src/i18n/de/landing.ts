@@ -62,7 +62,7 @@ const landing = {
     title: 'Built with Itself',
     lead: 'cipher-mux wurde mit cipher-mux gebaut. Kein Testcase wurde von Hand geschrieben — jeder einzelne stammt von Claude Code. Erst in Einzel-Sessions, ab Welle 5 durch die verdrahtete Testing-Entity als Teil der Pipeline.',
     stats: [
-      { value: '2.267', label: 'Testcases' },
+      { value: '2.301', label: 'Testcases' },
       { value: '100 %', label: 'Pass Rate' },
       { value: '~32', label: 'LOC pro Test' },
       { value: '~90s', label: 'Runtime' },
@@ -76,7 +76,7 @@ const landing = {
       { label: 'Welle 7', tests: 1207, note: 'Audit, Pre-Release' },
       { label: 'Welle 8', tests: 1509, note: 'Audit-Fixes, Detach, Tags, Test-Cleanup' },
     ],
-    detail: 'Ab Welle 5 war die Testing-Entity im Prozess verdrahtet: sie schreibt Tests, reicht Findings an den Debugger weiter, und der Zyklus läuft ohne manuellen Anstoß. 668 der ersten 1.509 Tests entstanden in den Wellen 6 bis 8 — durch den Prozess selbst. Inzwischen sind es 2.267, alle grün. 0 High-Severity Findings im finalen Audit.',
+    detail: 'Ab Welle 5 war die Testing-Entity im Prozess verdrahtet: sie schreibt Tests, reicht Findings an den Debugger weiter, und der Zyklus läuft ohne manuellen Anstoß. 668 der ersten 1.509 Tests entstanden in den Wellen 6 bis 8 — durch den Prozess selbst. Inzwischen sind es 2.301, alle grün. 0 High-Severity Findings im finalen Audit.',
     closer: 'Die Aufgabe des Entwicklers war, den Prozess zu entwerfen — und ihm dann nicht im Weg zu stehen.',
   },
   bottomCta: {
@@ -91,7 +91,7 @@ const landing = {
   },
   footer: {
     mark: 'CIPHER-MUX',
-    version: 'v0.11.5 · macOS · MIT',
+    version: 'v0.11.6 · macOS · MIT',
     links: [
       { label: 'GitHub', href: 'https://github.com/cmarkus42-rgb/cipher-mux-electron' },
       { label: 'Issues', href: 'https://github.com/cmarkus42-rgb/cipher-mux-electron/issues' },
