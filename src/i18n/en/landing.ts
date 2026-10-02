@@ -62,7 +62,7 @@ const landing = {
     title: 'Built with Itself',
     lead: 'cipher-mux was built with cipher-mux. Not a single test was written by hand — every one was produced by Claude Code. First in individual sessions, then from Wave 5 onward by the Testing Entity as part of the pipeline.',
     stats: [
-      { value: '2,249', label: 'Test Cases' },
+      { value: '2,263', label: 'Test Cases' },
       { value: '100%', label: 'Pass Rate' },
       { value: '~32', label: 'LOC per Test' },
       { value: '~90s', label: 'Runtime' },
@@ -76,7 +76,7 @@ const landing = {
       { label: 'Wave 7', tests: 1207, note: 'Audit, Pre-Release' },
       { label: 'Wave 8', tests: 1509, note: 'Audit fixes, Detach, Tags, Test cleanup' },
     ],
-    detail: 'From Wave 5, the Testing Entity was wired into the process: it writes tests, hands findings to the Debugger, and the cycle runs without manual trigger. 668 of the first 1,509 tests were produced in waves 6 through 8 — by the process itself. By now there are 2,249, all green. 0 high-severity findings in the final audit.',
+    detail: 'From Wave 5, the Testing Entity was wired into the process: it writes tests, hands findings to the Debugger, and the cycle runs without manual trigger. 668 of the first 1,509 tests were produced in waves 6 through 8 — by the process itself. By now there are 2,263, all green. 0 high-severity findings in the final audit.',
     closer: 'The developer\'s job was to design the process — and stay out of its way.',
   },
   bottomCta: {
@@ -91,7 +91,7 @@ const landing = {
   },
   footer: {
     mark: 'CIPHER-MUX',
-    version: 'v0.11.3 · macOS · MIT',
+    version: 'v0.11.4 · macOS · MIT',
     links: [
       { label: 'GitHub', href: 'https://github.com/cmarkus42-rgb/cipher-mux-electron' },
       { label: 'Issues', href: 'https://github.com/cmarkus42-rgb/cipher-mux-electron/issues' },
