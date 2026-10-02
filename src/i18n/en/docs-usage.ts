@@ -1,6 +1,6 @@
 const docsUsage = {
   hero: {
-    kicker: 'Using the App · v0.11.4',
+    kicker: 'Using the App · v0.11.5',
     title: 'Every function.',
     titleAccent: 'Look it up.',
     body: 'The complete reference to every area of the app — grid, sessions, sidebar, voice, notes, settings. Made to look things up in, not to read front to back.',

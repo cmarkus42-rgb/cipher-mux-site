@@ -1,6 +1,6 @@
 const docsStart = {
   hero: {
-    kicker: 'Schnelleinstieg \u00b7 v0.11.4',
+    kicker: 'Schnelleinstieg \u00b7 v0.11.5',
     title: 'Vom Start',
     titleAccent: 'zum ersten Projekt.',
     body: 'Installation steht? Dann los. Hier richtest du deinen ersten Workspace ein und lernst die wichtigsten Bereiche der App kennen.',
