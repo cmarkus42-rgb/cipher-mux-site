@@ -157,6 +157,18 @@ const features = {
         { name: 'opencode \u00b7 Tier 2', description: 'Projektanweisung: AGENTS.md. Context-Anzeige und Rollengrenzen laufen \u00fcber Plugins statt \u00fcber Hook-Dateien, MCP-Werkzeuge und Companion-Memory wie gehabt. Was fehlt: Sub-Agents. Selbst installieren \u2014 und einen Anbieter anmelden, sonst steht die Session am Prompt und tut nichts. Gemessen an opencode 1.18.34.' },
       ],
     },
+    {
+      num: '14',
+      kicker: 'Neu in v0.12.0',
+      title: 'Local Cyber Factory \u2014 Claude schneidet zu, ein lokales Modell codet',
+      lead: 'Claude ist gut im Zerlegen und Pr\u00fcfen, aber jede Zeile Code kostet Kontingent. Die Local Cyber Factory teilt die Arbeit deshalb auf: Ein Architekt in Claude Code zerlegt ein Vorhaben in kleine H\u00e4ppchen und schreibt pro H\u00e4ppchen einen Abnahmetest. Den Code schreibt ein lokales Modell \u00fcber opencode, angebunden an einen beliebigen OpenAI-kompatiblen Endpunkt. Dazwischen steht ein L\u00e4ufer im Mux, der selbst kein Modell ist \u2014 er glaubt dem Worker nichts, er misst. Im ersten echten Lauf mit qwen3.8-27b auf einem DGX Spark wurden vier H\u00e4ppchen alle im ersten Versuch gr\u00fcn, jedes in 100 bis 180 Sekunden.',
+      newFeatures: [
+        { name: 'Architekt \u00b7 Claude Code', description: 'Zerlegt, schreibt die Abnahmetests und nimmt gr\u00fcne H\u00e4ppchen ab. Produktionscode darf er nicht schreiben \u2014 das ist keine Bitte im Prompt, sondern eine Rollengrenze, die den Aufruf ablehnt.' },
+        { name: 'Worker \u00b7 opencode, lokal', description: 'Bekommt pro Versuch eine frische Session und schreibt den Code. Die Abnahmetests darf er nicht anfassen. Modell, Basis-URL, Kontext und Ausgabelimit stehen in den Einstellungen; ein Schl\u00fcssel ist nicht n\u00f6tig.' },
+        { name: 'L\u00e4ufer \u00b7 ohne Modell', description: 'Pr\u00fcft vorab, ob der Abnahmetest wirklich rot ist und der Arbeitsbaum sauber. Danach das Gate: Testbefehl, Pr\u00fcfsumme und git-Diff der gesch\u00fctzten Tests. Gr\u00fcn wird ein Commit, rot ein gesicherter Patch und ein Reset. H\u00f6chstens zwei Versuche pro H\u00e4ppchen, dann bist du dran.' },
+        { name: 'Ehrliche Grenzen', description: 'Braucht \u201eskipPermissions\u201c, sonst h\u00e4ngt opencode im R\u00fcckfrage-Dialog \u2014 der Mux lehnt dann mit genau diesem Grund ab. Am Ausgabelimit endet ein lokales Modell still, ohne Fehler; der L\u00e4ufer wertet das als Fehlversuch. Gesch\u00fctzt ist nur, was der Architekt als gesch\u00fctzt nennt. Der Worker schreibt bisher keine eigenen Unit-Tests. H\u00e4ppchen laufen nacheinander, nicht parallel. macOS only.' },
+      ],
+    },
   ],
   scrollNavItems: [
     { id: 'cockpit', label: '01 \u00b7 Cockpit' },
@@ -172,6 +184,7 @@ const features = {
     { id: 'efficiency', label: '11 \u00b7 Effizienz' },
     { id: 'new-features', label: '12 \u00b7 Neu' },
     { id: 'clis', label: '13 \u00b7 CLIs' },
+    { id: 'local-factory', label: '14 \u00b7 Lokal' },
   ],
 } as const;
 

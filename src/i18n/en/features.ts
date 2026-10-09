@@ -214,6 +214,18 @@ const features = {
         { name: 'opencode \u00b7 Tier 2', description: 'Project instructions: AGENTS.md. Context display and role boundaries run through plugins instead of hook files, MCP tools and companion memory as usual. What is missing: sub-agents. Install it yourself \u2014 and sign in to a provider, or the session sits at its prompt and does nothing. Measured against opencode 1.18.34.' },
       ],
     },
+    {
+      num: '14',
+      kicker: 'New in v0.12.0',
+      title: 'Local Cyber Factory \u2014 Claude slices, a local model codes',
+      lead: 'Claude is good at breaking work down and checking it, but every line of code costs quota. The Local Cyber Factory splits the job: an architect in Claude Code cuts a project into small slices and writes an acceptance test for each one. The code comes from a local model via opencode, pointed at any OpenAI-compatible endpoint. Between them sits a runner inside the Mux that is not a model at all \u2014 it takes nothing the worker says on trust, it measures. In the first real run with qwen3.8-27b on a DGX Spark, four slices all went green on the first attempt, each in 100 to 180 seconds.',
+      newFeatures: [
+        { name: 'Architect \u00b7 Claude Code', description: 'Slices the work, writes the acceptance tests and accepts green slices. It may not write production code \u2014 not a request in the prompt, but a role boundary that rejects the call.' },
+        { name: 'Worker \u00b7 opencode, local', description: 'Gets a fresh session for every attempt and writes the code. It may not touch the acceptance tests. Model, base URL, context size and output limit live in Settings; no key needed.' },
+        { name: 'Runner \u00b7 no model', description: 'Checks up front that the acceptance test really is red and the working tree is clean. Then the gate: test command, checksum and git diff of the protected tests. Green becomes a commit, red a saved patch and a reset. At most two attempts per slice, then it is your turn.' },
+        { name: 'Honest limits', description: 'Needs \u201cskipPermissions\u201d, otherwise opencode hangs in its permission prompt \u2014 the Mux refuses to start with exactly that reason. At its output limit a local model stops silently, with no error; the runner counts that as a failed attempt. Only what the architect lists as protected is protected. The worker does not write its own unit tests yet. Slices run one after another, not in parallel. macOS only.' },
+      ],
+    },
   ],
   scrollNavItems: [
     { id: 'cockpit', label: '01 \u00b7 Cockpit' },
@@ -229,6 +241,7 @@ const features = {
     { id: 'efficiency', label: '11 \u00b7 Efficiency' },
     { id: 'new-features', label: '12 \u00b7 New' },
     { id: 'clis', label: '13 \u00b7 CLIs' },
+    { id: 'local-factory', label: '14 \u00b7 Local' },
   ],
 } as const;
 
