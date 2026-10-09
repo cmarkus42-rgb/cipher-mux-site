@@ -1,6 +1,6 @@
 const docsStart = {
   hero: {
-    kicker: 'Quick Start · v0.11.6',
+    kicker: 'Quick Start · v0.12.0',
     title: 'From start',
     titleAccent: 'to your first project.',
     body: 'Installation done? Then start here. You set up your first Workspace and get to know the most important areas of the app.',
