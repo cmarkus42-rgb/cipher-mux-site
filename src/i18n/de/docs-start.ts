@@ -1,6 +1,6 @@
 const docsStart = {
   hero: {
-    kicker: 'Schnelleinstieg \u00b7 v0.12.0',
+    kicker: 'Schnelleinstieg \u00b7 v0.12.3',
     title: 'Vom Start',
     titleAccent: 'zum ersten Projekt.',
     body: 'Installation steht? Dann los. Hier richtest du deinen ersten Workspace ein und lernst die wichtigsten Bereiche der App kennen.',
@@ -56,13 +56,16 @@ const docsStart = {
     pathTitle: 'Via Pfad',
     pathSteps: [
       'Klick auf <span class="docs-mono">+</span> → Tab <strong>Path</strong>',
-      'Projektordner waehlen — nackte Claude-Session ohne Preset',
+      'Projektordner waehlen — eine CLI-Session ohne Preset',
+      '<strong>Workspace</strong> waehlen (Standard: ohne) — die Session erfaehrt dann Name, Projekte und Kontextordner des Workspaces',
+      '<strong>CLI</strong> waehlen (Standard: die aus den Einstellungen) — Claude Code, Codex oder opencode',
     ],
     optionsTitle: 'Optionen',
     options: [
-      { label: 'Shell Only', desc: 'Reines Terminal ohne Claude. Fuer git, npm, schnelle Kommandos.' },
-      { label: 'Skip Permissions', desc: 'Claude fuehrt Aktionen ohne Rueckfrage aus. Auch global aktivierbar unter Einstellungen → General.' },
+      { label: 'Shell Only', desc: 'Reines Terminal ohne CLI. Fuer git, npm, schnelle Kommandos.' },
+      { label: 'Skip Permissions', desc: 'Die CLI fuehrt Aktionen ohne Rueckfrage aus. Auch global aktivierbar unter Einstellungen → General.' },
       { label: 'Resume', desc: 'Fruehere Session fortsetzen. Context bleibt erhalten.' },
+      { label: 'Fork', desc: 'Die letzte Unterhaltung im Ordner als neuen Zweig fortsetzen — das Original bleibt unberuehrt.' },
     ],
     screenshot: {
       placeholder: 'Screenshot: Launcher-Popup mit Preset-Tab',

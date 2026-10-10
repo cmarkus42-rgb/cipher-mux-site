@@ -1,6 +1,6 @@
 const docsStart = {
   hero: {
-    kicker: 'Quick Start · v0.12.0',
+    kicker: 'Quick Start · v0.12.3',
     title: 'From start',
     titleAccent: 'to your first project.',
     body: 'Installation done? Then start here. You set up your first Workspace and get to know the most important areas of the app.',
@@ -56,13 +56,16 @@ const docsStart = {
     pathTitle: 'Via Path',
     pathSteps: [
       'Click <span class="docs-mono">+</span> → <strong>Path</strong> tab',
-      'Pick a project folder — a bare Claude session without a Preset',
+      'Pick a project folder — a CLI session without a Preset',
+      'Pick a <strong>Workspace</strong> (default: none) — the session then learns the workspace\'s name, projects and context folders',
+      'Pick a <strong>CLI</strong> (default: the one from Settings) — Claude Code, Codex or opencode',
     ],
     optionsTitle: 'Options',
     options: [
-      { label: 'Shell Only', desc: 'A plain terminal without Claude. For git, npm, quick commands.' },
-      { label: 'Skip Permissions', desc: 'Claude carries out actions without asking back. Can also be enabled globally under Settings → General.' },
+      { label: 'Shell Only', desc: 'A plain terminal without a CLI. For git, npm, quick commands.' },
+      { label: 'Skip Permissions', desc: 'The CLI carries out actions without asking back. Can also be enabled globally under Settings → General.' },
       { label: 'Resume', desc: 'Continue an earlier Session. The context is preserved.' },
+      { label: 'Fork', desc: 'Continue the folder\'s last conversation as a new branch — the original stays untouched.' },
     ],
     screenshot: {
       placeholder: 'Screenshot: Launcher popup with the Presets tab',

@@ -1,6 +1,6 @@
 const docsConcepts = {
   hero: {
-    kicker: 'Process & Concepts · v0.12.0',
+    kicker: 'Process & Concepts · v0.12.3',
     title: 'Why specialized',
     titleAccent: 'Sessions?',
     body: 'cipher-mux splits the phases of software development into separate AI sessions — each with its own context, its own instructions, its own limits. This page explains why that sometimes works, and when it does not.',
